@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Coaching", href: "#coaching" },
-  { label: "Results", href: "#transformations" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Products", href: "#products" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const { language, setLanguage, isRTL } = useLanguage();
+
+  const navLinks = [
+    { label: translations.nav.about[language], href: "#about" },
+    { label: translations.nav.coaching[language], href: "#coaching" },
+    { label: translations.nav.results[language], href: "#transformations" },
+    { label: translations.nav.faq[language], href: "#faq" },
+    { label: translations.nav.products[language], href: "#products" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +35,10 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'ar' : 'en');
+  };
+
   return (
     <>
       <motion.header
@@ -45,38 +52,58 @@ const Header = () => {
         }`}
       >
         <div className="container-tight px-4 md:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className={`flex items-center justify-between h-16 md:h-20 ${isRTL ? 'flex-row-reverse' : ''}`}>
             {/* Logo */}
             <a href="#" className="font-display text-2xl md:text-3xl text-foreground hover:text-primary transition-colors">
               [YOUR NAME]
             </a>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            <nav className={`hidden md:flex items-center gap-6 lg:gap-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
               {navLinks.map((link) => (
                 <button
-                  key={link.label}
+                  key={link.href}
                   onClick={() => scrollToSection(link.href)}
                   className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wide font-medium"
                 >
                   {link.label}
                 </button>
               ))}
+              
+              {/* Language Switcher */}
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all"
+                aria-label="Switch language"
+              >
+                <Globe className="w-4 h-4" />
+                <span className="text-sm font-medium">{language === 'en' ? 'عربي' : 'EN'}</span>
+              </button>
+
               <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
                 <Button variant="hero" size="sm">
-                  Apply Now
+                  {translations.nav.applyNow[language]}
                 </Button>
               </a>
             </nav>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile Menu Button & Language */}
+            <div className={`flex md:hidden items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <button
+                onClick={toggleLanguage}
+                className="p-2 text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Switch language"
+              >
+                <Globe className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-foreground"
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.header>
@@ -94,7 +121,7 @@ const Header = () => {
             <nav className="flex flex-col items-center gap-6 p-8">
               {navLinks.map((link) => (
                 <button
-                  key={link.label}
+                  key={link.href}
                   onClick={() => scrollToSection(link.href)}
                   className="text-foreground hover:text-primary transition-colors text-xl uppercase tracking-wide font-display"
                 >
@@ -103,7 +130,7 @@ const Header = () => {
               ))}
               <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="mt-4">
                 <Button variant="hero" size="lg">
-                  Apply Now
+                  {translations.nav.applyNow[language]}
                 </Button>
               </a>
             </nav>

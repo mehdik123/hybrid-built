@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { language, isRTL } = useLanguage();
+  const t = translations.about;
 
   return (
     <section id="about" className="section-padding bg-secondary/30" ref={ref}>
@@ -16,17 +20,17 @@ const AboutSection = () => {
           className="mb-12"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-center mb-2">
-            WHO I <span className="text-gradient">AM</span>
+            {t.title1[language]} <span className="text-gradient">{t.title2[language]}</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+        <div className={`grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center ${isRTL ? 'md:flex-row-reverse' : ''}`}>
           {/* Profile Image */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className={`relative ${isRTL ? 'md:order-2' : ''}`}
           >
             <div className="aspect-square rounded-2xl bg-muted flex items-center justify-center overflow-hidden border border-border">
               <span className="text-muted-foreground text-lg">Profile Photo Placeholder</span>
@@ -37,26 +41,27 @@ const AboutSection = () => {
 
           {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-6"
+            className={`space-y-6 ${isRTL ? 'md:order-1 text-right' : ''}`}
           >
             <p className="text-lg md:text-xl text-foreground leading-relaxed">
-              I'm <span className="text-primary font-semibold">[Your Name]</span>, a hybrid athlete and online coach with a community of{" "}
-              <span className="text-primary font-bold">400,000+</span> followers.
+              {t.intro[language]} <span className="text-primary font-semibold">[Your Name]</span>
+              {t.description1[language]}{" "}
+              <span className="text-primary font-bold">400,000+</span> {t.followers[language]}.
             </p>
 
             <p className="text-muted-foreground text-lg leading-relaxed">
-              I built my physique naturally by combining calisthenics and bodybuilding—no steroids, no shortcuts, just smart training.
+              {t.description2[language]}
             </p>
 
             <p className="text-muted-foreground text-lg leading-relaxed">
-              I've helped <span className="text-foreground font-semibold">50+ clients</span> transform their physiques in 12 weeks using the same system.
+              {t.description3[language]} <span className="text-foreground font-semibold">{t.clients[language]}</span> {t.description4[language]}
             </p>
 
             <p className="text-xl text-foreground font-medium">
-              Now, I want to help <span className="text-primary">you</span>.
+              {t.description5[language]} <span className="text-primary">{t.you[language]}</span>.
             </p>
           </motion.div>
         </div>

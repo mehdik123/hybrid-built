@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const StickyApplyButton = () => {
   const [isVisible, setIsVisible] = useState(false);
   const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const { language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button after scrolling past the hero section
       setIsVisible(window.scrollY > window.innerHeight * 0.8);
     };
 
@@ -28,7 +30,7 @@ const StickyApplyButton = () => {
         >
           <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
             <Button variant="cta" size="lg" className="shadow-2xl">
-              Apply Now
+              {translations.sticky.apply[language]}
             </Button>
           </a>
         </motion.div>

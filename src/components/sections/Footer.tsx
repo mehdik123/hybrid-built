@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { Instagram, Youtube } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const Footer = () => {
+  const { language, isRTL } = useLanguage();
+  const t = translations.footer;
+
   const socialLinks = [
     { icon: Instagram, label: "Instagram", href: "https://instagram.com/yourhandle" },
     { icon: Youtube, label: "YouTube", href: "https://youtube.com/yourchannel" },
@@ -18,10 +23,10 @@ const Footer = () => {
           className="text-center"
         >
           <h3 className="font-display text-2xl md:text-3xl mb-6 text-foreground">
-            FOLLOW FOR <span className="text-gradient">FREE CONTENT</span>
+            {t.title1[language]} <span className="text-gradient">{t.title2[language]}</span>
           </h3>
 
-          <div className="flex justify-center gap-4 mb-8">
+          <div className={`flex justify-center gap-4 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
             {socialLinks.map((social) => (
               <a
                 key={social.label}
@@ -49,12 +54,12 @@ const Footer = () => {
           </div>
 
           <p className="text-muted-foreground mb-6">
-            Questions? DM me anytime.
+            {t.questions[language]}
           </p>
 
           <div className="pt-6 border-t border-border">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} [Your Name] | All Rights Reserved
+              © {new Date().getFullYear()} [Your Name] | {t.rights[language]}
             </p>
           </div>
         </motion.div>

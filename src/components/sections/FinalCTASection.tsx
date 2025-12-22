@@ -3,18 +3,15 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Check, Dumbbell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const benefits = [
-  "10-20 lbs leaner or heavier (depending on goal)",
-  "Significantly stronger (PRs on all lifts)",
-  "Confident in your training and nutrition",
-  "Looking in the mirror and loving what you see"
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const FinalCTASection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const { language, isRTL } = useLanguage();
+  const t = translations.finalCta;
 
   return (
     <section className="section-padding relative overflow-hidden" ref={ref}>
@@ -30,39 +27,39 @@ const FinalCTASection = () => {
           className="text-center max-w-3xl mx-auto"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-7xl mb-8">
-            READY TO <span className="text-gradient">TRANSFORM</span>?
+            {t.title1[language]} <span className="text-gradient">{t.title2[language]}</span>?
           </h2>
 
           <div className="text-lg md:text-xl text-muted-foreground space-y-2 mb-8">
-            <p>You've seen the results.</p>
-            <p>You know what you'll get.</p>
-            <p className="text-foreground font-medium">Now it's time to decide.</p>
+            <p>{t.line1[language]}</p>
+            <p>{t.line2[language]}</p>
+            <p className="text-foreground font-medium">{t.line3[language]}</p>
           </div>
 
-          <div className="text-left max-w-md mx-auto mb-8 space-y-4">
+          <div className={`max-w-md mx-auto mb-8 space-y-4 ${isRTL ? 'text-right' : 'text-left'}`}>
             <p className="text-foreground text-lg font-medium text-center mb-4">
-              12 weeks from now, you could be:
+              {t.weeksFrom[language]}
             </p>
-            {benefits.map((benefit, index) => (
+            {t.benefits.map((benefit, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                className="flex items-start gap-3"
+                className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}
               >
                 <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Check className="w-4 h-4 text-primary" />
                 </div>
-                <span className="text-foreground">{benefit}</span>
+                <span className="text-foreground">{benefit[language]}</span>
               </motion.div>
             ))}
           </div>
 
           <p className="text-muted-foreground mb-10 text-lg">
-            Or you could still be guessing, wasting time on random programs.
+            {t.alternative[language]}
             <br />
-            <span className="text-foreground font-semibold">The choice is yours.</span>
+            <span className="text-foreground font-semibold">{t.choice[language]}</span>
           </p>
 
           <motion.div
@@ -72,13 +69,14 @@ const FinalCTASection = () => {
           >
             <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
               <Button variant="cta" size="xxl" className="mb-4">
-                Message Me Now
+                {t.cta[language]}
               </Button>
             </a>
-            <p className="text-muted-foreground flex items-center justify-center gap-2">
-              DM me <span className="text-primary font-semibold">'COACHING'</span> on Instagram.
-              <br />
-              Let's build something great. <Dumbbell className="w-5 h-5 text-primary" />
+            <p className={`text-muted-foreground flex items-center justify-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              {t.dmText[language]} <span className="text-primary font-semibold">{t.coaching[language]}</span> {t.onInstagram[language]}
+            </p>
+            <p className={`text-muted-foreground flex items-center justify-center gap-2 mt-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              {t.letsGo[language]} <Dumbbell className="w-5 h-5 text-primary" />
             </p>
           </motion.div>
         </motion.div>
