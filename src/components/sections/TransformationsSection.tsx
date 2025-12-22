@@ -47,7 +47,7 @@ const TransformationsSection = () => {
               <motion.div
                 className="flex gap-6 lg:gap-8"
                 animate={{
-                  x: isRTL ? ["0%", "-33.33%"] : ["-33.33%", "0%"],
+                  x: isRTL ? ["-33.33%", "0%"] : ["0%", "-33.33%"],
                 }}
                 transition={{
                   x: {
