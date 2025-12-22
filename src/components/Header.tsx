@@ -53,9 +53,9 @@ const Header = () => {
         <div className="container-tight px-4 md:px-8">
           <div className={`flex items-center justify-between h-16 md:h-20 ${isRTL ? 'flex-row-reverse' : ''}`}>
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <img src="/logo.png" alt="UNBREAKABLES TEAM" className="h-10 md:h-12 w-auto" />
-              <span className="font-display text-xl md:text-2xl text-foreground hidden sm:inline">
+            <a href="#" className="flex items-center gap-2 md:gap-3 hover:opacity-80 transition-opacity">
+              <img src="/logo.png" alt="UNBREAKABLES TEAM" className="h-8 md:h-12 w-auto" />
+              <span className="font-display text-lg md:text-2xl text-foreground">
                 UNBREAKABLES TEAM
               </span>
             </a>
@@ -96,14 +96,15 @@ const Header = () => {
             <div className={`flex md:hidden items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <button
                 onClick={toggleLanguage}
-                className="p-2 text-muted-foreground hover:text-primary transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border/50 text-muted-foreground hover:text-primary transition-colors text-sm font-bold"
                 aria-label="Switch language"
               >
-                <Globe className="w-5 h-5" />
+                <Globe className="w-4 h-4" />
+                <span>{language === 'en' ? 'عربي' : 'EN'}</span>
               </button>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 text-foreground"
+                className="p-1.5 text-foreground"
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

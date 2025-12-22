@@ -20,11 +20,11 @@ const HeroSection = () => {
           playsInline
           preload="metadata"
           className="w-full h-full object-cover"
-          poster="/hero-placeholder.jpg"
+          poster="/hero-placeholder-v2.jpg"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
           {/* Fallback image if video doesn't load */}
-          <img src="/hero-placeholder.jpg" alt="Build The Hybrid Physique" className="w-full h-full object-cover" />
+          <img src="/hero-placeholder-v2.jpg" alt="Build The Hybrid Physique" className="w-full h-full object-cover" />
         </video>
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/70" />
@@ -66,7 +66,7 @@ const HeroSection = () => {
           className="mb-6"
         >
           <p className="text-lg md:text-xl text-foreground/80">
-            {t.tagline[language]} <span className="text-primary font-semibold">UNBREAKABLES TEAM</span>
+            {t.tagline[language]} <span className="text-primary font-semibold">Mehdi</span>
           </p>
           <p className="text-muted-foreground mt-2">{t.subtext[language]}</p>
         </motion.div>

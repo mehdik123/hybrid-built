@@ -28,6 +28,7 @@ export const translations = {
     title1: { en: "WHO I", ar: "من" },
     title2: { en: "AM", ar: "أنا" },
     intro: { en: "I'm", ar: "أنا" },
+    name: { en: "Mehdi", ar: "المهدي" },
     followers: { en: "followers", ar: "متابع" },
     description1: {
       en: ", the founder of UNBREAKABLES TEAM. I'm a hybrid athlete and online coach with a community of",

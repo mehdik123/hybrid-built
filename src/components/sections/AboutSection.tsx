@@ -47,7 +47,7 @@ const AboutSection = () => {
             className={`space-y-6 ${isRTL ? 'md:order-1 text-right' : ''}`}
           >
             <p className="text-lg md:text-xl text-foreground leading-relaxed">
-              {t.intro[language]} <span className="text-primary font-semibold">UNBREAKABLES TEAM</span>
+              {t.intro[language]} <span className="text-primary font-semibold">{t.name[language]}</span>
               {t.description1[language]}{" "}
               <span className="text-primary font-bold">400,000+</span> {t.followers[language]}.
             </p>
