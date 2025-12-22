@@ -14,7 +14,7 @@ import { translations } from "@/lib/translations";
 const FAQSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const instagramDMLink = "https://instagram.com/direct/t/unbreakablesteam";
   const { language, isRTL } = useLanguage();
   const t = translations.faq;
 

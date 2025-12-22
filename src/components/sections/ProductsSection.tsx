@@ -12,8 +12,8 @@ const ProductsSection = () => {
   const { language, isRTL } = useLanguage();
   const t = translations.products;
 
-  const freeDownloadLink = "https://ig.me/m/YOUR_USERNAME?text=Hey!%20I'm%20interested%20in%20the%20free%20workout%20guide.%20Can%20you%20send%20it%20to%20me%3F";
-  const paidProductLink = "https://ig.me/m/YOUR_USERNAME?text=Hi!%20I'm%20interested%20in%20the%20Hybrid%20Physique%20Blueprint%20for%20%2415.%20Can%20you%20share%20more%20details%3F";
+  const freeDownloadLink = "https://ig.me/m/unbreakablesteam?text=Hey!%20I'm%20interested%20in%20the%20free%20workout%20guide.%20Can%20you%20send%20it%20to%20me%3F";
+  const paidProductLink = "https://ig.me/m/unbreakablesteam?text=Hi!%20I'm%20interested%20in%20the%20Hybrid%20Physique%20Blueprint%20for%20%2415.%20Can%20you%20share%20more%20details%3F";
 
   return (
     <section id="products" className="section-padding bg-card" ref={ref}>
@@ -107,11 +107,16 @@ const ProductsSection = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Zap className="w-24 h-24 text-primary/50" />
                 </div>
-                <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg`}>
-                  <Zap className="w-5 h-5" />
-                  $15
+                <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} flex flex-col items-end gap-2`}>
+                  <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg scale-110">
+                    <Zap className="w-5 h-5" />
+                    $15
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-md text-white/60 px-3 py-1 rounded-full text-sm font-medium line-through">
+                    {t.originalPrice[language]}
+                  </div>
                 </div>
-                <div className={`absolute bottom-4 ${isRTL ? 'right-4' : 'left-4'} bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1`}>
+                <div className={`absolute bottom-4 ${isRTL ? 'right-4' : 'left-4'} bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 animate-pulse shadow-lg`}>
                   <Clock className="w-4 h-4" />
                   {t.limitedTime[language]}
                 </div>

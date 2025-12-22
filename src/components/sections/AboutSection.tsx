@@ -32,11 +32,11 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className={`relative ${isRTL ? 'md:order-2' : ''}`}
           >
-            <div className="aspect-square rounded-2xl bg-muted flex items-center justify-center overflow-hidden border border-border">
-              <span className="text-muted-foreground text-lg">Profile Photo Placeholder</span>
+            <div className="aspect-[3/4] rounded-2xl bg-muted flex items-center justify-center overflow-hidden border border-border shadow-2xl">
+              <img src="/about-me.jpg" alt="UNBREAKABLES TEAM Founder" className="w-full h-full object-cover" />
             </div>
             {/* Decorative glow */}
-            <div className="absolute -inset-4 bg-primary/10 rounded-2xl blur-2xl -z-10" />
+            <div className="absolute -inset-4 bg-primary/20 rounded-2xl blur-3xl -z-10" />
           </motion.div>
 
           {/* Text Content */}
@@ -47,7 +47,7 @@ const AboutSection = () => {
             className={`space-y-6 ${isRTL ? 'md:order-1 text-right' : ''}`}
           >
             <p className="text-lg md:text-xl text-foreground leading-relaxed">
-              {t.intro[language]} <span className="text-primary font-semibold">[Your Name]</span>
+              {t.intro[language]} <span className="text-primary font-semibold">UNBREAKABLES TEAM</span>
               {t.description1[language]}{" "}
               <span className="text-primary font-bold">400,000+</span> {t.followers[language]}.
             </p>

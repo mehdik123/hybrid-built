@@ -18,7 +18,7 @@ export const translations = {
     headline3: { en: "PHYSIQUE", ar: "المثالي" },
     subheadline: { en: "Strength | Muscle | Skills — All Natural", ar: "القوة | العضلات | المهارات — طبيعي 100%" },
     tagline: { en: "1-on-1 Online Coaching with", ar: "تدريب شخصي أونلاين مع" },
-    subtext: { en: "Transform in 12 Weeks", ar: "تحول في 12 أسبوع" },
+    subtext: { en: "The Unbreakable Method", ar: "نظام الفريق الذي لا يقهر" },
     cta: { en: "Apply for Coaching", ar: "قدم للتدريب" },
     scroll: { en: "Scroll to learn more", ar: "مرر لتعرف المزيد" },
   },
@@ -29,26 +29,26 @@ export const translations = {
     title2: { en: "AM", ar: "أنا" },
     intro: { en: "I'm", ar: "أنا" },
     followers: { en: "followers", ar: "متابع" },
-    description1: { 
-      en: ", a hybrid athlete and online coach with a community of", 
-      ar: ", رياضي هجين ومدرب أونلاين مع مجتمع يضم أكثر من" 
+    description1: {
+      en: ", the founder of UNBREAKABLES TEAM. I'm a hybrid athlete and online coach with a community of",
+      ar: "، مؤسس فريق UNBREAKABLES. أنا رياضي هجين ومدرب أونلاين مع مجتمع يضم أكثر من"
     },
-    description2: { 
-      en: "I built my physique naturally by combining calisthenics and bodybuilding—no steroids, no shortcuts, just smart training.", 
-      ar: "بنيت جسمي بشكل طبيعي من خلال الجمع بين تمارين الجمباز وكمال الأجسام — بدون منشطات، بدون اختصارات، فقط تدريب ذكي." 
+    description2: {
+      en: "I built my physique naturally by combining calisthenics and bodybuilding—no steroids, no shortcuts, just smart training.",
+      ar: "بنيت جسمي بشكل طبيعي من خلال الجمع بين تمارين الجمباز وكمال الأجسام — بدون منشطات، بدون اختصارات، فقط تدريب ذكي."
     },
-    description3: { 
-      en: "I've helped", 
-      ar: "ساعدت أكثر من" 
+    description3: {
+      en: "I've helped",
+      ar: "ساعدت أكثر من"
     },
     clients: { en: "50+ clients", ar: "50 عميل" },
-    description4: { 
-      en: "transform their physiques in 12 weeks using the same system.", 
-      ar: "في تحويل أجسامهم خلال 12 أسبوع باستخدام نفس النظام." 
+    description4: {
+      en: "transform their physiques in 12 weeks using the same system.",
+      ar: "في تحويل أجسامهم خلال 12 أسبوع باستخدام نفس النظام."
     },
-    description5: { 
-      en: "Now, I want to help", 
-      ar: "الآن، أريد مساعدتك" 
+    description5: {
+      en: "Now, I want to help",
+      ar: "الآن، أريد مساعدتك"
     },
     you: { en: "you", ar: "أنت" },
   },
@@ -60,39 +60,39 @@ export const translations = {
     subtitle: { en: "Get a Custom Program Built for YOUR Body & Goals", ar: "احصل على برنامج مخصص لجسمك وأهدافك" },
     whatYouGet: { en: "WHAT YOU GET:", ar: "ماذا ستحصل:" },
     features: {
-      training: { 
+      training: {
         title: { en: "Custom Training Plan", ar: "برنامج تدريب مخصص" },
-        description: { 
-          en: "Built specifically for your experience level, goals, and equipment access. Updated weekly based on your progress.", 
-          ar: "مصمم خصيصاً لمستوى خبرتك وأهدافك والمعدات المتاحة لديك. يتم تحديثه أسبوعياً بناءً على تقدمك." 
+        description: {
+          en: "Built specifically for your experience level, goals, and equipment access. Updated weekly based on your progress.",
+          ar: "مصمم خصيصاً لمستوى خبرتك وأهدافك والمعدات المتاحة لديك. يتم تحديثه أسبوعياً بناءً على تقدمك."
         }
       },
-      nutrition: { 
+      nutrition: {
         title: { en: "Personalized Nutrition System", ar: "نظام غذائي مخصص" },
-        description: { 
-          en: "Your exact macros, meal plans (Moroccan & international options), and how to adjust based on results.", 
-          ar: "الماكروز الخاصة بك، خطط وجبات (خيارات مغربية ودولية)، وكيفية التعديل بناءً على النتائج." 
+        description: {
+          en: "Your exact macros, meal plans (Moroccan & international options), and how to adjust based on results.",
+          ar: "الماكروز الخاصة بك، خطط وجبات (خيارات مغربية ودولية)، وكيفية التعديل بناءً على النتائج."
         }
       },
-      checkIns: { 
+      checkIns: {
         title: { en: "Weekly Check-Ins", ar: "متابعة أسبوعية" },
-        description: { 
-          en: "Form reviews, progress analysis, and program adjustments. I keep you on track.", 
-          ar: "مراجعة الأداء، تحليل التقدم، وتعديل البرنامج. سأبقيك على المسار الصحيح." 
+        description: {
+          en: "Form reviews, progress analysis, and program adjustments. I keep you on track.",
+          ar: "مراجعة الأداء، تحليل التقدم، وتعديل البرنامج. سأبقيك على المسار الصحيح."
         }
       },
-      messaging: { 
+      messaging: {
         title: { en: "24/7 Messaging Access", ar: "تواصل على مدار الساعة" },
-        description: { 
-          en: "Questions answered within 24 hours. You're never stuck or confused.", 
-          ar: "الإجابة على أسئلتك خلال 24 ساعة. لن تشعر أبداً بالحيرة." 
+        description: {
+          en: "Questions answered within 24 hours. You're never stuck or confused.",
+          ar: "الإجابة على أسئلتك خلال 24 ساعة. لن تشعر أبداً بالحيرة."
         }
       },
-      accountability: { 
+      accountability: {
         title: { en: "Accountability & Support", ar: "المتابعة والدعم" },
-        description: { 
-          en: "I hold you accountable for 12 weeks. No excuses, just results.", 
-          ar: "سأتابعك لمدة 12 أسبوع. لا أعذار، فقط نتائج." 
+        description: {
+          en: "I hold you accountable for 12 weeks. No excuses, just results.",
+          ar: "سأتابعك لمدة 12 أسبوع. لا أعذار، فقط نتائج."
         }
       }
     },
@@ -124,26 +124,40 @@ export const translations = {
     after: { en: "AFTER", ar: "بعد" },
     cta: { en: "I Want Results Like This", ar: "أريد نتائج مثل هذه" },
     testimonials: [
-      { 
-        quote: { 
-          en: "Lost 15 lbs and built visible abs in 12 weeks. Best investment I've made.", 
-          ar: "خسرت 15 رطل وبنيت عضلات بطن واضحة في 12 أسبوع. أفضل استثمار قمت به." 
+      {
+        quote: {
+          en: "Lost 15 lbs and built visible abs in 12 weeks. Best investment I've made.",
+          ar: "خسرت 15 رطل وبنيت عضلات بطن واضحة في 12 أسبوع. أفضل استثمار قمت به."
         },
         name: { en: "Youssef, 28", ar: "يوسف، 28" }
       },
-      { 
-        quote: { 
-          en: "Added 50 lbs to my bench and 30 lbs to my squat. My back is finally thick.", 
-          ar: "أضفت 50 رطل لتمرين الصدر و30 رطل للسكوات. ظهري أخيراً أصبح ضخم." 
+      {
+        quote: {
+          en: "Added 50 lbs to my bench and 30 lbs to my squat. My back is finally thick.",
+          ar: "أضفت 50 رطل لتمرين الصدر و30 رطل للسكوات. ظهري أخيراً أصبح ضخم."
         },
         name: { en: "Amine, 24", ar: "أمين، 24" }
       },
-      { 
-        quote: { 
-          en: "Learned how to train hybrid. Now I'm strong AND aesthetic.", 
-          ar: "تعلمت كيف أتدرب بشكل هجين. الآن أنا قوي وجمالي." 
+      {
+        quote: {
+          en: "Learned how to train hybrid. Now I'm strong AND aesthetic.",
+          ar: "تعلمت كيف أتدرب بشكل هجين. الآن أنا قوي وجمالي."
         },
         name: { en: "Mehdi, 31", ar: "مهدي، 31" }
+      },
+      {
+        quote: {
+          en: "Complete body recomposition. Lost body fat while gaining serious strength.",
+          ar: "إعادة تكوين كاملة للجسم. فقدت دهون الجسم مع اكتساب قوة مذهلة."
+        },
+        name: { en: "Omar, 26", ar: "عمر، 26" }
+      },
+      {
+        quote: {
+          en: "Transformed my physique and mindset. The Unbreakable Team system really works.",
+          ar: "حولت جسمي وعقليتي. نظام فريق Unbreakable يعمل حقاً."
+        },
+        name: { en: "Saad, 29", ar: "سعد، 29" }
       }
     ]
   },
@@ -156,51 +170,51 @@ export const translations = {
     items: [
       {
         question: { en: "How does online coaching work?", ar: "كيف يعمل التدريب أونلاين؟" },
-        answer: { 
-          en: "We communicate through Instagram or WhatsApp. You get a custom plan, check in weekly with progress updates, and I adjust everything based on your results. It's like having me in your pocket 24/7.", 
-          ar: "نتواصل عبر انستغرام أو واتساب. تحصل على برنامج مخصص، متابعة أسبوعية مع تحديثات التقدم، وأعدل كل شيء بناءً على نتائجك. كأنني معك في جيبك 24/7." 
+        answer: {
+          en: "We communicate through Instagram or WhatsApp. You get a custom plan, check in weekly with progress updates, and I adjust everything based on your results. It's like having me in your pocket 24/7.",
+          ar: "نتواصل عبر انستغرام أو واتساب. تحصل على برنامج مخصص، متابعة أسبوعية مع تحديثات التقدم، وأعدل كل شيء بناءً على نتائجك. كأنني معك في جيبك 24/7."
         }
       },
       {
         question: { en: "Do I need a gym?", ar: "هل أحتاج صالة رياضية؟" },
-        answer: { 
-          en: "Ideally yes, but I can work with home setups (pull-up bar, dip station, minimal equipment). Tell me what you have and I'll build around it.", 
-          ar: "مثالياً نعم، لكن يمكنني العمل مع إعدادات المنزل (بار العقلة، ديب ستيشن، معدات بسيطة). أخبرني بما لديك وسأبني برنامجك حوله." 
+        answer: {
+          en: "Ideally yes, but I can work with home setups (pull-up bar, dip station, minimal equipment). Tell me what you have and I'll build around it.",
+          ar: "مثالياً نعم، لكن يمكنني العمل مع إعدادات المنزل (بار العقلة، ديب ستيشن، معدات بسيطة). أخبرني بما لديك وسأبني برنامجك حوله."
         }
       },
       {
         question: { en: "What if I'm a beginner?", ar: "ماذا لو كنت مبتدئ؟" },
-        answer: { 
-          en: "Perfect. I work with all levels—beginners to advanced. Your program will be tailored to YOUR experience.", 
-          ar: "ممتاز. أعمل مع جميع المستويات — من المبتدئين إلى المتقدمين. برنامجك سيكون مخصص لمستوى خبرتك." 
+        answer: {
+          en: "Perfect. I work with all levels—beginners to advanced. Your program will be tailored to YOUR experience.",
+          ar: "ممتاز. أعمل مع جميع المستويات — من المبتدئين إلى المتقدمين. برنامجك سيكون مخصص لمستوى خبرتك."
         }
       },
       {
         question: { en: "Can I see results in 12 weeks?", ar: "هل يمكنني رؤية نتائج في 12 أسبوع؟" },
-        answer: { 
-          en: "Yes, if you follow the plan. Most clients see significant changes in 8-12 weeks (visible muscle, fat loss, strength gains).", 
-          ar: "نعم، إذا اتبعت الخطة. معظم العملاء يرون تغييرات ملحوظة في 8-12 أسبوع (عضلات واضحة، خسارة دهون، زيادة قوة)." 
+        answer: {
+          en: "Yes, if you follow the plan. Most clients see significant changes in 8-12 weeks (visible muscle, fat loss, strength gains).",
+          ar: "نعم، إذا اتبعت الخطة. معظم العملاء يرون تغييرات ملحوظة في 8-12 أسبوع (عضلات واضحة، خسارة دهون، زيادة قوة)."
         }
       },
       {
         question: { en: "What if I travel or miss workouts?", ar: "ماذا لو سافرت أو فاتتني تمارين؟" },
-        answer: { 
-          en: "Life happens. I adjust your plan when needed. The goal is consistency over perfection.", 
-          ar: "الحياة تحدث. أعدل خطتك عند الحاجة. الهدف هو الاستمرارية وليس الكمال." 
+        answer: {
+          en: "Life happens. I adjust your plan when needed. The goal is consistency over perfection.",
+          ar: "الحياة تحدث. أعدل خطتك عند الحاجة. الهدف هو الاستمرارية وليس الكمال."
         }
       },
       {
         question: { en: "Payment plans?", ar: "خطط الدفع؟" },
-        answer: { 
-          en: "Yes, message me and we'll work it out.", 
-          ar: "نعم، راسلني وسنتفق على ذلك." 
+        answer: {
+          en: "Yes, message me and we'll work it out.",
+          ar: "نعم، راسلني وسنتفق على ذلك."
         }
       },
       {
         question: { en: "How many clients do you take?", ar: "كم عميل تقبل؟" },
-        answer: { 
-          en: "Limited spots (5-10 per month) to give everyone quality attention. If spots are full, I'll add you to the waitlist.", 
-          ar: "أماكن محدودة (5-10 شهرياً) لإعطاء الجميع اهتمام عالي الجودة. إذا امتلأت الأماكن، سأضيفك لقائمة الانتظار." 
+        answer: {
+          en: "Limited spots (5-10 per month) to give everyone quality attention. If spots are full, I'll add you to the waitlist.",
+          ar: "أماكن محدودة (5-10 شهرياً) لإعطاء الجميع اهتمام عالي الجودة. إذا امتلأت الأماكن، سأضيفك لقائمة الانتظار."
         }
       }
     ]
@@ -225,7 +239,9 @@ export const translations = {
       { en: "Exercise demonstrations", ar: "شرح التمارين" }
     ],
     paidButton: { en: "Get the Program - $15", ar: "احصل على البرنامج - $15" },
-    limitedTime: { en: "Limited time offer (available for 8 weeks only)", ar: "عرض لفترة محدودة (متاح لـ 8 أسابيع فقط)" },
+    originalPrice: { en: "$25", ar: "25$" },
+    limitedTime: { en: "OFFER ENDING SOON", ar: "العرض ينتهي قريباً" },
+    discountText: { en: "40% OFF - LIMITED SLOTS", ar: "خصم 40% - أماكن محدودة" },
   },
 
   // Final CTA Section
@@ -268,3 +284,4 @@ export const translations = {
 export const getTranslation = (obj: { en: string; ar: string }, lang: Language): string => {
   return obj[lang];
 };
+

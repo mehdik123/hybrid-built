@@ -8,7 +8,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const VSLSection = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
-    const instagramDMLink = "https://ig.me/m/YOUR_USERNAME?text=Just%20watched%20your%20VSL!%20I'd%20love%20to%20know%20more%20about%20working%20together!";
+    const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=Just%20watched%20your%20VSL!%20I'd%20love%20to%20know%20more%20about%20working%20together!";
     const { language, isRTL } = useLanguage();
 
     // Replace with your actual YouTube/Vimeo video ID or self-hosted video
@@ -96,3 +96,4 @@ const VSLSection = () => {
 };
 
 export default VSLSection;
+
