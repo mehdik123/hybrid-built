@@ -6,7 +6,7 @@ import { translations } from "@/lib/translations";
 
 const StickyApplyButton = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=Hi!%20I'm%20interested%20in%20applying%20for%20coaching!";
   const { language } = useLanguage();
 
   useEffect(() => {

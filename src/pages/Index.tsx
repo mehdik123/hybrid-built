@@ -1,10 +1,12 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
-import CoachingSection from "@/components/sections/CoachingSection";
+import VSLSection from "@/components/sections/VSLSection";
 import TransformationsSection from "@/components/sections/TransformationsSection";
-import FAQSection from "@/components/sections/FAQSection";
+import ReviewsSection from "@/components/sections/ReviewsSection";
+import CoachingSection from "@/components/sections/CoachingSection";
 import ProductsSection from "@/components/sections/ProductsSection";
+import FAQSection from "@/components/sections/FAQSection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
 import Footer from "@/components/sections/Footer";
 import StickyApplyButton from "@/components/StickyApplyButton";
@@ -15,10 +17,12 @@ const Index = () => {
       <Header />
       <HeroSection />
       <AboutSection />
-      <CoachingSection />
+      <VSLSection />
       <TransformationsSection />
-      <FAQSection />
+      <ReviewsSection />
+      <CoachingSection />
       <ProductsSection />
+      <FAQSection />
       <FinalCTASection />
       <Footer />
       <StickyApplyButton />

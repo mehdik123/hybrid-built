@@ -9,12 +9,15 @@ import { translations } from "@/lib/translations";
 const TransformationsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const instagramDMLink = "https://ig.me/m/YOUR_USERNAME?text=The%20transformations%20are%20amazing!%20How%20can%20I%20get%20started%3F";
   const { language, isRTL } = useLanguage();
   const t = translations.transformations;
 
+  // Duplicate testimonials for seamless loop
+  const duplicatedTestimonials = [...t.testimonials, ...t.testimonials, ...t.testimonials];
+
   return (
-    <section id="transformations" className="section-padding" ref={ref}>
+    <section id="transformations" className="section-padding overflow-hidden" ref={ref}>
       <div className="container-tight">
         {/* Header */}
         <motion.div
@@ -31,48 +34,93 @@ const TransformationsSection = () => {
           </p>
         </motion.div>
 
-        {/* Transformation Cards */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
-          {t.testimonials.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
-              className="group"
-            >
-              <div className="bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
-                {/* Before/After Image Placeholder */}
-                <div className="aspect-[4/5] bg-muted relative overflow-hidden">
-                  <div className={`absolute inset-0 flex ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <div className={`w-1/2 h-full bg-muted-foreground/10 flex items-center justify-center ${isRTL ? 'border-l' : 'border-r'} border-border`}>
-                      <span className="text-muted-foreground text-sm font-medium">{t.before[language]}</span>
-                    </div>
-                    <div className="w-1/2 h-full bg-muted-foreground/5 flex items-center justify-center">
-                      <span className="text-muted-foreground text-sm font-medium">{t.after[language]}</span>
+        {/* Auto-scrolling Carousel */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-12"
+        >
+          <div className="relative">
+            {/* Carousel Container */}
+            <div className="overflow-hidden">
+              <motion.div
+                className="flex gap-6 lg:gap-8"
+                animate={{
+                  x: isRTL ? ["0%", "66.66%"] : ["-66.66%", "0%"],
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 20,
+                    ease: "linear",
+                  },
+                }}
+                style={{ width: "fit-content" }}
+              >
+                {duplicatedTestimonials.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 w-[320px] md:w-[380px]"
+                  >
+                    <div className="bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 h-full">
+                      {/* Real Before/After Images */}
+                      <div className="aspect-[4/5] bg-muted relative overflow-hidden">
+                        <div className={`absolute inset-0 flex ${isRTL ? 'flex-row-reverse' : ''}`}>
+                          {/* Before Image */}
+                          <div className={`w-1/2 h-full relative ${isRTL ? 'border-l' : 'border-r'}  border-border bg-black`}>
+                            <img
+                              src={`/transformation-${(index % t.testimonials.length) + 1}-before.png`}
+                              alt="Before transformation"
+                              className="w-full h-full object-contain"
+                              
+                            />
+                            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/70 px-3 py-1 rounded-full">
+                              <span className="text-white text-xs font-medium uppercase">{t.before[language]}</span>
+                            </div>
+                          </div>
+                          {/* After Image */}
+                          <div className="w-1/2 h-full relative">
+                            <img
+                              src={`/transformation-${(index % t.testimonials.length) + 1}-after.png`}
+                              alt="After transformation"
+                              className="w-full h-full object-contain"
+                              
+                            />
+                            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-primary/90 px-3 py-1 rounded-full">
+                              <span className="text-white text-xs font-medium uppercase">{t.after[language]}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                      </div>
+
+                      {/* Quote */}
+                      <div className={`p-6 ${isRTL ? 'text-right' : ''}`}>
+                        <Quote className={`w-8 h-8 text-primary/50 mb-3 ${isRTL ? 'mr-0 ml-auto scale-x-[-1]' : ''}`} />
+                        <p className="text-foreground italic mb-4 leading-relaxed">
+                          "{item.quote[language]}"
+                        </p>
+                        <p className="text-primary font-semibold">— {item.name[language]}</p>
+                      </div>
                     </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+                ))}
+              </motion.div>
+            </div>
 
-                {/* Quote */}
-                <div className={`p-6 ${isRTL ? 'text-right' : ''}`}>
-                  <Quote className={`w-8 h-8 text-primary/50 mb-3 ${isRTL ? 'mr-0 ml-auto scale-x-[-1]' : ''}`} />
-                  <p className="text-foreground italic mb-4 leading-relaxed">
-                    "{item.quote[language]}"
-                  </p>
-                  <p className="text-primary font-semibold">— {item.name[language]}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+            {/* Gradient Overlays */}
+            <div className={`absolute top-0 ${isRTL ? 'right-0' : 'left-0'} h-full w-20 bg-gradient-to-r from-background to-transparent pointer-events-none z-10`} />
+            <div className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} h-full w-20 bg-gradient-to-l from-background to-transparent pointer-events-none z-10`} />
+          </div>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center"
         >
           <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">

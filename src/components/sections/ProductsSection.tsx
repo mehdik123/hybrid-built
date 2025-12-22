@@ -12,8 +12,8 @@ const ProductsSection = () => {
   const { language, isRTL } = useLanguage();
   const t = translations.products;
 
-  const freeDownloadLink = "https://drive.google.com/YOUR_LINK";
-  const paidProductLink = "https://gumroad.com/YOUR_LINK";
+  const freeDownloadLink = "https://ig.me/m/YOUR_USERNAME?text=Hey!%20I'm%20interested%20in%20the%20free%20workout%20guide.%20Can%20you%20send%20it%20to%20me%3F";
+  const paidProductLink = "https://ig.me/m/YOUR_USERNAME?text=Hi!%20I'm%20interested%20in%20the%20Hybrid%20Physique%20Blueprint%20for%20%2415.%20Can%20you%20share%20more%20details%3F";
 
   return (
     <section id="products" className="section-padding bg-card" ref={ref}>
@@ -23,7 +23,7 @@ const ProductsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl mb-4">
             {t.title1[language]} <span className="text-gradient">{t.title2[language]}</span>?
@@ -33,76 +33,118 @@ const ProductsSection = () => {
           </p>
         </motion.div>
 
-        {/* Product Cards */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+        {/* Product Cards - Enhanced Layout */}
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* Free Product */}
           <motion.div
-            initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className={`bg-secondary/50 border border-accent/30 rounded-2xl p-6 md:p-8 relative overflow-hidden ${isRTL ? 'text-right' : ''}`}
+            className="group"
           >
-            <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1`}>
-              <Gift className="w-4 h-4" />
-              {t.free[language]}
-            </div>
+            <div className={`bg-secondary/50 border-2 border-accent/30 rounded-3xl overflow-hidden hover:border-accent hover:shadow-2xl hover:shadow-accent/20 transition-all duration-500 ${isRTL ? 'text-right' : ''}`}>
+              {/* Product Image Placeholder */}
+              <div className="relative aspect-[4/3] bg-gradient-to-br from-accent/20 to-accent/5 overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Gift className="w-24 h-24 text-accent/40" />
+                </div>
+                <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} bg-accent text-accent-foreground px-4 py-2 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg`}>
+                  <Gift className="w-5 h-5" />
+                  {t.free[language]}
+                </div>
+              </div>
 
-            <div className="mb-6">
-              <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">
-                {t.freeTitle[language]}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {t.freeDescription[language]}
-              </p>
-            </div>
+              {/* Content */}
+              <div className="p-8">
+                <h3 className="font-display text-3xl text-foreground mb-4">
+                  {t.freeTitle[language]}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-6 text-lg">
+                  {t.freeDescription[language]}
+                </p>
 
-            <a href={freeDownloadLink} target="_blank" rel="noopener noreferrer" className="block">
-              <Button variant="outline" size="lg" className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                {t.freeButton[language]}
-              </Button>
-            </a>
+                {/* What's Included */}
+                <div className="mb-6">
+                  <p className="font-semibold text-foreground mb-3">{language === "ar" ? "ما يتضمنه:" : "What's Included:"}</p>
+                  <ul className={`space-y-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    <li className={`flex items-start gap-2 text-muted-foreground ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                      <span>{language === "ar" ? "خطة تمارين مجانية" : "Complete workout routine"}</span>
+                    </li>
+                    <li className={`flex items-start gap-2 text-muted-foreground ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                      <span>{language === "ar" ? "نصائح غذائية أساسية" : "Basic nutrition tips"}</span>
+                    </li>
+                    <li className={`flex items-start gap-2 text-muted-foreground ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                      <span>{language === "ar" ? "دليل سريع للبدء" : "Quick start guide"}</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <a href={freeDownloadLink} target="_blank" rel="noopener noreferrer" className="block">
+                  <Button variant="outline" size="lg" className="w-full border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground font-semibold text-lg">
+                    {t.freeButton[language]}
+                  </Button>
+                </a>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Paid Product */}
+          {/* Paid Product - Premium Highlight */}
           <motion.div
-            initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className={`bg-gradient-to-br from-primary/10 to-secondary border border-primary/30 rounded-2xl p-6 md:p-8 relative overflow-hidden ${isRTL ? 'text-right' : ''}`}
+            className="group"
           >
-            <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1`}>
-              <Zap className="w-4 h-4" />
-              $15
-            </div>
+            <div className={`bg-gradient-to-br from-primary/10 via-secondary to-background border-2 border-primary/50 rounded-3xl overflow-hidden hover:border-primary hover:shadow-2xl hover:shadow-primary/30 transition-all duration-500 relative ${isRTL ? 'text-right' : ''}`}>
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary to-primary opacity-20 blur-xl group-hover:opacity-30 transition-opacity -z-10" />
 
-            <div className="mb-4">
-              <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">
-                {t.paidTitle[language]}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                {t.paidDescription[language]}
-              </p>
+              {/* Product Image Placeholder */}
+              <div className="relative aspect-[4/3] bg-gradient-to-br from-primary/30 to-primary/10 overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Zap className="w-24 h-24 text-primary/50" />
+                </div>
+                <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg`}>
+                  <Zap className="w-5 h-5" />
+                  $15
+                </div>
+                <div className={`absolute bottom-4 ${isRTL ? 'right-4' : 'left-4'} bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1`}>
+                  <Clock className="w-4 h-4" />
+                  {t.limitedTime[language]}
+                </div>
+              </div>
 
-              <p className="text-sm text-foreground font-medium mb-3">{t.includes[language]}</p>
-              <ul className="space-y-2 mb-6">
-                {t.features.map((feature, index) => (
-                  <li key={index} className={`flex items-center gap-2 text-muted-foreground text-sm ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                    {feature[language]}
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* Content */}
+              <div className="p-8">
+                <h3 className="font-display text-3xl text-foreground mb-4">
+                  {t.paidTitle[language]}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-6 text-lg">
+                  {t.paidDescription[language]}
+                </p>
 
-            <a href={paidProductLink} target="_blank" rel="noopener noreferrer" className="block mb-4">
-              <Button variant="hero" size="lg" className="w-full">
-                {t.paidButton[language]}
-              </Button>
-            </a>
+                {/* What's Included - Expanded */}
+                <div className="mb-6">
+                  <p className="font-semibold text-primary mb-3 text-lg">{t.includes[language]}</p>
+                  <ul className="space-y-2">
+                    {t.features.map((feature, index) => (
+                      <li key={index} className={`flex items-start gap-2 text-muted-foreground ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span>{feature[language]}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-            <div className={`flex items-center justify-center gap-2 text-sm text-muted-foreground ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <Clock className="w-4 h-4" />
-              <span>{t.limitedTime[language]}</span>
+                <a href={paidProductLink} target="_blank" rel="noopener noreferrer" className="block">
+                  <Button variant="hero" size="lg" className="w-full font-semibold text-lg">
+                    {t.paidButton[language]}
+                  </Button>
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>

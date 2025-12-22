@@ -8,15 +8,15 @@ import { translations } from "@/lib/translations";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const instagramDMLink = "https://ig.me/m/unbreakablesteam";
   const { language, setLanguage, isRTL } = useLanguage();
 
   const navLinks = [
-    { label: translations.nav.about[language], href: "#about" },
+    { label: translations.nav.products[language], href: "#products", highlight: true },
     { label: translations.nav.coaching[language], href: "#coaching" },
+    { label: translations.nav.about[language], href: "#about" },
     { label: translations.nav.results[language], href: "#transformations" },
     { label: translations.nav.faq[language], href: "#faq" },
-    { label: translations.nav.products[language], href: "#products" },
   ];
 
   useEffect(() => {
@@ -45,17 +45,19 @@ const Header = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/90 backdrop-blur-lg border-b border-border"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? "bg-background/90 backdrop-blur-lg border-b border-border"
+          : "bg-transparent"
+          }`}
       >
         <div className="container-tight px-4 md:px-8">
           <div className={`flex items-center justify-between h-16 md:h-20 ${isRTL ? 'flex-row-reverse' : ''}`}>
             {/* Logo */}
-            <a href="#" className="font-display text-2xl md:text-3xl text-foreground hover:text-primary transition-colors">
-              [YOUR NAME]
+            <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <img src="/logo.png" alt="UNBREAKABLES TEAM" className="h-10 md:h-12 w-auto" />
+              <span className="font-display text-xl md:text-2xl text-foreground hidden sm:inline">
+                UNBREAKABLES TEAM
+              </span>
             </a>
 
             {/* Desktop Nav */}
@@ -64,12 +66,15 @@ const Header = () => {
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wide font-medium"
+                  className={`transition-colors text-sm uppercase tracking-wide font-medium ${link.highlight
+                    ? 'text-primary font-bold px-3 py-1 rounded-md bg-primary/10 hover:bg-primary/20'
+                    : 'text-muted-foreground hover:text-primary'
+                    }`}
                 >
                   {link.label}
                 </button>
               ))}
-              
+
               {/* Language Switcher */}
               <button
                 onClick={toggleLanguage}
@@ -123,7 +128,10 @@ const Header = () => {
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-foreground hover:text-primary transition-colors text-xl uppercase tracking-wide font-display"
+                  className={`transition-colors text-xl uppercase tracking-wide font-display ${link.highlight
+                    ? 'text-primary font-bold'
+                    : 'text-foreground hover:text-primary'
+                    }`}
                 >
                   {link.label}
                 </button>

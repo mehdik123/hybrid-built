@@ -9,7 +9,7 @@ import { translations } from "@/lib/translations";
 const FinalCTASection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const instagramDMLink = "https://ig.me/m/YOUR_USERNAME?text=I'm%20ready%20to%20start%20my%20transformation!%20Let's%20talk%20about%20coaching!";
   const { language, isRTL } = useLanguage();
   const t = translations.finalCta;
 

@@ -6,46 +6,46 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 100%;
 
-    --card: 0 0% 7%;
+    --card: 0 0% 5%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 7%;
+    --popover: 0 0% 5%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 187 100% 50%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 351 100% 49%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 12%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 120 100% 60%;
+    --accent: 0 0% 100%;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 15%;
-    --ring: 187 100% 50%;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 351 100% 49%;
 
     --radius: 0.75rem;
 
     /* Custom design tokens */
-    --glow-primary: 0 0 30px hsl(187 100% 50% / 0.5);
-    --glow-primary-strong: 0 0 60px hsl(187 100% 50% / 0.6);
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 4%) 0%, hsl(220 20% 8%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 10%) 0%, hsl(0 0% 6%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(187 100% 50%) 0%, hsl(200 100% 60%) 100%);
+    --glow-primary: 0 0 30px hsl(351 100% 49% / 0.5);
+    --glow-primary-strong: 0 0 60px hsl(351 100% 49% / 0.7);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 0%) 0%, hsl(351 50% 5%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 8%) 0%, hsl(0 0% 3%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(351 100% 49%) 0%, hsl(351 100% 60%) 100%);
   }
 
   .dark {
-    --background: 0 0% 4%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 100%;
   }
 }
@@ -57,6 +57,15 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
   }
 
   body {
@@ -64,7 +73,12 @@
     font-family: 'Inter', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 0.05em;
   }
@@ -85,11 +99,29 @@
   }
 
   .section-padding {
-    @apply px-4 py-16 md:px-8 md:py-24 lg:px-16 lg:py-32;
+    @apply px-6 py-12 md:px-8 md:py-16;
   }
 
   .container-tight {
     @apply max-w-7xl mx-auto;
+  }
+
+  /* Modern button styles */
+  .btn-modern {
+    @apply transition-all duration-300 transform active:scale-95;
+    touch-action: manipulation;
+  }
+
+  /* Smooth mobile card */
+  .card-mobile {
+    @apply transition-transform duration-300;
+    will-change: transform;
+  }
+
+  /* Touch-friendly */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
@@ -99,9 +131,12 @@
   }
 
   @keyframes glow-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: var(--glow-primary);
     }
+
     50% {
       box-shadow: var(--glow-primary-strong);
     }
@@ -112,9 +147,12 @@
   }
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-10px);
     }
@@ -125,10 +163,13 @@
   }
 
   @keyframes scroll-bounce {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0);
       opacity: 1;
     }
+
     50% {
       transform: translateY(10px);
       opacity: 0.5;

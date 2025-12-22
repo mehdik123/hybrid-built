@@ -5,26 +5,34 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 
 const HeroSection = () => {
-  const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=Hi!%20I'm%20interested%20in%20learning%20more%20about%20the%20hybrid%20physique%20coaching%20program!";
   const { language, isRTL } = useLanguage();
   const t = translations.hero;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20" />
-      
-      {/* Hero image placeholder with overlay */}
-      <div className="absolute inset-0 opacity-30">
-        <div className={`absolute inset-0 bg-gradient-to-r ${isRTL ? 'from-transparent via-background/80 to-background' : 'from-background via-background/80 to-transparent'} z-10`} />
-        <div className="w-full h-full bg-muted flex items-center justify-center">
-          <span className="text-muted-foreground text-lg">Hero Image Placeholder</span>
-        </div>
+      {/* Video Background */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover"
+          poster="/hero-fallback.jpg"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+          {/* Fallback image if video doesn't load */}
+        </video>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/70" />
+        <div className={`absolute inset-0 bg-gradient-to-r ${isRTL ? 'from-transparent via-black/60 to-black' : 'from-black via-black/60 to-transparent'}`} />
       </div>
 
-      {/* Decorative elements */}
-      <div className={`absolute top-1/4 ${isRTL ? 'left-1/4' : 'right-1/4'} w-64 h-64 bg-primary/10 rounded-full blur-3xl`} />
-      <div className={`absolute bottom-1/4 ${isRTL ? 'right-1/4' : 'left-1/4'} w-96 h-96 bg-primary/5 rounded-full blur-3xl`} />
+      {/* Decorative elements with red glow */}
+      <div className={`absolute top-1/4 ${isRTL ? 'left-1/4' : 'right-1/4'} w-64 h-64 bg-primary/20 rounded-full blur-3xl`} />
+      <div className={`absolute bottom-1/4 ${isRTL ? 'right-1/4' : 'left-1/4'} w-96 h-96 bg-primary/10 rounded-full blur-3xl`} />
 
       <div className="relative z-20 container-tight px-4 md:px-8 text-center">
         <motion.div

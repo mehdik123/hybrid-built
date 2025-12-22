@@ -9,7 +9,7 @@ import { translations } from "@/lib/translations";
 const CoachingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const instagramDMLink = "https://instagram.com/direct/t/YOUR_USERNAME";
+  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=Hi!%20I%20want%20to%20discuss%20personalized%20coaching%20options%20and%20pricing!";
   const { language, isRTL } = useLanguage();
   const t = translations.coaching;
 
@@ -94,41 +94,39 @@ const CoachingSection = () => {
           </div>
         </motion.div>
 
-        {/* Investment */}
+        {/* Call to Action - No Pricing */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mb-10 p-8 md:p-12 rounded-2xl bg-gradient-to-br from-secondary to-background border border-border"
+          className="text-center max-w-2xl mx-auto"
         >
-          <h3 className="font-display text-2xl md:text-3xl text-primary mb-6">
-            {t.investment[language]}
-          </h3>
-          <div className="mb-6">
-            <span className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground">$200</span>
-            <span className="text-muted-foreground text-xl">{t.perMonth[language]}</span>
-          </div>
-          <p className="text-muted-foreground mb-2">
-            {t.commitment[language]}
-          </p>
-          <p className="text-sm text-muted-foreground mb-8">
-            {t.paymentPlans[language]}
-          </p>
+          <div className="p-8 md:p-10 rounded-2xl bg-gradient-to-br from-secondary to-background border-2 border-primary/30">
+            <h3 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+              {language === "ar" ? "هل أنت مستعد للتحول؟" : "Ready to Transform?"}
+            </h3>
+            <p className="text-xl text-muted-foreground mb-6">
+              {language === "ar"
+                ? "لنناقش أهدافك ونبني خطة مخصصة لك تمامًا"
+                : "Let's discuss your goals and build a plan that's perfect for you"}
+            </p>
+            <p className="text-primary font-semibold text-lg mb-8">
+              {language === "ar"
+                ? "كل برنامج مصمم خصيصًا - لا توجد باقات عامة"
+                : "Every program is custom-built - no cookie-cutter packages"}
+            </p>
 
-          <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-            <Button variant="hero" size="xl">
-              {t.messageMe[language]}
-            </Button>
-          </a>
+            <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
+              <Button variant="hero" size="xl" className="mb-6">
+                {language === "ar" ? "دعنا نتحدث" : "Let's Talk"}
+              </Button>
+            </a>
 
-          <div className={`mt-8 max-w-md mx-auto ${isRTL ? 'text-right' : 'text-left'}`}>
-            <p className="text-sm text-muted-foreground mb-3">{t.dmInstructions[language]}</p>
-            <ol className={`text-sm text-muted-foreground space-y-2 ${isRTL ? 'list-inside' : 'list-decimal list-inside'}`}>
-              <li>{t.dmItem1[language]}</li>
-              <li>{t.dmItem2[language]}</li>
-              <li>{t.dmItem3[language]}</li>
-            </ol>
-            <p className="text-sm text-foreground/70 mt-4">{t.dmResponse[language]}</p>
+            <p className="text-sm text-muted-foreground">
+              {language === "ar"
+                ? "راسلني وسأجيب عليك شخصياً في غضون 24 ساعة"
+                : "DM me and I'll personally respond within 24 hours"}
+            </p>
           </div>
         </motion.div>
       </div>
