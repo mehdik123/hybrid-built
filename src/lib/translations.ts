@@ -31,8 +31,8 @@ export const translations = {
     name: { en: "Mehdi", ar: "المهدي" },
     followers: { en: "followers", ar: "متابع" },
     description1: {
-      en: ", the founder of UNBREAKABLES TEAM. I'm a hybrid athlete and online coach with a community of",
-      ar: "، مؤسس فريق UNBREAKABLES. أنا رياضي هجين ومدرب أونلاين مع مجتمع يضم أكثر من"
+      en: ", the founder of UNBREAKABLES TEAM and widely recognized as having the best natural physique in Morocco. I've built a community of over",
+      ar: "، مؤسس فريق UNBREAKABLES والمعروف بامتلاك أفضل جسم طبيعي في المغرب. لقد بنيت مجتمعاً يضم أكثر من"
     },
     description2: {
       en: "I built my physique naturally by combining calisthenics and bodybuilding—no steroids, no shortcuts, just smart training.",
@@ -42,10 +42,10 @@ export const translations = {
       en: "I've helped",
       ar: "ساعدت أكثر من"
     },
-    clients: { en: "50+ clients", ar: "50 عميل" },
+    clients: { en: "100+ people worldwide", ar: "100+ شخص حول العالم" },
     description4: {
-      en: "transform their physiques in 12 weeks using the same system.",
-      ar: "في تحويل أجسامهم خلال 12 أسبوع باستخدام نفس النظام."
+      en: "achieve elite-level transformations using the same unbreakable system.",
+      ar: "في تحقيق تحولات بمستوى النخبة باستخدام نفس النظام الذي لا يقهر."
     },
     description5: {
       en: "Now, I want to help",

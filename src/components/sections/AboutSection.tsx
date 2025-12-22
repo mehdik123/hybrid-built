@@ -49,7 +49,7 @@ const AboutSection = () => {
             <p className="text-lg md:text-xl text-foreground leading-relaxed">
               {t.intro[language]} <span className="text-primary font-semibold">{t.name[language]}</span>
               {t.description1[language]}{" "}
-              <span className="text-primary font-bold">400,000+</span> {t.followers[language]}.
+              <span className="text-primary font-bold">600,000+</span> {t.followers[language]}.
             </p>
 
             <p className="text-muted-foreground text-lg leading-relaxed">
