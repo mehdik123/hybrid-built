@@ -105,11 +105,11 @@ const TransformationsSection = () => {
               {t.testimonials.map((item, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-[85vw] sm:w-[500px] md:w-[600px]"
+                  className="flex-shrink-0 w-[92vw] sm:w-[500px] md:w-[600px]"
                 >
                   <div className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 h-full group">
                     {/* Before/After Images */}
-                    <div className="aspect-[2/3] sm:aspect-[16/10] bg-muted relative overflow-hidden">
+                    <div className="aspect-[4/5] sm:aspect-[16/10] bg-muted relative overflow-hidden">
                       <div className={`absolute inset-0 flex ${isRTL ? 'flex-row-reverse' : ''}`}>
                         {/* Before Image */}
                         <div className={`w-1/2 h-full relative ${isRTL ? 'border-l' : 'border-r'} border-border/30`}>
@@ -118,7 +118,7 @@ const TransformationsSection = () => {
                             alt="Before"
                             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                           />
-                          <div className="absolute top-4 left-4 bg-black/90 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-sm border border-white/10 z-10 transition-transform group-hover:scale-110">
+                          <div className="absolute top-4 left-4 bg-black/90 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-sm border border-white/10 z-10">
                             <span className="text-white text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.before[language]}</span>
                           </div>
                         </div>
@@ -129,7 +129,7 @@ const TransformationsSection = () => {
                             alt="After"
                             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                           />
-                          <div className="absolute top-4 right-4 bg-primary px-3 sm:px-4 py-1.5 rounded-sm shadow-xl z-10 transition-transform group-hover:scale-110">
+                          <div className="absolute top-4 right-4 bg-primary px-3 sm:px-4 py-1.5 rounded-sm shadow-xl z-10">
                             <span className="text-white text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.after[language]}</span>
                           </div>
                         </div>
@@ -173,9 +173,9 @@ const TransformationsSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mt-8 md:mt-12"
         >
-          <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-            <Button variant="cta" size="xxl" className="uppercase tracking-widest font-black px-12 group">
-              <span className="relative z-10 flex items-center gap-3">
+          <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="inline-block w-full max-w-[92vw]">
+            <Button variant="cta" size="xxl" className="uppercase tracking-widest font-black px-6 md:px-12 py-6 md:py-8 text-lg md:text-xl group w-full sm:w-auto">
+              <span className="relative z-10 flex items-center justify-center gap-3">
                 {t.cta[language]}
                 <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>→</motion.span>
               </span>
