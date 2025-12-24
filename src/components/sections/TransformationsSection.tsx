@@ -9,7 +9,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 
 const TransformationsSection = () => {
   const scrollRef = useRef(null);
-  const isInView = useInView(scrollRef, { once: true, margin: "-100px" });
+  const isInView = useInView(scrollRef, { once: true, margin: "0px" });
   const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=The%20transformations%20are%20amazing!%20How%20can%20I%20get%20started%3F";
   const { language, isRTL } = useLanguage();
   const t = translations.transformations;
@@ -109,17 +109,17 @@ const TransformationsSection = () => {
                 >
                   <div className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 h-full group">
                     {/* Before/After Images */}
-                    <div className="aspect-[4/5] sm:aspect-[16/10] bg-muted relative overflow-hidden">
+                    <div className="aspect-[2/3] sm:aspect-[16/10] bg-muted relative overflow-hidden">
                       <div className={`absolute inset-0 flex ${isRTL ? 'flex-row-reverse' : ''}`}>
                         {/* Before Image */}
                         <div className={`w-1/2 h-full relative ${isRTL ? 'border-l' : 'border-r'} border-border/30`}>
                           <img
                             src={`/transformation-${(index % t.testimonials.length) + 1}-before.png`}
                             alt="Before"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                           />
-                          <div className="absolute top-4 left-4 bg-black/90 backdrop-blur-md px-4 py-1 rounded-sm border border-white/10 z-10">
-                            <span className="text-white text-[12px] font-black tracking-widest uppercase">{t.before[language]}</span>
+                          <div className="absolute top-4 left-4 bg-black/90 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-sm border border-white/10 z-10 transition-transform group-hover:scale-110">
+                            <span className="text-white text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.before[language]}</span>
                           </div>
                         </div>
                         {/* After Image */}
@@ -127,10 +127,10 @@ const TransformationsSection = () => {
                           <img
                             src={`/transformation-${(index % t.testimonials.length) + 1}-after.png`}
                             alt="After"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                           />
-                          <div className="absolute top-4 right-4 bg-primary px-4 py-1 rounded-sm shadow-xl z-10">
-                            <span className="text-white text-[12px] font-black tracking-widest uppercase">{t.after[language]}</span>
+                          <div className="absolute top-4 right-4 bg-primary px-3 sm:px-4 py-1.5 rounded-sm shadow-xl z-10 transition-transform group-hover:scale-110">
+                            <span className="text-white text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.after[language]}</span>
                           </div>
                         </div>
                       </div>
@@ -169,9 +169,9 @@ const TransformationsSection = () => {
         {/* Action Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mt-8 md:mt-12"
         >
           <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
             <Button variant="cta" size="xxl" className="uppercase tracking-widest font-black px-12 group">
