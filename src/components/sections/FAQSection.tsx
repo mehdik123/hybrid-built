@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 
 const FAQSection = () => {

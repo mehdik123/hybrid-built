@@ -11,18 +11,27 @@ export const translations = {
     applyNow: { en: "Apply Now", ar: "قدم الآن" },
   },
 
-  // Hero Section
+  // Hero Section (Tactical & Manifesto Redesign)
   hero: {
-    headline1: { en: "BUILD THE", ar: "ابنِ الجسم" },
-    headline2: { en: "HYBRID", ar: "الهجين" },
-    headline3: { en: "PHYSIQUE", ar: "المثالي" },
-    subheadline: { en: "Strength | Muscle | Skills — All Natural", ar: "القوة | العضلات | المهارات — طبيعي 100%" },
-    tagline: { en: "1-on-1 Online Coaching with", ar: "تدريب شخصي أونلاين مع" },
-    subtext: { en: "The Unbreakable Method", ar: "نظام الفريق الذي لا يقهر" },
-    cta: { en: "Apply for Coaching", ar: "قدم للتدريب" },
-    scroll: { en: "Scroll to learn more", ar: "مرر لتعرف المزيد" },
+    preHeadline: { en: "100% NATURAL ATHLETE // ELITE ONLINE COACHING SPACE", ar: "رياضي طبيعي 100% // مساحة تدريب أونلاين للنخبة" },
+    headline1: { en: "THE WORLD TOLD ME TO CHOOSE.", ar: "أخبرني العالم أن أختار." },
+    headline2: { en: "BODYBUILDING OR CALISTHENICS.", ar: "كمال الأجسام أو الكاليسثينيكس." },
+    emotionalHook: { en: "SIZE OR MOBILITY. STRENGTH OR AESTHETICS.", ar: "الضخامة أو المرونة. القوة أو الجمالية." },
+    headline3: { en: "I REFUSED. I BUILT BOTH.", ar: "لقد رفضت. بنيت كلاهما." },
+    promise: { en: "I MASTERED BOTH. I BECAME UNBREAKABLE.", ar: "أتقنت كلاهما. وأصبحت لا أقهر." },
+    coachIntro: { en: "NOW I SHOW OTHERS THE WAY. THIS IS THE HYBRID METHOD.", ar: "الآن أرشد الآخرين إلى الطريق. هذا هو النظام الهجين." },
+    cta: { en: "DECRYPT YOUR POTENTIAL", ar: "فك تشفير قدراتك" },
+    ctaSubtext: { en: "THIS IS YOUR TRANSFORMATION.", ar: "هذا هو تحولك الجذري." },
+    scroll: { en: "DECRYPT THE METHOD", ar: "اكتشف الطريقة" },
+    stats: {
+      clients: { en: "400+", ar: "+400" },
+      clientsLabel: { en: "TRANSFORMATIONS", ar: "تحول جذري" },
+      followers: { en: "600K+", ar: "+600K" },
+      followersLabel: { en: "FOLLOWERS", ar: "متابع" },
+      years: { en: "10+", ar: "10+" },
+      yearsLabel: { en: "YEARS EXP", ar: "سنوات خبرة" },
+    },
   },
-
   // About Section
   about: {
     title1: { en: "WHO I", ar: "من" },
@@ -31,8 +40,8 @@ export const translations = {
     name: { en: "Mehdi", ar: "المهدي" },
     followers: { en: "followers", ar: "متابع" },
     description1: {
-      en: ", the founder of UNBREAKABLES TEAM and widely recognized as having the best natural physique in Morocco. I've built a community of over",
-      ar: "، مؤسس فريق UNBREAKABLES والمعروف بامتلاك أفضل جسم طبيعي في المغرب. لقد بنيت مجتمعاً يضم أكثر من"
+      en: ". I've built one of the elite natural physiques in Morocco, with a community of over",
+      ar: ". لقد بنيت أحد أفضل الأجسام الطبيعية في المغرب، مع مجتمع يضم أكثر من"
     },
     description2: {
       en: "I built my physique naturally by combining calisthenics and bodybuilding—no steroids, no shortcuts, just smart training.",

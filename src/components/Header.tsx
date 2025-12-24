@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 
 const Header = () => {
@@ -42,12 +42,9 @@ const Header = () => {
   return (
     <>
       <motion.header
-        initial={{ y: -100 }}
+        initial={{ y: 0 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-background/90 backdrop-blur-lg border-b border-border"
-          : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md border-b border-primary/20 py-4" : "py-6 bg-black/50 backdrop-blur-sm md:bg-transparent"
           }`}
       >
         <div className="container-tight px-4 md:px-8">
@@ -92,14 +89,19 @@ const Header = () => {
               </a>
             </nav>
 
-            {/* Mobile Menu Button & Language */}
+            {/* Mobile Menu Button, Language & CTA */}
             <div className={`flex md:hidden items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="mr-1">
+                <Button variant="hero" size="sm" className="px-3 h-8 text-[10px]">
+                  {translations.nav.applyNow[language]}
+                </Button>
+              </a>
               <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border/50 text-muted-foreground hover:text-primary transition-colors text-sm font-bold"
+                className="flex items-center gap-1.5 px-2 py-1.5 rounded-md border border-border/50 text-muted-foreground hover:text-primary transition-colors text-[10px] font-bold"
                 aria-label="Switch language"
               >
-                <Globe className="w-4 h-4" />
+                <Globe className="w-3 h-3" />
                 <span>{language === 'en' ? 'عربي' : 'EN'}</span>
               </button>
               <button

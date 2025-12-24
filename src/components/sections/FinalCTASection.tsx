@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Check, Dumbbell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 
 const FinalCTASection = () => {

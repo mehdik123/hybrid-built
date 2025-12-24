@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 
 const AboutSection = () => {
@@ -11,58 +11,86 @@ const AboutSection = () => {
   const t = translations.about;
 
   return (
-    <section id="about" className="section-padding bg-secondary/30" ref={ref}>
-      <div className="container-tight">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-center mb-2">
-            {t.title1[language]} <span className="text-gradient">{t.title2[language]}</span>
-          </h2>
-        </motion.div>
+    <section id="about" className="relative section-padding overflow-hidden bg-black" ref={ref}>
+      {/* Background elements */}
+      <div className="absolute inset-0 tech-grid opacity-20 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className={`grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center ${isRTL ? 'md:flex-row-reverse' : ''}`}>
-          {/* Profile Image */}
+      <div className="container-tight relative z-10">
+        <div className={`grid lg:grid-cols-12 gap-12 lg:gap-20 items-center ${isRTL ? 'rtl' : ''}`}>
+
+          {/* Profile Image - 5 cols */}
           <motion.div
-            initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className={`relative ${isRTL ? 'md:order-2' : ''}`}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className={`lg:col-span-5 relative group ${isRTL ? 'lg:order-2' : ''}`}
           >
-            <div className="aspect-[3/4] rounded-2xl bg-muted flex items-center justify-center overflow-hidden border border-border shadow-2xl">
-              <img src="/about-me.jpg" alt="UNBREAKABLES TEAM Founder" className="w-full h-full object-cover" />
+            <div className="relative aspect-[4/5] rounded-lg overflow-hidden border-2 border-primary/20 group-hover:border-primary transition-colors duration-500">
+              <img
+                src="/about-me.jpg"
+                alt="MEHDI - UNBREAKABLES TEAM Founder"
+                className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+
+              {/* Tactical Overlay */}
+              <div className="absolute bottom-4 left-4 right-4 p-4 bg-black/80 backdrop-blur-md border border-white/10 rounded-md">
+                <p className="text-primary font-black tracking-widest text-xs mb-1 uppercase">DIRECTOR // LEAD COACH</p>
+                <h3 className="text-white font-display text-2xl tracking-tight">MEHDI — @unbreakablesteam</h3>
+              </div>
             </div>
-            {/* Decorative glow */}
-            <div className="absolute -inset-4 bg-primary/20 rounded-2xl blur-3xl -z-10" />
+            {/* Red Glow Backdrop */}
+            <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl -z-10 group-hover:bg-primary/30 transition-colors" />
           </motion.div>
 
-          {/* Text Content */}
+          {/* Text Content - 7 cols */}
           <motion.div
             initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className={`space-y-6 ${isRTL ? 'md:order-1 text-right' : ''}`}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className={`lg:col-span-12 space-y-8 ${isRTL ? 'lg:order-1 text-right' : ''}`}
           >
-            <p className="text-lg md:text-xl text-foreground leading-relaxed">
-              {t.intro[language]} <span className="text-primary font-semibold">{t.name[language]}</span>
-              {t.description1[language]}{" "}
-              <span className="text-primary font-bold">600,000+</span> {t.followers[language]}.
-            </p>
 
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              {t.description2[language]}
-            </p>
+            {/* Main Statement */}
+            <div className="space-y-4">
+              <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-none tracking-tight">
+                {t.title1[language]} <span className="text-gradient font-black">{t.title2[language]}</span>
+              </h2>
+              <div className="h-1 w-20 bg-primary" />
+            </div>
 
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              {t.description3[language]} <span className="text-foreground font-semibold">{t.clients[language]}</span> {t.description4[language]}
-            </p>
+            {/* Tactical Briefing Blocks */}
+            <div className="grid gap-6">
+              {/* Intro Block */}
+              <div className="border-l-2 border-primary/30 pl-6 py-2 group hover:border-primary transition-colors">
+                <p className="text-xl md:text-2xl lg:text-3xl text-foreground font-bold leading-tight">
+                  {t.intro[language]} <span className="text-primary font-black uppercase underline decoration-2 underline-offset-4">{t.name[language]}</span>
+                  {t.description1[language]} <span className="text-primary font-black">600,000+</span> {t.followers[language]}.
+                </p>
+              </div>
 
-            <p className="text-xl text-foreground font-medium">
-              {t.description5[language]} <span className="text-primary">{t.you[language]}</span>.
-            </p>
+              {/* Philosophy Block */}
+              <div className="border-l-2 border-primary/30 pl-6 py-1 group hover:border-primary transition-colors">
+                <p className="text-lg md:text-xl text-muted-foreground/90 leading-relaxed italic">
+                  "{t.description2[language]}"
+                </p>
+              </div>
+
+              {/* Proof Block */}
+              <div className="border-l-2 border-primary/30 pl-6 py-1 group hover:border-primary transition-colors">
+                <p className="text-xl text-foreground font-semibold">
+                  {t.description3[language]} <span className="text-primary text-2xl font-black">{t.clients[language]}</span> {t.description4[language]}
+                </p>
+              </div>
+            </div>
+
+            {/* Call to action text */}
+            <div className="pt-4">
+              <p className="font-display text-3xl md:text-4xl lg:text-5xl uppercase tracking-tighter text-white">
+                {t.description5[language]} <span className="text-primary animate-pulse">{t.you[language]}.</span>
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>
