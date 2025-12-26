@@ -8,21 +8,21 @@ export const translations = {
     results: { en: "Results", ar: "النتائج" },
     faq: { en: "FAQ", ar: "الأسئلة" },
     products: { en: "Products", ar: "المنتجات" },
-    applyNow: { en: "Apply Now", ar: "قدم الآن" },
+    applyNow: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'" },
   },
 
-  // Hero Section (Tactical & Manifesto Redesign)
+  // Hero Section (Strategic DM Redesign)
   hero: {
-    preHeadline: { en: "100% NATURAL ATHLETE // ELITE ONLINE COACHING SPACE", ar: "رياضي طبيعي 100% // مساحة تدريب أونلاين للنخبة" },
-    headline1: { en: "THE WORLD TOLD ME TO CHOOSE.", ar: "أخبرني العالم أن أختار." },
-    headline2: { en: "BODYBUILDING OR CALISTHENICS.", ar: "كمال الأجسام أو الكاليسثينيكس." },
-    emotionalHook: { en: "SIZE OR MOBILITY. STRENGTH OR AESTHETICS.", ar: "الضخامة أو المرونة. القوة أو الجمالية." },
-    headline3: { en: "I REFUSED. I BUILT BOTH.", ar: "لقد رفضت. بنيت كلاهما." },
-    promise: { en: "I MASTERED BOTH. I BECAME UNBREAKABLE.", ar: "أتقنت كلاهما. وأصبحت لا أقهر." },
-    coachIntro: { en: "NOW I SHOW OTHERS THE WAY. THIS IS THE HYBRID METHOD.", ar: "الآن أرشد الآخرين إلى الطريق. هذا هو النظام الهجين." },
-    cta: { en: "DECRYPT YOUR POTENTIAL", ar: "فك تشفير قدراتك" },
-    ctaSubtext: { en: "THIS IS YOUR TRANSFORMATION.", ar: "هذا هو تحولك الجذري." },
-    scroll: { en: "DECRYPT THE METHOD", ar: "اكتشف الطريقة" },
+    preHeadline: { en: "100% NATURAL ATHLETE // HYBRID PERFORMANCE", ar: "رياضي طبيعي 100% // أداء هجين" },
+    headline1: { en: "I BUILT THE HYBRID PHYSIQUE.", ar: "لقد بنيت الجسم الهجين." },
+    headline2: { en: "NOW I'LL SHOW YOU HOW.", ar: "والآن سأريك كيف." },
+    emotionalHook: { en: "NO STEROIDS. NO MYSTERIES. JUST THE METHOD.", ar: "بدون منشطات. بدون أسرار. فقط النظام." },
+    headline3: { en: "DM ME 'HYBRID' TO START.", ar: "راسلني 'HYBRID' للبدء." },
+    promise: { en: "THE ONLY WAY TO MASTER SIZE AND MOBILITY.", ar: "الطريق الوحيد لإتقان الضخامة والمرونة." },
+    coachIntro: { en: "YOUR TRANSFORMATION BEGINS WITH ONE MESSAGE.", ar: "تحولك يبدأ برسالة واحدة." },
+    cta: { en: "DM ME 'HYBRID' ON IG", ar: "راسلني 'HYBRID' على انستغرام" },
+    ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "أرد شخصياً خلال 24 ساعة." },
+    scroll: { en: "EXPLORE THE METHOD", ar: "اكتشف النظام" },
     stats: {
       clients: { en: "400+", ar: "+400" },
       clientsLabel: { en: "TRANSFORMATIONS", ar: "تحول جذري" },
@@ -116,13 +116,13 @@ export const translations = {
     investment: { en: "INVESTMENT:", ar: "الاستثمار:" },
     perMonth: { en: "/month", ar: "/شهر" },
     commitment: { en: "(12-week minimum commitment = $600 total)", ar: "(التزام 12 أسبوع = 600$ إجمالي)" },
-    paymentPlans: { en: "Payment plans available (ask in DM). Limited spots available each month.", ar: "خطط دفع متاحة (اسأل في الرسائل). أماكن محدودة كل شهر." },
-    messageMe: { en: "Message Me to Apply", ar: "راسلني للتقديم" },
-    dmInstructions: { en: "DM me on Instagram with:", ar: "راسلني على انستغرام بـ:" },
-    dmItem1: { en: "Your current stats (age, weight, training experience)", ar: "معلوماتك الحالية (العمر، الوزن، خبرة التدريب)" },
-    dmItem2: { en: "Your goal (build muscle, lose fat, get shredded, etc.)", ar: "هدفك (بناء العضلات، خسارة الدهون، الحصول على جسم منحوت، إلخ)" },
-    dmItem3: { en: "When you want to start", ar: "متى تريد البدء" },
-    dmResponse: { en: "I'll respond within 24 hours and we'll see if it's a good fit.", ar: "سأرد خلال 24 ساعة وسنرى إذا كنا مناسبين." },
+    paymentPlans: { en: "Payment plans available. Limited spots to ensure quality.", ar: "خطط دفع متاحة. أماكن محدودة لضمان الجودة." },
+    messageMe: { en: "DM ME 'COACHING'", ar: "راسلني 'COACHING'" },
+    dmInstructions: { en: "DM me on Instagram to see if you qualify:", ar: "راسلني على انستغرام لنرى إذا كنت مؤهلاً:" },
+    dmItem1: { en: "Tell me your goal (Muscle, Fat Loss, Strength)", ar: "أخبرني بهدفك (عضلات، دهون، قوة)" },
+    dmItem2: { en: "Tell me your experience level", ar: "أخبرني بمستوى خبرتك" },
+    dmItem3: { en: "Tell me when you are ready to start", ar: "أخبرني متى ستكون مستعداً للبدء" },
+    dmResponse: { en: "I respond personally to every message.", ar: "أرد شخصياً على كل رسالة بنفسي." },
   },
 
   // Transformations Section
@@ -176,7 +176,7 @@ export const translations = {
   faq: {
     title1: { en: "FREQUENTLY ASKED", ar: "الأسئلة" },
     title2: { en: "QUESTIONS", ar: "الشائعة" },
-    cta: { en: "Apply Now", ar: "قدم الآن" },
+    cta: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'" },
     items: [
       {
         question: { en: "How does online coaching work?", ar: "كيف يعمل التدريب أونلاين؟" },
@@ -230,28 +230,28 @@ export const translations = {
     ]
   },
 
-  // Products Section
+  // Products Section (Lead Magnet & Blueprint)
   products: {
-    title1: { en: "NOT READY FOR", ar: "لست جاهز" },
-    title2: { en: "COACHING", ar: "للتدريب" },
-    subtitle: { en: "Start with my digital products.", ar: "ابدأ مع منتجاتي الرقمية." },
-    free: { en: "FREE", ar: "مجاني" },
-    freeTitle: { en: "HYBRID UPPER BODY WORKOUT", ar: "تمرين الجزء العلوي الهجين" },
-    freeDescription: { en: "Try my training style for free. One complete workout combining calisthenics and bodybuilding.", ar: "جرب أسلوب تدريبي مجاناً. تمرين كامل يجمع بين الجمباز وكمال الأجسام." },
-    freeButton: { en: "Download Free Workout", ar: "حمّل التمرين المجاني" },
-    paidTitle: { en: "THE HYBRID ATHLETE BLUEPRINT", ar: "مخطط الرياضي الهجين" },
-    paidDescription: { en: "Can't afford coaching? Get the full 8-week program with nutrition for less than 2 protein shakes.", ar: "لا تستطيع تحمل تكلفة التدريب؟ احصل على برنامج 8 أسابيع كامل مع التغذية بأقل من ثمن 2 بروتين شيك." },
-    includes: { en: "Includes:", ar: "يشمل:" },
+    title1: { en: "START THE", ar: "ابدأ" },
+    title2: { en: "JOURNEY", ar: "الرحلة" },
+    subtitle: { en: "High-value tools for the serious hybrid athlete.", ar: "أدوات عالية القيمة للرياضي الهجين الجاد." },
+    free: { en: "STRATEGIC LEAD MAGNET", ar: "دليل استراتيجي" },
+    freeTitle: { en: "THE HYBRID STARTER GUIDE", ar: "دليل البداية الهجين" },
+    freeDescription: { en: "The exact blueprint to start combining bodybuilding and calisthenics today. Instant access.", ar: "المخطط الدقيق لبدء الجمع بين كمال الأجسام والجمباز اليوم. وصول فوري." },
+    freeButton: { en: "Get Free Access", ar: "احصل على وصول مجاني" },
+    paidTitle: { en: "THE 8-WEEK HYBRID BLUEPRINT", ar: "مخطط الـ 8 أسابيع الهجين" },
+    paidDescription: { en: "Complete system for those who want to start solo. Every workout, every meal, no guessing.", ar: "نظام كامل لمن يريد البدء بمفرده. كل تمرين، كل وجبة، بدون تخمين." },
+    includes: { en: "What's Inside:", ar: "ماذا يوجد بالداخل:" },
     features: [
-      { en: "8 weeks of progressive training", ar: "8 أسابيع من التدريب التصاعدي" },
-      { en: "Complete nutrition system", ar: "نظام غذائي كامل" },
-      { en: "4 meal plans (2000-3500 cal)", ar: "4 خطط وجبات (2000-3500 سعرة)" },
-      { en: "Exercise demonstrations", ar: "شرح التمارين" }
+      { en: "Progressive Hybrid Training Program", ar: "برنامج تدريب هجين تصاعدي" },
+      { en: "Full Nutrition & Macro System", ar: "نظام غذائي كامل وتتبع الماكروز" },
+      { en: "4 Meal Plan Options", ar: "4 خيارات لخطط الوجبات" },
+      { en: "Exercise Library Access", ar: "الوصول لمكتبة التمارين" }
     ],
-    paidButton: { en: "Get the Program - $15", ar: "احصل على البرنامج - $15" },
+    paidButton: { en: "Start Solo - $15", ar: "ابدأ بمفردك - $15" },
     originalPrice: { en: "$25", ar: "25$" },
-    limitedTime: { en: "OFFER ENDING SOON", ar: "العرض ينتهي قريباً" },
-    discountText: { en: "40% OFF - LIMITED SLOTS", ar: "خصم 40% - أماكن محدودة" },
+    limitedTime: { en: "LIMITED TIME PRICE", ar: "سعر لفترة محدودة" },
+    discountText: { en: "INSTANT DOWNLOAD", ar: "تحميل فوري" },
   },
 
   // Final CTA Section
@@ -270,9 +270,9 @@ export const translations = {
     ],
     alternative: { en: "Or you could still be guessing, wasting time on random programs.", ar: "أو يمكنك الاستمرار في التخمين، وإضاعة الوقت على برامج عشوائية." },
     choice: { en: "The choice is yours.", ar: "الخيار لك." },
-    cta: { en: "Message Me Now", ar: "راسلني الآن" },
+    cta: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'" },
     dmText: { en: "DM me", ar: "راسلني" },
-    coaching: { en: "'COACHING'", ar: "'COACHING'" },
+    coaching: { en: "'HYBRID'", ar: "'HYBRID'" },
     onInstagram: { en: "on Instagram.", ar: "على انستغرام." },
     letsGo: { en: "Let's build something great.", ar: "لنبني شيئاً عظيماً." },
   },
@@ -285,9 +285,9 @@ export const translations = {
     rights: { en: "All Rights Reserved", ar: "جميع الحقوق محفوظة" },
   },
 
-  // Sticky Button
+  // Sticky Button (DM Focus)
   sticky: {
-    apply: { en: "Apply Now", ar: "قدم الآن" },
+    apply: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'" },
   }
 };
 

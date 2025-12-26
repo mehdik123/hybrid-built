@@ -8,11 +8,11 @@ import { translations } from "@/lib/translations";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const instagramDMLink = "https://ig.me/m/unbreakablesteam";
+  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=HYBRID";
   const { language, setLanguage, isRTL } = useLanguage();
 
   const navLinks = [
-    { label: translations.nav.products[language], href: "#products", highlight: true },
+    { label: translations.nav.products[language], href: "#lead-magnet", highlight: true },
     { label: translations.nav.coaching[language], href: "#coaching" },
     { label: translations.nav.about[language], href: "#about" },
     { label: translations.nav.results[language], href: "#transformations" },
@@ -83,7 +83,7 @@ const Header = () => {
               </button>
 
               <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-                <Button variant="hero" size="sm">
+                <Button variant="hero" size="sm" className="bg-primary hover:bg-primary/90 text-white font-black text-xs uppercase tracking-widest px-6 h-10 shadow-lg shadow-primary/20">
                   {translations.nav.applyNow[language]}
                 </Button>
               </a>
@@ -92,7 +92,7 @@ const Header = () => {
             {/* Mobile Menu Button, Language & CTA */}
             <div className={`flex md:hidden items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
               <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="mr-1">
-                <Button variant="hero" size="sm" className="px-3 h-8 text-[10px]">
+                <Button variant="hero" size="sm" className="px-4 h-9 text-[10px] font-black tracking-tighter bg-primary shadow-lg shadow-primary/20">
                   {translations.nav.applyNow[language]}
                 </Button>
               </a>

@@ -8,8 +8,8 @@ const Footer = () => {
   const t = translations.footer;
 
   const socialLinks = [
-    { icon: Instagram, label: "Instagram", href: "https://instagram.com/yourhandle" },
-    { icon: Youtube, label: "YouTube", href: "https://youtube.com/yourchannel" },
+    { icon: Instagram, label: "Instagram", href: "https://instagram.com/unbreakablesteam" },
+    { icon: Youtube, label: "YouTube", href: "https://youtube.com/@unbreakablesteam" },
   ];
 
   return (
@@ -41,7 +41,7 @@ const Footer = () => {
             ))}
             {/* TikTok - custom icon since lucide doesn't have it */}
             <a
-              href="https://tiktok.com/@yourhandle"
+              href="https://tiktok.com/@unbreakablesteam"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:scale-110 transition-all duration-300"
@@ -59,7 +59,7 @@ const Footer = () => {
 
           <div className="pt-6 border-t border-border">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} [Your Name] | {t.rights[language]}
+              © {new Date().getFullYear()} Mehdi | {t.rights[language]}
             </p>
           </div>
         </motion.div>

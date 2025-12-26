@@ -14,7 +14,7 @@ const FinalCTASection = () => {
   const t = translations.finalCta;
 
   return (
-    <section className="section-padding relative overflow-hidden" ref={ref}>
+    <section id="final-cta" className="section-padding relative overflow-hidden" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/20" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
@@ -67,16 +67,16 @@ const FinalCTASection = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-              <Button variant="cta" size="xxl" className="mb-4">
+            <a href="https://ig.me/m/unbreakablesteam?text=HYBRID" target="_blank" rel="noopener noreferrer">
+              <Button size="xxl" className="bg-primary hover:bg-primary/90 text-white font-black text-xl uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/20 mb-4 px-12">
                 {t.cta[language]}
               </Button>
             </a>
             <p className={`text-muted-foreground flex items-center justify-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              {t.dmText[language]} <span className="text-primary font-semibold">{t.coaching[language]}</span> {t.onInstagram[language]}
+              {t.dmText[language]} <span className="text-primary font-black uppercase tracking-widest">{t.coaching[language]}</span> {t.onInstagram[language]}
             </p>
-            <p className={`text-muted-foreground flex items-center justify-center gap-2 mt-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              {t.letsGo[language]} <Dumbbell className="w-5 h-5 text-primary" />
+            <p className={`text-muted-foreground flex items-center justify-center gap-2 mt-4 opacity-50 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <span className="text-xs uppercase tracking-widest">{t.letsGo[language]}</span> <Dumbbell className="w-4 h-4 text-primary" />
             </p>
           </motion.div>
         </motion.div>

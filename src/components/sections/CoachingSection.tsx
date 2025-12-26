@@ -94,38 +94,52 @@ const CoachingSection = () => {
           </div>
         </motion.div>
 
-        {/* Call to Action - No Pricing */}
+        {/* Call to Action - Strategic DM Focus */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center max-w-2xl mx-auto"
         >
-          <div className="p-8 md:p-10 rounded-2xl bg-gradient-to-br from-secondary to-background border-2 border-primary/30">
-            <h3 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              {language === "ar" ? "هل أنت مستعد للتحول؟" : "Ready to Transform?"}
-            </h3>
-            <p className="text-xl text-muted-foreground mb-6">
-              {language === "ar"
-                ? "لنناقش أهدافك ونبني خطة مخصصة لك تمامًا"
-                : "Let's discuss your goals and build a plan that's perfect for you"}
-            </p>
-            <p className="text-primary font-semibold text-lg mb-8">
-              {language === "ar"
-                ? "كل برنامج مصمم خصيصًا - لا توجد باقات عامة"
-                : "Every program is custom-built - no cookie-cutter packages"}
-            </p>
+          <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-secondary via-card to-background border-2 border-primary/30 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <MessageCircle className="w-24 h-24 text-primary" />
+            </div>
 
-            <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-              <Button variant="hero" size="xl" className="mb-6">
-                {language === "ar" ? "دعنا نتحدث" : "Let's Talk"}
+            <h3 className="font-display text-3xl md:text-5xl text-foreground mb-6 uppercase tracking-tight">
+              {language === "ar" ? "هل أنت مستعد لهذا المستوى؟" : "Ready for this level?"}
+            </h3>
+
+            <div className="space-y-6 mb-10">
+              <div className="bg-primary/5 border border-primary/20 p-4 rounded-xl">
+                <p className="text-primary font-black text-xs uppercase tracking-[0.2em] mb-3">
+                  {t.dmInstructions[language]}
+                </p>
+                <div className="space-y-2">
+                  <div className={`flex items-center gap-3 text-sm text-foreground/80 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>{t.dmItem1[language]}</span>
+                  </div>
+                  <div className={`flex items-center gap-3 text-sm text-foreground/80 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>{t.dmItem2[language]}</span>
+                  </div>
+                  <div className={`flex items-center gap-3 text-sm text-foreground/80 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>{t.dmItem3[language]}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://ig.me/m/unbreakablesteam?text=COACHING" target="_blank" rel="noopener noreferrer">
+              <Button size="xxl" className="w-full bg-primary hover:bg-primary/90 text-white font-black text-xl uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/20">
+                {t.messageMe[language]}
               </Button>
             </a>
 
-            <p className="text-sm text-muted-foreground">
-              {language === "ar"
-                ? "راسلني وسأجيب عليك شخصياً في غضون 24 ساعة"
-                : "DM me and I'll personally respond within 24 hours"}
+            <p className="text-sm text-muted-foreground mt-6 font-medium italic">
+              {t.dmResponse[language]}
             </p>
           </div>
         </motion.div>

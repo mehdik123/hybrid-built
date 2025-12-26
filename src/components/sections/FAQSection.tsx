@@ -14,7 +14,7 @@ import { translations } from "@/lib/translations";
 const FAQSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const instagramDMLink = "https://instagram.com/direct/t/unbreakablesteam";
+  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=HYBRID";
   const { language, isRTL } = useLanguage();
   const t = translations.faq;
 
@@ -65,7 +65,7 @@ const FAQSection = () => {
           className="text-center mt-12"
         >
           <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-            <Button variant="hero" size="xl">
+            <Button size="xl" className="bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest px-10 py-6 transform transition-transform active:scale-95 shadow-lg shadow-primary/20">
               {t.cta[language]}
             </Button>
           </a>

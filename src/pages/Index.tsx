@@ -1,11 +1,12 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
-import VSLSection from "@/components/sections/VSLSection";
 import TransformationsSection from "@/components/sections/TransformationsSection";
 import VideoTestimonialSection from "@/components/sections/VideoTestimonialSection";
+import LeadMagnetSection from "@/components/sections/LeadMagnetSection";
+import VSLSection from "@/components/sections/VSLSection";
+import PaidProductSection from "@/components/sections/PaidProductSection";
 import CoachingSection from "@/components/sections/CoachingSection";
-import ProductsSection from "@/components/sections/ProductsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
 import Footer from "@/components/sections/Footer";
@@ -17,11 +18,12 @@ const Index = () => {
       <Header />
       <HeroSection />
       <AboutSection />
-      <VSLSection />
       <TransformationsSection />
       <VideoTestimonialSection />
+      <LeadMagnetSection />
+      <VSLSection />
+      <PaidProductSection />
       <CoachingSection />
-      <ProductsSection />
       <FAQSection />
       <FinalCTASection />
       <Footer />
@@ -31,4 +33,3 @@ const Index = () => {
 };
 
 export default Index;
-

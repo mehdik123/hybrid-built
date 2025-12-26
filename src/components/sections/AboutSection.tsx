@@ -54,6 +54,15 @@ const AboutSection = () => {
 
             {/* Main Statement */}
             <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-4 mb-2">
+                <div className="bg-primary/10 border border-primary/20 px-3 py-1 rounded-full flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <span className="text-primary font-black text-xs uppercase tracking-widest">600K+ FOLLOWERS</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 px-3 py-1 rounded-full flex items-center gap-2">
+                  <span className="text-white/60 font-black text-xs uppercase tracking-widest">EST. 2017</span>
+                </div>
+              </div>
               <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-none tracking-tight">
                 {t.title1[language]} <span className="text-gradient font-black">{t.title2[language]}</span>
               </h2>
