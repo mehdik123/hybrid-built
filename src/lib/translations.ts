@@ -18,7 +18,7 @@ export const translations = {
     headline2: { en: "NOW I'LL SHOW YOU HOW.", ar: "والآن سأريك كيف." },
     emotionalHook: { en: "NO STEROIDS. NO MYSTERIES. JUST THE METHOD.", ar: "بدون منشطات. بدون أسرار. فقط النظام." },
     headline3: { en: "DM ME 'HYBRID' TO START.", ar: "راسلني 'HYBRID' للبدء." },
-    promise: { en: "THE ONLY WAY TO MASTER SIZE AND MOBILITY.", ar: "الطريق الوحيد لإتقان الضخامة والمرونة." },
+    promise: { en: "THE ONLY WAY TO MASTER SIZE, STRENGTH AND AESTHETICS.", ar: "الطريق الوحيد لإتقان الضخامة والمرونة." },
     coachIntro: { en: "YOUR TRANSFORMATION BEGINS WITH ONE MESSAGE.", ar: "تحولك يبدأ برسالة واحدة." },
     cta: { en: "DM ME 'HYBRID' ON IG", ar: "راسلني 'HYBRID' على انستغرام" },
     ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "أرد شخصياً خلال 24 ساعة." },
@@ -168,6 +168,20 @@ export const translations = {
           ar: "حولت جسمي وعقليتي. نظام فريق Unbreakable يعمل حقاً."
         },
         name: { en: "Saad, 29", ar: "سعد، 29" }
+      },
+      {
+        quote: {
+          en: "Achieved the perfect balance of size and definition. The program is a game changer.",
+          ar: "حققت التوازن المثالي بين الضخامة والتحديد. البرنامج مغير للعبة."
+        },
+        name: { en: "Client, 27", ar: "عميل، 27" }
+      },
+      {
+        quote: {
+          en: "Finally shed the stubborn fat and built a strong core. Feeling more confident than ever.",
+          ar: "أخيراً تخلصت من الدهون العنيدة وبنيت جذعاً قوياً. أشعر بثقة أكبر من أي وقت مضى."
+        },
+        name: { en: "Sarah, 25", ar: "سارة، 25" }
       }
     ]
   },
@@ -283,6 +297,39 @@ export const translations = {
     title2: { en: "FREE CONTENT", ar: "محتوى مجاني" },
     questions: { en: "Questions? DM me anytime.", ar: "أسئلة؟ راسلني في أي وقت." },
     rights: { en: "All Rights Reserved", ar: "جميع الحقوق محفوظة" },
+  },
+
+  // Free Tools Section
+  tools: {
+    title1: { en: "FREE", ar: "أدوات" },
+    title2: { en: "RESOURCES", ar: "مجانية" },
+    subtitle: { en: "Professional tools to optimize your performance. No charge.", ar: "أدوات احترافية لتحسين أدائك. مجاناً." },
+    orm: {
+      title: { en: "1RM Calculator", ar: "حاسبة أقصى وزن (1RM)" },
+      desc: { en: "Enter your 10 rep max to estimate your one-rep max.", ar: "أدخل أقصى وزن لـ10 تكرارات لتقدير أقصى وزن لمرة واحدة." },
+      exerciseLabel: { en: "Exercise", ar: "التمرين" },
+      exercises: {
+        benchPress: { en: "Barbell Bench Press", ar: "ضغط بار صدر" },
+        weightedDips: { en: "Weighted Dips", ar: "متوازي بوزن إضافي" },
+        weightedPullups: { en: "Weighted Pull-ups", ar: "عقلة بوزن إضافي" },
+        squat: { en: "Squat", ar: "سكوات" },
+        deadlift: { en: "Deadlift", ar: "ديدلفت" },
+        zBarCurls: { en: "Z-Bar Curls", ar: "باي زد بار" },
+      },
+      weightLabel: { en: "10 Rep Max Weight", ar: "أقصى وزن لـ10 تكرارات" },
+      bodyweightLabel: { en: "Bodyweight", ar: "وزن الجسم" },
+      calculate: { en: "Calculate 1RM", ar: "احسب الأقصى" },
+      resultLabel: { en: "Your Estimated 1RM:", ar: "أقصى وزن تقديري:" },
+      trainingZones: { en: "Training Zones", ar: "مناطق التدريب" },
+      zoneStrength: { en: "Pure Strength (90%)", ar: "قوة قصوى (90%)" },
+      zoneHypertrophy: { en: "Hypertrophy (75-85%)", ar: "بناء عضلي (75-85%)" },
+      zoneEndurance: { en: "Endurance (60%)", ar: "تحمل (60%)" },
+    },
+    splitFinder: {
+      title: { en: "Split Finder", ar: "مكتشف نظام التدريب" },
+      desc: { en: "Find the perfect workout split based on your weekly frequency.", ar: "جد نظام التدريب المثالي بناءً على عدد أيام تمرينك في الأسبوع." },
+      button: { en: "Launch Finder", ar: "ابدأ البحث" },
+    }
   },
 
   // Sticky Button (DM Focus)

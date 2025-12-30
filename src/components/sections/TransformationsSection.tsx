@@ -1,8 +1,16 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Quote, ChevronLeft, ChevronRight, Grid } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 import useEmblaCarousel from 'embla-carousel-react';
@@ -163,6 +171,79 @@ const TransformationsSection = () => {
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
+          </div>
+
+          {/* See All Button */}
+          <div className="flex justify-center mt-8">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="ghost" className="gap-2 text-muted-foreground hover:text-primary transition-colors tracking-widest uppercase text-xs font-bold">
+                  <Grid className="w-4 h-4" />
+                  {language === 'en' ? 'See All Transformations' : 'شاهد كل التحولات'}
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-[95vw] w-full h-[90vh] p-0 bg-background/95 backdrop-blur-xl border-white/10">
+                <DialogHeader className="p-6 border-b border-white/10">
+                  <DialogTitle className="text-2xl font-display uppercase tracking-tighter text-center">
+                    {t.title1[language]} <span className="text-primary">{t.title2[language]}</span>
+                  </DialogTitle>
+                </DialogHeader>
+                <ScrollArea className="h-full">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 pb-20">
+                    {t.testimonials.map((item, index) => (
+                      <div key={index} className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary transition-all duration-300 group">
+                        {/* Before/After Images */}
+                        <div className="aspect-[4/5] sm:aspect-[16/10] bg-muted relative overflow-hidden">
+                          <div className={`absolute inset-0 flex ${isRTL ? 'flex-row-reverse' : ''}`}>
+                            {/* Before Image */}
+                            <div className={`w-1/2 h-full relative ${isRTL ? 'border-l' : 'border-r'} border-border/30`}>
+                              <img
+                                src={`/transformation-${(index % t.testimonials.length) + 1}-before.png`}
+                                alt="Before"
+                                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
+                              />
+                              <div className="absolute top-4 left-4 bg-black/90 backdrop-blur-md px-3 py-1 rounded-sm border border-white/10 z-10">
+                                <span className="text-white text-[10px] font-black tracking-widest uppercase">{t.before[language]}</span>
+                              </div>
+                            </div>
+                            {/* After Image */}
+                            <div className="w-1/2 h-full relative">
+                              <img
+                                src={`/transformation-${(index % t.testimonials.length) + 1}-after.png`}
+                                alt="After"
+                                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
+                              />
+                              <div className="absolute top-4 right-4 bg-primary px-3 py-1 rounded-sm shadow-xl z-10">
+                                <span className="text-white text-[10px] font-black tracking-widest uppercase">{t.after[language]}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Testimonial Content */}
+                        <div className={`p-6 ${isRTL ? 'text-right' : ''}`}>
+                          <Quote className={`w-8 h-8 text-primary/20 mb-4 ${isRTL ? 'mr-0 ml-auto scale-x-[-1]' : ''}`} />
+                          <p className="text-foreground text-lg italic mb-6 leading-relaxed font-medium line-clamp-4">
+                            "{item.quote[language]}"
+                          </p>
+                          <div className="flex items-center gap-3">
+                            <div className="h-0.5 w-8 bg-primary" />
+                            <p className="text-primary font-black uppercase tracking-widest text-sm">— {item.name[language]}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="p-6 pt-0 flex justify-center pb-20">
+                    <DialogTrigger asChild>
+                      <Button variant="outline" className="w-full sm:w-auto uppercase tracking-widest font-black border-primary/20 hover:bg-primary hover:text-white">
+                        {language === 'en' ? 'Close Gallery' : 'إغلاق المعرض'}
+                      </Button>
+                    </DialogTrigger>
+                  </div>
+                </ScrollArea>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
 

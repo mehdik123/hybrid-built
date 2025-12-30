@@ -7,6 +7,7 @@ import LeadMagnetSection from "@/components/sections/LeadMagnetSection";
 import VSLSection from "@/components/sections/VSLSection";
 import PaidProductSection from "@/components/sections/PaidProductSection";
 import CoachingSection from "@/components/sections/CoachingSection";
+import FreeToolsSection from "@/components/sections/FreeToolsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
 import Footer from "@/components/sections/Footer";
@@ -23,6 +24,7 @@ const Index = () => {
       <LeadMagnetSection />
       <VSLSection />
       <PaidProductSection />
+      <FreeToolsSection />
       <CoachingSection />
       <FAQSection />
       <FinalCTASection />

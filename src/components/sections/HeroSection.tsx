@@ -158,7 +158,7 @@ const HeroSection = () => {
                 </div>
                 <div className={`text-center md:text-left ${isRTL ? 'md:text-right' : ''}`}>
                   <div className="text-xl md:text-3xl font-display text-foreground">{stat.value}</div>
-                  <div className="text-[10px] md:text-sm text-muted-foreground uppercase tracking-wider leading-tight">{stat.label}</div>
+                  <div className="text-[9px] sm:text-xs text-muted-foreground uppercase tracking-wider leading-tight">{stat.label}</div>
                 </div>
               </div>
             ))}
