@@ -136,6 +136,13 @@ export const translations = {
     testimonials: [
       {
         quote: {
+          en: "Incredible progress in record time. The hybrid method completely changed my approach to training.",
+          ar: "تقدم مذهل في وقت قياسي. النظام الهجين غير طريقة تدريبي تماماً."
+        },
+        name: { en: "Client, 28", ar: "عميل، 28" }
+      },
+      {
+        quote: {
           en: "Lost 15 lbs and built visible abs in 12 weeks. Best investment I've made.",
           ar: "خسرت 15 رطل وبنيت عضلات بطن واضحة في 12 أسبوع. أفضل استثمار قمت به."
         },

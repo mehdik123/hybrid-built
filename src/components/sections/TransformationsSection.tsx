@@ -177,7 +177,7 @@ const TransformationsSection = () => {
           <div className="flex justify-center mt-8">
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="ghost" className="gap-2 text-muted-foreground hover:text-primary transition-colors tracking-widest uppercase text-xs font-bold">
+                <Button variant="outline" className="w-full sm:w-auto gap-2 text-primary border-primary/20 hover:bg-primary hover:text-white transition-all tracking-widest uppercase text-xs sm:text-sm font-bold py-6 sm:py-4 shadow-lg shadow-primary/5">
                   <Grid className="w-4 h-4" />
                   {language === 'en' ? 'See All Transformations' : 'شاهد كل التحولات'}
                 </Button>
