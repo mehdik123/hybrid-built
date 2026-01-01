@@ -189,6 +189,20 @@ export const translations = {
           ar: "النتائج تتحدث عن نفسها. أقوى، أنحف، وأكثر ثقة."
         },
         name: { en: "Client, 30", ar: "عميل، 30" }
+      },
+      {
+        quote: {
+          en: "Another amazing transformation. Hard work pays off.",
+          ar: "تحول مذهل آخر. العمل الجاد يؤتي ثماره."
+        },
+        name: { en: "Client, 26", ar: "عميل، 26" }
+      },
+      {
+        quote: {
+          en: "Consistency is key. 12 weeks of dedication.",
+          ar: "الاستمرارية هي المفتاح. 12 أسبوعاً من الالتزام."
+        },
+        name: { en: "Client, 29", ar: "عميل، 29" }
       }
     ]
   },
