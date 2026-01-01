@@ -185,10 +185,10 @@ export const translations = {
       },
       {
         quote: {
-          en: "Finally shed the stubborn fat and built a strong core. Feeling more confident than ever.",
-          ar: "أخيراً تخلصت من الدهون العنيدة وبنيت جذعاً قوياً. أشعر بثقة أكبر من أي وقت مضى."
+          en: "The results speak for themselves. Stronger, leaner, and more confident.",
+          ar: "النتائج تتحدث عن نفسها. أقوى، أنحف، وأكثر ثقة."
         },
-        name: { en: "Sarah, 25", ar: "سارة، 25" }
+        name: { en: "Client, 30", ar: "عميل، 30" }
       }
     ]
   },
