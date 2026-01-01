@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Gift, Zap, Check, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import EmailCaptureModal from "@/components/EmailCaptureModal";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 
@@ -82,11 +83,11 @@ const ProductsSection = () => {
                   </ul>
                 </div>
 
-                <a href={freeDownloadLink} target="_blank" rel="noopener noreferrer" className="block">
-                  <Button variant="outline" size="lg" className="w-full border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground font-semibold text-lg">
+                <EmailCaptureModal source="free_guide">
+                  <Button variant="outline" size="lg" className="w-full border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground font-semibold text-lg cursor-pointer">
                     {t.freeButton[language]}
                   </Button>
-                </a>
+                </EmailCaptureModal>
               </div>
             </div>
           </motion.div>

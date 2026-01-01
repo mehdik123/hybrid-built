@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 import { Button } from "@/components/ui/button";
 import OneRepMaxCalculator from "@/components/OneRepMaxCalculator";
+import EmailCaptureModal from "@/components/EmailCaptureModal";
 
 const FreeToolsSection = () => {
     const ref = useRef(null);
@@ -62,17 +63,12 @@ const FreeToolsSection = () => {
                                 {t.splitFinder.desc[language]}
                             </p>
 
-                            <a
-                                href="https://gainz-frequency-finder.lovable.app"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full"
-                            >
-                                <Button size="xxl" variant="hero" className="w-full font-black uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
+                            <EmailCaptureModal source="split_finder">
+                                <Button size="xxl" variant="hero" className="w-full font-black uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/20 flex items-center justify-center gap-3 cursor-pointer">
                                     {t.splitFinder.button[language]}
                                     <ExternalLink className="w-5 h-5" />
                                 </Button>
-                            </a>
+                            </EmailCaptureModal>
 
                             <div className="mt-8 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary/60">
                                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
