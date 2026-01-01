@@ -64,6 +64,10 @@ const OneRepMaxCalculator = () => {
                     <h4 className="text-xl font-black uppercase tracking-tight">{t.title[language]}</h4>
                 </div>
 
+                <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
+                    {t.purpose[language]}
+                </p>
+
                 <div className="space-y-4 mb-8">
                     <div>
                         <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2 block">

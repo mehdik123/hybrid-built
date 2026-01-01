@@ -327,6 +327,10 @@ export const translations = {
     subtitle: { en: "Professional tools to optimize your performance. No charge.", ar: "أدوات احترافية لتحسين أدائك. مجاناً." },
     orm: {
       title: { en: "1RM Calculator", ar: "حاسبة أقصى وزن (1RM)" },
+      purpose: {
+        en: "Calculate the maximum weight you can lift for one rep to determine your true strength standard.",
+        ar: "احسب أقصى وزن يمكنك رفعه لمرة واحدة لمعرفة مستوى قوتك الحقيقي."
+      },
       desc: { en: "Enter your 10 rep max to estimate your one-rep max.", ar: "أدخل أقصى وزن لـ10 تكرارات لتقدير أقصى وزن لمرة واحدة." },
       exerciseLabel: { en: "Exercise", ar: "التمرين" },
       exercises: {
