@@ -118,7 +118,7 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                                     {t.dmButton[language]}
                                 </Button>
                             </a>
-                            <a href="https://hybridtrainingblueprint-mehdikamal535-7388s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="block flex-1 order-1 sm:order-2">
+                            <a href="https://hybridtrainingblueprint-mehdikamal535-7388s-projects.vercel.app" target="_blank" rel="noopener noreferrer" className="block flex-1 order-1 sm:order-2">
                                 <Button
                                     variant="outline"
                                     size="lg"
