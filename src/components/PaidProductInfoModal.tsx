@@ -48,7 +48,7 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                             <div className="flex items-center justify-center gap-4 mb-2">
                                 <span className="text-4xl font-black text-primary">$20</span>
                                 <span className="text-2xl text-muted-foreground">/</span>
-                                <span className="text-4xl font-black text-primary">199 MAD</span>
+                                <span className="text-4xl font-black text-primary">199 DH</span>
                             </div>
                             <p className="text-center text-xs text-muted-foreground uppercase tracking-widest">
                                 {t.oneTimePayment[language]}
@@ -107,16 +107,28 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                             </ol>
                         </div>
 
-                        {/* CTA Button */}
-                        <a href={dmLink} target="_blank" rel="noopener noreferrer" className="block">
-                            <Button
-                                size="lg"
-                                className="w-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-sm transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 py-6"
-                            >
-                                <MessageCircle className="w-5 h-5" />
-                                {t.dmButton[language]}
-                            </Button>
-                        </a>
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <a href={dmLink} target="_blank" rel="noopener noreferrer" className="block flex-1 order-2 sm:order-1">
+                                <Button
+                                    size="lg"
+                                    className="w-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-sm transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 py-7"
+                                >
+                                    <MessageCircle className="w-5 h-5" />
+                                    {t.dmButton[language]}
+                                </Button>
+                            </a>
+                            <a href="https://hybridtrainingblueprint-mehdikamal535-7388s-projects.vercel.app/" target="_blank" rel="noopener noreferrer" className="block flex-1 order-1 sm:order-2">
+                                <Button
+                                    variant="outline"
+                                    size="lg"
+                                    className="w-full border-primary/30 text-primary hover:bg-primary/10 font-black uppercase tracking-widest text-sm py-7"
+                                >
+                                    <Zap className="w-5 h-5" />
+                                    {language === 'en' ? 'PREVIEW HERE' : 'شوف لبلان هنا'}
+                                </Button>
+                            </a>
+                        </div>
                     </div>
                 </ScrollArea>
             </DialogContent>

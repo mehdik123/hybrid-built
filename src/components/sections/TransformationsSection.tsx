@@ -228,11 +228,11 @@ const TransformationsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mt-8 md:mt-12"
+          className="text-center mt-12 md:mt-16 flex flex-col items-center"
         >
           <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="inline-block w-full max-w-[92vw]">
-            <Button variant="cta" size="xxl" className="uppercase tracking-widest font-black px-6 md:px-12 py-6 md:py-8 text-lg md:text-xl group w-full sm:w-auto">
-              <span className="relative z-10 flex items-center justify-center gap-3">
+            <Button variant="cta" size="xxl" className="uppercase tracking-wider sm:tracking-widest font-black px-4 sm:px-12 py-6 sm:py-8 md:py-10 text-[13px] sm:text-xl md:text-2xl group w-full sm:w-auto shadow-2xl shadow-primary/20 ring-1 ring-white/10 flex items-center justify-center min-h-[70px]">
+              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
                 {t.cta[language]}
                 <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>→</motion.span>
               </span>

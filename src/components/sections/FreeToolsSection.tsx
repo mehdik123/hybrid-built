@@ -34,47 +34,15 @@ const FreeToolsSection = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+                <div className="flex justify-center">
                     {/* Tool 1: 1RM Calculator (Interactive) */}
                     <motion.div
-                        initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ duration: 0.6, delay: 0.2 }}
+                        className="w-full max-w-2xl"
                     >
                         <OneRepMaxCalculator />
-                    </motion.div>
-
-                    {/* Tool 2: Split Finder (External) */}
-                    <motion.div
-                        initial={{ opacity: 0, x: isRTL ? -20 : 20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        className="flex flex-col"
-                    >
-                        <div className="bg-secondary/30 border border-white/5 rounded-3xl p-8 h-full flex flex-col items-center justify-center text-center group hover:border-primary/20 transition-all duration-300">
-                            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                                <Layout className="w-8 h-8 text-primary" />
-                            </div>
-
-                            <h4 className="text-2xl font-black uppercase tracking-tight mb-4">
-                                {t.splitFinder.title[language]}
-                            </h4>
-                            <p className="text-muted-foreground mb-10 max-w-sm text-lg leading-relaxed">
-                                {t.splitFinder.desc[language]}
-                            </p>
-
-                            <EmailCaptureModal source="split_finder">
-                                <Button size="xxl" variant="hero" className="w-full font-black uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/20 flex items-center justify-center gap-3 cursor-pointer">
-                                    {t.splitFinder.button[language]}
-                                    <ExternalLink className="w-5 h-5" />
-                                </Button>
-                            </EmailCaptureModal>
-
-                            <div className="mt-8 flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary/60">
-                                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                                {language === 'en' ? "Instant Access" : "وصول فوري"}
-                            </div>
-                        </div>
                     </motion.div>
                 </div>
             </div>

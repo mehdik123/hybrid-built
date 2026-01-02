@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Gift, Check } from "lucide-react";
+import { Gift, Check, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import EmailCaptureModal from "@/components/EmailCaptureModal";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 
@@ -72,13 +71,13 @@ const LeadMagnetSection = () => {
                                 </ul>
                             </div>
 
-                            <EmailCaptureModal source="free_guide">
-                                <Button size="xxl" className="w-full bg-accent hover:bg-accent/80 text-accent-foreground font-black text-lg uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-accent/20 cursor-pointer">
-                                    {t.joinWaitlist[language]}
+                            <a href="https://gainz-frequency-finder.lovable.app" target="_blank" rel="noopener noreferrer">
+                                <Button size="xxl" className="w-full bg-accent hover:bg-accent/80 text-accent-foreground font-black text-lg uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-accent/20 cursor-pointer gap-2">
+                                    {t.joinWaitlist[language]} <ExternalLink className="w-5 h-5" />
                                 </Button>
-                            </EmailCaptureModal>
+                            </a>
                             <p className="text-center text-muted-foreground text-sm mt-4 italic">
-                                {language === 'en' ? "Join the list - Limited spots." : "انضم للقائمة - أماكن محدودة."}
+                                {language === 'en' ? "Instant Access - No Email Required" : "الولوج فوري - بلا بريد إلكتروني"}
                             </p>
                         </div>
                     </motion.div>

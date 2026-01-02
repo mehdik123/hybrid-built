@@ -14,14 +14,14 @@ export const translations = {
   // Hero Section (Strategic DM Redesign)
   hero: {
     preHeadline: { en: "100% NATURAL ATHLETE // HYBRID PERFORMANCE", ar: "رياضي طبيعي 100% // أداء هجين" },
-    headline1: { en: "I BUILT THE HYBRID PHYSIQUE.", ar: "لقد بنيت الجسم الهجين." },
-    headline2: { en: "NOW I'LL SHOW YOU HOW.", ar: "والآن سأريك كيف." },
-    emotionalHook: { en: "NO STEROIDS. NO MYSTERIES. JUST THE METHOD.", ar: "بدون منشطات. بدون أسرار. فقط النظام." },
-    headline3: { en: "DM ME 'HYBRID' TO START.", ar: "راسلني 'HYBRID' للبدء." },
-    promise: { en: "THE ONLY WAY TO MASTER SIZE, STRENGTH AND AESTHETICS.", ar: "الطريق الوحيد لإتقان الضخامة والمرونة." },
-    coachIntro: { en: "YOUR TRANSFORMATION BEGINS WITH ONE MESSAGE.", ar: "تحولك يبدأ برسالة واحدة." },
-    cta: { en: "DM ME 'HYBRID' ON IG", ar: "راسلني 'HYBRID' على انستغرام" },
-    ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "أرد شخصياً خلال 24 ساعة." },
+    headline1: { en: "I BUILT THE HYBRID PHYSIQUE.", ar: "بنيت الـ Hybrid Physique." },
+    headline2: { en: "NOW I'LL SHOW YOU HOW.", ar: "ودابا غانوريك كيفاش." },
+    emotionalHook: { en: "NO STEROIDS. NO MYSTERIES. JUST THE METHOD.", ar: "بلا منشطات. بلا داك التخربيق. غي الخدمة." },
+    headline3: { en: "DM ME 'HYBRID' TO START.", ar: "صيفط ليا 'HYBRID' باش تبدا." },
+    promise: { en: "THE ONLY WAY TO MASTER SIZE, STRENGTH AND AESTHETICS.", ar: "الطريقة الوحيدة باش تجيب الفورمة والقوة فنفس الوقت." },
+    coachIntro: { en: "YOUR TRANSFORMATION BEGINS WITH ONE MESSAGE.", ar: "التحول ديالك كيبدا بـ ميساج واحد." },
+    cta: { en: "DM ME 'HYBRID' ON IG", ar: "صيفط ليا 'HYBRID' فـ انستغرام" },
+    ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "كنجاوب راسي قل من 24 ساعة." },
     scroll: { en: "EXPLORE THE METHOD", ar: "اكتشف النظام" },
     stats: {
       clients: { en: "400+", ar: "+400" },
@@ -34,33 +34,33 @@ export const translations = {
   },
   // About Section
   about: {
-    title1: { en: "WHO I", ar: "من" },
+    title1: { en: "WHO I", ar: "شكون" },
     title2: { en: "AM", ar: "أنا" },
     intro: { en: "I'm", ar: "أنا" },
     name: { en: "Mehdi", ar: "المهدي" },
     followers: { en: "followers", ar: "متابع" },
     description1: {
       en: ". I've built one of the elite natural physiques in Morocco, with a community of over",
-      ar: ". لقد بنيت أحد أفضل الأجسام الطبيعية في المغرب، مع مجتمع يضم أكثر من"
+      ar: ". بنيت وحدة من أحسن الفورمات الطبيعية فالمغرب، مع مجتمع فيه كتر من"
     },
     description2: {
       en: "I built my physique naturally by combining calisthenics and bodybuilding—no steroids, no shortcuts, just smart training.",
-      ar: "بنيت جسمي بشكل طبيعي من خلال الجمع بين تمارين الجمباز وكمال الأجسام — بدون منشطات، بدون اختصارات، فقط تدريب ذكي."
+      ar: "بنيت الفورمة ديالي طبيعي بـالجمع بين الكاليستينيكس والبوديبيلدينغ — بلا منشطات، بلا تخربيق، غي ترينمان ذكي."
     },
     description3: {
       en: "I've helped",
-      ar: "ساعدت أكثر من"
+      ar: "عاونت كتر من"
     },
-    clients: { en: "100+ people worldwide", ar: "100+ شخص حول العالم" },
+    clients: { en: "100+ people worldwide", ar: "100 واحد فالعالم كامل" },
     description4: {
       en: "achieve elite-level transformations using the same unbreakable system.",
-      ar: "في تحقيق تحولات بمستوى النخبة باستخدام نفس النظام الذي لا يقهر."
+      ar: "باش يوصلو لهاد التحولات الناضية باستعمال نفس النظام."
     },
     description5: {
       en: "Now, I want to help",
-      ar: "الآن، أريد مساعدتك"
+      ar: "ودابا باغيك نعاونك"
     },
-    you: { en: "you", ar: "أنت" },
+    you: { en: "you", ar: "نتا" },
   },
 
   // Coaching Section
@@ -121,18 +121,8 @@ export const translations = {
     dmInstructions: { en: "DM me on Instagram to see if you qualify:", ar: "راسلني على انستغرام لنرى إذا كنت مؤهلاً:" },
     dmItem1: { en: "Tell me your goal (Muscle, Fat Loss, Strength)", ar: "أخبرني بهدفك (عضلات، دهون، قوة)" },
     dmItem2: { en: "Tell me your experience level", ar: "أخبرني بمستوى خبرتك" },
-    title1: { en: "ELITE 1-ON-1", ar: "تدريب خاص" },
-    title2: { en: "COACHING", ar: "1-ON-1" },
-    subtitle: { en: "Direct mentorship for guaranteed results.", ar: "متابعة مباشرة لضمان النتائج." },
-    description: { en: "Work directly with us to build a custom program tailored to your specific genetics, schedule, and goals.", ar: "خدم معانا مباشرة باش نقادو ليك برنامج مخصص لجيناتك، وقتك، وأهدافك." },
-    benefits: [
-      { en: "Custom Workout Programming", ar: "برنامج تدريبي مخصص" },
-      { en: "Weekly Check-ins & Adjustments", ar: "متابعة أسبوعية وتعديلات" },
-      { en: "Form Review & Analysis", ar: "تصحيح الأداء وتحليل التمارين" },
-      { en: "24/7 WhatsApp Support", ar: "دعم 24/7 عبر واتساب" }
-    ],
-    cta: { en: "APPLY FOR COACHING", ar: "قدم طلب التدريب" },
-    spots: { en: "Only 2 spots remaining this month", ar: "باقي غير 2 بلايص هاد الشهر" }
+    dmItem3: { en: "Tell me when you are ready to start", ar: "أخبرني متى ستكون مستعداً للبدء" },
+    dmResponse: { en: "I respond personally to every message.", ar: "أرد شخصياً على كل رسالة بنفسي." },
   },
 
   // Transformations Section
@@ -174,52 +164,52 @@ export const translations = {
     cta: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'" },
     items: [
       {
-        question: { en: "How does online coaching work?", ar: "كيف يعمل التدريب أونلاين؟" },
+        question: { en: "How does online coaching work?", ar: "كيفاش كيخدم هاد التدريب أونلاين؟" },
         answer: {
           en: "We communicate through Instagram or WhatsApp. You get a custom plan, check in weekly with progress updates, and I adjust everything based on your results. It's like having me in your pocket 24/7.",
-          ar: "نتواصل عبر انستغرام أو واتساب. تحصل على برنامج مخصص، متابعة أسبوعية مع تحديثات التقدم، وأعدل كل شيء بناءً على نتائجك. كأنني معك في جيبك 24/7."
+          ar: "كنتواصلو فـ انستغرام ولا واتساب. كاتاخد برنامج مخصص، متابعة أسبوعية، وكنبدل كاع لبلان على حساب النتائج ديالك. بحال إلا أنا معاك 24/7."
         }
       },
       {
-        question: { en: "Do I need a gym?", ar: "هل أحتاج صالة رياضية؟" },
+        question: { en: "Do I need a gym?", ar: "واش غيخصني ضروري لاصال؟" },
         answer: {
           en: "Ideally yes, but I can work with home setups (pull-up bar, dip station, minimal equipment). Tell me what you have and I'll build around it.",
-          ar: "مثالياً نعم، لكن يمكنني العمل مع إعدادات المنزل (بار العقلة، ديب ستيشن، معدات بسيطة). أخبرني بما لديك وسأبني برنامجك حوله."
+          ar: "من الأحسن أه، ولكن نقدر نخدمو حتى فـ الدار إلا عندك شوية دـ الماترييل (بار فيكس، ديب ستيشن). كولي ليا شنو عندك ونقدو عليه لبلان."
         }
       },
       {
-        question: { en: "What if I'm a beginner?", ar: "ماذا لو كنت مبتدئ؟" },
+        question: { en: "What if I'm a beginner?", ar: "شنو إلا كنت يلاه بادئ (مبتدئ)؟" },
         answer: {
           en: "Perfect. I work with all levels—beginners to advanced. Your program will be tailored to YOUR experience.",
-          ar: "ممتاز. أعمل مع جميع المستويات — من المبتدئين إلى المتقدمين. برنامجك سيكون مخصص لمستوى خبرتك."
+          ar: "هادي هي أحسن وقتاش تبدا. كنخدم مع كاع المستويات. لبلان غايكون على قدك ونتا كتعلم."
         }
       },
       {
-        question: { en: "Can I see results in 12 weeks?", ar: "هل يمكنني رؤية نتائج في 12 أسبوع؟" },
+        question: { en: "Can I see results in 12 weeks?", ar: "واش نقدر نشوف نتائج فـ 12 سيمانة؟" },
         answer: {
           en: "Yes, if you follow the plan. Most clients see significant changes in 8-12 weeks (visible muscle, fat loss, strength gains).",
-          ar: "نعم، إذا اتبعت الخطة. معظم العملاء يرون تغييرات ملحوظة في 8-12 أسبوع (عضلات واضحة، خسارة دهون، زيادة قوة)."
+          ar: "أه، إلا تبعتي لبلان كيفما هو. أغلبية كيشوفو فرق كبير فـ 8 لـ 12 سيمانة (عضلات باينة، نقص فالشحمة، وقوة كتر)."
         }
       },
       {
-        question: { en: "What if I travel or miss workouts?", ar: "ماذا لو سافرت أو فاتتني تمارين؟" },
+        question: { en: "What if I travel or miss workouts?", ar: "إلا سافرت ولا فتوني حصص شنو غاندير؟" },
         answer: {
           en: "Life happens. I adjust your plan when needed. The goal is consistency over perfection.",
-          ar: "الحياة تحدث. أعدل خطتك عند الحاجة. الهدف هو الاستمرارية وليس الكمال."
+          ar: "هانية، حنا للي كنتحكمو فـ لبلان. المهم هو الاستمرارية ماشي الكمال."
         }
       },
       {
-        question: { en: "Payment plans?", ar: "خطط الدفع؟" },
+        question: { en: "Payment plans?", ar: "ليبلانات دـ الخلاص؟" },
         answer: {
           en: "Yes, message me and we'll work it out.",
-          ar: "نعم، راسلني وسنتفق على ذلك."
+          ar: "أه، صيفط ليا ميساج ونتفاهمو."
         }
       },
       {
-        question: { en: "How many clients do you take?", ar: "كم عميل تقبل؟" },
+        question: { en: "How many clients do you take?", ar: "شحال د الناس كاتقبل؟" },
         answer: {
           en: "Limited spots (5-10 per month) to give everyone quality attention. If spots are full, I'll add you to the waitlist.",
-          ar: "أماكن محدودة (5-10 شهرياً) لإعطاء الجميع اهتمام عالي الجودة. إذا امتلأت الأماكن، سأضيفك لقائمة الانتظار."
+          ar: "بلايص محدودين (5-10 فالشهر) باش نعطي لكل واحد وقتو. إلا كانت الدنيا عامرة، كانديرك فـ قائمة الانتظار."
         }
       }
     ]
@@ -232,7 +222,7 @@ export const translations = {
     subtitle: { en: "High-value tools for the serious hybrid athlete.", ar: "أدوات ناضية للرياضي الـ Hybrid." },
     free: { en: "STRATEGIC LEAD MAGNET", ar: "فابور" },
     freeTitle: { en: "THE HYBRID SPLIT IDENTIFIER", ar: "أداة تحديد الـ Split المناسب ليك" },
-    freeDescription: { en: "Stop guessing. Find the perfect Hybrid training split for your schedule and goals in 2 minutes.", ar: "باراكا من التخربيق. لقى الـ Split دـ Hybrid المثالي لوقتك وأهدافك فـ جوج دقايق." },
+    freeDescription: { en: "A tool that helps you find the best split based on your schedule and goals etc.", ar: "أداة كاتعاونك تلقى أحسن Split على حساب وقتك وأهدافك." },
     freeButton: { en: "Get Free Access", ar: "خودها فابور" },
     joinWaitlist: { en: "GET FREE ACCESS", ar: "صيفط ليا الأداة" },
     comingSoon: { en: "COMING SOON", ar: "قريباً" },
@@ -255,30 +245,30 @@ export const translations = {
   finalCta: {
     title1: { en: "READY TO", ar: "مستعد" },
     title2: { en: "TRANSFORM", ar: "للتحول" },
-    line1: { en: "You've seen the results.", ar: "رأيت النتائج." },
-    line2: { en: "You know what you'll get.", ar: "تعرف ماذا ستحصل." },
-    line3: { en: "Now it's time to decide.", ar: "الآن حان وقت القرار." },
-    weeksFrom: { en: "12 weeks from now, you could be:", ar: "بعد 12 أسبوع، يمكنك أن تكون:" },
+    line1: { en: "You've seen the results.", ar: "ديجا شفتي النتائج." },
+    line2: { en: "You know what you'll get.", ar: "وعارف دابا شنو غاتاخد." },
+    line3: { en: "Now it's time to decide.", ar: "دابا جا وقت القرار." },
+    weeksFrom: { en: "12 weeks from now, you could be:", ar: "من هنا لـ 12 سيمانة، تقدر تكون:" },
     benefits: [
-      { en: "10-20 lbs leaner or heavier (depending on goal)", ar: "10-20 رطل أخف أو أثقل (حسب الهدف)" },
-      { en: "Significantly stronger (PRs on all lifts)", ar: "أقوى بشكل ملحوظ (أرقام قياسية في جميع التمارين)" },
-      { en: "Confident in your training and nutrition", ar: "واثق في تدريبك وتغذيتك" },
-      { en: "Looking in the mirror and loving what you see", ar: "تنظر في المرآة وتحب ما تراه" }
+      { en: "10-20 lbs leaner or heavier (depending on goal)", ar: "ديجا نقصتي أو زدتي 5-10 كيلو (على حساب هدفك)" },
+      { en: "Significantly stronger (PRs on all lifts)", ar: "وليتي صحيح كتر (أرقام خيالية فكل التمارين)" },
+      { en: "Confident in your training and nutrition", ar: "واثق فـ ترينمان والماكلة ديالك" },
+      { en: "Looking in the mirror and loving what you see", ar: "كتشوف فالمرايا وعاجبك الحال" }
     ],
-    alternative: { en: "Or you could still be guessing, wasting time on random programs.", ar: "أو يمكنك الاستمرار في التخمين، وإضاعة الوقت على برامج عشوائية." },
-    choice: { en: "The choice is yours.", ar: "الخيار لك." },
-    cta: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'" },
-    dmText: { en: "DM me", ar: "راسلني" },
+    alternative: { en: "Or you could still be guessing, wasting time on random programs.", ar: "أو تقدر تبقى غي كتجرب وتضيع الوقت فـ برامج عشوائية." },
+    choice: { en: "The choice is yours.", ar: "القرار بين يديك." },
+    cta: { en: "DM ME 'HYBRID'", ar: "صيفط ليا 'HYBRID'" },
+    dmText: { en: "DM me", ar: "صيفط ليا" },
     coaching: { en: "'HYBRID'", ar: "'HYBRID'" },
-    onInstagram: { en: "on Instagram.", ar: "على انستغرام." },
-    letsGo: { en: "Let's build something great.", ar: "لنبني شيئاً عظيماً." },
+    onInstagram: { en: "on Instagram.", ar: "فـ انستغرام." },
+    letsGo: { en: "Let's build something great.", ar: "يلاه نبنيو شي حاجة ناضية." },
   },
 
   // Footer
   footer: {
-    title1: { en: "FOLLOW FOR", ar: "تابعني للحصول على" },
-    title2: { en: "FREE CONTENT", ar: "محتوى مجاني" },
-    questions: { en: "Questions? DM me anytime.", ar: "أسئلة؟ راسلني في أي وقت." },
+    title1: { en: "FOLLOW FOR", ar: "تابعني على" },
+    title2: { en: "FREE CONTENT", ar: "محتوى فابور" },
+    questions: { en: "Questions? DM me anytime.", ar: "أسئلة؟ صيفط ليا فـ أي وقت." },
     rights: { en: "All Rights Reserved", ar: "جميع الحقوق محفوظة" },
   },
 
@@ -286,61 +276,61 @@ export const translations = {
   tools: {
     title1: { en: "FREE", ar: "أدوات" },
     title2: { en: "RESOURCES", ar: "مجانية" },
-    subtitle: { en: "Professional tools to optimize your performance. No charge.", ar: "أدوات احترافية لتحسين أدائك. مجاناً." },
+    subtitle: { en: "Professional tools to optimize your performance. No charge.", ar: "أدوات احترافية لتحسين الأداء ديالك. فابور." },
     orm: {
-      title: { en: "1RM Calculator", ar: "حاسبة أقصى وزن (1RM)" },
+      title: { en: "1RM Calculator", ar: "حاسبة الـ 1RM" },
       purpose: {
         en: "Calculate the maximum weight you can lift for one rep to determine your true strength standard.",
-        ar: "احسب أقصى وزن يمكنك رفعه لمرة واحدة لمعرفة مستوى قوتك الحقيقي."
+        ar: "احسب أقصى وزن تقدر تهزو لمرة وحدة باش تعرف القوة الحقيقية ديالك."
       },
-      desc: { en: "Enter your 10 rep max to estimate your one-rep max.", ar: "أدخل أقصى وزن لـ10 تكرارات لتقدير أقصى وزن لمرة واحدة." },
+      desc: { en: "Enter your 10 rep max to estimate your one-rep max.", ar: "دخل أقصى وزن كدير بيه 10 التكرارات." },
       exerciseLabel: { en: "Exercise", ar: "التمرين" },
       exercises: {
         benchPress: { en: "Barbell Bench Press", ar: "ضغط بار صدر" },
-        weightedDips: { en: "Weighted Dips", ar: "متوازي بوزن إضافي" },
-        weightedPullups: { en: "Weighted Pull-ups", ar: "عقلة بوزن إضافي" },
+        weightedDips: { en: "Weighted Dips", ar: "متوازي بوزن" },
+        weightedPullups: { en: "Weighted Pull-ups", ar: "عقلة بوزن" },
         squat: { en: "Squat", ar: "سكوات" },
         deadlift: { en: "Deadlift", ar: "ديدلفت" },
         zBarCurls: { en: "Z-Bar Curls", ar: "باي زد بار" },
       },
-      weightLabel: { en: "10 Rep Max Weight", ar: "أقصى وزن لـ10 تكرارات" },
+      weightLabel: { en: "10 Rep Max Weight", ar: "وزن 10 تكرارات" },
       bodyweightLabel: { en: "Bodyweight", ar: "وزن الجسم" },
       calculate: { en: "Calculate 1RM", ar: "احسب الأقصى" },
-      resultLabel: { en: "Your Estimated 1RM:", ar: "أقصى وزن تقديري:" },
+      resultLabel: { en: "Your Estimated 1RM:", ar: "الـ 1RM التقديري:" },
       trainingZones: { en: "Training Zones", ar: "مناطق التدريب" },
       zoneStrength: { en: "Pure Strength (90%)", ar: "قوة قصوى (90%)" },
       zoneHypertrophy: { en: "Hypertrophy (75-85%)", ar: "بناء عضلي (75-85%)" },
       zoneEndurance: { en: "Endurance (60%)", ar: "تحمل (60%)" },
     },
     splitFinder: {
-      title: { en: "Split Finder", ar: "مكتشف نظام التدريب" },
-      desc: { en: "Find the perfect workout split based on your weekly frequency.", ar: "جد نظام التدريب المثالي بناءً على عدد أيام تمرينك في الأسبوع." },
-      button: { en: "Launch Finder", ar: "ابدأ البحث" },
+      title: { en: "Split Finder", ar: "مكتشف الـ Split" },
+      desc: { en: "Find the perfect workout split based on your weekly frequency.", ar: "لقى نظام التدريب المثالي على حساب شحال من نهار غاتترينى." },
+      button: { en: "Launch Finder", ar: "بدا البحث" },
     }
   },
 
   // Sticky Button (DM Focus)
   sticky: {
-    apply: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'" },
+    apply: { en: "DM ME 'HYBRID'", ar: "صيفط ليا 'HYBRID'" },
   },
 
   // Email Capture Modal
   modal: {
-    title: { en: "JOIN THE 1%", ar: "انضم إلى الـ 1%" },
-    subtitle: { en: "Get the free guide and exclusive tips delivered to your inbox.", ar: "احصل على الدليل المجاني ونصائح حصرية مباشرة في بريدك." },
+    title: { en: "JOIN THE 1%", ar: "انضم للـ 1%" },
+    subtitle: { en: "Get the free guide and exclusive tips delivered to your inbox.", ar: "خود الدليل الفابور ونصائح حصرية فـ إيميل ديالك." },
     nameLabel: { en: "First Name", ar: "الاسم الأول" },
     emailLabel: { en: "Email Address", ar: "البريد الإلكتروني" },
     submit: { en: "JOIN WAITLIST", ar: "انضم للقائمة" },
     submitting: { en: "JOINING...", ar: "جاري الانضمام..." },
-    successTitle: { en: "YOU'RE ON THE LIST!", ar: "تم تسجيلك!" },
-    successDesc: { en: "We'll email you as soon as it's ready.", ar: "سنرسل لك بريداً إلكترونياً فور جاهزيته." },
-    privacy: { en: "No spam. Unsubscribe anytime.", ar: "لا رسائل مزعجة. إلغاء الاشتراك في أي وقت." },
+    successTitle: { en: "YOU'RE ON THE LIST!", ar: "تم التسجيل!" },
+    successDesc: { en: "We'll email you as soon as it's ready.", ar: "غيفطو ليك إيميل غير يكون واجد." },
+    privacy: { en: "No spam. Unsubscribe anytime.", ar: "بلا بريد مزعج. تقدر تلغي فـ أي وقت." },
   },
 
   // Paid Product Info Modal
   paidProductModal: {
-    title: { en: "8-WEEK HYBRID BLUEPRINT", ar: "مخطط الـ 8 أسابيع الهجين" },
-    subtitle: { en: "Everything you need to build muscle, strength, and aesthetics.", ar: "كل ما تحتاجه لبناء العضلات، القوة، والفورمة والجمالية." },
+    title: { en: "8-WEEK HYBRID BLUEPRINT", ar: "الـ 8-WEEK HYBRID BLUEPRINT" },
+    subtitle: { en: "Everything you need to build muscle, strength, and aesthetics.", ar: "كل ما خصك باش تبني العضلات، القوة، والفورمة الناضية." },
     oneTimePayment: { en: "ONE-TIME PAYMENT", ar: "خلص مرة وحدة وتهنا" },
     whatYouGet: { en: "WHAT YOU GET:", ar: "شنو غاتستافد:" },
     features: [
@@ -354,8 +344,8 @@ export const translations = {
     howToUse: { en: "HOW TO USE:", ar: "كيفاش تخدم بيه:" },
     howToUseDesc: { en: "This is a complete 8-week program delivered as a PDF. Follow the workouts, track your macros, and watch your body transform. Perfect for those who want to train independently with a proven system.", ar: "هذا برنامج كامل لمدة 8 سيمانات كيوصلك على شكل PDF. تبع التمارين، حسب الماكروز ديالك، وشوف جسمك كيفاش غيتبدل. مثالي للناس اللي باغين يترينيو بوحدهم بنظام مجرب وفعال." },
     howToBuy: { en: "HOW TO GET IT:", ar: "كيفاش تاخدو:" },
-    step1: { en: "Click the button below to DM me 'HYBRID PROGRAM' on Instagram", ar: "كليكي على الزر لتحت وصيفط ليا 'HYBRID PROGRAM' ف انستغرام" },
-    step2: { en: "I'll send you payment details ($15 USD or 150 MAD)", ar: "غانسيفط ليك تفاصيل الدفع (15$ أو 150 درهم)" },
+    step1: { en: "Click the button below to DM me 'HYBRID PROGRAM' on Instagram", ar: "كليكي على البوطونة لتحت وصيفط ليا 'HYBRID PROGRAM' ف انستغرام" },
+    step2: { en: "I'll send you payment details ($20 USD or 199 DH)", ar: "غانسيفط ليك كيفاش تخلص (20$ أو 199 درهم)" },
     step3: { en: "Once paid, you'll receive the complete program instantly", ar: "غير تخلص، كيوصلك البرنامج كامل فالحين" },
     dmButton: { en: "DM ME 'HYBRID PROGRAM'", ar: "صيفط ليا 'HYBRID PROGRAM'" }
   }

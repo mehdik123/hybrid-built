@@ -36,148 +36,146 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
             const FORMSUBMIT_EMAIL = "REPLACE_WITH_YOUR_EMAIL";
             const endpoint = `https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`;
 
-            try {
-                const response = await fetch(endpoint, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                    },
-                    body: JSON.stringify({
-                        name: formData.name,
-                        email: formData.email,
-                        _subject: "New Waitlist Signup: Hybrid Split Identifier",
-                        _captcha: "false", // Disable captcha
-                        source: source,
-                    }),
-                });
+            const response = await fetch(endpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    _subject: "New Waitlist Signup: Hybrid Split Identifier",
+                    _captcha: "false", // Disable captcha
+                    source: source,
+                }),
+            });
 
-                if (response.ok) {
-                    // Success
-                    setIsLoading(false);
-                    setStep("success");
+            if (response.ok) {
+                // Success
+                setIsLoading(false);
+                setStep("success");
+            } else {
+                // Error handling
+                setIsLoading(false);
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            setIsLoading(false);
+            alert("Connection error. Please check your internet.");
+        }
+    };
 
-                    // Waitlist mode: No auto-download
-                    // Just show success message
-                } else {
-                    // Error handling could go here
-                    setIsLoading(false);
-                    alert("Something went wrong. Please try again.");
-                }
-            };
+    const handleOpenChange = (open: boolean) => {
+        setIsOpen(open);
+        if (!open) {
+            // Reset state when closed
+            setTimeout(() => setStep("form"), 300);
+        }
+    };
 
-            const handleOpenChange = (open: boolean) => {
-                setIsOpen(open);
-                if (!open) {
-                    // Reset state when closed
-                    setTimeout(() => setStep("form"), 300);
-                }
-            };
+    return (
+        <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+            <DialogTrigger asChild>
+                {children}
+            </DialogTrigger>
+            <DialogContent className="max-w-[90vw] sm:max-w-md bg-secondary/10 backdrop-blur-3xl border-white/10 p-0 overflow-hidden gap-0 rounded-2xl sm:rounded-lg">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none" />
 
-            return (
-                <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-                    <DialogTrigger asChild>
-                        {children}
-                    </DialogTrigger>
-                    <DialogContent className="max-w-[90vw] sm:max-w-md bg-secondary/10 backdrop-blur-3xl border-white/10 p-0 overflow-hidden gap-0 rounded-2xl sm:rounded-lg">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none" />
+                <div className="relative p-6 sm:p-8">
+                    <DialogHeader className="mb-6 relative z-10">
+                        <DialogTitle className="text-center font-display text-2xl sm:text-3xl uppercase tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
+                            {step === "form" ? t.title[language] : t.successTitle[language]}
+                        </DialogTitle>
+                    </DialogHeader>
 
-                        <AnimatePresence mode="wait">
-                            {step === "form" ? (
-                                <motion.div
-                                    key="form"
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: -20 }}
-                                    className="p-6 sm:p-8 relative"
+                    <AnimatePresence mode="wait">
+                        {step === "form" ? (
+                            <motion.form
+                                key="form"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 20 }}
+                                onSubmit={handleSubmit}
+                                className="space-y-4 relative z-10"
+                            >
+                                <div className="space-y-2">
+                                    <label className={`text-xs font-medium text-muted-foreground uppercase tracking-wider flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                        <User className="w-3 h-3" />
+                                        {t.nameLabel[language]}
+                                    </label>
+                                    <Input
+                                        required
+                                        type="text"
+                                        value={formData.name}
+                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                        className={`bg-white/5 border-white/10 text-foreground focus:border-primary/50 transition-all ${isRTL ? 'text-right' : ''}`}
+                                        placeholder={language === 'en' ? "Your Name" : "الاسم ديالك"}
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className={`text-xs font-medium text-muted-foreground uppercase tracking-wider flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                        <Mail className="w-3 h-3" />
+                                        {t.emailLabel[language]}
+                                    </label>
+                                    <Input
+                                        required
+                                        type="email"
+                                        value={formData.email}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        className={`bg-white/5 border-white/10 text-foreground focus:border-primary/50 transition-all ${isRTL ? 'text-right' : ''}`}
+                                        placeholder="name@example.com"
+                                    />
+                                </div>
+                                <Button
+                                    type="submit"
+                                    disabled={isLoading}
+                                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold uppercase tracking-widest py-6 group"
                                 >
-                                    <DialogHeader className="mb-6 space-y-3">
-                                        <DialogTitle className="text-center font-display text-2xl sm:text-3xl uppercase tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
-                                            {t.title[language]}
-                                        </DialogTitle>
-                                        <p className="text-center text-muted-foreground text-sm leading-relaxed max-w-[95%] sm:max-w-[85%] mx-auto">
-                                            {t.subtitle[language]}
-                                        </p>
-                                    </DialogHeader>
-
-                                    <form onSubmit={handleSubmit} className="space-y-4">
-                                        <div className="space-y-2">
-                                            <div className="relative">
-                                                <User className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground ${isRTL ? 'right-3' : 'left-3'}`} />
-                                                <Input
-                                                    placeholder={t.nameLabel[language]}
-                                                    required
-                                                    value={formData.name}
-                                                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                                                    className={`h-12 bg-background/50 border-white/10 focus:border-primary/50 transition-all ${isRTL ? 'pr-10 text-right' : 'pl-10'}`}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="space-y-2">
-                                            <div className="relative">
-                                                <Mail className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground ${isRTL ? 'right-3' : 'left-3'}`} />
-                                                <Input
-                                                    type="email"
-                                                    placeholder={t.emailLabel[language]}
-                                                    required
-                                                    value={formData.email}
-                                                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                                                    className={`h-12 bg-background/50 border-white/10 focus:border-primary/50 transition-all ${isRTL ? 'pr-10 text-right' : 'pl-10'}`}
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <Button
-                                            type="submit"
-                                            disabled={isLoading}
-                                            className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-sm transition-all shadow-lg shadow-primary/20"
-                                        >
-                                            {isLoading ? (
-                                                <span className="flex items-center gap-2">
-                                                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                                </span>
-                                            ) : (
-                                                <span className="flex items-center gap-2">
-                                                    {t.submit[language]} <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
-                                                </span>
-                                            )}
-                                        </Button>
-
-                                        <p className="text-[10px] text-center text-muted-foreground/60 flex items-center justify-center gap-1.5 pt-2">
-                                            <Lock className="w-3 h-3" />
-                                            {t.privacy[language]}
-                                        </p>
-                                    </form>
-                                </motion.div>
-                            ) : (
-                                <motion.div
-                                    key="success"
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    className="p-8 sm:p-12 flex flex-col items-center justify-center text-center space-y-4"
+                                    {isLoading ? (
+                                        <span className="flex items-center gap-2">
+                                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                            {t.submitting[language]}
+                                        </span>
+                                    ) : (
+                                        <span className="flex items-center gap-2">
+                                            {t.submit[language]}
+                                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        </span>
+                                    )}
+                                </Button>
+                                <div className="flex items-center justify-center gap-2 text-[10px] text-muted-foreground/50 uppercase tracking-widest">
+                                    <Lock className="w-3 h-3" />
+                                    {t.privacy[language]}
+                                </div>
+                            </motion.form>
+                        ) : (
+                            <motion.div
+                                key="success"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="text-center py-4 relative z-10"
+                            >
+                                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/50">
+                                    <CheckCircle className="w-8 h-8 text-green-500" />
+                                </div>
+                                <p className="text-muted-foreground mb-6 leading-relaxed">
+                                    {t.successDesc[language]}
+                                </p>
+                                <Button
+                                    onClick={() => setIsOpen(false)}
+                                    variant="outline"
+                                    className="w-full border-white/10 hover:bg-white/5"
                                 >
-                                    <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mb-2">
-                                        <CheckCircle className="w-8 h-8 text-green-500" />
-                                    </div>
-                                    <h3 className="font-display text-2xl uppercase tracking-tight text-white">
-                                        {t.successTitle[language]}
-                                    </h3>
-                                    <p className="text-muted-foreground text-sm max-w-[200px]">
-                                        {t.successDesc[language]}
-                                    </p>
-                                    <Button
-                                        variant="outline"
-                                        onClick={() => setIsOpen(false)}
-                                        className="mt-4 border-white/10 hover:bg-white/5"
-                                    >
-                                        Close
-                                    </Button>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </DialogContent>
-                </Dialog>
-            );
-        };
+                                    {language === "en" ? "Close" : "سد النافذة"}
+                                </Button>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            </DialogContent>
+        </Dialog>
+    );
+};
 
-        export default EmailCaptureModal;
+export default EmailCaptureModal;

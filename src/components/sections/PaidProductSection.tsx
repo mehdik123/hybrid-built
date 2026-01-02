@@ -52,16 +52,6 @@ const PaidProductSection = () => {
                                     {t.originalPrice[language]}
                                 </div>
                             </div>
-
-                            <div className="absolute top-4 left-4 right-4 flex justify-between">
-                                <div className="bg-red-600 text-white px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-2 animate-pulse uppercase tracking-tighter">
-                                    <Clock className="w-3 h-3" />
-                                    {t.limitedTime[language]}
-                                </div>
-                                <div className="bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter">
-                                    {t.discountText[language]}
-                                </div>
-                            </div>
                         </div>
 
                         {/* Content Side */}

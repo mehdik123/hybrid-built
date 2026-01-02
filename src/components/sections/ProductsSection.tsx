@@ -3,7 +3,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Gift, Zap, Check, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import EmailCaptureModal from "@/components/EmailCaptureModal";
 import PaidProductInfoModal from "@/components/PaidProductInfoModal";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
@@ -84,11 +83,11 @@ const ProductsSection = () => {
                   </ul>
                 </div>
 
-                <EmailCaptureModal source="free_guide">
+                <a href="https://gainz-frequency-finder.lovable.app" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="lg" className="w-full border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground font-semibold text-lg cursor-pointer">
                     {t.joinWaitlist[language]}
                   </Button>
-                </EmailCaptureModal>
+                </a>
               </div>
             </div>
           </motion.div>
@@ -113,7 +112,7 @@ const ProductsSection = () => {
                 <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} flex flex-col items-end gap-2`}>
                   <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg scale-110">
                     <Zap className="w-5 h-5" />
-                    <span>$15 / 150 درهم</span>
+                    <span>$20 / 199 درهم</span>
                   </div>
                   <div className="bg-white/10 backdrop-blur-md text-white/60 px-3 py-1 rounded-full text-sm font-medium line-through">
                     {t.originalPrice[language]}

@@ -12,10 +12,12 @@ import FAQSection from "@/components/sections/FAQSection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
 import Footer from "@/components/sections/Footer";
 import StickyApplyButton from "@/components/StickyApplyButton";
+import LanguageSelectorModal from "@/components/LanguageSelectorModal";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
+      <LanguageSelectorModal />
       <Header />
       <HeroSection />
       <AboutSection />
