@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Gift, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import EmailCaptureModal from "@/components/EmailCaptureModal";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 
@@ -71,13 +72,13 @@ const LeadMagnetSection = () => {
                                 </ul>
                             </div>
 
-                            <a href={freeDownloadLink} target="_blank" rel="noopener noreferrer" className="block">
-                                <Button size="xxl" className="w-full bg-accent hover:bg-accent/80 text-accent-foreground font-black text-lg uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-accent/20">
-                                    {t.freeButton[language]}
+                            <EmailCaptureModal source="free_guide">
+                                <Button size="xxl" className="w-full bg-accent hover:bg-accent/80 text-accent-foreground font-black text-lg uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-accent/20 cursor-pointer">
+                                    {t.joinWaitlist[language]}
                                 </Button>
-                            </a>
+                            </EmailCaptureModal>
                             <p className="text-center text-muted-foreground text-sm mt-4 italic">
-                                {language === 'en' ? "Instant access - No email walls." : "وصول فوري - بدون تسجيل إيميل."}
+                                {language === 'en' ? "Join the list - Limited spots." : "انضم للقائمة - أماكن محدودة."}
                             </p>
                         </div>
                     </motion.div>

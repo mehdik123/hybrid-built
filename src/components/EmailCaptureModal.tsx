@@ -30,15 +30,36 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
         e.preventDefault();
         setIsLoading(true);
 
-        // TODO: Replace with actual Beehiiv submission logic
-        // This is a simulation for now
-        setTimeout(() => {
-            setIsLoading(false);
-            setStep("success");
+        try {
+            const response = await fetch("https://formspree.io/f/REPLACE_WITH_FORM_ID", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    source: source
+                })
+            });
 
-            // Reset after showing success for a few seconds if you want
-            // setTimeout(() => setIsOpen(false), 3000);
-        }, 1500);
+            if (response.ok) {
+                // Success
+                setIsLoading(false);
+                setStep("success");
+
+                // Waitlist mode: No auto-download
+                // Just show success message
+            } else {
+                // Error handling could go here
+                setIsLoading(false);
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            setIsLoading(false);
+            alert("Connection error. Please check your internet.");
+        }
     };
 
     const handleOpenChange = (open: boolean) => {
@@ -54,7 +75,7 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
             <DialogTrigger asChild>
                 {children}
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md bg-secondary/10 backdrop-blur-3xl border-white/10 p-0 overflow-hidden gap-0">
+            <DialogContent className="max-w-[90vw] sm:max-w-md bg-secondary/10 backdrop-blur-3xl border-white/10 p-0 overflow-hidden gap-0 rounded-2xl sm:rounded-lg">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none" />
 
                 <AnimatePresence mode="wait">
@@ -64,13 +85,13 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -20 }}
-                            className="p-8 relative"
+                            className="p-6 sm:p-8 relative"
                         >
                             <DialogHeader className="mb-6 space-y-3">
-                                <DialogTitle className="text-center font-display text-3xl uppercase tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
+                                <DialogTitle className="text-center font-display text-2xl sm:text-3xl uppercase tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
                                     {t.title[language]}
                                 </DialogTitle>
-                                <p className="text-center text-muted-foreground text-sm leading-relaxed max-w-[85%] mx-auto">
+                                <p className="text-center text-muted-foreground text-sm leading-relaxed max-w-[95%] sm:max-w-[85%] mx-auto">
                                     {t.subtitle[language]}
                                 </p>
                             </DialogHeader>
@@ -129,7 +150,7 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
                             key="success"
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="p-12 flex flex-col items-center justify-center text-center space-y-4"
+                            className="p-8 sm:p-12 flex flex-col items-center justify-center text-center space-y-4"
                         >
                             <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mb-2">
                                 <CheckCircle className="w-8 h-8 text-green-500" />

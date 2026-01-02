@@ -368,10 +368,10 @@ export const translations = {
     subtitle: { en: "Get the free guide and exclusive tips delivered to your inbox.", ar: "احصل على الدليل المجاني ونصائح حصرية مباشرة في بريدك." },
     nameLabel: { en: "First Name", ar: "الاسم الأول" },
     emailLabel: { en: "Email Address", ar: "البريد الإلكتروني" },
-    submit: { en: "SEND ME THE GUIDE", ar: "أرسل لي الدليل" },
-    submitting: { en: "SENDING...", ar: "جاري الإرسال..." },
-    successTitle: { en: "YOU'RE IN!", ar: "تم الاشتراك!" },
-    successDesc: { en: "Check your email. Good things are coming.", ar: "تفقد بريدك الإلكتروني. القادم أفضل." },
+    submit: { en: "JOIN WAITLIST", ar: "انضم للقائمة" },
+    submitting: { en: "JOINING...", ar: "جاري الانضمام..." },
+    successTitle: { en: "YOU'RE ON THE LIST!", ar: "تم تسجيلك!" },
+    successDesc: { en: "We'll email you as soon as it's ready.", ar: "سنرسل لك بريداً إلكترونياً فور جاهزيته." },
     privacy: { en: "No spam. Unsubscribe anytime.", ar: "لا رسائل مزعجة. إلغاء الاشتراك في أي وقت." },
   }
 };

@@ -85,7 +85,7 @@ const ProductsSection = () => {
 
                 <EmailCaptureModal source="free_guide">
                   <Button variant="outline" size="lg" className="w-full border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground font-semibold text-lg cursor-pointer">
-                    {t.freeButton[language]}
+                    {t.joinWaitlist[language]}
                   </Button>
                 </EmailCaptureModal>
               </div>
@@ -99,7 +99,7 @@ const ProductsSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="group"
           >
-            <div className={`bg-gradient-to-br from-primary/10 via-secondary to-background border-2 border-primary/50 rounded-3xl overflow-hidden hover:border-primary hover:shadow-2xl hover:shadow-primary/30 transition-all duration-500 relative ${isRTL ? 'text-right' : ''}`}>
+            <div className={`bg-gradient-to-br from-primary/10 via-secondary to-background border-2 border-primary/50 rounded-3xl overflow-hidden grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500 relative ${isRTL ? 'text-right' : ''}`}>
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary to-primary opacity-20 blur-xl group-hover:opacity-30 transition-opacity -z-10" />
 
@@ -108,6 +108,13 @@ const ProductsSection = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Zap className="w-24 h-24 text-primary/50" />
                 </div>
+                {/* Coming Soon Badge Overlay */}
+                <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-20">
+                  <span className="text-white font-black text-2xl md:text-3xl uppercase tracking-widest border-4 border-white px-6 py-4 rotate-[-12deg]">
+                    {t.comingSoon[language]}
+                  </span>
+                </div>
+
                 <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} flex flex-col items-end gap-2`}>
                   <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg scale-110">
                     <Zap className="w-5 h-5" />
@@ -145,11 +152,9 @@ const ProductsSection = () => {
                   </ul>
                 </div>
 
-                <a href={paidProductLink} target="_blank" rel="noopener noreferrer" className="block">
-                  <Button variant="hero" size="lg" className="w-full font-semibold text-lg">
-                    {t.paidButton[language]}
-                  </Button>
-                </a>
+                <Button variant="hero" size="lg" disabled className="w-full font-semibold text-lg opacity-50 cursor-not-allowed">
+                  {t.comingSoon[language]}
+                </Button>
               </div>
             </div>
           </motion.div>
