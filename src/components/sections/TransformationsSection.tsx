@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { Quote, ChevronLeft, ChevronRight, Grid } from "lucide-react";
+import { ChevronLeft, ChevronRight, Grid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -143,18 +143,6 @@ const TransformationsSection = () => {
                         </div>
                       </div>
                     </div>
-
-                    {/* Testimonial Content */}
-                    <div className={`p-8 md:p-10 ${isRTL ? 'text-right' : ''}`}>
-                      <Quote className={`w-12 h-12 text-primary/20 mb-6 ${isRTL ? 'mr-0 ml-auto scale-x-[-1]' : ''}`} />
-                      <p className="text-foreground text-xl md:text-2xl italic mb-8 leading-relaxed font-medium">
-                        "{item.quote[language]}"
-                      </p>
-                      <div className="flex items-center gap-4">
-                        <div className="h-0.5 w-12 bg-primary" />
-                        <p className="text-primary font-black uppercase tracking-widest md:text-lg">— {item.name[language]}</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
               ))}
@@ -217,18 +205,6 @@ const TransformationsSection = () => {
                                 <span className="text-white text-[10px] font-black tracking-widest uppercase">{t.after[language]}</span>
                               </div>
                             </div>
-                          </div>
-                        </div>
-
-                        {/* Testimonial Content */}
-                        <div className={`p-6 ${isRTL ? 'text-right' : ''}`}>
-                          <Quote className={`w-8 h-8 text-primary/20 mb-4 ${isRTL ? 'mr-0 ml-auto scale-x-[-1]' : ''}`} />
-                          <p className="text-foreground text-lg italic mb-6 leading-relaxed font-medium line-clamp-4">
-                            "{item.quote[language]}"
-                          </p>
-                          <div className="flex items-center gap-3">
-                            <div className="h-0.5 w-8 bg-primary" />
-                            <p className="text-primary font-black uppercase tracking-widest text-sm">— {item.name[language]}</p>
                           </div>
                         </div>
                       </div>

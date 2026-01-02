@@ -375,6 +375,29 @@ export const translations = {
     successTitle: { en: "YOU'RE ON THE LIST!", ar: "تم تسجيلك!" },
     successDesc: { en: "We'll email you as soon as it's ready.", ar: "سنرسل لك بريداً إلكترونياً فور جاهزيته." },
     privacy: { en: "No spam. Unsubscribe anytime.", ar: "لا رسائل مزعجة. إلغاء الاشتراك في أي وقت." },
+  },
+
+  // Paid Product Info Modal
+  paidProductModal: {
+    title: { en: "8-WEEK HYBRID BLUEPRINT", ar: "مخطط الـ 8 أسابيع الهجين" },
+    subtitle: { en: "Everything you need to build muscle, strength, and aesthetics.", ar: "كل ما تحتاجه لبناء العضلات والقوة والجمال." },
+    oneTimePayment: { en: "ONE-TIME PAYMENT", ar: "دفعة واحدة" },
+    whatYouGet: { en: "WHAT YOU GET:", ar: "ماذا ستحصل:" },
+    features: [
+      { en: "8-Week Progressive Hybrid Training Program", ar: "برنامج تدريب هجين تصاعدي لمدة 8 أسابيع" },
+      { en: "Complete Nutrition & Macro Tracking System", ar: "نظام غذائي كامل وتتبع الماكروز" },
+      { en: "4 Customizable Meal Plan Options", ar: "4 خيارات لخطط وجبات قابلة للتخصيص" },
+      { en: "Exercise Library with Video Demonstrations", ar: "مكتبة تمارين مع فيديوهات توضيحية" },
+      { en: "Recovery & Mobility Protocols", ar: "بروتوكولات التعافي والمرونة" },
+      { en: "Lifetime Access - No Subscription", ar: "وصول مدى الحياة - بدون اشتراك" }
+    ],
+    howToUse: { en: "HOW TO USE:", ar: "كيفية الاستخدام:" },
+    howToUseDesc: { en: "This is a complete 8-week program delivered as a PDF. Follow the workouts, track your macros, and watch your body transform. Perfect for those who want to train independently with a proven system.", ar: "هذا برنامج كامل لمدة 8 أسابيع يتم تسليمه كملف PDF. اتبع التمارين، تتبع الماكروز الخاصة بك، وشاهد جسمك يتحول. مثالي لمن يريد التدريب بشكل مستقل مع نظام مثبت." },
+    howToBuy: { en: "HOW TO GET IT:", ar: "كيفية الحصول عليه:" },
+    step1: { en: "Click the button below to DM me 'HYBRID PROGRAM' on Instagram", ar: "انقر على الزر أدناه لمراسلتي 'HYBRID PROGRAM' على انستغرام" },
+    step2: { en: "I'll send you payment details ($15 USD or 150 MAD)", ar: "سأرسل لك تفاصيل الدفع (15$ أو 150 درهم)" },
+    step3: { en: "Once paid, you'll receive the complete program instantly", ar: "بمجرد الدفع، ستحصل على البرنامج الكامل فوراً" },
+    dmButton: { en: "DM ME 'HYBRID PROGRAM'", ar: "راسلني 'HYBRID PROGRAM'" }
   }
 };
 
