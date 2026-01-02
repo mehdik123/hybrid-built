@@ -274,6 +274,8 @@ export const translations = {
     freeTitle: { en: "THE HYBRID STARTER GUIDE", ar: "دليل البداية الهجين" },
     freeDescription: { en: "The exact blueprint to start combining bodybuilding and calisthenics today. Instant access.", ar: "المخطط الدقيق لبدء الجمع بين كمال الأجسام والجمباز اليوم. وصول فوري." },
     freeButton: { en: "Get Free Access", ar: "احصل على وصول مجاني" },
+    joinWaitlist: { en: "JOIN WAITLIST", ar: "انضم لقائمة الانتظار" },
+    comingSoon: { en: "COMING SOON", ar: "قريباً" },
     paidTitle: { en: "THE 8-WEEK HYBRID BLUEPRINT", ar: "مخطط الـ 8 أسابيع الهجين" },
     paidDescription: { en: "Complete system for those who want to start solo. Every workout, every meal, no guessing.", ar: "نظام كامل لمن يريد البدء بمفرده. كل تمرين، كل وجبة، بدون تخمين." },
     includes: { en: "What's Inside:", ar: "ماذا يوجد بالداخل:" },
