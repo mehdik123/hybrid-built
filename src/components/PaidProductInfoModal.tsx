@@ -46,9 +46,9 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                         {/* Pricing */}
                         <div className="bg-primary/10 border border-primary/20 rounded-xl p-6 mb-6">
                             <div className="flex items-center justify-center gap-4 mb-2">
-                                <span className="text-4xl font-black text-primary">$15</span>
+                                <span className="text-4xl font-black text-primary">$20</span>
                                 <span className="text-2xl text-muted-foreground">/</span>
-                                <span className="text-4xl font-black text-primary">150 MAD</span>
+                                <span className="text-4xl font-black text-primary">199 MAD</span>
                             </div>
                             <p className="text-center text-xs text-muted-foreground uppercase tracking-widest">
                                 {t.oneTimePayment[language]}

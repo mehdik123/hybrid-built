@@ -113,7 +113,7 @@ const ProductsSection = () => {
                 <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} flex flex-col items-end gap-2`}>
                   <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg scale-110">
                     <Zap className="w-5 h-5" />
-                    <span>$15 / 150 MAD</span>
+                    <span>$15 / 150 درهم</span>
                   </div>
                   <div className="bg-white/10 backdrop-blur-md text-white/60 px-3 py-1 rounded-full text-sm font-medium line-through">
                     {t.originalPrice[language]}

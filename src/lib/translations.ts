@@ -121,90 +121,50 @@ export const translations = {
     dmInstructions: { en: "DM me on Instagram to see if you qualify:", ar: "راسلني على انستغرام لنرى إذا كنت مؤهلاً:" },
     dmItem1: { en: "Tell me your goal (Muscle, Fat Loss, Strength)", ar: "أخبرني بهدفك (عضلات، دهون، قوة)" },
     dmItem2: { en: "Tell me your experience level", ar: "أخبرني بمستوى خبرتك" },
-    dmItem3: { en: "Tell me when you are ready to start", ar: "أخبرني متى ستكون مستعداً للبدء" },
-    dmResponse: { en: "I respond personally to every message.", ar: "أرد شخصياً على كل رسالة بنفسي." },
+    title1: { en: "ELITE 1-ON-1", ar: "تدريب خاص" },
+    title2: { en: "COACHING", ar: "1-ON-1" },
+    subtitle: { en: "Direct mentorship for guaranteed results.", ar: "متابعة مباشرة لضمان النتائج." },
+    description: { en: "Work directly with us to build a custom program tailored to your specific genetics, schedule, and goals.", ar: "خدم معانا مباشرة باش نقادو ليك برنامج مخصص لجيناتك، وقتك، وأهدافك." },
+    benefits: [
+      { en: "Custom Workout Programming", ar: "برنامج تدريبي مخصص" },
+      { en: "Weekly Check-ins & Adjustments", ar: "متابعة أسبوعية وتعديلات" },
+      { en: "Form Review & Analysis", ar: "تصحيح الأداء وتحليل التمارين" },
+      { en: "24/7 WhatsApp Support", ar: "دعم 24/7 عبر واتساب" }
+    ],
+    cta: { en: "APPLY FOR COACHING", ar: "قدم طلب التدريب" },
+    spots: { en: "Only 2 spots remaining this month", ar: "باقي غير 2 بلايص هاد الشهر" }
   },
 
   // Transformations Section
   transformations: {
-    title1: { en: "CLIENT", ar: "تحولات" },
-    title2: { en: "TRANSFORMATIONS", ar: "العملاء" },
-    subtitle: { en: "Real People. Real Results.", ar: "أشخاص حقيقيون. نتائج حقيقية." },
+    title1: { en: "REAL", ar: "نتائج" },
+    title2: { en: "RESULTS", ar: "حقيقية" },
+    subtitle: { en: "Join the ranks of the Unbreakables.", ar: "نضم لصفوف الـ Unbreakables." },
     before: { en: "BEFORE", ar: "قبل" },
     after: { en: "AFTER", ar: "بعد" },
-    cta: { en: "I Want Results Like This", ar: "أريد نتائج مثل هذه" },
     testimonials: [
       {
-        quote: {
-          en: "Incredible progress in record time. The hybrid method completely changed my approach to training.",
-          ar: "تقدم مذهل في وقت قياسي. النظام الهجين غير طريقة تدريبي تماماً."
-        },
-        name: { en: "Client, 28", ar: "عميل، 28" }
+        name: { en: "ALEX", ar: "يوسف" },
+        quote: { en: "I gained 10lbs of muscle while learning to muscle-up. The hybrid approach is a game changer.", ar: "زدت 5 كيلو ديال العضلات وتعلمت الماصل-أب. هاد المنهجية دـ Hybrid بدلات ليا كلشي." },
       },
       {
-        quote: {
-          en: "Lost 15 lbs and built visible abs in 12 weeks. Best investment I've made.",
-          ar: "خسرت 15 رطل وبنيت عضلات بطن واضحة في 12 أسبوع. أفضل استثمار قمت به."
-        },
-        name: { en: "Youssef, 28", ar: "يوسف، 28" }
+        name: { en: "SARAH", ar: "سارة" },
+        quote: { en: "Finally a program that balances strength and aesthetics. Best shape of my life.", ar: "أخيراً لقيت برنامج كيجمع بين القوة والشكل. أحسن فورمة وصلت ليها فحياتي." },
       },
       {
-        quote: {
-          en: "Added 50 lbs to my bench and 30 lbs to my squat. My back is finally thick.",
-          ar: "أضفت 50 رطل لتمرين الصدر و30 رطل للسكوات. ظهري أخيراً أصبح ضخم."
-        },
-        name: { en: "Amine, 24", ar: "أمين، 24" }
+        name: { en: "MOHAMED", ar: "محمد" },
+        quote: { en: "From skinny to shredded power. The nutrition guide made it simple.", ar: "من ضعيف لواحد صحيح ومفصل. دليل التغذية سهل عليا كلشي." },
       },
       {
-        quote: {
-          en: "Learned how to train hybrid. Now I'm strong AND aesthetic.",
-          ar: "تعلمت كيف أتدرب بشكل هجين. الآن أنا قوي وجمالي."
-        },
-        name: { en: "Mehdi, 31", ar: "مهدي، 31" }
+        name: { en: "KARIM", ar: "كريم" },
+        quote: { en: "My squat went up 40kg and I got my first front lever. Unbelievable.", ar: "السكوات ديالي زادت بـ 40 كيلو وجبت أول فرونت ليفر. شي حاجة خيالية." },
       },
       {
-        quote: {
-          en: "Complete body recomposition. Lost body fat while gaining serious strength.",
-          ar: "إعادة تكوين كاملة للجسم. فقدت دهون الجسم مع اكتساب قوة مذهلة."
-        },
-        name: { en: "Omar, 26", ar: "عمر، 26" }
-      },
-      {
-        quote: {
-          en: "Transformed my physique and mindset. The Unbreakable Team system really works.",
-          ar: "حولت جسمي وعقليتي. نظام فريق Unbreakable يعمل حقاً."
-        },
-        name: { en: "Saad, 29", ar: "سعد، 29" }
-      },
-      {
-        quote: {
-          en: "Achieved the perfect balance of size and definition. The program is a game changer.",
-          ar: "حققت التوازن المثالي بين الضخامة والتحديد. البرنامج مغير للعبة."
-        },
-        name: { en: "Client, 27", ar: "عميل، 27" }
-      },
-      {
-        quote: {
-          en: "The results speak for themselves. Stronger, leaner, and more confident.",
-          ar: "النتائج تتحدث عن نفسها. أقوى، أنحف، وأكثر ثقة."
-        },
-        name: { en: "Client, 30", ar: "عميل، 30" }
-      },
-      {
-        quote: {
-          en: "Another amazing transformation. Hard work pays off.",
-          ar: "تحول مذهل آخر. العمل الجاد يؤتي ثماره."
-        },
-        name: { en: "Client, 26", ar: "عميل، 26" }
-      },
-      {
-        quote: {
-          en: "Consistency is key. 12 weeks of dedication.",
-          ar: "الاستمرارية هي المفتاح. 12 أسبوعاً من الالتزام."
-        },
-        name: { en: "Client, 29", ar: "عميل، 29" }
+        name: { en: "OMAR", ar: "عمر" },
+        quote: { en: "Training used to be boring. Now I look forward to every session.", ar: "لانترينمان كان ممل. دابا كنستنى كل حصة بفارغ الصبر." },
       }
-    ]
+    ],
+    cta: { en: "BECOME THE NEXT SUCCESS STORY", ar: "كون نتا قصة النجاح الجاية" }
   },
 
   // FAQ Section
@@ -269,26 +229,26 @@ export const translations = {
   products: {
     title1: { en: "START THE", ar: "ابدأ" },
     title2: { en: "JOURNEY", ar: "الرحلة" },
-    subtitle: { en: "High-value tools for the serious hybrid athlete.", ar: "أدوات عالية القيمة للرياضي الهجين الجاد." },
-    free: { en: "STRATEGIC LEAD MAGNET", ar: "دليل استراتيجي" },
-    freeTitle: { en: "THE HYBRID STARTER GUIDE", ar: "دليل البداية الهجين" },
-    freeDescription: { en: "The exact blueprint to start combining bodybuilding and calisthenics today. Instant access.", ar: "المخطط الدقيق لبدء الجمع بين كمال الأجسام والجمباز اليوم. وصول فوري." },
-    freeButton: { en: "Get Free Access", ar: "احصل على وصول مجاني" },
-    joinWaitlist: { en: "JOIN WAITLIST", ar: "انضم لقائمة الانتظار" },
+    subtitle: { en: "High-value tools for the serious hybrid athlete.", ar: "أدوات ناضية للرياضي الـ Hybrid." },
+    free: { en: "STRATEGIC LEAD MAGNET", ar: "فابور" },
+    freeTitle: { en: "THE HYBRID SPLIT IDENTIFIER", ar: "أداة تحديد الـ Split المناسب ليك" },
+    freeDescription: { en: "Stop guessing. Find the perfect Hybrid training split for your schedule and goals in 2 minutes.", ar: "باراكا من التخربيق. لقى الـ Split دـ Hybrid المثالي لوقتك وأهدافك فـ جوج دقايق." },
+    freeButton: { en: "Get Free Access", ar: "خودها فابور" },
+    joinWaitlist: { en: "GET FREE ACCESS", ar: "صيفط ليا الأداة" },
     comingSoon: { en: "COMING SOON", ar: "قريباً" },
-    paidTitle: { en: "THE 8-WEEK HYBRID BLUEPRINT", ar: "مخطط الـ 8 أسابيع الهجين" },
-    paidDescription: { en: "Complete system for those who want to start solo. Every workout, every meal, no guessing.", ar: "نظام كامل لمن يريد البدء بمفرده. كل تمرين، كل وجبة، بدون تخمين." },
-    includes: { en: "What's Inside:", ar: "ماذا يوجد بالداخل:" },
+    paidTitle: { en: "THE 8-WEEK HYBRID BLUEPRINT", ar: "الـ Blueprint ديال 8 سيمانات" },
+    paidDescription: { en: "Complete system for those who want to start solo. Every workout, every meal, no guessing.", ar: "نظام متكامل للي باغي يبدا بوحدو. كل تمرين، كل وجبة، بلا كثرة التفكير." },
+    includes: { en: "What's Inside:", ar: "شنو كاين لداخل:" },
     features: [
-      { en: "Progressive Hybrid Training Program", ar: "برنامج تدريب هجين تصاعدي" },
-      { en: "Full Nutrition & Macro System", ar: "نظام غذائي كامل وتتبع الماكروز" },
-      { en: "4 Meal Plan Options", ar: "4 خيارات لخطط الوجبات" },
-      { en: "Exercise Library Access", ar: "الوصول لمكتبة التمارين" }
+      { en: "Progressive Hybrid Training Program", ar: "برنامج تدريبي Hybrid غادي وكيصعاب" },
+      { en: "Full Nutrition & Macro System", ar: "نظام غذائي كامل وحساب الماكروز" },
+      { en: "4 Meal Plan Options", ar: "4  ديال لبلانات دـ الماكلة" },
+      { en: "Exercise Library Access", ar: "مكتبة الفيديوهات ديال التمارين" }
     ],
-    paidButton: { en: "Start Solo - $15", ar: "ابدأ بمفردك - $15" },
+    paidButton: { en: "Start Solo - $20", ar: "ابدأ بوحدك - 20$" },
     originalPrice: { en: "$25", ar: "25$" },
-    limitedTime: { en: "LIMITED TIME PRICE", ar: "سعر لفترة محدودة" },
-    discountText: { en: "INSTANT DOWNLOAD", ar: "تحميل فوري" },
+    limitedTime: { en: "LIMITED TIME PRICE", ar: "تمن لفترة محدودة" },
+    discountText: { en: "INSTANT DOWNLOAD", ar: "تيليشارجي دابا" },
   },
 
   // Final CTA Section
@@ -380,24 +340,24 @@ export const translations = {
   // Paid Product Info Modal
   paidProductModal: {
     title: { en: "8-WEEK HYBRID BLUEPRINT", ar: "مخطط الـ 8 أسابيع الهجين" },
-    subtitle: { en: "Everything you need to build muscle, strength, and aesthetics.", ar: "كل ما تحتاجه لبناء العضلات والقوة والجمال." },
-    oneTimePayment: { en: "ONE-TIME PAYMENT", ar: "دفعة واحدة" },
-    whatYouGet: { en: "WHAT YOU GET:", ar: "ماذا ستحصل:" },
+    subtitle: { en: "Everything you need to build muscle, strength, and aesthetics.", ar: "كل ما تحتاجه لبناء العضلات، القوة، والفورمة والجمالية." },
+    oneTimePayment: { en: "ONE-TIME PAYMENT", ar: "خلص مرة وحدة وتهنا" },
+    whatYouGet: { en: "WHAT YOU GET:", ar: "شنو غاتستافد:" },
     features: [
-      { en: "8-Week Progressive Hybrid Training Program", ar: "برنامج تدريب هجين تصاعدي لمدة 8 أسابيع" },
-      { en: "Complete Nutrition & Macro Tracking System", ar: "نظام غذائي كامل وتتبع الماكروز" },
-      { en: "4 Customizable Meal Plan Options", ar: "4 خيارات لخطط وجبات قابلة للتخصيص" },
-      { en: "Exercise Library with Video Demonstrations", ar: "مكتبة تمارين مع فيديوهات توضيحية" },
-      { en: "Recovery & Mobility Protocols", ar: "بروتوكولات التعافي والمرونة" },
-      { en: "Lifetime Access - No Subscription", ar: "وصول مدى الحياة - بدون اشتراك" }
+      { en: "8-Week Progressive Hybrid Training Program", ar: "برنامج تدريبي هجين متكامل لمدة 8 سيمانات" },
+      { en: "Complete Nutrition & Macro Tracking System", ar: "نظام غذائي شامل مع حساب الماكروز" },
+      { en: "4 Customizable Meal Plan Options", ar: "4 اختيارات ديال الوجبات تقدر تبدل بينهم" },
+      { en: "Exercise Library with Video Demonstrations", ar: "مكتبة فيها فيديوهات كتشرح كل تمرين" },
+      { en: "Recovery & Mobility Protocols", ar: "نصائح وتمارين للريكوفري والمرونة" },
+      { en: "Lifetime Access - No Subscription", ar: "البرنامج ديالك مدى الحياة، بلا اشتراك شهري" }
     ],
-    howToUse: { en: "HOW TO USE:", ar: "كيفية الاستخدام:" },
-    howToUseDesc: { en: "This is a complete 8-week program delivered as a PDF. Follow the workouts, track your macros, and watch your body transform. Perfect for those who want to train independently with a proven system.", ar: "هذا برنامج كامل لمدة 8 أسابيع يتم تسليمه كملف PDF. اتبع التمارين، تتبع الماكروز الخاصة بك، وشاهد جسمك يتحول. مثالي لمن يريد التدريب بشكل مستقل مع نظام مثبت." },
-    howToBuy: { en: "HOW TO GET IT:", ar: "كيفية الحصول عليه:" },
-    step1: { en: "Click the button below to DM me 'HYBRID PROGRAM' on Instagram", ar: "انقر على الزر أدناه لمراسلتي 'HYBRID PROGRAM' على انستغرام" },
-    step2: { en: "I'll send you payment details ($15 USD or 150 MAD)", ar: "سأرسل لك تفاصيل الدفع (15$ أو 150 درهم)" },
-    step3: { en: "Once paid, you'll receive the complete program instantly", ar: "بمجرد الدفع، ستحصل على البرنامج الكامل فوراً" },
-    dmButton: { en: "DM ME 'HYBRID PROGRAM'", ar: "راسلني 'HYBRID PROGRAM'" }
+    howToUse: { en: "HOW TO USE:", ar: "كيفاش تخدم بيه:" },
+    howToUseDesc: { en: "This is a complete 8-week program delivered as a PDF. Follow the workouts, track your macros, and watch your body transform. Perfect for those who want to train independently with a proven system.", ar: "هذا برنامج كامل لمدة 8 سيمانات كيوصلك على شكل PDF. تبع التمارين، حسب الماكروز ديالك، وشوف جسمك كيفاش غيتبدل. مثالي للناس اللي باغين يترينيو بوحدهم بنظام مجرب وفعال." },
+    howToBuy: { en: "HOW TO GET IT:", ar: "كيفاش تاخدو:" },
+    step1: { en: "Click the button below to DM me 'HYBRID PROGRAM' on Instagram", ar: "كليكي على الزر لتحت وصيفط ليا 'HYBRID PROGRAM' ف انستغرام" },
+    step2: { en: "I'll send you payment details ($15 USD or 150 MAD)", ar: "غانسيفط ليك تفاصيل الدفع (15$ أو 150 درهم)" },
+    step3: { en: "Once paid, you'll receive the complete program instantly", ar: "غير تخلص، كيوصلك البرنامج كامل فالحين" },
+    dmButton: { en: "DM ME 'HYBRID PROGRAM'", ar: "صيفط ليا 'HYBRID PROGRAM'" }
   }
 };
 

@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Zap, Check, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import PaidProductInfoModal from "@/components/PaidProductInfoModal";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 
@@ -42,8 +43,10 @@ const PaidProductSection = () => {
                             </div>
 
                             <div className="mt-8 text-center">
-                                <div className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-black text-3xl shadow-xl mb-2">
-                                    $15
+                                <div className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-black text-3xl shadow-xl mb-2 flex items-center justify-center gap-2">
+                                    <span>$20</span>
+                                    <span className="text-xl opacity-80">/</span>
+                                    <span className="font-sans">199 درهم</span>
                                 </div>
                                 <div className="text-white/40 line-through text-lg">
                                     {t.originalPrice[language]}
@@ -83,11 +86,11 @@ const PaidProductSection = () => {
                                 </ul>
                             </div>
 
-                            <a href={paidProductLink} target="_blank" rel="noopener noreferrer" className="block">
-                                <Button size="xxl" variant="hero" className="w-full font-black text-lg uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/40">
-                                    {t.paidButton[language]}
+                            <PaidProductInfoModal>
+                                <Button size="xxl" variant="hero" className="w-full font-black text-lg uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/40 cursor-pointer">
+                                    {language === 'en' ? 'START SOLO - $20 / 199 DH' : 'ابدأ بمفردك - 20$ / 199 درهم'}
                                 </Button>
-                            </a>
+                            </PaidProductInfoModal>
                             <p className="text-center text-muted-foreground text-xs mt-4 uppercase tracking-widest opacity-50">
                                 {language === 'en' ? "NO SUBSCRIPTION - ONE TIME PAYMENT" : "بدون اشتراك - دفع لمرة واحدة فقط"}
                             </p>
