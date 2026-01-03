@@ -152,6 +152,26 @@ export const translations = {
       {
         name: { en: "OMAR", ar: "عمر" },
         quote: { en: "Training used to be boring. Now I look forward to every session.", ar: "لانترينمان كان ممل. دابا كنستنى كل حصة بفارغ الصبر." },
+      },
+      {
+        name: { en: "ADAM", ar: "أدم" },
+        quote: { en: "The hybrid blueprint literally changed my life. Strength and aesthetics at the same time.", ar: "هاد السيستيم بدل ليا حياتي. القوة والشكل فنفس الوقت." }
+      },
+      {
+        name: { en: "HAJAR", ar: "هاجر" },
+        quote: { en: "Lost 8kg and got stronger than ever. The meal plans are delicious.", ar: "نقصت 8 كيلو وكبرت القوة ديالي. لبلانات دـ الماكلة بنان." }
+      },
+      {
+        name: { en: "YASSINE", ar: "ياسين" },
+        quote: { en: "Increased my bench by 20kg. Unbeatable results.", ar: "زدت 20 كيلو فالبنش برس. نتائج خيالية." }
+      },
+      {
+        name: { en: "LEILA", ar: "ليلى" },
+        quote: { en: "The community and support are amazing. I finally feel confident.", ar: "المجتمع والدعم ناضيين. أخيراً وليت كتحس بالثقة." }
+      },
+      {
+        name: { en: "DRISS", ar: "إدريس" },
+        quote: { en: "From Zero to Hero. Best investment in myself.", ar: "من الزيرو للقمة. أحسن حاجة درتها لراسي." }
       }
     ],
     cta: { en: "BECOME THE NEXT SUCCESS STORY", ar: "كون نتا قصة النجاح الجاية" }
