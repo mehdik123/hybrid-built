@@ -3,6 +3,7 @@ import Footer from "@/components/sections/Footer";
 import LeadMagnetSection from "@/components/sections/LeadMagnetSection";
 import PaidProductSection from "@/components/sections/PaidProductSection";
 import StickyApplyButton from "@/components/StickyApplyButton";
+import LanguageSelectorModal from "@/components/LanguageSelectorModal";
 import { useEffect } from "react";
 
 const Products = () => {
@@ -12,6 +13,7 @@ const Products = () => {
 
     return (
         <main className="min-h-screen bg-background">
+            <LanguageSelectorModal />
             <Header />
             <div className="pt-20">
                 <LeadMagnetSection />
