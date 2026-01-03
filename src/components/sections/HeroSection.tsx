@@ -44,12 +44,13 @@ const HeroSection = () => {
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="none"
           className="w-full h-full object-cover scale-105"
           poster="/hero-placeholder-v2.jpg"
+          onCanPlayThrough={(e) => e.currentTarget.play()}
         >
           <source src="/hero-video.mp4" type="video/mp4" />
-          <img src="/hero-placeholder-v2.jpg" alt="Build The Hybrid Physique" className="w-full h-full object-cover" />
+          <img src="/hero-placeholder-v2.jpg" alt="Build The Hybrid Physique" className="w-full h-full object-cover" loading="eager" />
         </video>
         {/* Multi-layer overlay for depth - stronger on mobile for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-background md:from-black/80 md:via-black/60" />
