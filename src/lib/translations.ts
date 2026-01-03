@@ -9,6 +9,7 @@ export const translations = {
     faq: { en: "FAQ", ar: "الأسئلة" },
     products: { en: "Products", ar: "المنتجات" },
     applyNow: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'" },
+    backToHome: { en: "BACK TO HOME", ar: "الرجوع للرئيسية" },
   },
 
   // Hero Section (Strategic DM Redesign)
@@ -23,6 +24,7 @@ export const translations = {
     cta: { en: "DM ME 'HYBRID' ON IG", ar: "صيفط ليا 'HYBRID' فـ انستغرام" },
     ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "كنجاوب راسي قل من 24 ساعة." },
     scroll: { en: "EXPLORE THE METHOD", ar: "اكتشف النظام" },
+    browsePrograms: { en: "BROWSE PROGRAMS", ar: "شوف البرامج" },
     stats: {
       clients: { en: "400+", ar: "+400" },
       clientsLabel: { en: "TRANSFORMATIONS", ar: "تحول جذري" },
@@ -368,6 +370,16 @@ export const translations = {
     step2: { en: "I'll send you payment details ($20 USD or 199 DH)", ar: "غانسيفط ليك كيفاش تخلص (20$ أو 199 درهم)" },
     step3: { en: "Once paid, you'll receive the complete program instantly", ar: "غير تخلص، كيوصلك البرنامج كامل فالحين" },
     dmButton: { en: "DM ME 'HYBRID PROGRAM'", ar: "صيفط ليا 'HYBRID PROGRAM'" }
+  },
+  // Product Teaser (Home Page)
+  productTeaser: {
+    title: { en: "ELITE PROGRAMS", ar: "برامج احترافية" },
+    subtitle: { en: "Accelerate your results with our proven systems.", ar: "سرّع النتائج ديالك بأنظمة مجربة." },
+    cta: { en: "VIEW ALL PROGRAMS", ar: "شوف كاع البرامج" },
+    blueprintTitle: { en: "8-Week Blueprint", ar: "الـ Blueprint" },
+    blueprintDesc: { en: "Complete solo system.", ar: "سيستيم بوحدك." },
+    freeTitle: { en: "Free Split Finder", ar: "مكتشف الـ Split" },
+    freeDesc: { en: "Find your frequency.", ar: "لقى الريتم ديالك." }
   }
 };
 

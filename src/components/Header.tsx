@@ -64,9 +64,9 @@ const Header = () => {
         <div className="container-tight px-4 md:px-8">
           <div className={`flex items-center justify-between h-16 md:h-20 ${isRTL ? 'flex-row-reverse' : ''}`}>
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 md:gap-3 hover:opacity-80 transition-opacity">
-              <img src="/logo.png" alt="UNBREAKABLES TEAM" className="h-8 md:h-12 w-auto" />
-              <span className="font-display text-lg md:text-2xl text-foreground">
+            <Link to="/" className="flex items-center gap-1.5 sm:gap-2 md:gap-3 hover:opacity-80 transition-opacity">
+              <img src="/logo.png" alt="UNBREAKABLES TEAM" className="h-7 sm:h-8 md:h-12 w-auto" />
+              <span className="font-display text-base sm:text-lg md:text-2xl text-foreground whitespace-nowrap">
                 UNBREAKABLES TEAM
               </span>
             </Link>
@@ -104,26 +104,33 @@ const Header = () => {
             </nav>
 
             {/* Mobile Menu Button, Language & CTA */}
-            <div className={`flex md:hidden items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="mr-1">
-                <Button variant="hero" size="sm" className="px-4 h-9 text-[10px] font-black tracking-tighter bg-primary shadow-lg shadow-primary/20">
+            <div className={`flex md:hidden items-center gap-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <button
+                onClick={() => navigate('/products')}
+                className="bg-accent/10 border border-accent/20 text-accent px-2 sm:px-3 h-8 sm:h-9 rounded-md text-[9px] sm:text-[10px] font-black uppercase tracking-tighter hover:bg-accent/20 transition-all whitespace-nowrap"
+              >
+                {translations.nav.products[language]}
+              </button>
+              <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="mr-0.5 sm:mr-1">
+                <Button variant="hero" size="sm" className="px-2 sm:px-4 h-8 sm:h-9 text-[9px] sm:text-[10px] font-black tracking-tighter bg-primary shadow-lg shadow-primary/20">
                   {translations.nav.applyNow[language]}
                 </Button>
               </a>
               <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-1.5 px-2 py-1.5 rounded-md border border-border/50 text-muted-foreground hover:text-primary transition-colors text-[10px] font-bold"
+                className="flex items-center justify-center p-1.5 sm:px-2 sm:py-1.5 rounded-md border border-border/50 text-muted-foreground hover:text-primary transition-colors text-[9px] sm:text-[10px] font-bold"
                 aria-label="Switch language"
               >
                 <Globe className="w-3 h-3" />
-                <span>{language === 'en' ? 'عربي' : 'EN'}</span>
+                <span className="hidden sm:inline-block ml-1">{language === 'en' ? 'عربي' : 'EN'}</span>
+                <span className="sm:hidden">{language === 'en' ? 'AR' : 'EN'}</span>
               </button>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-1.5 text-foreground"
+                className="p-1 sm:p-1.5 text-foreground"
                 aria-label="Toggle menu"
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isMobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
               </button>
             </div>
           </div>

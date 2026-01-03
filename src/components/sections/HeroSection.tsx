@@ -124,7 +124,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* CTA Section */}
-          <motion.div variants={itemVariants} className={`flex flex-col items-center md:items-start ${isRTL ? 'md:items-end' : ''} gap-2 md:gap-3 mb-8 md:mb-12`}>
+          <motion.div variants={itemVariants} className={`flex flex-col sm:flex-row items-center md:items-start ${isRTL ? 'md:items-end' : ''} gap-4 md:gap-6 mb-8 md:mb-12 w-full`}>
             <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
               <Button variant="cta" size="xxl" className="group relative overflow-hidden w-full sm:w-auto text-base md:text-lg bg-primary hover:bg-primary/90">
                 <span className="relative z-10 flex items-center justify-center gap-3 font-black">
@@ -140,6 +140,18 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-glow to-primary bg-[length:200%_100%] animate-[shimmer_2s_infinite]" style={{ opacity: 0.3 }} />
               </Button>
             </a>
+
+            <button
+              onClick={() => window.location.href = '/products'}
+              className="w-full sm:w-auto px-8 py-5 rounded-xl border border-white/20 hover:border-primary/50 bg-white/5 backdrop-blur-sm transition-all flex items-center justify-center gap-3 group/btn"
+            >
+              <Zap className="w-5 h-5 text-primary group-hover/btn:animate-pulse" />
+              <span className="font-black uppercase tracking-widest text-sm md:text-base">
+                {t.browsePrograms[language]}
+              </span>
+            </button>
+          </motion.div>
+          <motion.div variants={itemVariants} className={`flex flex-col items-center md:items-start ${isRTL ? 'md:items-end' : ''} mb-8`}>
             <span className="text-xs md:text-sm text-primary/80 font-bold uppercase tracking-widest flex items-center gap-2">
               <span className="flex h-2 w-2 rounded-full bg-primary animate-ping" />
               {t.ctaSubtext[language]}
