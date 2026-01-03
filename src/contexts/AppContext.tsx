@@ -13,10 +13,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-    const [language, setLanguage] = useState<Language>(() => {
-        const saved = localStorage.getItem('preferred-language');
-        return (saved === 'ar' || saved === 'en') ? saved : 'en';
-    });
+    const [language, setLanguage] = useState<Language>('en');
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -27,7 +24,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     };
 
     useEffect(() => {
-        localStorage.setItem('preferred-language', language);
         document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
         document.documentElement.lang = language;
     }, [language, isRTL]);

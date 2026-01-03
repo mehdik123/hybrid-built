@@ -9,18 +9,13 @@ const LanguageSelectorModal = () => {
     const { setLanguage } = useLanguage();
 
     useEffect(() => {
-        const hasSelected = localStorage.getItem("language_selected");
-        // Also check if language is already in a non-default state if needed
-        if (!hasSelected) {
-            // Reduced delay for faster user engagement
-            const timer = setTimeout(() => setIsOpen(true), 600);
-            return () => clearTimeout(timer);
-        }
+        // Show modal on every mount as per user request (no persistence)
+        const timer = setTimeout(() => setIsOpen(true), 600);
+        return () => clearTimeout(timer);
     }, []);
 
     const handleSelect = (lang: "en" | "ar") => {
         setLanguage(lang);
-        localStorage.setItem("language_selected", "true");
         setIsOpen(false);
     };
 
