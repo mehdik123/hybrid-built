@@ -20,7 +20,7 @@ const Products = () => {
         <main className="min-h-screen bg-background">
             <LanguageSelectorModal />
             <Header />
-            <div className="pt-24 pb-8 container-tight px-4 sm:px-8">
+            <div className="pt-32 md:pt-40 pb-8 container-tight px-4 sm:px-8">
                 <Link
                     to="/"
                     className={`inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest text-xs hover:text-primary/80 transition-colors group mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}

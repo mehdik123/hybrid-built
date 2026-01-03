@@ -10,9 +10,10 @@ const LanguageSelectorModal = () => {
 
     useEffect(() => {
         const hasSelected = localStorage.getItem("language_selected");
+        // Also check if language is already in a non-default state if needed
         if (!hasSelected) {
-            // Small delay for a smoother entrance
-            const timer = setTimeout(() => setIsOpen(true), 1200);
+            // Reduced delay for faster user engagement
+            const timer = setTimeout(() => setIsOpen(true), 600);
             return () => clearTimeout(timer);
         }
     }, []);
