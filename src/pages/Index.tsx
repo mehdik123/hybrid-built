@@ -35,8 +35,8 @@ const Index = () => {
         <TransformationsSection />
         <VideoTestimonialSection />
         <VSLSection />
-        <FreeToolsSection />
         <CoachingSection />
+        <FreeToolsSection />
         <FAQSection />
         <FinalCTASection />
         <Footer />

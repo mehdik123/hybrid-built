@@ -69,51 +69,42 @@ export const translations = {
   coaching: {
     title1: { en: "1-ON-1", ar: "تدريب شخصي" },
     title2: { en: "ONLINE COACHING", ar: "أونلاين" },
-    subtitle: { en: "Get a Custom Program Built for YOUR Body & Goals", ar: "احصل على برنامج مخصص لجسمك وأهدافك" },
+    subtitle: { en: "If you're truly serious and interested in transforming your body 180°, you're in the right place.", ar: "إلا كنتي فعلاً جاد ومهتم باش تبدل الجسم ديالك 180°، راك فالبلاصة الصحيحة." },
     whatYouGet: { en: "WHAT YOU GET:", ar: "ماذا ستحصل:" },
     features: {
       training: {
-        title: { en: "Custom Training Plan", ar: "برنامج تدريب مخصص" },
-        description: {
-          en: "Built specifically for your experience level, goals, and equipment access. Updated weekly based on your progress.",
-          ar: "مصمم خصيصاً لمستوى خبرتك وأهدافك والمعدات المتاحة لديك. يتم تحديثه أسبوعياً بناءً على تقدمك."
-        }
+        title: { en: "🔹 Training", ar: "🔹 التدريب" },
+        points: [
+          { en: "Personalized program based on: weak points, timing, goal, and your level", ar: "برنامج مخصص على حساب: نقط الضعف، التوقيت، الهدف، والمستوى ديالك" },
+          { en: "Everything with my exercise videos", ar: "كولشي بالفيديوهات ديالي د التمارين" },
+          { en: "Track sets, reps, weights, and training volume", ar: "متابعة الـ sets، reps، الأوزان، والـ volume training" },
+          { en: "Weekly updates with new goals to achieve", ar: "تحديث كل سيمانة، كانوجدو فيه أهداف جداد خاصك توصل ليهم" }
+        ]
       },
       nutrition: {
-        title: { en: "Personalized Nutrition System", ar: "نظام غذائي مخصص" },
-        description: {
-          en: "Your exact macros, meal plans (Moroccan & international options), and how to adjust based on results.",
-          ar: "الماكروز الخاصة بك، خطط وجبات (خيارات مغربية ودولية)، وكيفية التعديل بناءً على النتائج."
-        }
+        title: { en: "🔹 Nutrition", ar: "🔹 التغذية" },
+        points: [
+          { en: "Multiple meal versions so you don't get bored", ar: "بزاف د الإصدارات د الوجبات باش ما يجيكش الملل" },
+          { en: "Calories & macros calculated based on your goal", ar: "السعرات والماكروز محسوبين على حساب الهدف ديالك" },
+          { en: "Photos and instructions on how to prepare each meal", ar: "تصاور وتعليمات كيفاش توجد كل وجبة" },
+          { en: "Choose how many meals you want per day, and what you don't eat", ar: "تقدر تختار شحال من وجبة بغيتي فالنهار، وحتى شنو ما كاتاكلش" },
+          { en: "Weekly adaptation based on your progress", ar: "تكييف كل سيمانة على حساب التطور ديالك" }
+        ]
       },
-      checkIns: {
-        title: { en: "Weekly Check-Ins", ar: "متابعة أسبوعية" },
-        description: {
-          en: "Form reviews, progress analysis, and program adjustments. I keep you on track.",
-          ar: "مراجعة الأداء، تحليل التقدم، وتعديل البرنامج. سأبقيك على المسار الصحيح."
-        }
-      },
-      messaging: {
-        title: { en: "24/7 Messaging Access", ar: "تواصل على مدار الساعة" },
-        description: {
-          en: "Questions answered within 24 hours. You're never stuck or confused.",
-          ar: "الإجابة على أسئلتك خلال 24 ساعة. لن تشعر أبداً بالحيرة."
-        }
-      },
-      accountability: {
-        title: { en: "Accountability & Support", ar: "المتابعة والدعم" },
-        description: {
-          en: "I hold you accountable for 12 weeks. No excuses, just results.",
-          ar: "سأتابعك لمدة 12 أسبوع. لا أعذار، فقط نتائج."
-        }
+      support: {
+        title: { en: "🔹 WhatsApp Support", ar: "🔹 متابعة واتساب" },
+        points: [
+          { en: "Daily check-ins, motivation and accountability", ar: "متابعة يومية، تحفيز ومسؤولية" },
+          { en: "Message me anytime, we stay together as one team", ar: "تقدر تصيفط ليا فأي وقت، وكانبقاو أنا ونتا فريق واحد" },
+          { en: "Direct 1-on-1 support throughout your journey", ar: "دعم مباشر معايا طوال الرحلة ديالك" }
+        ]
       }
     },
     whoIsFor: { en: "WHO THIS IS FOR:", ar: "لمن هذا البرنامج:" },
     whoIsForItems: [
       { en: "You're serious (no tire-kickers)", ar: "أنت جاد (لا مضيعة للوقت)" },
       { en: "You want expert guidance (not YouTube advice)", ar: "تريد توجيه خبير (ليس نصائح يوتيوب)" },
-      { en: "You're ready to invest in yourself", ar: "مستعد للاستثمار في نفسك" },
-      { en: "You'll commit for 12 weeks minimum", ar: "ستلتزم لمدة 12 أسبوع على الأقل" }
+      { en: "You're ready to invest in yourself", ar: "مستعد للاستثمار في نفسك" }
     ],
     investment: { en: "INVESTMENT:", ar: "الاستثمار:" },
     perMonth: { en: "/month", ar: "/شهر" },
@@ -125,6 +116,9 @@ export const translations = {
     dmItem2: { en: "Tell me your experience level", ar: "أخبرني بمستوى خبرتك" },
     dmItem3: { en: "Tell me when you are ready to start", ar: "أخبرني متى ستكون مستعداً للبدء" },
     dmResponse: { en: "I respond personally to every message.", ar: "أرد شخصياً على كل رسالة بنفسي." },
+    affordabilityMessage: { en: "Can't afford online coaching right now?", ar: "ما قادرش على التدريب أونلاين دابا؟" },
+    checkProducts: { en: "Check out our products", ar: "شوف المنتجات ديالنا" },
+    affordabilityDesc: { en: "for a more budget-friendly option to get started.", ar: "باش تلقى خيار أرخص وتبدا." },
   },
 
   // Transformations Section
