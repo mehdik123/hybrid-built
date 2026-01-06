@@ -44,30 +44,72 @@ const CoachingSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-16"
         >
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className={`bg-secondary/30 backdrop-blur-sm border border-border/50 rounded-2xl p-8 hover:border-primary transition-all duration-500 hover:bg-secondary/50 flex flex-col h-full group ${isRTL ? 'text-right' : ''}`}
+                className={`group relative bg-gradient-to-br from-secondary/40 via-card/50 to-background/30 
+                  backdrop-blur-md border-2 border-white/10 rounded-3xl p-8 
+                  hover:border-primary/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20
+                  transition-all duration-700 flex flex-col h-full overflow-hidden ${isRTL ? 'text-right' : ''}`}
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:bg-primary group-hover:border-primary transition-all duration-500">
-                    <feature.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                  </div>
-                  <h4 className="font-display text-xl text-foreground uppercase tracking-tighter">{feature.title[language]}</h4>
+                {/* Decorative gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
+
+                {/* Animated border glow */}
+                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 blur-xl" />
                 </div>
 
-                <ul className="space-y-4 flex-grow">
-                  {feature.points.map((point: any, pIndex: number) => (
-                    <li key={pIndex} className={`flex gap-3 text-sm text-foreground/80 leading-relaxed ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <span>{point[language]}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Content */}
+                <div className="relative z-10">
+                  <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    {/* Enhanced icon container */}
+                    <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 
+                      flex items-center justify-center border-2 border-primary/30 
+                      group-hover:scale-110 group-hover:rotate-3 group-hover:border-primary 
+                      group-hover:shadow-lg group-hover:shadow-primary/50
+                      transition-all duration-500">
+                      {/* Icon glow effect */}
+                      <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <feature.icon className="relative z-10 w-7 h-7 text-primary group-hover:text-white transition-colors duration-500" />
+                    </div>
+
+                    {/* Title with gradient on hover */}
+                    <h4 className="font-display text-xl lg:text-2xl text-foreground uppercase tracking-tighter 
+                      group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r 
+                      group-hover:from-primary group-hover:to-primary/70 transition-all duration-500">
+                      {feature.title[language]}
+                    </h4>
+                  </div>
+
+                  {/* Feature points with enhanced bullets */}
+                  <ul className="space-y-4 flex-grow">
+                    {feature.points.map((point: any, pIndex: number) => (
+                      <motion.li
+                        key={pIndex}
+                        initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.4, delay: 0.5 + pIndex * 0.1 }}
+                        className={`flex gap-3 text-sm lg:text-base text-foreground/80 leading-relaxed 
+                          group-hover:text-foreground transition-colors duration-500 ${isRTL ? 'flex-row-reverse' : ''}`}
+                      >
+                        {/* Gradient bullet point */}
+                        <div className="mt-1.5 w-2 h-2 rounded-full bg-gradient-to-r from-primary to-primary/50 
+                          shadow-sm shadow-primary/30 flex-shrink-0 group-hover:shadow-md group-hover:shadow-primary/50 
+                          group-hover:scale-125 transition-all duration-500" />
+                        <span className="flex-1">{point[language]}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Corner accent decoration */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary/5 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </motion.div>
             ))}
           </div>
