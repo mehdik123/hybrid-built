@@ -73,63 +73,49 @@ const HeroSection = () => {
 
 
           {/* Main Headline */}
-          {/* Main Headline - Part 1 */}
           <motion.h1
             variants={itemVariants}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] mb-4 md:mb-6"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-6 md:mb-8"
           >
-            <span className="text-foreground/60 uppercase">{t.headline1[language]}</span>
-            <br />
-            <span className="text-gradient relative inline-block uppercase">
+            <span className="text-foreground/70 uppercase tracking-widest text-xl sm:text-2xl md:text-3xl block mb-2 font-medium">
+              {t.headline1[language]}
+            </span>
+            <span className="text-gradient relative inline-block uppercase text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
               {t.headline2[language]}
-              <span className="absolute -inset-2 bg-primary/20 blur-2xl -z-10 rounded-lg" />
+              <span className="absolute -inset-6 bg-primary/10 blur-[100px] -z-10 rounded-full" />
             </span>
           </motion.h1>
 
-          {/* Emotional Hook - Size or Mobility */}
+          {/* Pillars: Size, Strength, Fat Loss, Vitality */}
           <motion.p
             variants={itemVariants}
-            className="text-xl md:text-3xl lg:text-4xl text-foreground font-black uppercase mb-6 md:mb-8 tracking-tighter"
+            className="text-sm sm:text-lg md:text-3xl lg:text-4xl text-primary font-black uppercase mb-8 md:mb-10 tracking-[0.15em] sm:tracking-[0.2em] opacity-90"
           >
             {t.emotionalHook[language]}
           </motion.p>
 
-          {/* Headline Part 2 - The Refusal */}
+          {/* Core Vision */}
           <motion.h2
             variants={itemVariants}
-            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary font-black uppercase mb-4 md:mb-6"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground font-black uppercase mb-6 md:mb-8 tracking-tight"
           >
             {t.headline3[language]}
           </motion.h2>
 
-          {/* Promise Statement - Mastered Both */}
+          {/* Promise Statement */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-2xl lg:text-3xl text-muted-foreground/90 font-semibold mb-8 md:mb-12 leading-tight"
+            className="text-lg md:text-2xl lg:text-3xl text-muted-foreground/90 font-medium mb-12 md:mb-16 leading-tight max-w-3xl"
           >
             {t.promise[language]}
           </motion.p>
 
-          {/* Coach Intro - The Mission */}
-          <motion.div
-            variants={itemVariants}
-            className="mb-10 md:mb-14 border-l-4 border-primary pl-6 py-2"
-          >
-            <p className="text-xl md:text-3xl lg:text-4xl text-foreground font-black uppercase leading-tight tracking-tight">
-              {t.coachIntro[language]}
-            </p>
-            <div className="mt-2 flex items-center gap-3">
-              <span className="text-primary font-bold text-lg md:text-2xl">Mehdi</span>
-              <span className="text-muted-foreground/60 text-sm md:text-lg">@unbreakablesteam</span>
-            </div>
-          </motion.div>
-
           {/* CTA Section */}
-          <motion.div variants={itemVariants} className={`flex flex-col sm:flex-row items-center md:items-start ${isRTL ? 'md:items-end' : ''} gap-4 md:gap-6 mb-8 md:mb-12 w-full`}>
+          <motion.div variants={itemVariants} className={`flex flex-col sm:flex-row items-center md:items-start ${isRTL ? 'md:items-end' : ''} gap-6 md:gap-8 mb-12 md:mb-16 w-full`}>
             <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-              <Button variant="cta" size="xxl" className="group relative overflow-hidden w-full sm:w-auto text-base md:text-lg bg-primary hover:bg-primary/90">
+              <Button variant="cta" size="xxl" className="group relative overflow-hidden w-full sm:w-auto text-lg md:text-xl bg-primary hover:bg-primary/90 px-10 py-8">
                 <span className="relative z-10 flex items-center justify-center gap-3 font-black">
-                  <Instagram className="w-5 h-5 md:w-6 md:h-6" />
+                  <Instagram className="w-6 h-6" />
                   {t.cta[language]}
                   <motion.span
                     animate={{ x: [0, 5, 0] }}
@@ -141,22 +127,6 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-glow to-primary bg-[length:200%_100%] animate-[shimmer_2s_infinite]" style={{ opacity: 0.3 }} />
               </Button>
             </a>
-
-            <button
-              onClick={() => window.location.href = '/products'}
-              className="w-full sm:w-auto px-8 py-5 rounded-xl border border-white/20 hover:border-primary/50 bg-white/5 backdrop-blur-sm transition-all flex items-center justify-center gap-3 group/btn"
-            >
-              <Zap className="w-5 h-5 text-primary group-hover/btn:animate-pulse" />
-              <span className="font-black uppercase tracking-widest text-sm md:text-base">
-                {t.browsePrograms[language]}
-              </span>
-            </button>
-          </motion.div>
-          <motion.div variants={itemVariants} className={`flex flex-col items-center md:items-start ${isRTL ? 'md:items-end' : ''} mb-8`}>
-            <span className="text-xs md:text-sm text-primary/80 font-bold uppercase tracking-widest flex items-center gap-2">
-              <span className="flex h-2 w-2 rounded-full bg-primary animate-ping" />
-              {t.ctaSubtext[language]}
-            </span>
           </motion.div>
 
           {/* Stats Bar - Grid on mobile for better layout */}

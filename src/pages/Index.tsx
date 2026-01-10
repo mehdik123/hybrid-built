@@ -31,13 +31,13 @@ const Index = () => {
       <HeroSection />
       <AboutSection />
       <Suspense fallback={<SectionLoader />}>
-        <ProductTeaser />
         <TransformationsSection />
         <VideoTestimonialSection />
         <VSLSection />
         <CoachingSection />
         <FreeToolsSection />
         <FAQSection />
+        <ProductTeaser />
         <FinalCTASection />
         <Footer />
       </Suspense>

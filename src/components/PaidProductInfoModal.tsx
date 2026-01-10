@@ -108,24 +108,14 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                         </div>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <a href={dmLink} target="_blank" rel="noopener noreferrer" className="block flex-1 order-2 sm:order-1">
+                        <div className="flex flex-col gap-4">
+                            <a href={dmLink} target="_blank" rel="noopener noreferrer" className="block w-full">
                                 <Button
                                     size="lg"
-                                    className="w-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-sm transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 py-7"
+                                    className="w-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-base sm:text-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 py-8 sm:py-9"
                                 >
-                                    <MessageCircle className="w-5 h-5" />
+                                    <MessageCircle className="w-6 h-6" />
                                     {t.dmButton[language]}
-                                </Button>
-                            </a>
-                            <a href="https://hybridtrainingblueprint-mehdikamal535-7388s-projects.vercel.app" target="_blank" rel="noopener noreferrer" className="block flex-1 order-1 sm:order-2">
-                                <Button
-                                    variant="outline"
-                                    size="lg"
-                                    className="w-full border-primary/30 text-primary hover:bg-primary/10 font-black uppercase tracking-widest text-sm py-7"
-                                >
-                                    <Zap className="w-5 h-5" />
-                                    {language === 'en' ? 'PREVIEW HERE' : 'شوف لبلان هنا'}
                                 </Button>
                             </a>
                         </div>

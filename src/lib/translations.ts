@@ -12,19 +12,17 @@ export const translations = {
     backToHome: { en: "BACK TO HOME", ar: "الرجوع للرئيسية" },
   },
 
-  // Hero Section (Strategic DM Redesign)
+  // Hero Section (Refined Digestible Design)
   hero: {
-    preHeadline: { en: "100% NATURAL ATHLETE // HYBRID PERFORMANCE", ar: "رياضي طبيعي 100% // أداء هجين" },
-    headline1: { en: "I BUILT THE HYBRID PHYSIQUE.", ar: "بنيت الـ Hybrid Physique." },
-    headline2: { en: "NOW I'LL SHOW YOU HOW.", ar: "ودابا غانوريك كيفاش." },
-    emotionalHook: { en: "NO STEROIDS. NO MYSTERIES. JUST THE METHOD.", ar: "بلا منشطات. بلا داك التخربيق. غي الخدمة." },
-    headline3: { en: "DM ME 'HYBRID' TO START.", ar: "صيفط ليا 'HYBRID' باش تبدا." },
-    promise: { en: "THE ONLY WAY TO MASTER SIZE, STRENGTH AND AESTHETICS.", ar: "الطريقة الوحيدة باش تجيب الفورمة والقوة فنفس الوقت." },
-    coachIntro: { en: "YOUR TRANSFORMATION BEGINS WITH ONE MESSAGE.", ar: "التحول ديالك كيبدا بـ ميساج واحد." },
-    cta: { en: "DM ME 'HYBRID' ON IG", ar: "صيفط ليا 'HYBRID' فـ انستغرام" },
+    headline1: { en: "BUILD THE", ar: "ابني الـ" },
+    headline2: { en: "HYBRID PHYSIQUE", ar: "Hybrid Physique" },
+    emotionalHook: { en: "SIZE • STRENGTH • FAT LOSS • TOTAL VITALITY", ar: "الحجم • القوة • حرق الدهون • حيوية تامة" },
+    headline3: { en: "BECOME A COMPLETE ATHLETE", ar: "ولي رياضي متكامل" },
+    promise: { en: "Master size and strength, shed body fat, and elevate your overall health with the Hybrid Method.", ar: "تحكم فـ الحجم والقوة، حيد الدهون، وحسن صحتك كاملة بنظام الـ Hybrid." },
+    cta: { en: "DM ME 'HYBRID' TO START", ar: "صيفط ليا 'HYBRID' باش تبدا" },
     ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "كنجاوب راسي قل من 24 ساعة." },
     scroll: { en: "EXPLORE THE METHOD", ar: "اكتشف النظام" },
-    browsePrograms: { en: "BROWSE PROGRAMS", ar: "شوف البرامج" },
+    browsePrograms: { en: "EXPLORE PROGRAMS", ar: "اكتشف البرامج" },
     stats: {
       clients: { en: "400+", ar: "+400" },
       clientsLabel: { en: "TRANSFORMATIONS", ar: "تحول جذري" },
