@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Check, Dumbbell, Salad, MessageCircle, CalendarCheck, ShieldCheck } from "lucide-react";
+import { Check, Dumbbell, Salad, MessageCircle, CalendarCheck, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
@@ -193,26 +193,54 @@ const CoachingSection = () => {
           </div>
         </motion.div>
 
-        {/* Affordability Message */}
+        {/* Affordability Message - Redesigned for Maximum Visibility */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-12 max-w-xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mt-20 md:mt-24 max-w-2xl mx-auto px-4"
         >
-          <div className="p-6 rounded-2xl bg-secondary/20 border border-border/30">
-            <p className="text-foreground/80 text-base mb-3">
-              {t.affordabilityMessage[language]}
-            </p>
-            <p className="text-muted-foreground text-sm">
-              <a
-                href="/products"
-                className="text-primary hover:text-primary/80 font-bold underline underline-offset-4 transition-colors"
-              >
-                {t.checkProducts[language]}
-              </a>
-              {" "}{t.affordabilityDesc[language]}
-            </p>
+          <div className="relative group p-1 sm:p-[2px] rounded-3xl overflow-hidden">
+            {/* Animated Glow Border */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-glow to-primary opacity-30 group-hover:opacity-100 transition-opacity duration-700 animate-[shimmer_3s_infinite]" />
+
+            <div className="relative bg-[#0A0A0A] backdrop-blur-3xl rounded-[22px] p-8 sm:p-10 border border-white/5">
+              <div className="flex flex-col items-center gap-6">
+                {/* Visual Icon */}
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                  <Zap className="w-8 h-8 text-primary animate-pulse" />
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-display text-2xl sm:text-3xl text-foreground uppercase tracking-tight">
+                    {t.affordabilityMessage[language]}
+                  </h4>
+                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-md mx-auto">
+                    {t.affordabilityDesc[language]}
+                  </p>
+                </div>
+
+                {/* Pronounced Action Link */}
+                <a
+                  href="/products"
+                  className="group/link flex items-center gap-3 bg-white/5 hover:bg-primary/10 border border-white/10 hover:border-primary/40 px-8 py-5 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95"
+                >
+                  <span className="text-primary font-black uppercase tracking-widest text-base sm:text-lg">
+                    {t.checkProducts[language]}
+                  </span>
+                  <motion.span
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                  >
+                    <ArrowRight className="w-5 h-5 text-primary" />
+                  </motion.span>
+                </a>
+              </div>
+
+              {/* Decorative light flair */}
+              <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-primary/20 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            </div>
           </div>
         </motion.div>
       </div>

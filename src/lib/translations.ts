@@ -24,7 +24,7 @@ export const translations = {
     scroll: { en: "EXPLORE THE METHOD", ar: "اكتشف النظام" },
     browsePrograms: { en: "EXPLORE PROGRAMS", ar: "اكتشف البرامج" },
     stats: {
-      clients: { en: "400+", ar: "+400" },
+      clients: { en: "100+", ar: "100+" },
       clientsLabel: { en: "TRANSFORMATIONS", ar: "تحول جذري" },
       followers: { en: "600K+", ar: "+600K" },
       followersLabel: { en: "FOLLOWERS", ar: "متابع" },
@@ -51,7 +51,7 @@ export const translations = {
       en: "I've helped",
       ar: "عاونت كتر من"
     },
-    clients: { en: "100+ people worldwide", ar: "100 واحد فالعالم كامل" },
+    clients: { en: "200+ people worldwide", ar: "200 واحد فالعالم كامل" },
     description4: {
       en: "achieve elite-level transformations using the same unbreakable system.",
       ar: "باش يوصلو لهاد التحولات الناضية باستعمال نفس النظام."
