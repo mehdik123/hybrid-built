@@ -246,14 +246,14 @@ export const translations = {
     joinWaitlist: { en: "GET FREE ACCESS", ar: "صيفط ليا الأداة", fr: "ACCÈS GRATUIT" },
     comingSoon: { en: "COMING SOON", ar: "قريباً", fr: "BIENTÔT" },
     paidTitle: { en: "THE COMPLETE HYBRID BLUEPRINT", ar: "الدليل الشامل للـ HYBRID", fr: "LE BLUEPRINT HYBRIDE COMPLET" },
-    paidDescription: { en: "More than a program. A complete guide combining calisthenics & bodybuilding, with 4 meal plans, progressive overload, and tracking tools.", ar: "كتر من مجرد برنامج. دليل شامل كيجمع بين الكاليستينيكس والبوديبيلدينغ، فيه 4 ديال لبلانات د الماكلة، وتتبع للأحمال التدريبية.", fr: "Plus qu'un programme. Un guide complet combinant calisthenics & musculation, avec 4 plans repas, surcharge progressive et outils de suivi." },
+    paidDescription: { en: "More than a program. A complete guide combining calisthenics & bodybuilding, with 4 meal plans, progressive overload, and tracking tools.", ar: "كتر من مجرد برنامج. دليل شامل كيجمع بين Calisthenics و Bodybuilding، فيه 4 ديال لبلانات د الماكلة، وتتبع للأحمال التدريبية.", fr: "Plus qu'un programme. Un guide complet combinant Calisthenics & Bodybuilding, avec 4 plans repas, surcharge progressive et outils de suivi." },
     includes: { en: "What's Inside (The Guide):", ar: "شنو كاين لداخل (الدليل):", fr: "Ce qui est inclus (Le Guide) :" },
     features: [
-      { en: "Complete Hybrid Guide (Calisthenics x Bodybuilding explained)", ar: "دليل Hybrid شامل (شرح الكاليستينيكس x البوديبيلدينغ)", fr: "Guide Hybride Complet (Calisthenics x Musculation expliqués)" },
+      { en: "Complete Hybrid Guide (Calisthenics x Bodybuilding explained)", ar: "دليل Hybrid شامل (شرح Calisthenics x Bodybuilding)", fr: "Guide Hybride Complet (Calisthenics x Bodybuilding expliqués)" },
       { en: "8-Week Progressive Training Program", ar: "برنامج تدريبي تصاعدي ديال 8 سيمانات", fr: "Programme d'entraînement progressif de 8 semaines" },
-      { en: "4 Meal Plans (Fat Loss, Recomp, Lean Bulk, Bulk)", ar: "4 أنظمة غذائية (حرق دهون، ريكومب، تضخيم صافي، تضخيم)", fr: "4 Plans Repas (Perte de gras, Recomp, Prise de masse sèche, Prise de masse)" },
-      { en: "Underground Training Codes & Secrets", ar: "أسرار وأكواد التدريب المخفية", fr: "Codes et secrets d'entraînement underground" },
-      { en: "Workout Tracker & Performance Copy", ar: "نسخة لتتبع التمارين والأداء", fr: "Tracker d'entraînement & Copie de performance" }
+      { en: "4 Meal Plans (Fat Loss, Recomp, Lean Bulk, Bulk)", ar: "4 أنظمة غذائية (Fat Loss, Recomp, Lean Bulk, Bulk)", fr: "4 Plans Repas (Fat Loss, Recomp, Lean Bulk, Bulk)" },
+      { en: "Underground Training Codes & Secrets", ar: "أسرار و Underground Training Codes", fr: "Secrets et Underground Training Codes" },
+      { en: "Workout Tracker & Performance Copy", ar: "Workout Tracker & Performance Copy", fr: "Workout Tracker & Performance Copy" }
     ],
     paidButton: { en: "Start Solo - $20", ar: "ابدأ بوحدك - 20$", fr: "Commencer Solo - 20$" },
     originalPrice: { en: "$25", ar: "25$", fr: "25$" },
@@ -351,14 +351,14 @@ export const translations = {
   // Paid Product Info Modal
   paidProductModal: {
     title: { en: "THE COMPLETE HYBRID BLUEPRINT", ar: "الدليل الشامل للـ HYBRID", fr: "LE BLUEPRINT HYBRIDE COMPLET" },
-    subtitle: { en: "The ultimate guide to mastering calisthenics & bodybuilding.", ar: "الدليل النهائي لاحتراف الكاليستينيكس والبوديبيلدينغ.", fr: "Le guide ultime pour maîtriser le calisthenics et la musculation." },
+    subtitle: { en: "The ultimate guide to mastering calisthenics & bodybuilding.", ar: "الدليل النهائي لاحتراف Calisthenics و Bodybuilding.", fr: "Le guide ultime pour maîtriser Calisthenics & Bodybuilding." },
     oneTimePayment: { en: "ONE-TIME PAYMENT", ar: "خلص مرة وحدة وتهنا", fr: "PAIEMENT UNIQUE" },
     whatYouGet: { en: "WHAT YOU GET (THE FULL GUIDE):", ar: "شنو غاتستافد (الدليل الكامل):", fr: "CE QUE VOUS RECEVEZ (GUIDE COMPLET) :" },
     features: [
       { en: "8-Week Progressive Hybrid Training Program", ar: "برنامج تدريبي هجين متكامل لمدة 8 سيمانات", fr: "Programme d'entraînement hybride progressif de 8 semaines" },
-      { en: "4 Customizable Meal Plans (Fat Loss, Clean Bulk, etc)", ar: "4 أنظمة غذائية مخصصة (تنشيف، تضخيم، إلخ)", fr: "4 Plans Repas Personnalisables (Sèche, Prise de Masse, etc)" },
-      { en: "Complete Workout Tracker & Performance Copy", ar: "نظام تتبع شامل للتمارين والأداء", fr: "Tracker d'Entraînement Complet & Copie de Performance" },
-      { en: "Underground Codes of the Game Explained", ar: "شرح أسرار اللعبة والقوالب المخفية", fr: "Les codes underground du game expliqués" },
+      { en: "4 Customizable Meal Plans (Fat Loss, Clean Bulk, etc)", ar: "4 أنظمة غذائية مخصصة (Fat Loss, Clean Bulk, etc)", fr: "4 Plans Repas Personnalisables (Fat Loss, Clean Bulk, etc)" },
+      { en: "Complete Workout Tracker & Performance Copy", ar: "Complete Workout Tracker & Performance Copy", fr: "Complete Workout Tracker & Performance Copy" },
+      { en: "Underground Codes of the Game Explained", ar: "شرح Underground Codes of the Game", fr: "Underground Codes of the Game expliqués" },
       { en: "Exercise Library with Video Demonstrations", ar: "مكتبة فيها فيديوهات كتشرح كل تمرين", fr: "Bibliothèque d'exercices avec démos vidéo" },
       { en: "Lifetime Access - No Subscription", ar: "البرنامج ديالك مدى الحياة، بلا اشتراك شهري", fr: "Accès à vie - Pas d'abonnement" }
     ],
