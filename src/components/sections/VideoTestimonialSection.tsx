@@ -21,6 +21,13 @@ const VideoTestimonialSection = () => {
             cta: "شاهد الشهادة كاملة",
             clientName: "قصة نجاح متدرب",
             tag: "شهادة مباشرة"
+        },
+        fr: {
+            title: "Résultats Réels.",
+            subtitle: "Regardez le parcours de transformation de l'un de nos athlètes d'élite.",
+            cta: "VOIR TÉMOIGNAGE COMPLET",
+            clientName: "Histoire de Succès",
+            tag: "TÉMOIGNAGE LIVE"
         }
     };
 

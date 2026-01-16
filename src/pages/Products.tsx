@@ -28,8 +28,8 @@ const Products = () => {
                     <ArrowLeft className={`w-4 h-4 transition-transform group-hover:-translate-x-1 ${isRTL ? 'rotate-180 group-hover:translate-x-1' : ''}`} />
                     {translations.nav.backToHome[language]}
                 </Link>
-                <LeadMagnetSection />
                 <PaidProductSection />
+                <LeadMagnetSection />
             </div>
             <Footer />
             <StickyApplyButton />

@@ -13,17 +13,21 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-    const [language, setLanguage] = useState<Language>('en');
+    const [language, setLanguage] = useState<Language>(() => {
+        const saved = localStorage.getItem('language');
+        return (saved === 'en' || saved === 'ar' || saved === 'fr') ? saved : 'en';
+    });
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const isRTL = language === 'ar';
 
     const toggleLanguage = () => {
-        setLanguage(prev => prev === 'en' ? 'ar' : 'en');
+        setLanguage(prev => prev === 'en' ? 'ar' : 'en'); // Cycle logic could be improved if button is used, but modal sets directly
     };
 
     useEffect(() => {
+        localStorage.setItem('language', language);
         document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
         document.documentElement.lang = language;
     }, [language, isRTL]);

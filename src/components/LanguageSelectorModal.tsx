@@ -9,12 +9,15 @@ const LanguageSelectorModal = () => {
     const { setLanguage } = useLanguage();
 
     useEffect(() => {
-        // Show modal on every mount as per user request (no persistence)
-        const timer = setTimeout(() => setIsOpen(true), 600);
-        return () => clearTimeout(timer);
+        // Only show if no language is saved in localStorage
+        const savedLang = localStorage.getItem('language');
+        if (!savedLang) {
+            const timer = setTimeout(() => setIsOpen(true), 1500); // Slight delay for better UX
+            return () => clearTimeout(timer);
+        }
     }, []);
 
-    const handleSelect = (lang: "en" | "ar") => {
+    const handleSelect = (lang: "en" | "ar" | "fr") => {
         setLanguage(lang);
         setIsOpen(false);
     };
@@ -54,18 +57,26 @@ const LanguageSelectorModal = () => {
                                     Select your preferred language to continue your hybrid journey.
                                 </p>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 gap-4">
                                     <Button
-                                        size="xxl"
-                                        className="bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-lg py-8 shadow-xl shadow-primary/20 transform transition-transform active:scale-95"
+                                        size="xl"
+                                        className="bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-lg py-6 shadow-xl shadow-primary/20"
                                         onClick={() => handleSelect("en")}
                                     >
                                         English
                                     </Button>
                                     <Button
-                                        size="xxl"
+                                        size="xl"
                                         variant="outline"
-                                        className="border-primary/20 text-primary hover:bg-primary/10 font-black uppercase tracking-widest text-lg py-8 transform transition-transform active:scale-95 bg-transparent"
+                                        className="border-primary/20 text-primary hover:bg-primary/10 font-black uppercase tracking-widest text-lg py-6 bg-transparent"
+                                        onClick={() => handleSelect("fr")}
+                                    >
+                                        Français
+                                    </Button>
+                                    <Button
+                                        size="xl"
+                                        variant="outline"
+                                        className="border-primary/20 text-primary hover:bg-primary/10 font-black uppercase tracking-widest text-lg py-6 bg-transparent"
                                         onClick={() => handleSelect("ar")}
                                     >
                                         العربية / Darija
