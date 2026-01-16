@@ -50,7 +50,9 @@ const Header = () => {
   };
 
   const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'ar' : 'en');
+    if (language === 'en') setLanguage('fr');
+    else if (language === 'fr') setLanguage('ar');
+    else setLanguage('en');
   };
 
   return (
@@ -93,7 +95,7 @@ const Header = () => {
                 aria-label="Switch language"
               >
                 <Globe className="w-4 h-4" />
-                <span className="text-sm font-medium">{language === 'en' ? 'عربي' : 'EN'}</span>
+                <span className="text-sm font-medium">{language.toUpperCase()}</span>
               </button>
 
               <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
@@ -122,8 +124,8 @@ const Header = () => {
                 aria-label="Switch language"
               >
                 <Globe className="w-3 h-3" />
-                <span className="hidden sm:inline-block ml-1">{language === 'en' ? 'عربي' : 'EN'}</span>
-                <span className="sm:hidden">{language === 'en' ? 'AR' : 'EN'}</span>
+                <span className="hidden sm:inline-block ml-1">{language.toUpperCase()}</span>
+                <span className="sm:hidden">{language.toUpperCase()}</span>
               </button>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

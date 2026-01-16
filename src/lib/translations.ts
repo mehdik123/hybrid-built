@@ -12,13 +12,13 @@ export const translations = {
     backToHome: { en: "BACK TO HOME", ar: "الرجوع للرئيسية", fr: "RETOUR ACCUEIL" },
   },
 
-  // Hero Section (Inclusive & Lifestyle focused)
+  // Hero Section (Refined Digestible Design)
   hero: {
-    headline1: { en: "MASTER YOUR", ar: "تحكم فـ", fr: "MAÎTRISEZ VOTRE" },
-    headline2: { en: "FITNESS LIFESTYLE", ar: "أسلوب حياتك الرياضي", fr: "STYLE DE VIE FITNESS" },
+    headline1: { en: "BUILD THE", ar: "ابني الـ", fr: "BATISSEZ LE" },
+    headline2: { en: "HYBRID PHYSIQUE", ar: "Hybrid Physique", fr: "PHYSIQUE HYBRIDE" },
     emotionalHook: { en: "SIZE • STRENGTH • FAT LOSS • TOTAL VITALITY", ar: "الحجم • القوة • حرق الدهون • حيوية تامة", fr: "VOLUME • FORCE • PERTE DE GRAS • VITALITÉ" },
-    headline3: { en: "THE COMPLETE ATHLETIC TRANSFORMATION", ar: "التحول الرياضي المتكامل", fr: "LA TRANSFORMATION ATHLÉTIQUE COMPLÈTE" },
-    promise: { en: "Achieve your peak physique, optimize your health, and master your body with a proven system for true athleticism.", ar: "وصل لأحسن فورمة، حسن صحتك، وتحكم فـ الجسم ديالك بنظام مجرب للتحول الرياضي الحقيقي.", fr: "Atteignez votre physique optimal, optimisez votre santé et maîtrisez votre corps avec un système prouvé pour un véritable athlétisme." },
+    headline3: { en: "BECOME A COMPLETE ATHLETE", ar: "ولي رياضي متكامل", fr: "DEVENEZ UN ATHLÈTE COMPLET" },
+    promise: { en: "Master size and strength, shed body fat, and elevate your overall health with the Hybrid Method.", ar: "تحكم فـ الحجم والقوة، حيد الدهون، وحسن صحتك كاملة بنظام الـ Hybrid.", fr: "Maîtrisez le volume et la force, perdez du gras, et améliorez votre santé globale avec la Méthode Hybride." },
     cta: { en: "DM ME 'HYBRID' TO START", ar: "صيفط ليا 'HYBRID' باش تبدا", fr: "DM MOI 'HYBRID' POUR COMMENCER" },
     ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "كنجاوب راسي قل من 24 ساعة.", fr: "JE RÉPONDS PERSONNELLEMENT SOUS 24H." },
     scroll: { en: "EXPLORE THE METHOD", ar: "اكتشف النظام", fr: "DÉCOUVRIR LA MÉTHODE" },
