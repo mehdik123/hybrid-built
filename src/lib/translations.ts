@@ -28,7 +28,7 @@ export const translations = {
       clientsLabel: { en: "TRANSFORMATIONS", ar: "تحول جذري", fr: "TRANSFORMATIONS" },
       followers: { en: "600K+", ar: "+600K", fr: "+600K" },
       followersLabel: { en: "FOLLOWERS", ar: "متابع", fr: "ABONNÉS" },
-      years: { en: "10+", ar: "10+", fr: "10+" },
+      years: { en: "8+", ar: "8+", fr: "8+" },
       yearsLabel: { en: "YEARS EXP", ar: "سنوات خبرة", fr: "ANS D'EXP" },
     },
   },
@@ -80,6 +80,7 @@ export const translations = {
         points: [
           { en: "Personalized program based on: weak points, timing, goal, and your level", ar: "برنامج مخصص على حساب: نقط الضعف، التوقيت، الهدف، والمستوى ديالك", fr: "Programme personnalisé basé sur : points faibles, emploi du temps, objectif et niveau" },
           { en: "Everything with my exercise videos", ar: "كولشي بالفيديوهات ديالي د التمارين", fr: "Tout avec mes vidéos d'exercices" },
+          { en: "I check your execution form to ensure you do everything right", ar: "كنصحح ليك التيكنيك ديالك باش نضمن بلي كادير كلشي صحيح", fr: "Je vérifie votre exécution pour m'assurer que vous faites tout correctement" },
           { en: "Track sets, reps, weights, and training volume", ar: "متابعة الـ sets، reps، الأوزان، والـ volume training", fr: "Suivi des séries, répétitions, charges et volume d'entraînement" },
           { en: "Weekly updates with new goals to achieve", ar: "تحديث كل سيمانة، كانوجدو فيه أهداف جداد خاصك توصل ليهم", fr: "Mises à jour hebdomadaires avec de nouveaux objectifs à atteindre" }
         ]
@@ -185,9 +186,9 @@ export const translations = {
       {
         question: { en: "How does online coaching work?", ar: "كيفاش كيخدم هاد التدريب أونلاين؟", fr: "Comment fonctionne le coaching en ligne ?" },
         answer: {
-          en: "We communicate through Instagram or WhatsApp. You get a custom plan, check in weekly with progress updates, and I adjust everything based on your results. It's like having me in your pocket 24/7.",
-          ar: "كنتواصلو فـ انستغرام ولا واتساب. كاتاخد برنامج مخصص، متابعة أسبوعية، وكنبدل كاع لبلان على حساب النتائج ديالك. بحال إلا أنا معاك 24/7.",
-          fr: "Nous communiquons via Instagram ou WhatsApp. Vous recevez un plan personnalisé, des bilans hebdomadaires, et j'ajuste tout selon vos résultats. C'est comme m'avoir dans votre poche 24/7."
+          en: "If you're interested, you send me a DM. I'll send you a form with all the info I need to create your personalized plan. Then we proceed with payment and start working directly via WhatsApp.",
+          ar: "إلا كنتي مهتم، صيفط ليا ميساج. غانسيفط ليك فورم فيها كاع المعلومات اللي خاصني باش نقاد ليك البرنامج ديالك. موراها كندوزو للخلاص وكنبداو الخدمة نيشان فـ الواتساب.",
+          fr: "Si vous êtes intéressé, envoyez-moi un DM. Je vous enverrai un formulaire avec toutes les infos nécessaires pour créer votre plan. Ensuite, nous procédons au paiement et commençons à travailler via WhatsApp."
         }
       },
       {
@@ -228,14 +229,6 @@ export const translations = {
           en: "Yes, message me and we'll work it out.",
           ar: "أه، صيفط ليا ميساج ونتفاهمو.",
           fr: "Oui, écrivez-moi et on trouvera une solution."
-        }
-      },
-      {
-        question: { en: "How many clients do you take?", ar: "شحال د الناس كاتقبل؟", fr: "Combien de clients prenez-vous ?" },
-        answer: {
-          en: "Limited spots (5-10 per month) to give everyone quality attention. If spots are full, I'll add you to the waitlist.",
-          ar: "بلايص محدودين (5-10 فالشهر) باش نعطي لكل واحد وقتو. إلا كانت الدنيا عامرة، كانديرك فـ قائمة الانتظار.",
-          fr: "Places limitées (5-10 par mois) pour assurer la qualité. Si c'est complet, je vous ajoute sur liste d'attente."
         }
       }
     ]
