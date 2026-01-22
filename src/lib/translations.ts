@@ -19,7 +19,7 @@ export const translations = {
     emotionalHook: { en: "SIZE • STRENGTH • FAT LOSS • TOTAL VITALITY", ar: "الحجم • القوة • حرق الدهون • حيوية تامة", fr: "VOLUME • FORCE • PERTE DE GRAS • VITALITÉ" },
     headline3: { en: "BECOME A COMPLETE ATHLETE", ar: "ولي رياضي متكامل", fr: "DEVENEZ UN ATHLÈTE COMPLET" },
     promise: { en: "Master size and strength, shed body fat, and elevate your overall health with the Hybrid Method.", ar: "تحكم فـ الحجم والقوة، حيد الدهون، وحسن صحتك كاملة بنظام الـ Hybrid.", fr: "Maîtrisez le volume et la force, perdez du gras, et améliorez votre santé globale avec la Méthode Hybride." },
-    cta: { en: "DM ME 'HYBRID' TO START", ar: "صيفط ليا 'HYBRID' باش تبدا", fr: "DM MOI 'HYBRID' POUR COMMENCER" },
+    cta: { en: "DM ME 'COACHING' TO START", ar: "صيفط ليا 'COACHING' باش تبدا", fr: "DM MOI 'COACHING' POUR COMMENCER" },
     ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "كنجاوب راسي قل من 24 ساعة.", fr: "JE RÉPONDS PERSONNELLEMENT SOUS 24H." },
     scroll: { en: "EXPLORE THE METHOD", ar: "اكتشف النظام", fr: "DÉCOUVRIR LA MÉTHODE" },
     browsePrograms: { en: "EXPLORE PROGRAMS", ar: "اكتشف البرامج", fr: "VOIR LES PROGRAMMES" },
