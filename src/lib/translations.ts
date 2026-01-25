@@ -8,7 +8,7 @@ export const translations = {
     results: { en: "Results", ar: "النتائج", fr: "Résultats" },
     faq: { en: "FAQ", ar: "الأسئلة", fr: "FAQ" },
     products: { en: "Products", ar: "المنتجات", fr: "Produits" },
-    applyNow: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'", fr: "DM MOI 'HYBRID'" },
+    applyNow: { en: "DM ME 'COACHING'", ar: "راسلني 'COACHING'", fr: "DM MOI 'COACHING'" },
     backToHome: { en: "BACK TO HOME", ar: "الرجوع للرئيسية", fr: "RETOUR ACCUEIL" },
   },
 
@@ -181,7 +181,7 @@ export const translations = {
   faq: {
     title1: { en: "FREQUENTLY ASKED", ar: "الأسئلة", fr: "QUESTIONS" },
     title2: { en: "QUESTIONS", ar: "الشائعة", fr: "FRÉQUENTES" },
-    cta: { en: "DM ME 'HYBRID'", ar: "راسلني 'HYBRID'", fr: "DM MOI 'HYBRID'" },
+    cta: { en: "DM ME 'COACHING'", ar: "راسلني 'COACHING'", fr: "DM MOI 'COACHING'" },
     items: [
       {
         question: { en: "How does online coaching work?", ar: "كيفاش كيخدم هاد التدريب أونلاين؟", fr: "Comment fonctionne le coaching en ligne ?" },
@@ -277,9 +277,9 @@ export const translations = {
     ],
     alternative: { en: "Or you could still be guessing, wasting time on random programs.", ar: "أو تقدر تبقى غي كتجرب وتضيع الوقت فـ برامج عشوائية.", fr: "Ou vous pourriez encore deviner, perdant du temps sur des programmes au hasard." },
     choice: { en: "The choice is yours.", ar: "القرار بين يديك.", fr: "Le choix vous appartient." },
-    cta: { en: "DM ME 'HYBRID'", ar: "صيفط ليا 'HYBRID'", fr: "DM MOI 'HYBRID'" },
+    cta: { en: "DM ME 'COACHING'", ar: "صيفط ليا 'COACHING'", fr: "DM MOI 'COACHING'" },
     dmText: { en: "DM me", ar: "صيفط ليا", fr: "DM moi" },
-    coaching: { en: "'HYBRID'", ar: "'HYBRID'", fr: "'HYBRID'" },
+    coaching: { en: "'COACHING'", ar: "'COACHING'", fr: "'COACHING'" },
     onInstagram: { en: "on Instagram.", ar: "فـ انستغرام.", fr: "sur Instagram." },
     letsGo: { en: "Let's build something great.", ar: "يلاه نبنيو شي حاجة ناضية.", fr: "Construisons quelque chose de grand." },
   },
@@ -332,7 +332,7 @@ export const translations = {
 
   // Sticky Button (DM Focus)
   sticky: {
-    apply: { en: "DM ME 'HYBRID'", ar: "صيفط ليا 'HYBRID'", fr: "DM MOI 'HYBRID'" },
+    apply: { en: "DM ME 'COACHING'", ar: "صيفط ليا 'COACHING'", fr: "DM MOI 'COACHING'" },
   },
 
   // Email Capture Modal

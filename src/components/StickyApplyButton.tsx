@@ -9,7 +9,7 @@ const StickyDMButton = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { language } = useLanguage();
   const t = translations.sticky;
-  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=HYBRID";
+  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=COACHING";
 
   useEffect(() => {
     const handleScroll = () => {

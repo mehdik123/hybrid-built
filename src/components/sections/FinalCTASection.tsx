@@ -67,7 +67,7 @@ const FinalCTASection = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <a href="https://ig.me/m/unbreakablesteam?text=HYBRID" target="_blank" rel="noopener noreferrer">
+            <a href="https://ig.me/m/unbreakablesteam?text=COACHING" target="_blank" rel="noopener noreferrer">
               <Button size="xxl" className="bg-primary hover:bg-primary/90 text-white font-black text-xl uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/20 mb-4 px-12">
                 {t.cta[language]}
               </Button>

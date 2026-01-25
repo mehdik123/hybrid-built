@@ -9,7 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=HYBRID";
+  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=COACHING";
   const { language, setLanguage, isRTL } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
