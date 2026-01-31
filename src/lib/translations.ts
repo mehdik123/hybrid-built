@@ -364,11 +364,19 @@ export const translations = {
     ],
     howToUse: { en: "HOW TO USE:", ar: "كيفاش تخدم بيه:", fr: "COMMENT L'UTILISER :" },
     howToUseDesc: { en: "This is more than a PDF. It's a complete 8-week mentorship in a document. You get the full 8-week training cycle, 4 distinct meal plans to choose from based on your goal, and the exact methods I use to build muscle and strength simultaneously.", ar: "هادا كبر من مجرد PDF. هادا بحال تدريب كامل لمدة 8 سيمانات فملف. عندك دورة تدريبية كاملة، 4 د الأنظمة د الماكلة تختار بيناتهم، والطرق الضبطة اللي كنخدم بيها باش نبني العضلات والقوة دقة وحدة.", fr: "C'est plus qu'un PDF. C'est un mentorat complet de 8 semaines dans un document. Vous avez le cycle complet d'entraînement, 4 plans repas au choix selon votre objectif, et les méthodes exactes que j'utilise." },
-    howToBuy: { en: "HOW TO GET IT:", ar: "كيفاش تاخدو:", fr: "COMMENT L'OBTENIR :" },
-    step1: { en: "Click the button below to DM me 'HYBRID PROGRAM' on Instagram", ar: "كليكي على البوطونة لتحت وصيفط ليا 'HYBRID PROGRAM' ف انستغرام", fr: "Cliquez ci-dessous et envoyez-moi 'HYBRID PROGRAM' sur Instagram" },
-    step2: { en: "I'll send you payment details ($20 USD or 199 DH)", ar: "غانسيفط ليك كيفاش تخلص (20$ أو 199 درهم)", fr: "Je vous envoie les détails de paiement (20$ USD ou 199 DH)" },
-    step3: { en: "Once paid, you'll receive the complete guide instantly", ar: "غير تخلص، كيوصلك الدليل كامل فالحين", fr: "Une fois payé, vous recevez le guide complet instantanément" },
-    dmButton: { en: "DM ME 'HYBRID PROGRAM'", ar: "صيفط ليا 'HYBRID PROGRAM'", fr: "DM MOI 'HYBRID PROGRAM'" }
+    paymentMethodsTitle: { en: "ACCEPTED PAYMENT METHODS:", ar: "طرق الدفع المقبولة:", fr: "MÉTHODES DE PAIEMENT :" },
+    methods: {
+      bank: { en: "Bank Transfer (CIH/Bank)", ar: "تحويل بنكي (CIH/Bank)", fr: "Virement Bancaire" },
+      cash: { en: "Cash Agencies (Wafacash, CashPlus...)", ar: "وكالات الكاش (Wafacash, CashPlus...)", fr: "Agences Cash (Wafacash...)" },
+      intl: { en: "International (Western Union)", ar: "دولي (Western Union)", fr: "International (West. Union)" }
+    },
+    howToBuy: { en: "SIMPLE 3-STEP PROCESS:", ar: "3 خطوات سهلة باش تاخدو:", fr: "PROCESSUS SIMPLE EN 3 ÉTAPES :" },
+    step1: { en: "Click the button below to open Instagram", ar: "كليكي على البوطونة لتحت باش تحل انستغرام", fr: "Cliquez sur le bouton ci-dessous pour ouvrir Instagram" },
+    step2: { en: "Send the pre-filled message 'HYBRID BLUEPRINT'", ar: "صيفط الميساج اللي مكتوب 'HYBRID BLUEPRINT'", fr: "Envoyez le message pré-rempli 'HYBRID BLUEPRINT'" },
+    step3: { en: "I'll send you the payment details for your chosen method", ar: "غانسيفط ليك معلومات الخلاص للطريقة اللي ختارتي", fr: "Je vous envoie les détails de paiement pour votre méthode" },
+    step4: { en: "Send proof of payment & receive your product instantly!", ar: "صيفط وصل الخلاص وها البروكرام عندك!", fr: "Envoyez la preuve de paiement & recevez votre produit !" },
+    dmButton: { en: "DM ME 'HYBRID BLUEPRINT'", ar: "صيفط ليا 'HYBRID BLUEPRINT'", fr: "DM MOI 'HYBRID BLUEPRINT'" },
+    dmLinkText: { en: "HYBRID BLUEPRINT", ar: "HYBRID BLUEPRINT", fr: "HYBRID BLUEPRINT" }
   },
   // Product Teaser (Home Page)
   productTeaser: {
