@@ -172,6 +172,10 @@
   .btn-tactical:hover::before {
     @apply translate-x-full;
   }
+
+  .glass-panel {
+    @apply bg-black/70 border border-white/10 backdrop-blur-2xl rounded-3xl;
+  }
 }
 
 @layer utilities {
@@ -222,6 +226,15 @@
     50% {
       transform: translateY(10px);
       opacity: 0.5;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(50%);
     }
   }
 }

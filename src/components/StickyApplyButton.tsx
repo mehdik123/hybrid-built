@@ -32,16 +32,20 @@ const StickyDMButton = () => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-6 left-0 right-0 z-50 px-6 md:hidden pointer-events-none"
+          transition={{ type: "spring", stiffness: 260, damping: 26 }}
+          className="fixed bottom-4 left-0 right-0 z-50 px-4 md:hidden pointer-events-none"
         >
           <div className="max-w-md mx-auto pointer-events-auto">
             <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
               <Button
                 size="xxl"
-                className="w-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest shadow-2xl shadow-primary/40 py-8 text-lg border-2 border-white/10"
+                className="group w-full bg-primary/95 hover:bg-primary text-white font-black uppercase tracking-[0.3em] shadow-[0_18px_60px_rgba(255,0,0,0.45)] py-7 text-sm border border-white/15 rounded-2xl relative overflow-hidden"
               >
-                <Instagram className="w-6 h-6 mr-3" />
-                {t.apply[language]}
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-white/5 opacity-0 group-hover:opacity-100 translate-x-[-30%] group-hover:translate-x-[30%] transition-transform duration-700" />
+                <span className="relative flex items-center justify-center gap-2">
+                  <Instagram className="w-5 h-5" />
+                  <span>{t.apply[language]}</span>
+                </span>
               </Button>
             </a>
           </div>

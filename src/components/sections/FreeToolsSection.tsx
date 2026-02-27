@@ -23,8 +23,8 @@ const FreeToolsSection = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    className="text-center mb-16 space-y-4"
                 >
                     <h2 className="font-display text-4xl md:text-5xl lg:text-7xl mb-6 uppercase tracking-tight">
                         {t.title1[language]} <span className="text-primary">{t.title2[language]}</span>
@@ -32,17 +32,23 @@ const FreeToolsSection = () => {
                     <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-medium">
                         {t.subtitle[language]}
                     </p>
+                    <div className="mx-auto h-px w-24 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
                 </motion.div>
 
                 <div className="flex justify-center">
                     {/* Tool 1: 1RM Calculator (Interactive) */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                        transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
                         className="w-full max-w-2xl"
                     >
-                        <OneRepMaxCalculator />
+                        <div className="relative group">
+                            <div className="absolute -inset-[1px] rounded-[28px] bg-gradient-to-r from-primary/40 via-primary/10 to-primary/40 opacity-40 group-hover:opacity-90 blur-xl transition-opacity duration-700" />
+                            <div className="relative rounded-[26px] bg-black/70 backdrop-blur-2xl border border-white/10 group-hover:border-primary/40 transition-colors duration-500 shadow-[0_24px_80px_rgba(0,0,0,0.75)]">
+                                <OneRepMaxCalculator />
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </div>

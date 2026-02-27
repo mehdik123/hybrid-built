@@ -22,6 +22,20 @@ const TransformationsSection = () => {
   const { language, isRTL } = useLanguage();
   const t = translations.transformations;
 
+  const getImageSources = (index: number, item: (typeof t.testimonials)[number]) => {
+    if ((item as any).imageBefore && (item as any).imageAfter) {
+      return {
+        before: (item as any).imageBefore as string,
+        after: (item as any).imageAfter as string,
+      };
+    }
+    const imageIndex = (index % t.testimonials.length) + 1;
+    return {
+      before: `/transformation-${imageIndex}-before.png`,
+      after: `/transformation-${imageIndex}-after.png`,
+    };
+  };
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     direction: isRTL ? 'rtl' : 'ltr',
     align: 'center',
@@ -115,6 +129,9 @@ const TransformationsSection = () => {
                   key={index}
                   className="flex-shrink-0 w-[92vw] sm:w-[500px] md:w-[600px]"
                 >
+                  {(() => {
+                    const images = getImageSources(index, item);
+                    return (
                   <div className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 h-full group">
                     {/* Before/After Images */}
                     <div className="aspect-[4/5] sm:aspect-[16/10] bg-muted relative overflow-hidden">
@@ -122,7 +139,7 @@ const TransformationsSection = () => {
                         {/* Before Image */}
                         <div className={`w-1/2 h-full relative ${isRTL ? 'border-l' : 'border-r'} border-border/30`}>
                           <img
-                            src={`/transformation-${(index % t.testimonials.length) + 1}-before.png`}
+                            src={images.before}
                             alt="Before"
                             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                           />
@@ -133,7 +150,7 @@ const TransformationsSection = () => {
                         {/* After Image */}
                         <div className="w-1/2 h-full relative">
                           <img
-                            src={`/transformation-${(index % t.testimonials.length) + 1}-after.png`}
+                            src={images.after}
                             alt="After"
                             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                           />
@@ -144,6 +161,8 @@ const TransformationsSection = () => {
                       </div>
                     </div>
                   </div>
+                    );
+                  })()}
                 </div>
               ))}
             </div>
@@ -178,7 +197,9 @@ const TransformationsSection = () => {
                 </DialogHeader>
                 <ScrollArea className="h-full">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 pb-20">
-                    {t.testimonials.map((item, index) => (
+                    {t.testimonials.map((item, index) => {
+                      const images = getImageSources(index, item);
+                      return (
                       <div key={index} className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary transition-all duration-300 group">
                         {/* Before/After Images */}
                         <div className="aspect-[4/5] sm:aspect-[16/10] bg-muted relative overflow-hidden">
@@ -186,7 +207,7 @@ const TransformationsSection = () => {
                             {/* Before Image */}
                             <div className={`w-1/2 h-full relative ${isRTL ? 'border-l' : 'border-r'} border-border/30`}>
                               <img
-                                src={`/transformation-${(index % t.testimonials.length) + 1}-before.png`}
+                                src={images.before}
                                 alt="Before"
                                 className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                               />
@@ -197,7 +218,7 @@ const TransformationsSection = () => {
                             {/* After Image */}
                             <div className="w-1/2 h-full relative">
                               <img
-                                src={`/transformation-${(index % t.testimonials.length) + 1}-after.png`}
+                                src={images.after}
                                 alt="After"
                                 className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                               />
@@ -208,7 +229,7 @@ const TransformationsSection = () => {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    )})}
                   </div>
                   <div className="p-6 pt-0 flex justify-center pb-20">
                     <DialogTrigger asChild>

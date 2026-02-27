@@ -172,6 +172,16 @@ export const translations = {
       {
         name: { en: "DRISS", ar: "إدريس", fr: "DRISS" },
         quote: { en: "From Zero to Hero. Best investment in myself.", ar: "من الزيرو للقمة. أحسن حاجة درتها لراسي.", fr: "De Zéro à Héros. Meilleur investissement sur moi-même." }
+      },
+      {
+        name: { en: "MEHDI", ar: "المهدي", fr: "MEHDI" },
+        quote: {
+          en: "From soft and stuck to a lean, athletic look with visible definition. This is what happens when you stop guessing and follow a real hybrid system.",
+          ar: "من فورمة عادية ودهون زايدة لواحد الشكل مشدود ورياضي مع ديطاي باينين. هادا اللي كيوقع مني كتوقف التجارب وكتتبع سيستيم Hybrid حقيقي.",
+          fr: "D’un physique ramolli et bloqué à un look sec et athlétique avec des détails visibles. Voilà ce qui arrive quand tu arrêtes d’improviser et suis un vrai système hybride."
+        },
+        imageBefore: "/transformation-11-before.png",
+        imageAfter: "/transformation-11-after.png"
       }
     ],
     cta: { en: "BECOME THE NEXT SUCCESS STORY", ar: "كون نتا قصة النجاح الجاية", fr: "DEVENEZ LA PROCHAINE SUCCESS STORY" }

@@ -4,6 +4,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import LanguageSelectorModal from "@/components/LanguageSelectorModal";
 import StickyApplyButton from "@/components/StickyApplyButton";
+import ScrollProgress from "@/components/ScrollProgress";
 
 // Lazy loaded components
 const ProductTeaser = lazy(() => import("@/components/sections/ProductTeaser"));
@@ -28,6 +29,7 @@ const Index = () => {
     <main className="min-h-screen bg-background">
       <LanguageSelectorModal />
       <Header />
+      <ScrollProgress />
       <HeroSection />
       <AboutSection />
       <Suspense fallback={<SectionLoader />}>
