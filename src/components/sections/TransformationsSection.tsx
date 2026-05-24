@@ -107,7 +107,7 @@ const TransformationsSection = () => {
             <button
               onClick={scrollPrev}
               disabled={!prevBtnEnabled}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/50 border border-white/10 text-white transition-all hover:bg-primary hover:border-primary disabled:opacity-0 disabled:pointer-events-none group-hover/carousel:translate-x-0 cursor-pointer"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-foreground/50 border border-background/10 text-background transition-all hover:bg-primary hover:border-primary disabled:opacity-0 disabled:pointer-events-none group-hover/carousel:translate-x-0 cursor-pointer"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -115,7 +115,7 @@ const TransformationsSection = () => {
             <button
               onClick={scrollNext}
               disabled={!nextBtnEnabled}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-black/50 border border-white/10 text-white transition-all hover:bg-primary hover:border-primary disabled:opacity-0 disabled:pointer-events-none group-hover/carousel:translate-x-0 cursor-pointer"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-foreground/50 border border-background/10 text-background transition-all hover:bg-primary hover:border-primary disabled:opacity-0 disabled:pointer-events-none group-hover/carousel:translate-x-0 cursor-pointer"
               aria-label="Next slide"
             >
               <ChevronRight className="w-6 h-6" />
@@ -143,8 +143,8 @@ const TransformationsSection = () => {
                             alt="Before"
                             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                           />
-                          <div className="absolute top-4 left-4 bg-black/90 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-sm border border-white/10 z-10">
-                            <span className="text-white text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.before[language]}</span>
+                          <div className="absolute top-4 left-4 bg-foreground/90 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-sm border border-background/10 z-10">
+                            <span className="text-background text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.before[language]}</span>
                           </div>
                         </div>
                         {/* After Image */}
@@ -155,7 +155,7 @@ const TransformationsSection = () => {
                             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                           />
                           <div className="absolute top-4 right-4 bg-primary px-3 sm:px-4 py-1.5 rounded-sm shadow-xl z-10">
-                            <span className="text-white text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.after[language]}</span>
+                            <span className="text-background text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.after[language]}</span>
                           </div>
                         </div>
                       </div>
@@ -184,13 +184,13 @@ const TransformationsSection = () => {
           <div className="flex justify-center mt-8">
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="outline" className="w-full sm:w-auto gap-2 text-primary border-primary/20 hover:bg-primary hover:text-white transition-all tracking-widest uppercase text-xs sm:text-sm font-bold py-6 sm:py-4 shadow-lg shadow-primary/5">
+                <Button variant="outline" className="w-full sm:w-auto gap-2 text-primary border-primary/20 hover:bg-primary hover:text-background transition-all tracking-widest uppercase text-xs sm:text-sm font-bold py-6 sm:py-4 shadow-lg shadow-foreground/10">
                   <Grid className="w-4 h-4" />
                   {language === 'en' ? 'See All Transformations' : 'شاهد كل التحولات'}
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-[95vw] w-full h-[90vh] p-0 bg-background/95 backdrop-blur-xl border-white/10">
-                <DialogHeader className="p-6 border-b border-white/10">
+              <DialogContent className="max-w-[95vw] w-full h-[90vh] p-0 bg-background/95 backdrop-blur-xl border-background/10">
+                <DialogHeader className="p-6 border-b border-background/10">
                   <DialogTitle className="text-2xl font-display uppercase tracking-tighter text-center">
                     {t.title1[language]} <span className="text-primary">{t.title2[language]}</span>
                   </DialogTitle>
@@ -211,8 +211,8 @@ const TransformationsSection = () => {
                                 alt="Before"
                                 className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                               />
-                              <div className="absolute top-4 left-4 bg-black/90 backdrop-blur-md px-3 py-1 rounded-sm border border-white/10 z-10">
-                                <span className="text-white text-[10px] font-black tracking-widest uppercase">{t.before[language]}</span>
+                              <div className="absolute top-4 left-4 bg-foreground/90 backdrop-blur-md px-3 py-1 rounded-sm border border-background/10 z-10">
+                                <span className="text-background text-[10px] font-black tracking-widest uppercase">{t.before[language]}</span>
                               </div>
                             </div>
                             {/* After Image */}
@@ -223,7 +223,7 @@ const TransformationsSection = () => {
                                 className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                               />
                               <div className="absolute top-4 right-4 bg-primary px-3 py-1 rounded-sm shadow-xl z-10">
-                                <span className="text-white text-[10px] font-black tracking-widest uppercase">{t.after[language]}</span>
+                                <span className="text-background text-[10px] font-black tracking-widest uppercase">{t.after[language]}</span>
                               </div>
                             </div>
                           </div>
@@ -233,7 +233,7 @@ const TransformationsSection = () => {
                   </div>
                   <div className="p-6 pt-0 flex justify-center pb-20">
                     <DialogTrigger asChild>
-                      <Button variant="outline" className="w-full sm:w-auto uppercase tracking-widest font-black border-primary/20 hover:bg-primary hover:text-white">
+                      <Button variant="outline" className="w-full sm:w-auto uppercase tracking-widest font-black border-primary/20 hover:bg-primary hover:text-background">
                         {language === 'en' ? 'Close Gallery' : 'إغلاق المعرض'}
                       </Button>
                     </DialogTrigger>
@@ -252,7 +252,7 @@ const TransformationsSection = () => {
           className="text-center mt-12 md:mt-16 flex flex-col items-center"
         >
           <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="inline-block w-full max-w-[92vw]">
-            <Button variant="cta" size="xxl" className="uppercase tracking-wider sm:tracking-widest font-black px-4 sm:px-12 py-6 sm:py-8 md:py-10 text-[13px] sm:text-xl md:text-2xl group w-full sm:w-auto shadow-2xl shadow-primary/20 ring-1 ring-white/10 flex items-center justify-center min-h-[70px]">
+            <Button variant="cta" size="xxl" className="uppercase tracking-wider sm:tracking-widest font-black px-4 sm:px-12 py-6 sm:py-8 md:py-10 text-[13px] sm:text-xl md:text-2xl group w-full sm:w-auto shadow-2xl shadow-foreground/10 ring-1 ring-white/10 flex items-center justify-center min-h-[70px]">
               <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
                 {t.cta[language]}
                 <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>→</motion.span>

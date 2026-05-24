@@ -34,7 +34,7 @@ const VideoTestimonialSection = () => {
     const t = content[language as keyof typeof content];
 
     return (
-        <section className="section-padding bg-black/50 relative overflow-hidden">
+        <section className="section-padding bg-card relative overflow-hidden">
             {/* Background Accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -85,7 +85,7 @@ const VideoTestimonialSection = () => {
                                 e.currentTarget.src = "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop";
                             }}
                         />
-                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+                        <div className="absolute inset-0 bg-foreground/40 group-hover:bg-foreground/20 transition-colors" />
                     </div>
 
                     {/* Interaction Layer */}
@@ -95,8 +95,8 @@ const VideoTestimonialSection = () => {
                         rel="noopener noreferrer"
                         className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
                     >
-                        <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-primary flex items-center justify-center shadow-2xl shadow-primary/50 group-hover:scale-110 transition-transform duration-300">
-                            <Play className="w-8 h-8 md:w-12 md:h-12 text-white fill-current translate-x-1" />
+                        <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-primary flex items-center justify-center shadow-2xl shadow-foreground/10 group-hover:scale-110 transition-transform duration-300">
+                            <Play className="w-8 h-8 md:w-12 md:h-12 text-background fill-current translate-x-1" />
                         </div>
 
                         <div className="mt-8 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
@@ -110,8 +110,8 @@ const VideoTestimonialSection = () => {
 
                     {/* Client Branding */}
                     <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between pointer-events-none">
-                        <div className="bg-black/60 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10">
-                            <span className="text-white font-bold text-sm md:text-base">{t.clientName}</span>
+                        <div className="bg-foreground/60 backdrop-blur-md px-4 py-2 rounded-lg border border-background/10">
+                            <span className="text-background font-bold text-sm md:text-base">{t.clientName}</span>
                         </div>
                     </div>
                 </motion.div>

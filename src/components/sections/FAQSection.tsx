@@ -65,7 +65,7 @@ const FAQSection = () => {
           className="text-center mt-12"
         >
           <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-            <Button size="xl" className="bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest px-10 py-6 transform transition-transform active:scale-95 shadow-lg shadow-primary/20">
+            <Button size="xl" className="bg-primary hover:bg-primary/90 text-background font-black uppercase tracking-widest px-10 py-6 transform transition-transform active:scale-95 shadow-lg shadow-foreground/10">
               {t.cta[language]}
             </Button>
           </a>

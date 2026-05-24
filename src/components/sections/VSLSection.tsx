@@ -45,9 +45,9 @@ const VSLSection = () => {
                     className="relative max-w-5xl mx-auto mb-12"
                 >
                     {/* Video Wrapper with premium styling */}
-                    <div className="relative rounded-3xl overflow-hidden border-2 border-primary/20 shadow-2xl shadow-primary/30 group">
+                    <div className="relative rounded-3xl overflow-hidden border-2 border-primary/20 shadow-2xl shadow-foreground/10 group">
                         {/* Aspect ratio container */}
-                        <div className="aspect-video bg-black/40 backdrop-blur-xl flex items-center justify-center">
+                        <div className="aspect-video bg-foreground/40 backdrop-blur-xl flex items-center justify-center">
                             {/* YouTube/Vimeo Embed or self-hosted video */}
                             <iframe
                                 className="w-full h-full"
@@ -68,7 +68,7 @@ const VSLSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-center max-w-2xl mx-auto bg-card/30 border border-white/5 p-8 rounded-2xl"
+                    className="text-center max-w-2xl mx-auto bg-card/30 border border-background/5 p-8 rounded-2xl"
                 >
                     <p className="text-xl text-foreground font-semibold mb-6">
                         {language === "ar"
@@ -76,7 +76,7 @@ const VSLSection = () => {
                             : "Is this methodology right for you? Let's find out."}
                     </p>
                     <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-                        <Button size="xxl" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-black text-lg uppercase tracking-widest px-12 py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/20">
+                        <Button size="xxl" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-background font-black text-lg uppercase tracking-widest px-12 py-8 transform transition-transform active:scale-95 shadow-xl shadow-foreground/10">
                             {language === "ar" ? "راسلني 'HYBRID'" : "DM ME 'HYBRID'"}
                         </Button>
                     </a>

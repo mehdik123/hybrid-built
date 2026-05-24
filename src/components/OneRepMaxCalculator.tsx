@@ -55,7 +55,7 @@ const OneRepMaxCalculator = () => {
     ] : [];
 
     return (
-        <div className="bg-secondary/30 border border-white/5 rounded-3xl p-8 h-full flex flex-col justify-between">
+        <div className="bg-secondary/30 border border-background/5 rounded-3xl p-8 h-full flex flex-col justify-between">
             <div>
                 <div className="flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -74,7 +74,7 @@ const OneRepMaxCalculator = () => {
                             {t.exerciseLabel[language]}
                         </label>
                         <Select value={exercise} onValueChange={setExercise}>
-                            <SelectTrigger className="bg-background/50 border-white/10 text-base font-bold h-14">
+                            <SelectTrigger className="bg-background/50 border-background/10 text-base font-bold h-14">
                                 <SelectValue>
                                     <div className="flex items-center gap-2">
                                         <Dumbbell className="w-4 h-4 text-primary" />
@@ -82,7 +82,7 @@ const OneRepMaxCalculator = () => {
                                     </div>
                                 </SelectValue>
                             </SelectTrigger>
-                            <SelectContent className="bg-background border-white/10">
+                            <SelectContent className="bg-background border-background/10">
                                 <SelectItem value="benchPress" className="text-base font-medium cursor-pointer">
                                     {t.exercises.benchPress[language]}
                                 </SelectItem>
@@ -115,7 +115,7 @@ const OneRepMaxCalculator = () => {
                                 value={weight}
                                 onChange={(e) => setWeight(e.target.value)}
                                 placeholder="10"
-                                className="bg-background/50 border-white/10 text-xl font-bold h-14"
+                                className="bg-background/50 border-background/10 text-xl font-bold h-14"
                             />
                         </div>
 
@@ -142,7 +142,7 @@ const OneRepMaxCalculator = () => {
 
                 <Button
                     onClick={calculate1RM}
-                    className="w-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest py-6 mb-8"
+                    className="w-full bg-primary hover:bg-primary/90 text-background font-black uppercase tracking-widest py-6 mb-8"
                 >
                     {t.calculate[language]}
                 </Button>
@@ -168,7 +168,7 @@ const OneRepMaxCalculator = () => {
                             <TrendingUp className="w-3 h-3" /> {t.trainingZones[language]}
                         </p>
                         {zones.map((zone, idx) => (
-                            <div key={idx} className="flex items-center justify-between p-3 bg-background/40 rounded-xl border border-white/5">
+                            <div key={idx} className="flex items-center justify-between p-3 bg-background/40 rounded-xl border border-background/5">
                                 <span className="text-xs font-medium text-muted-foreground">{zone.label}</span>
                                 <span className="text-sm font-black text-foreground">{zone.value} KG</span>
                             </div>

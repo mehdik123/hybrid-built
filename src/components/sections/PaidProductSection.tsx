@@ -23,7 +23,7 @@ const PaidProductSection = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.6 }}
-                        className={`bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary/50 rounded-3xl overflow-hidden hover:border-primary hover:shadow-2xl hover:shadow-primary/30 transition-all duration-500 relative ${isRTL ? 'text-right' : ''} flex flex-col md:flex-row-reverse`}
+                        className={`bg-gradient-to-br from-primary/10 via-card to-background border-2 border-primary/50 rounded-3xl overflow-hidden hover:border-primary hover:shadow-2xl hover:shadow-foreground/10 transition-all duration-500 relative ${isRTL ? 'text-right' : ''} flex flex-col md:flex-row-reverse`}
                     >
                         {/* Glow effect */}
                         <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary to-primary opacity-20 blur-xl group-hover:opacity-30 transition-opacity -z-10" />
@@ -48,7 +48,7 @@ const PaidProductSection = () => {
                                     <span className="text-xl opacity-80">/</span>
                                     <span className="font-sans">199 درهم</span>
                                 </div>
-                                <div className="text-white/40 line-through text-lg">
+                                <div className="text-background/40 line-through text-lg">
                                     {t.originalPrice[language]}
                                 </div>
                             </div>
@@ -77,7 +77,7 @@ const PaidProductSection = () => {
                             </div>
 
                             <PaidProductInfoModal>
-                                <Button size="xxl" variant="hero" className="w-full font-black text-lg uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/40 cursor-pointer">
+                                <Button size="xxl" variant="hero" className="w-full font-black text-lg uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-foreground/10 cursor-pointer">
                                     {language === 'en' ? 'START SOLO - $20 / 199 DH' : 'ابدأ بمفردك - 20$ / 199 درهم'}
                                 </Button>
                             </PaidProductInfoModal>
