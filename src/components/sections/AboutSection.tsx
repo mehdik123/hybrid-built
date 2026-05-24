@@ -11,7 +11,7 @@ const AboutSection = () => {
   const t = translations.about;
 
   return (
-    <section id="about" className="relative section-padding overflow-hidden bg-foreground" ref={ref}>
+    <section id="about" className="relative section-padding overflow-hidden bg-card" ref={ref}>
       {/* Background elements */}
       <div className="absolute inset-0 tech-grid opacity-20 pointer-events-none" />
       <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
@@ -32,7 +32,7 @@ const AboutSection = () => {
                 alt="MEHDI - UNBREAKABLES TEAM Founder"
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent opacity-60" />
 
               {/* Tactical Overlay */}
               <div className="absolute bottom-4 left-4 right-4 p-4 bg-foreground/80 backdrop-blur-md border border-background/10 rounded-md">

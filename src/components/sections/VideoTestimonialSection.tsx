@@ -34,7 +34,7 @@ const VideoTestimonialSection = () => {
     const t = content[language as keyof typeof content];
 
     return (
-        <section className="section-padding bg-foreground/50 relative overflow-hidden">
+        <section className="section-padding bg-card relative overflow-hidden">
             {/* Background Accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
