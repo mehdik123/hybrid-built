@@ -60,7 +60,7 @@ const Header = () => {
       <motion.header
         initial={{ y: 0 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md border-b border-primary/20 py-4" : "py-6 bg-black/50 backdrop-blur-sm md:bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md border-b border-primary/20 py-4" : "py-6 bg-foreground/50 backdrop-blur-sm md:bg-transparent"
           }`}
       >
         <div className="container-tight px-4 md:px-8">
@@ -99,7 +99,7 @@ const Header = () => {
               </button>
 
               <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-                <Button variant="hero" size="sm" className="bg-primary hover:bg-primary/90 text-white font-black text-xs uppercase tracking-widest px-6 h-10 shadow-lg shadow-primary/20">
+                <Button variant="hero" size="sm" className="bg-primary hover:bg-primary/90 text-background font-black text-xs uppercase tracking-widest px-6 h-10 shadow-lg shadow-foreground/10">
                   {translations.nav.applyNow[language]}
                 </Button>
               </a>
@@ -114,7 +114,7 @@ const Header = () => {
                 {translations.nav.products[language]}
               </button>
               <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="mr-0.5 sm:mr-1">
-                <Button variant="hero" size="sm" className="px-2 sm:px-4 h-8 sm:h-9 text-[9px] sm:text-[10px] font-black tracking-tighter bg-primary shadow-lg shadow-primary/20">
+                <Button variant="hero" size="sm" className="px-2 sm:px-4 h-8 sm:h-9 text-[9px] sm:text-[10px] font-black tracking-tighter bg-primary shadow-lg shadow-foreground/10">
                   {translations.nav.applyNow[language]}
                 </Button>
               </a>

@@ -45,7 +45,7 @@ const FreeToolsSection = () => {
                     >
                         <div className="relative group">
                             <div className="absolute -inset-[1px] rounded-[28px] bg-gradient-to-r from-primary/40 via-primary/10 to-primary/40 opacity-40 group-hover:opacity-90 blur-xl transition-opacity duration-700" />
-                            <div className="relative rounded-[26px] bg-black/70 backdrop-blur-2xl border border-white/10 group-hover:border-primary/40 transition-colors duration-500 shadow-[0_24px_80px_rgba(0,0,0,0.75)]">
+                            <div className="relative rounded-[26px] bg-foreground/70 backdrop-blur-2xl border border-background/10 group-hover:border-primary/40 transition-colors duration-500 shadow-[0_24px_80px_rgba(0,0,0,0.75)]">
                                 <OneRepMaxCalculator />
                             </div>
                         </div>

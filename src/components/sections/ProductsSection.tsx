@@ -99,7 +99,7 @@ const ProductsSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="group"
           >
-            <div className={`bg-gradient-to-br from-primary/10 via-secondary to-background border-2 border-primary/50 rounded-3xl overflow-hidden hover:border-primary hover:shadow-2xl hover:shadow-primary/30 transition-all duration-500 relative ${isRTL ? 'text-right' : ''}`}>
+            <div className={`bg-gradient-to-br from-primary/10 via-secondary to-background border-2 border-primary/50 rounded-3xl overflow-hidden hover:border-primary hover:shadow-2xl hover:shadow-foreground/10 transition-all duration-500 relative ${isRTL ? 'text-right' : ''}`}>
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-primary via-primary to-primary opacity-20 blur-xl group-hover:opacity-30 transition-opacity -z-10" />
 
@@ -114,11 +114,11 @@ const ProductsSection = () => {
                     <Zap className="w-5 h-5" />
                     <span>$20 / 199 درهم</span>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md text-white/60 px-3 py-1 rounded-full text-sm font-medium line-through">
+                  <div className="bg-white/10 backdrop-blur-md text-background/60 px-3 py-1 rounded-full text-sm font-medium line-through">
                     {t.originalPrice[language]}
                   </div>
                 </div>
-                <div className={`absolute bottom-4 ${isRTL ? 'right-4' : 'left-4'} bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 animate-pulse shadow-lg`}>
+                <div className={`absolute bottom-4 ${isRTL ? 'right-4' : 'left-4'} bg-foreground text-background px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 animate-pulse shadow-lg`}>
                   <Clock className="w-4 h-4" />
                   {t.limitedTime[language]}
                 </div>

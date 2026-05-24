@@ -27,8 +27,8 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
             <DialogTrigger asChild>
                 {children}
             </DialogTrigger>
-            <DialogContent className="max-w-[95vw] sm:max-w-2xl bg-secondary/10 backdrop-blur-3xl border-white/10 p-0 overflow-hidden gap-0 max-h-[90vh] z-[100] [&>button.rounded-sm]:hidden">
-                <DialogClose className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} z-[110] rounded-full bg-black/80 p-2 text-white hover:bg-black/70 transition-colors border border-white/10`}>
+            <DialogContent className="max-w-[95vw] sm:max-w-2xl bg-secondary/10 backdrop-blur-3xl border-background/10 p-0 overflow-hidden gap-0 max-h-[90vh] z-[100] [&>button.rounded-sm]:hidden">
+                <DialogClose className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} z-[110] rounded-full bg-foreground/80 p-2 text-background hover:bg-foreground/70 transition-colors border border-background/10`}>
                     <X className="w-5 h-5" />
                 </DialogClose>
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-purple-500/10 pointer-events-none" />
@@ -100,7 +100,7 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                             </h3>
                             <div className="grid gap-3">
                                 {/* Bank */}
-                                <div className={`flex items-center gap-3 bg-background/50 p-3 rounded-lg border border-white/5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                <div className={`flex items-center gap-3 bg-background/50 p-3 rounded-lg border border-background/5 ${isRTL ? 'flex-row-reverse' : ''}`}>
                                     <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
                                         <span className="text-blue-400 font-bold text-xs">BANK</span>
                                     </div>
@@ -110,7 +110,7 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                                 </div>
 
                                 {/* Cash Agencies */}
-                                <div className={`flex items-center gap-3 bg-background/50 p-3 rounded-lg border border-white/5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                <div className={`flex items-center gap-3 bg-background/50 p-3 rounded-lg border border-background/5 ${isRTL ? 'flex-row-reverse' : ''}`}>
                                     <div className="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center border border-yellow-500/20">
                                         <span className="text-yellow-400 font-bold text-xs">CASH</span>
                                     </div>
@@ -120,7 +120,7 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                                 </div>
 
                                 {/* International */}
-                                <div className={`flex items-center gap-3 bg-background/50 p-3 rounded-lg border border-white/5 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                                <div className={`flex items-center gap-3 bg-background/50 p-3 rounded-lg border border-background/5 ${isRTL ? 'flex-row-reverse' : ''}`}>
                                     <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center border border-green-500/20">
                                         <span className="text-green-400 font-bold text-xs">INTL</span>
                                     </div>
@@ -161,7 +161,7 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                             <a href={`https://ig.me/m/unbreakablesteam?text=${encodeURIComponent(t.dmLinkText[language])}`} target="_blank" rel="noopener noreferrer" className="block w-full">
                                 <Button
                                     size="lg"
-                                    className="w-full bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-base sm:text-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-3 py-8 sm:py-9"
+                                    className="w-full bg-primary hover:bg-primary/90 text-background font-black uppercase tracking-widest text-base sm:text-lg transition-all shadow-lg shadow-foreground/10 flex items-center justify-center gap-3 py-8 sm:py-9"
                                 >
                                     <MessageCircle className="w-6 h-6" />
                                     {t.dmButton[language]}

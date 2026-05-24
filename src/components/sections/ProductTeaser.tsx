@@ -9,7 +9,7 @@ const ProductTeaser = () => {
     const t = translations.productTeaser;
 
     return (
-        <section className="py-12 bg-secondary/30 border-y border-white/5">
+        <section className="py-12 bg-secondary/30 border-y border-background/5">
             <div className="container-tight px-4 sm:px-8">
                 <div className={`flex flex-col md:flex-row items-center justify-between gap-8 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
 
@@ -25,7 +25,7 @@ const ProductTeaser = () => {
                     <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
 
                         {/* Paid Product - Highlighted */}
-                        <div className="bg-[#0A0A0A] border border-primary/40 p-4 rounded-2xl flex flex-col gap-2 min-w-[180px] shadow-lg shadow-primary/10 relative overflow-hidden group">
+                        <div className="bg-card border border-primary/40 p-4 rounded-2xl flex flex-col gap-2 min-w-[180px] shadow-lg shadow-foreground/10 relative overflow-hidden group">
                             <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
                             <div className="absolute -top-1 -right-1 w-8 h-8 bg-primary blur-xl opacity-30" />
 
@@ -40,7 +40,7 @@ const ProductTeaser = () => {
                         </div>
 
                         {/* Free Tool - Secondary */}
-                        <div className="bg-card/50 border border-white/5 p-4 rounded-2xl flex flex-col gap-2 min-w-[160px] hover:border-white/10 transition-colors">
+                        <div className="bg-card/50 border border-background/5 p-4 rounded-2xl flex flex-col gap-2 min-w-[160px] hover:border-background/10 transition-colors">
                             <Gift className="w-5 h-5 text-indigo-400" />
                             <span className="text-sm font-bold uppercase text-foreground/80 leading-tight">{t.freeTitle[language]}</span>
                             <span className="text-[10px] text-muted-foreground uppercase">{t.freeDesc[language]}</span>

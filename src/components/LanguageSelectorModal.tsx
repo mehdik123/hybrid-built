@@ -41,7 +41,7 @@ const LanguageSelectorModal = () => {
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
                         className="fixed inset-0 flex items-center justify-center z-[101] p-4 pointer-events-none"
                     >
-                        <div className="bg-card border border-white/10 rounded-3xl p-8 md:p-12 max-w-lg w-full shadow-2xl shadow-primary/20 pointer-events-auto relative overflow-hidden group">
+                        <div className="bg-card border border-background/10 rounded-3xl p-8 md:p-12 max-w-lg w-full shadow-2xl shadow-foreground/10 pointer-events-auto relative overflow-hidden group">
                             {/* Decorative Glow */}
                             <div className="absolute -top-24 -left-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors duration-700" />
 
@@ -60,7 +60,7 @@ const LanguageSelectorModal = () => {
                                 <div className="grid grid-cols-1 gap-4">
                                     <Button
                                         size="xl"
-                                        className="bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-widest text-lg py-6 shadow-xl shadow-primary/20"
+                                        className="bg-primary hover:bg-primary/90 text-background font-black uppercase tracking-widest text-lg py-6 shadow-xl shadow-foreground/10"
                                         onClick={() => handleSelect("en")}
                                     >
                                         English

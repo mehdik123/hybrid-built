@@ -52,8 +52,8 @@ const CoachingSection = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                 className={`group relative bg-gradient-to-br from-secondary/40 via-card/50 to-background/30 
-                  backdrop-blur-md border-2 border-white/10 rounded-3xl p-8 
-                  hover:border-primary/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20
+                  backdrop-blur-md border-2 border-background/10 rounded-3xl p-8 
+                  hover:border-primary/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-foreground/10
                   transition-all duration-700 flex flex-col h-full overflow-hidden ${isRTL ? 'text-right' : ''}`}
               >
                 {/* Decorative gradient overlay on hover */}
@@ -71,11 +71,11 @@ const CoachingSection = () => {
                     <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 
                       flex items-center justify-center border-2 border-primary/30 
                       group-hover:scale-110 group-hover:rotate-3 group-hover:border-primary 
-                      group-hover:shadow-lg group-hover:shadow-primary/50
+                      group-hover:shadow-lg group-hover:shadow-foreground/10
                       transition-all duration-500">
                       {/* Icon glow effect */}
                       <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <feature.icon className="relative z-10 w-7 h-7 text-primary group-hover:text-white transition-colors duration-500" />
+                      <feature.icon className="relative z-10 w-7 h-7 text-primary group-hover:text-background transition-colors duration-500" />
                     </div>
 
                     {/* Title with gradient on hover */}
@@ -99,7 +99,7 @@ const CoachingSection = () => {
                       >
                         {/* Gradient bullet point */}
                         <div className="mt-1.5 w-2 h-2 rounded-full bg-gradient-to-r from-primary to-primary/50 
-                          shadow-sm shadow-primary/30 flex-shrink-0 group-hover:shadow-md group-hover:shadow-primary/50 
+                          shadow-sm shadow-foreground/10 flex-shrink-0 group-hover:shadow-md group-hover:shadow-foreground/10 
                           group-hover:scale-125 transition-all duration-500" />
                         <span className="flex-1">{point[language]}</span>
                       </motion.li>
@@ -182,7 +182,7 @@ const CoachingSection = () => {
             </div>
 
             <a href="https://ig.me/m/unbreakablesteam?text=COACHING" target="_blank" rel="noopener noreferrer">
-              <Button size="xxl" className="w-full bg-primary hover:bg-primary/90 text-white font-black text-xl uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-primary/20">
+              <Button size="xxl" className="w-full bg-primary hover:bg-primary/90 text-background font-black text-xl uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-foreground/10">
                 {t.messageMe[language]}
               </Button>
             </a>
@@ -205,7 +205,7 @@ const CoachingSection = () => {
             {/* Animated Glow Border */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-glow to-primary opacity-30 group-hover:opacity-100 transition-opacity duration-700 animate-[shimmer_3s_infinite]" />
 
-            <div className="relative bg-[#0A0A0A] backdrop-blur-3xl rounded-[22px] p-8 sm:p-10 border border-white/5">
+            <div className="relative bg-card backdrop-blur-3xl rounded-[22px] p-8 sm:p-10 border border-background/5">
               <div className="flex flex-col items-center gap-6">
                 {/* Visual Icon */}
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
@@ -224,7 +224,7 @@ const CoachingSection = () => {
                 {/* Pronounced Action Link */}
                 <a
                   href="/products"
-                  className="group/link flex items-center gap-3 bg-white/5 hover:bg-primary/10 border border-white/10 hover:border-primary/40 px-8 py-5 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95"
+                  className="group/link flex items-center gap-3 bg-white/5 hover:bg-primary/10 border border-background/10 hover:border-primary/40 px-8 py-5 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95"
                 >
                   <span className="text-primary font-black uppercase tracking-widest text-base sm:text-lg">
                     {t.checkProducts[language]}

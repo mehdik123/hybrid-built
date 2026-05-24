@@ -11,7 +11,7 @@ const AboutSection = () => {
   const t = translations.about;
 
   return (
-    <section id="about" className="relative section-padding overflow-hidden bg-black" ref={ref}>
+    <section id="about" className="relative section-padding overflow-hidden bg-foreground" ref={ref}>
       {/* Background elements */}
       <div className="absolute inset-0 tech-grid opacity-20 pointer-events-none" />
       <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
@@ -32,12 +32,12 @@ const AboutSection = () => {
                 alt="MEHDI - UNBREAKABLES TEAM Founder"
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground via-transparent to-transparent opacity-60" />
 
               {/* Tactical Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 p-4 bg-black/80 backdrop-blur-md border border-white/10 rounded-md">
+              <div className="absolute bottom-4 left-4 right-4 p-4 bg-foreground/80 backdrop-blur-md border border-background/10 rounded-md">
                 <p className="text-primary font-black tracking-widest text-xs mb-1 uppercase">DIRECTOR // LEAD COACH</p>
-                <h3 className="text-white font-display text-2xl tracking-tight">MEHDI — @unbreakablesteam</h3>
+                <h3 className="text-background font-display text-2xl tracking-tight">MEHDI — @unbreakablesteam</h3>
               </div>
             </div>
             {/* Red Glow Backdrop */}
@@ -59,8 +59,8 @@ const AboutSection = () => {
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                   <span className="text-primary font-black text-xs uppercase tracking-widest">600K+ FOLLOWERS</span>
                 </div>
-                <div className="bg-white/5 border border-white/10 px-3 py-1 rounded-full flex items-center gap-2">
-                  <span className="text-white/60 font-black text-xs uppercase tracking-widest">EST. 2017</span>
+                <div className="bg-white/5 border border-background/10 px-3 py-1 rounded-full flex items-center gap-2">
+                  <span className="text-background/60 font-black text-xs uppercase tracking-widest">EST. 2017</span>
                 </div>
               </div>
               <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-none tracking-tight">
@@ -96,7 +96,7 @@ const AboutSection = () => {
 
             {/* Call to action text */}
             <div className="pt-4">
-              <p className="font-display text-3xl md:text-4xl lg:text-5xl uppercase tracking-tighter text-white">
+              <p className="font-display text-3xl md:text-4xl lg:text-5xl uppercase tracking-tighter text-background">
                 {t.description5[language]} <span className="text-primary animate-pulse">{t.you[language]}.</span>
               </p>
             </div>

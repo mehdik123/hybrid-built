@@ -79,7 +79,7 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
             <DialogTrigger asChild>
                 {children}
             </DialogTrigger>
-            <DialogContent className="max-w-[90vw] sm:max-w-md bg-secondary/10 backdrop-blur-3xl border-white/10 p-0 overflow-hidden gap-0 rounded-2xl sm:rounded-lg">
+            <DialogContent className="max-w-[90vw] sm:max-w-md bg-secondary/10 backdrop-blur-3xl border-background/10 p-0 overflow-hidden gap-0 rounded-2xl sm:rounded-lg">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none" />
 
                 <div className="relative p-6 sm:p-8">
@@ -109,7 +109,7 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
                                         type="text"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className={`bg-white/5 border-white/10 text-foreground focus:border-primary/50 transition-all ${isRTL ? 'text-right' : ''}`}
+                                        className={`bg-white/5 border-background/10 text-foreground focus:border-primary/50 transition-all ${isRTL ? 'text-right' : ''}`}
                                         placeholder={language === 'en' ? "Your Name" : "الاسم ديالك"}
                                     />
                                 </div>
@@ -123,7 +123,7 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
                                         type="email"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className={`bg-white/5 border-white/10 text-foreground focus:border-primary/50 transition-all ${isRTL ? 'text-right' : ''}`}
+                                        className={`bg-white/5 border-background/10 text-foreground focus:border-primary/50 transition-all ${isRTL ? 'text-right' : ''}`}
                                         placeholder="name@example.com"
                                     />
                                 </div>
@@ -134,7 +134,7 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
                                 >
                                     {isLoading ? (
                                         <span className="flex items-center gap-2">
-                                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                            <div className="w-4 h-4 border-2 border-background/30 border-t-white rounded-full animate-spin" />
                                             {t.submitting[language]}
                                         </span>
                                     ) : (
@@ -165,7 +165,7 @@ const EmailCaptureModal = ({ children, source = "generic" }: EmailCaptureModalPr
                                 <Button
                                     onClick={() => setIsOpen(false)}
                                     variant="outline"
-                                    className="w-full border-white/10 hover:bg-white/5"
+                                    className="w-full border-background/10 hover:bg-white/5"
                                 >
                                     {language === "en" ? "Close" : "سد النافذة"}
                                 </Button>
