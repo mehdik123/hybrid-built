@@ -12,24 +12,26 @@ export const translations = {
     backToHome: { en: "BACK TO HOME", ar: "الرجوع للرئيسية", fr: "RETOUR ACCUEIL" },
   },
 
-  // Hero Section (Refined Digestible Design)
+  // Hero Section (Editorial Atmospheric — Paper & Ink)
   hero: {
-    headline1: { en: "BUILD THE", ar: "ابني الـ", fr: "BATISSEZ LE" },
-    headline2: { en: "HYBRID PHYSIQUE", ar: "Hybrid Physique", fr: "PHYSIQUE HYBRIDE" },
-    emotionalHook: { en: "SIZE • STRENGTH • FAT LOSS • TOTAL VITALITY", ar: "الحجم • القوة • حرق الدهون • حيوية تامة", fr: "VOLUME • FORCE • PERTE DE GRAS • VITALITÉ" },
-    headline3: { en: "BECOME A COMPLETE ATHLETE", ar: "ولي رياضي متكامل", fr: "DEVENEZ UN ATHLÈTE COMPLET" },
-    promise: { en: "Master size and strength, shed body fat, and elevate your overall health with the Hybrid Method.", ar: "تحكم فـ الحجم والقوة، حيد الدهون، وحسن صحتك كاملة بنظام الـ Hybrid.", fr: "Maîtrisez le volume et la force, perdez du gras, et améliorez votre santé globale avec la Méthode Hybride." },
-    cta: { en: "DM ME 'COACHING' TO START", ar: "صيفط ليا 'COACHING' باش تبدا", fr: "DM MOI 'COACHING' POUR COMMENCER" },
-    ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "كنجاوب راسي قل من 24 ساعة.", fr: "JE RÉPONDS PERSONNELLEMENT SOUS 24H." },
+    badge: { en: "Elite Natural Performance", ar: "أداء طبيعي نخبوي", fr: "Performance Naturelle d'Élite" },
+    headline1: { en: "THE HYBRID", ar: "النظام", fr: "LA MÉTHODE" },
+    headline2: { en: "METHOD", ar: "الهجين", fr: "HYBRIDE" },
+    promise: {
+      en: "1-on-1 online coaching for the natural athlete. Mastering the intersection of extreme strength and elite aesthetics.",
+      ar: "تدريب أونلاين شخصي للرياضي الطبيعي. إتقان نقطة التقاء القوة القصوى والجمالية النخبوية.",
+      fr: "Coaching en ligne 1-on-1 pour l'athlète naturel. Maîtriser l'intersection de la force extrême et de l'esthétique d'élite."
+    },
+    cta: { en: 'DM "COACHING" TO START', ar: 'راسلني "COACHING" للبدء', fr: 'DM "COACHING" POUR COMMENCER' },
     scroll: { en: "EXPLORE THE METHOD", ar: "اكتشف النظام", fr: "DÉCOUVRIR LA MÉTHODE" },
-    browsePrograms: { en: "EXPLORE PROGRAMS", ar: "اكتشف البرامج", fr: "VOIR LES PROGRAMMES" },
+    established: { en: "Established 2017", ar: "تأسست 2017", fr: "Établi 2017" },
     stats: {
-      clients: { en: "100+", ar: "100+", fr: "100+" },
-      clientsLabel: { en: "TRANSFORMATIONS", ar: "تحول جذري", fr: "TRANSFORMATIONS" },
-      followers: { en: "600K+", ar: "+600K", fr: "+600K" },
-      followersLabel: { en: "FOLLOWERS", ar: "متابع", fr: "ABONNÉS" },
-      years: { en: "8+", ar: "8+", fr: "8+" },
-      yearsLabel: { en: "YEARS EXP", ar: "سنوات خبرة", fr: "ANS D'EXP" },
+      clients: { en: "500+", ar: "+500", fr: "500+" },
+      clientsLabel: { en: "Transformations", ar: "تحوّل", fr: "Transformations" },
+      followers: { en: "100%", ar: "100%", fr: "100%" },
+      followersLabel: { en: "Natural Growth", ar: "نمو طبيعي", fr: "Croissance Naturelle" },
+      years: { en: "24/7", ar: "24/7", fr: "24/7" },
+      yearsLabel: { en: "Direct Access", ar: "وصول مباشر", fr: "Accès Direct" },
     },
   },
   // About Section
