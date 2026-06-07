@@ -6,51 +6,51 @@
 
 @layer base {
   :root {
-    /* Charcoal & Ember — dark editorial with warm ember accent */
-    --background: 0 0% 10%;           /* #1a1a1a charcoal */
-    --foreground: 30 15% 92%;         /* warm off-white */
+    /* Paper & Ink — warm cream with deep ink */
+    --background: 40 26% 95%;           /* #f5f3ee warm cream */
+    --foreground: 0 0% 18%;           /* #2d2d2d deep ink */
 
-    --card: 0 0% 14%;                 /* #232323 raised surface */
-    --card-foreground: 30 15% 92%;
+    --card: 36 18% 92%;               /* #edeae4 raised card */
+    --card-foreground: 0 0% 18%;
 
-    --popover: 0 0% 12%;
-    --popover-foreground: 30 15% 92%;
+    --popover: 36 18% 92%;
+    --popover-foreground: 0 0% 18%;
 
-    --primary: 14 79% 57%;            /* #e85d3a ember — CTA */
-    --primary-foreground: 0 0% 8%;
+    --primary: 0 0% 5%;               /* #0d0d0d ink — CTA */
+    --primary-foreground: 40 26% 95%;
 
-    --secondary: 0 0% 18%;            /* #2d2d2d surface */
-    --secondary-foreground: 30 15% 92%;
+    --secondary: 36 18% 89%;           /* #e8e4dd warm surface */
+    --secondary-foreground: 0 0% 18%;
 
-    --muted: 0 0% 22%;
-    --muted-foreground: 30 8% 65%;
+    --muted: 36 12% 82%;
+    --muted-foreground: 0 0% 42%;
 
-    --accent: 14 79% 57%;             /* ember accent */
-    --accent-foreground: 0 0% 8%;
+    --accent: 0 0% 5%;                /* ink accent */
+    --accent-foreground: 40 26% 95%;
 
     --destructive: 0 75% 50%;
-    --destructive-foreground: 30 15% 92%;
+    --destructive-foreground: 40 26% 95%;
 
-    --border: 0 0% 22%;
-    --input: 0 0% 18%;
-    --ring: 14 79% 57%;
+    --border: 36 12% 78%;
+    --input: 36 18% 89%;
+    --ring: 0 0% 5%;
 
     --radius: 0.25rem;
 
-    /* Custom design tokens — charcoal depth, ember glow */
-    --glow-primary: 0 10px 40px -15px hsl(14 79% 57% / 0.45);
-    --glow-primary-strong: 0 20px 60px -15px hsl(14 79% 57% / 0.65);
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 10%) 0%, hsl(0 0% 14%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 14%) 0%, hsl(0 0% 11%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(14 79% 57%) 0%, hsl(20 85% 50%) 100%);
+    /* Custom design tokens — ink depth, subtle shadows */
+    --glow-primary: 0 10px 40px -15px hsl(0 0% 5% / 0.15);
+    --glow-primary-strong: 0 20px 60px -15px hsl(0 0% 5% / 0.25);
+    --gradient-hero: linear-gradient(180deg, hsl(40 26% 95%) 0%, hsl(36 18% 92%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(36 18% 92%) 0%, hsl(36 18% 89%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(0 0% 18%) 100%);
 
-    --tactical-bg: #1a1a1a;
-    --tactical-border: rgba(232, 93, 58, 0.18);
+    --tactical-bg: #f5f3ee;
+    --tactical-border: rgba(0, 0, 0, 0.10);
   }
 
   .dark {
-    --background: 0 0% 10%;
-    --foreground: 30 15% 92%;
+    --background: 40 26% 95%;
+    --foreground: 0 0% 18%;
   }
 }
 
