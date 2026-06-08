@@ -29,30 +29,30 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center bg-background text-foreground overflow-hidden px-6 py-24 md:py-32">
+    <section className="relative min-h-screen w-full flex items-center justify-center bg-[#0d0d0d] text-white overflow-hidden px-6 py-24 md:py-32">
       {/* Hero photograph background */}
       <div className="pointer-events-none absolute inset-0">
         <img
           src="/hero-placeholder-v2.jpg"
           alt="Build The Hybrid Physique"
-          className="w-full h-full object-cover opacity-90"
+          className="w-full h-full object-cover"
           loading="eager"
         />
-        {/* Darken image so light foreground text remains legible */}
-        <div className="absolute inset-0 bg-foreground/30 mix-blend-multiply" />
+        {/* Strong dark scrim for legibility */}
+        <div className="absolute inset-0 bg-black/65" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/85" />
       </div>
 
       {/* Subtle grain texture */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-overlay"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")",
         }}
       />
 
-      {/* Edge vignette only — keep the image clearly visible in the center */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,hsl(var(--background)/0.9)_100%)]" />
+      {/* Fade to page background at bottom */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
 
 
@@ -64,10 +64,10 @@ const HeroSection = () => {
       >
         {/* Status / Positioning Badge */}
         <motion.div variants={item}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-foreground/20 rounded-full bg-foreground/5 backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-white/25 rounded-full bg-white/10 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
             <span
-              className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-medium text-foreground/80"
+              className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-medium text-white/85"
               style={{ fontFamily: "Barlow, sans-serif" }}
             >
               {t.badge[language]}
@@ -78,14 +78,14 @@ const HeroSection = () => {
         {/* Main Headline */}
         <motion.div variants={item} className="space-y-5 md:space-y-6">
           <h1
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.88] text-foreground tracking-tight"
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.88] text-white tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]"
             style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             {t.headline1[language]}{" "}
-            <span className="text-primary">{t.headline2[language]}</span>
+            <span className="text-white/70">{t.headline2[language]}</span>
           </h1>
           <p
-            className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-xl mx-auto font-light leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-white/85 max-w-xl mx-auto font-light leading-relaxed"
             style={{ fontFamily: "Barlow, sans-serif" }}
           >
             {t.promise[language]}
@@ -98,32 +98,32 @@ const HeroSection = () => {
             href={instagramDMLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center justify-center gap-4 bg-primary text-primary-foreground px-8 sm:px-10 py-4 sm:py-5 rounded-sm overflow-hidden transition-all duration-500 hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.6)]"
+            className="group relative inline-flex items-center justify-center gap-4 bg-white text-black px-8 sm:px-10 py-4 sm:py-5 rounded-sm overflow-hidden transition-all duration-500 hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.4)]"
             style={{ fontFamily: "Barlow, sans-serif" }}
           >
             <span className="relative z-10 uppercase tracking-[0.2em] text-[11px] sm:text-sm font-semibold">
               {t.cta[language]}
             </span>
             <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-full transition-transform duration-1000" />
+            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/10 to-transparent group-hover:translate-x-full transition-transform duration-1000" />
           </a>
         </motion.div>
 
         {/* Stats / Proof Grid */}
         <motion.div
           variants={item}
-          className="grid grid-cols-3 gap-6 sm:gap-12 pt-8 border-t border-foreground/15 w-full max-w-2xl"
+          className="grid grid-cols-3 gap-6 sm:gap-12 pt-8 border-t border-white/20 w-full max-w-2xl"
         >
           {stats.map((s, i) => (
             <div key={i} className="flex flex-col items-center sm:items-start">
               <span
-                className="text-3xl md:text-4xl text-foreground leading-none"
+                className="text-3xl md:text-4xl text-white leading-none"
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               >
                 {s.value}
               </span>
               <span
-                className="mt-2 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-foreground/50 text-center sm:text-left"
+                className="mt-2 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-white/60 text-center sm:text-left"
                 style={{ fontFamily: "Barlow, sans-serif" }}
               >
                 {s.label}
@@ -134,22 +134,22 @@ const HeroSection = () => {
 
         {/* Established line */}
         <motion.div variants={item} className="pt-2">
-          <div className="flex items-center space-x-3 opacity-60">
-            <div className="w-10 h-px bg-foreground/60" />
+          <div className="flex items-center space-x-3 opacity-70">
+            <div className="w-10 h-px bg-white/60" />
             <span
-              className="text-[9px] uppercase tracking-[0.4em] font-semibold text-foreground"
+              className="text-[9px] uppercase tracking-[0.4em] font-semibold text-white"
               style={{ fontFamily: "Barlow, sans-serif" }}
             >
               {t.established[language]}
             </span>
-            <div className="w-10 h-px bg-foreground/60" />
+            <div className="w-10 h-px bg-white/60" />
           </div>
         </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-foreground/60"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
@@ -168,6 +168,7 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
     </section>
+
   );
 };
 
