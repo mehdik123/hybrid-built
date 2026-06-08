@@ -30,18 +30,29 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center bg-background text-foreground overflow-hidden px-6 py-24 md:py-32">
+      {/* Hero photograph background */}
+      <div className="pointer-events-none absolute inset-0">
+        <img
+          src="/hero-placeholder-v2.jpg"
+          alt="Build The Hybrid Physique"
+          className="w-full h-full object-cover opacity-[0.35] md:opacity-30"
+          loading="eager"
+        />
+      </div>
+
       {/* Subtle grain texture */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")",
         }}
       />
 
-      {/* Ember vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,hsl(var(--background))_100%)]" />
-      <div className="pointer-events-none absolute -top-1/3 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] rounded-full opacity-[0.08] blur-3xl bg-primary" />
+      {/* Editorial vignette to fade image into background */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_75%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
+
 
       <motion.div
         variants={container}
