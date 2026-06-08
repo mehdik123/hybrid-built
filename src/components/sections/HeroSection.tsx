@@ -35,23 +35,25 @@ const HeroSection = () => {
         <img
           src="/hero-placeholder-v2.jpg"
           alt="Build The Hybrid Physique"
-          className="w-full h-full object-cover opacity-[0.35] md:opacity-30"
+          className="w-full h-full object-cover opacity-90"
           loading="eager"
         />
+        {/* Darken image so light foreground text remains legible */}
+        <div className="absolute inset-0 bg-foreground/30 mix-blend-multiply" />
       </div>
 
       {/* Subtle grain texture */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-overlay"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")",
         }}
       />
 
-      {/* Editorial vignette to fade image into background */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--background)/0.4)_0%,hsl(var(--background))_75%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
+      {/* Edge vignette only — keep the image clearly visible in the center */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,hsl(var(--background)/0.9)_100%)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
 
 
       <motion.div
