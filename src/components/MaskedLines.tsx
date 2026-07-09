@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLightMotion } from "@/hooks/useLightMotion";
 
 interface MaskedLinesProps {
   lines: string[];
@@ -21,10 +22,11 @@ const MaskedLines = ({
 }: MaskedLinesProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const [visible, setVisible] = useState(!useInViewTrigger || reduced);
+  const light = useLightMotion();
+  const [visible, setVisible] = useState(!useInViewTrigger || reduced || light);
 
   useEffect(() => {
-    if (!useInViewTrigger || reduced) {
+    if (!useInViewTrigger || reduced || light) {
       setVisible(true);
       return;
     }
@@ -41,7 +43,7 @@ const MaskedLines = ({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [useInViewTrigger, reduced]);
+  }, [useInViewTrigger, reduced, light]);
 
   const renderLine = (text: string, lineIdx: number) => {
     if (!redWordIndex || redWordIndex.line !== lineIdx) return text;
@@ -60,7 +62,7 @@ const MaskedLines = ({
         <div key={i} className="line overflow-hidden">
           <span
             className={`in block font-display uppercase leading-[0.85] tracking-[0.006em] ${lineClassName} ${
-              visible ? "line-in" : ""
+              visible ? (light ? "line-in-fast" : "line-in") : ""
             }`}
             style={{ transitionDelay: visible ? `${i * stagger}ms` : "0ms" }}
           >

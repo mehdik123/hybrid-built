@@ -1,6 +1,6 @@
 import { useRef, useState, type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLightMotion } from "@/hooks/useLightMotion";
 import PathCardCover from "@/components/motion/PathCardCover";
 
 interface PathCardProps {
@@ -32,13 +32,13 @@ const PathCard = ({
   children,
   as = "button",
 }: PathCardProps) => {
-  const reduced = useReducedMotion();
+  const light = useLightMotion();
   const cardRef = useRef<HTMLButtonElement | HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [hover, setHover] = useState(false);
 
   const onMove = (e: React.MouseEvent) => {
-    if (reduced || !cardRef.current || as === "div") return;
+    if (light || !cardRef.current || as === "div") return;
     const r = cardRef.current.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width - 0.5;
     const py = (e.clientY - r.top) / r.height - 0.5;
@@ -46,11 +46,11 @@ const PathCard = ({
   };
 
   const sharedClass = `path-card group w-full text-left border bg-[#0d0d0d] overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-br path-card-draw ${
-    hover ? "is-hovered" : ""
-  } ${isRTL ? "text-right" : ""}`;
+    hover && !light ? "is-hovered" : ""
+  } ${isRTL ? "text-right" : ""} ${light ? "path-card-static" : ""}`;
 
   const sharedStyle =
-    reduced || as === "div"
+    light || as === "div"
       ? undefined
       : { transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` };
 
@@ -62,7 +62,7 @@ const PathCard = ({
         coverTag={coverTag}
         index={index}
         objectPosition={objectPosition}
-        hover={hover}
+        hover={hover && !light}
       />
       <div className="p-6 md:p-8 border-t border-red-br/20">
         <h2 className="font-display text-3xl md:text-4xl uppercase leading-[0.9] mb-2">{title}</h2>
@@ -80,12 +80,7 @@ const PathCard = ({
 
   if (as === "div") {
     return (
-      <div
-        ref={cardRef as React.RefObject<HTMLDivElement>}
-        className={sharedClass}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
+      <div ref={cardRef as React.RefObject<HTMLDivElement>} className={sharedClass}>
         {body}
       </div>
     );
@@ -96,7 +91,7 @@ const PathCard = ({
       ref={cardRef as React.RefObject<HTMLButtonElement>}
       type="button"
       onClick={onClick}
-      onMouseEnter={() => setHover(true)}
+      onMouseEnter={() => !light && setHover(true)}
       onMouseLeave={() => {
         setHover(false);
         setTilt({ x: 0, y: 0 });

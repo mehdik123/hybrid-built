@@ -179,6 +179,15 @@
     filter: blur(0);
   }
 
+  .line .in.line-in-fast {
+    transform: translateY(0);
+    opacity: 1;
+    filter: none;
+    transition:
+      transform 0.5s var(--ease-out-expo),
+      opacity 0.35s ease;
+  }
+
   /* Hairline dividers */
   .hairline {
     height: 1px;
@@ -221,6 +230,26 @@
 
   .path-card:hover {
     transform: translateY(-4px);
+  }
+
+  @media (pointer: coarse), (max-width: 1023px) {
+    .path-card:hover,
+    .path-card-static {
+      transform: none !important;
+    }
+
+    .path-card-draw::before {
+      display: none;
+    }
+
+    .img-reveal {
+      opacity: 1;
+      filter: none;
+    }
+
+    .line .in {
+      filter: none;
+    }
   }
 
   .touch-target {
@@ -349,6 +378,20 @@
 
   .animate-scroll-indicator {
     animation: scroll-bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  .animate-marquee-css {
+    animation: marquee-scroll 40s linear infinite;
+    width: max-content;
   }
 
   .scrollbar-hide {

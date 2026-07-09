@@ -1,3 +1,5 @@
+import { useLightMotion } from "@/hooks/useLightMotion";
+
 interface PathCardCoverProps {
   imageSrc: string;
   imageAlt: string;
@@ -15,7 +17,10 @@ const PathCardCover = ({
   index,
   objectPosition = "center 38%",
   hover = false,
-}: PathCardCoverProps) => (
+}: PathCardCoverProps) => {
+  const light = useLightMotion();
+
+  return (
   <div className="relative w-full overflow-hidden bg-black aspect-[3/4] max-h-[min(92vw,480px)] sm:max-h-[520px]">
     {/* Side letterbox bars */}
     <div className="absolute inset-y-0 left-0 w-[7%] bg-black z-20 pointer-events-none" />
@@ -51,23 +56,25 @@ const PathCardCover = ({
       <img
         src={imageSrc}
         alt={imageAlt}
-        className={`absolute inset-0 z-[6] h-full w-full object-cover transition-transform duration-700 ease-expo ${
-          hover ? "scale-[1.06] contrast-[1.08]" : "scale-100 contrast-[1.05]"
+        className={`absolute inset-0 z-[6] h-full w-full object-cover ${
+          light ? "" : `transition-transform duration-700 ease-expo ${hover ? "scale-[1.06]" : "scale-100"}`
         }`}
         style={{ objectPosition }}
         loading="eager"
+        decoding="async"
       />
 
       {/* Bottom fade */}
       <div className="absolute inset-x-0 bottom-0 h-[40%] z-[7] bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
 
-      {/* Film grain */}
-      <div
-        className="absolute inset-0 z-[8] opacity-[0.16] mix-blend-overlay pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-        }}
-      />
+      {!light && (
+        <div
+          className="absolute inset-0 z-[8] opacity-[0.12] mix-blend-overlay pointer-events-none hidden md:block"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          }}
+        />
+      )}
 
       {/* NOT PROMISES — campaign line over red */}
       <div
@@ -111,6 +118,7 @@ const PathCardCover = ({
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export default PathCardCover;

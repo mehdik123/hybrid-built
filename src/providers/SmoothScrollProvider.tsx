@@ -1,20 +1,20 @@
 import { createContext, useContext, useEffect, useRef, type ReactNode } from "react";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useLightMotion } from "@/hooks/useLightMotion";
 
 const ScrollCtx = createContext(false);
 
 export const useSmoothScroll = () => useContext(ScrollCtx);
 
 /**
- * Lenis-style smooth scroll (lerp 0.09) without external dependency.
- * Falls back to native scroll when prefers-reduced-motion is set.
+ * Lenis-style smooth scroll (lerp 0.09) — desktop wheel only.
+ * Native touch scroll on mobile; disabled under light-motion / reduced-motion.
  */
 export const SmoothScrollProvider = ({ children }: { children: ReactNode }) => {
-  const reduced = useReducedMotion();
+  const light = useLightMotion();
   const activeRef = useRef(false);
 
   useEffect(() => {
-    if (reduced) return;
+    if (light) return;
 
     let target = window.scrollY;
     let current = window.scrollY;
@@ -64,7 +64,7 @@ export const SmoothScrollProvider = ({ children }: { children: ReactNode }) => {
       window.removeEventListener("scroll", syncTarget);
       window.removeEventListener("resize", syncTarget);
     };
-  }, [reduced]);
+  }, [light]);
 
-  return <ScrollCtx.Provider value={!reduced}>{children}</ScrollCtx.Provider>;
+  return <ScrollCtx.Provider value={!light}>{children}</ScrollCtx.Provider>;
 };
