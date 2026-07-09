@@ -1,6 +1,8 @@
 import { useRef, useState, type ReactNode } from "react";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useLightMotion } from "@/hooks/useLightMotion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import PathCardCover from "@/components/motion/PathCardCover";
 
 interface PathCardProps {
@@ -12,10 +14,14 @@ interface PathCardProps {
   desc: string;
   cta?: string;
   objectPosition?: string;
+  mobileObjectPosition?: string;
   isRTL?: boolean;
   onClick?: () => void;
   children?: ReactNode;
   as?: "button" | "div";
+  compact?: boolean;
+  /** Stagger index for entrance animation */
+  animIndex?: number;
 }
 
 const PathCard = ({
@@ -27,15 +33,20 @@ const PathCard = ({
   desc,
   cta,
   objectPosition,
+  mobileObjectPosition,
   isRTL,
   onClick,
   children,
   as = "button",
+  compact = false,
+  animIndex = 0,
 }: PathCardProps) => {
   const light = useLightMotion();
+  const reduced = useReducedMotion();
   const cardRef = useRef<HTMLButtonElement | HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [hover, setHover] = useState(false);
+  const [pressed, setPressed] = useState(false);
 
   const onMove = (e: React.MouseEvent) => {
     if (light || !cardRef.current || as === "div") return;
@@ -47,12 +58,15 @@ const PathCard = ({
 
   const sharedClass = `path-card group w-full text-left border bg-[#0d0d0d] overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-br path-card-draw ${
     hover && !light ? "is-hovered" : ""
-  } ${isRTL ? "text-right" : ""} ${light ? "path-card-static" : ""}`;
+  } ${pressed ? "is-pressed" : ""} ${isRTL ? "text-right" : ""} ${light ? "path-card-static" : ""}`;
 
   const sharedStyle =
     light || as === "div"
       ? undefined
       : { transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` };
+
+  const bodyPadding = compact ? "p-3 md:p-6" : "p-4 md:p-8";
+  const titleSize = compact ? "text-lg md:text-3xl" : "text-xl md:text-4xl";
 
   const body = (
     <>
@@ -62,32 +76,58 @@ const PathCard = ({
         coverTag={coverTag}
         index={index}
         objectPosition={objectPosition}
+        mobileObjectPosition={mobileObjectPosition}
         hover={hover && !light}
+        pressed={pressed}
       />
-      <div className="p-6 md:p-8 border-t border-red-br/20">
-        <h2 className="font-display text-3xl md:text-4xl uppercase leading-[0.9] mb-2">{title}</h2>
-        <p className="font-editorial text-sm text-muted-foreground mb-5">{desc}</p>
-        {children}
-        {cta && (
-          <span className="inline-flex items-center gap-2 font-editorial text-xs font-semibold uppercase tracking-[0.2em] text-red-br group-hover:gap-3 transition-all">
-            {cta}
-            <ArrowRight className="w-4 h-4 cta-arrow" />
+      <div className={`${bodyPadding} border-t border-red-br/15`}>
+        <div className={`flex items-start justify-between gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+          <div className="min-w-0 flex-1">
+            <h2 className={`font-display ${titleSize} uppercase leading-[0.92] mb-0.5 md:mb-2`}>{title}</h2>
+            <p className="font-editorial text-[11px] md:text-sm text-muted-foreground leading-snug">{desc}</p>
+          </div>
+        </div>
+        {children && <div className="mt-3 md:mt-4">{children}</div>}
+        {cta && as === "button" && (
+          <span className="mt-2 inline-flex font-editorial text-[10px] md:text-xs font-semibold uppercase tracking-[0.18em] text-red-br md:gap-2 md:items-center group-active:gap-2 transition-all">
+            <span className="hidden md:inline">{cta}</span>
+            <span className="md:hidden">{cta} →</span>
+            <ArrowRight className="hidden md:inline w-4 h-4 cta-arrow" />
           </span>
         )}
       </div>
     </>
   );
 
+  const motionProps = reduced
+    ? {}
+    : {
+        initial: { opacity: 0, y: 16 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.45, delay: animIndex * 0.08, ease: [0.16, 1, 0.3, 1] },
+        whileTap: as === "button" ? { scale: 0.985 } : undefined,
+      };
+
+  const touchHandlers = {
+    onTouchStart: () => setPressed(true),
+    onTouchEnd: () => setPressed(false),
+    onTouchCancel: () => setPressed(false),
+  };
+
   if (as === "div") {
     return (
-      <div ref={cardRef as React.RefObject<HTMLDivElement>} className={sharedClass}>
+      <motion.div
+        ref={cardRef as React.RefObject<HTMLDivElement>}
+        className={sharedClass}
+        {...motionProps}
+      >
         {body}
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <button
+    <motion.button
       ref={cardRef as React.RefObject<HTMLButtonElement>}
       type="button"
       onClick={onClick}
@@ -99,9 +139,11 @@ const PathCard = ({
       onMouseMove={onMove}
       style={sharedStyle}
       className={sharedClass}
+      {...motionProps}
+      {...touchHandlers}
     >
       {body}
-    </button>
+    </motion.button>
   );
 };
 

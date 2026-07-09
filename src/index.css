@@ -242,6 +242,14 @@
       display: none;
     }
 
+    .path-card.is-pressed {
+      border-color: rgba(232, 0, 28, 0.55);
+    }
+
+    .path-card:active {
+      transform: scale(0.985);
+    }
+
     .img-reveal {
       opacity: 1;
       filter: none;

@@ -14,10 +14,10 @@ export const ASSETS = {
   logo: "/logo.png",
   /** Path page — coaching card 01 (centered full-body portrait) */
   pathCoaching: "/about-me.jpg",
-  /** Path page — blueprint card 02 */
-  pathBlueprint: "/hero-placeholder-v2.jpg",
+  /** Path page — blueprint card 02 (gym pose — crops well) */
+  pathBlueprint: "/hero-placeholder.jpg",
   /** Path page — free tool card 03 */
-  pathFreeTool: "/hero-fallback.jpg",
+  pathFreeTool: "/testimonial-cover.jpg",
   /** Coaching sales page hero (gym pose) */
   heroCoaching: "/hero-placeholder.jpg",
   /** About section — editorial doorway pose */

@@ -11,6 +11,8 @@ interface EmailCaptureFormProps {
   subject?: string;
   onSuccess?: () => void;
   className?: string;
+  /** Inline single-field layout for path cards */
+  compact?: boolean;
 }
 
 const EmailCaptureForm = ({
@@ -18,6 +20,7 @@ const EmailCaptureForm = ({
   subject = "Free Hybrid Tool Request",
   onSuccess,
   className = "",
+  compact = false,
 }: EmailCaptureFormProps) => {
   const { language, isRTL } = useLanguage();
   const t = translations.modal;
@@ -73,13 +76,33 @@ const EmailCaptureForm = ({
         {step === "form" ? (
           <motion.form
             key="form"
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: compact ? 0 : 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
+            exit={{ opacity: 0, y: compact ? 0 : -12 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             onSubmit={handleSubmit}
-            className="space-y-4"
+            className={compact ? "flex gap-2" : "space-y-4"}
           >
+            {compact ? (
+              <>
+                <Input
+                  required
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value, name: e.target.value.split("@")[0] || "User" })}
+                  className={`flex-1 bg-white/5 border-white/10 h-9 text-sm focus:border-red-br/50 ${isRTL ? "text-right" : ""}`}
+                  placeholder={language === "en" ? "Email" : language === "fr" ? "Email" : "الإيميل"}
+                />
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="btn-primary-cta !py-2 !px-3 !text-[10px] shrink-0 h-9"
+                >
+                  {isLoading ? "…" : t.submit[language].split(" ")[0]}
+                </Button>
+              </>
+            ) : (
+              <>
             <div className="space-y-2">
               <label
                 className={`text-xs font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}
@@ -133,6 +156,8 @@ const EmailCaptureForm = ({
               <Lock className="w-3 h-3" />
               {t.privacy[language]}
             </div>
+              </>
+            )}
           </motion.form>
         ) : (
           <motion.div
@@ -140,7 +165,7 @@ const EmailCaptureForm = ({
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center py-6"
+            className={compact ? "text-center py-2" : "text-center py-6"}
           >
             <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-primary/30">
               <CheckCircle className="w-8 h-8 text-primary" />

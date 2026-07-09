@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IG_DM_URL, ASSETS } from "@/lib/constants";
+import LanguageToggle from "@/components/LanguageToggle";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { language, setLanguage, isRTL } = useLanguage();
+  const { language, isRTL } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
   const isCoachingPage = location.pathname === "/coaching" || location.pathname === "/home";
@@ -42,12 +43,6 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const toggleLanguage = () => {
-    if (language === "en") setLanguage("fr");
-    else if (language === "fr") setLanguage("ar");
-    else setLanguage("en");
-  };
-
   return (
     <>
       <header
@@ -75,33 +70,16 @@ const Header = () => {
                   {link.label}
                 </button>
               ))}
-              <div className="relative flex items-center gap-0.5 border border-white/10 p-0.5">
-                {(["en", "fr", "ar"] as const).map((lang) => (
-                  <button
-                    key={lang}
-                    type="button"
-                    onClick={() => setLanguage(lang)}
-                    className={`relative z-10 px-2.5 py-1 font-editorial text-[10px] uppercase tracking-wider transition-colors ${
-                      language === lang ? "text-ink" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {language === lang && (
-                      <motion.span
-                        layoutId="lang-pill"
-                        className="absolute inset-0 bg-paper rounded-sm"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10">{lang}</span>
-                  </button>
-                ))}
+              <div className="relative flex items-center">
+                <LanguageToggle scope="header" size="sm" />
               </div>
               <a href={IG_DM_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-cta !py-2.5 !px-5 !text-[11px]">
                 {translations.nav.applyNow[language]}
               </a>
             </nav>
 
-            <div className={`flex lg:hidden items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+            <div className={`flex lg:hidden items-center gap-1.5 ${isRTL ? "flex-row-reverse" : ""}`}>
+              <LanguageToggle scope="header-mobile" size="sm" />
               <a
                 href={IG_DM_URL}
                 target="_blank"
@@ -110,9 +88,6 @@ const Header = () => {
               >
                 DM
               </a>
-              <button type="button" onClick={toggleLanguage} className="touch-target p-2 text-muted-foreground" aria-label="Language">
-                <Globe className="w-4 h-4" />
-              </button>
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -148,6 +123,7 @@ const Header = () => {
               <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="font-editorial text-sm text-muted-foreground">
                 {translations.nav.choosePath[language]}
               </Link>
+              <LanguageToggle scope="header-menu" />
               <a href={IG_DM_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-cta w-full max-w-xs">
                 {translations.nav.applyNow[language]}
               </a>
