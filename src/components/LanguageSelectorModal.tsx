@@ -50,8 +50,8 @@ const LanguageSelectorModal = () => {
                                     <Globe className="w-8 h-8 text-primary" />
                                 </div>
 
-                                <h2 className="font-display text-3xl md:text-4xl uppercase tracking-tighter mb-4 text-gradient">
-                                    Choose Your Language
+                                <h2 className="font-display text-3xl md:text-4xl uppercase tracking-tighter mb-4">
+                                    Choose Your <span className="text-red-br">Language</span>
                                 </h2>
                                 <p className="text-muted-foreground mb-10 text-lg">
                                     Select your preferred language to continue your hybrid journey.

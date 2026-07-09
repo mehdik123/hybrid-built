@@ -1,32 +1,43 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AppProvider } from "@/contexts/AppContext";
-import Index from "./pages/Index";
-import Products from "./pages/Products";
-import NotFound from "./pages/NotFound";
-
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AppProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/products" element={<Products />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AppProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AppProvider } from "@/contexts/AppContext";
+import FilmGrain from "@/components/FilmGrain";
+import CustomCursor from "@/components/motion/CustomCursor";
+import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
+import Index from "./pages/Index";
+import WelcomePage from "./pages/WelcomePage";
+import FreeToolPage from "./pages/FreeToolPage";
+import Products from "./pages/Products";
+import NotFound from "./pages/NotFound";
+
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <AppProvider>
+      <SmoothScrollProvider>
+        <TooltipProvider>
+          <FilmGrain />
+          <CustomCursor />
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<WelcomePage />} />
+              <Route path="/coaching" element={<Index />} />
+              <Route path="/home" element={<Navigate to="/coaching" replace />} />
+              <Route path="/free-tool" element={<FreeToolPage />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </SmoothScrollProvider>
+    </AppProvider>
+  </QueryClientProvider>
+);
+
+export default App;

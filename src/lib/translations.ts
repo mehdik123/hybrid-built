@@ -9,129 +9,113 @@ export const translations = {
     faq: { en: "FAQ", ar: "الأسئلة", fr: "FAQ" },
     products: { en: "Products", ar: "المنتجات", fr: "Produits" },
     applyNow: { en: "DM ME 'COACHING'", ar: "راسلني 'COACHING'", fr: "DM MOI 'COACHING'" },
-    backToHome: { en: "BACK TO HOME", ar: "الرجوع للرئيسية", fr: "RETOUR ACCUEIL" },
+    backToHome: { en: "BACK TO START", ar: "الرجوع للبداية", fr: "RETOUR ACCUEIL" },
+    back: { en: "Back", ar: "رجوع", fr: "Retour" },
+    choosePath: { en: "All Paths", ar: "كل المسارات", fr: "Tous les parcours" },
   },
 
-  // Hero Section (Editorial Atmospheric — Paper & Ink)
+  // Hero Section (Refined Digestible Design)
   hero: {
-    badge: { en: "Elite Natural Performance", ar: "أداء طبيعي نخبوي", fr: "Performance Naturelle d'Élite" },
-    headline1: { en: "THE HYBRID", ar: "النظام", fr: "LA MÉTHODE" },
-    headline2: { en: "METHOD", ar: "الهجين", fr: "HYBRIDE" },
-    promise: {
-      en: "1-on-1 online coaching for the natural athlete. Mastering the intersection of extreme strength and elite aesthetics.",
-      ar: "تدريب أونلاين شخصي للرياضي الطبيعي. إتقان نقطة التقاء القوة القصوى والجمالية النخبوية.",
-      fr: "Coaching en ligne 1-on-1 pour l'athlète naturel. Maîtriser l'intersection de la force extrême et de l'esthétique d'élite."
-    },
-    cta: { en: 'DM "COACHING" TO START', ar: 'راسلني "COACHING" للبدء', fr: 'DM "COACHING" POUR COMMENCER' },
+    headline1: { en: "BUILD THE", ar: "ابني", fr: "BATISSEZ LE" },
+    headline2: { en: "HYBRID PHYSIQUE", ar: "Hybrid Physique", fr: "PHYSIQUE HYBRIDE" },
+    emotionalHook: { en: "SIZE • STRENGTH • FAT LOSS • VITALITY", ar: "حجم • قوة • دهون • حيوية", fr: "VOLUME • FORCE • GRAS • VITALITÉ" },
+    headline3: { en: "", ar: "", fr: "" },
+    promise: { en: "", ar: "", fr: "" },
+    cta: { en: "DM ME 'COACHING'", ar: "راسلني 'COACHING'", fr: "DM MOI 'COACHING'" },
+    ctaSubtext: { en: "I RESPOND PERSONALLY WITHIN 24H.", ar: "كنجاوب راسي قل من 24 ساعة.", fr: "JE RÉPONDS PERSONNELLEMENT SOUS 24H." },
     scroll: { en: "EXPLORE THE METHOD", ar: "اكتشف النظام", fr: "DÉCOUVRIR LA MÉTHODE" },
-    established: { en: "Established 2017", ar: "تأسست 2017", fr: "Établi 2017" },
+    browsePrograms: { en: "EXPLORE PROGRAMS", ar: "اكتشف البرامج", fr: "VOIR LES PROGRAMMES" },
     stats: {
-      clients: { en: "500+", ar: "+500", fr: "500+" },
-      clientsLabel: { en: "Transformations", ar: "تحوّل", fr: "Transformations" },
-      followers: { en: "100%", ar: "100%", fr: "100%" },
-      followersLabel: { en: "Natural Growth", ar: "نمو طبيعي", fr: "Croissance Naturelle" },
-      years: { en: "24/7", ar: "24/7", fr: "24/7" },
-      yearsLabel: { en: "Direct Access", ar: "وصول مباشر", fr: "Accès Direct" },
+      clients: { en: "100+", ar: "100+", fr: "100+" },
+      clientsLabel: { en: "TRANSFORMATIONS", ar: "تحول جذري", fr: "TRANSFORMATIONS" },
+      followers: { en: "600K+", ar: "+600K", fr: "+600K" },
+      followersLabel: { en: "FOLLOWERS", ar: "متابع", fr: "ABONNÉS" },
+      years: { en: "8+", ar: "8+", fr: "8+" },
+      yearsLabel: { en: "YEARS EXP", ar: "سنوات خبرة", fr: "ANS D'EXP" },
     },
   },
   // About Section
   about: {
     title1: { en: "WHO I", ar: "شكون", fr: "QUI SUIS" },
     title2: { en: "AM", ar: "أنا", fr: "-JE" },
-    intro: { en: "I'm", ar: "أنا", fr: "Je suis" },
+    intro: { en: "I'm Mehdi — hybrid coach, 600K+ audience, Morocco.", ar: "أنا المهدي — كوتش Hybrid، +600K متابع.", fr: "Je suis Mehdi — coach hybride, 600K+ audience." },
     name: { en: "Mehdi", ar: "المهدي", fr: "Mehdi" },
     followers: { en: "followers", ar: "متابع", fr: "abonnés" },
-    description1: {
-      en: ". I've built one of the elite natural physiques in Morocco, with a community of over",
-      ar: ". بنيت وحدة من أحسن الفورمات الطبيعية فالمغرب، مع مجتمع فيه كتر من",
-      fr: ". J'ai construit l'un des physiques naturels d'élite au Maroc, avec une communauté de plus de"
-    },
+    description1: { en: "", ar: "", fr: "" },
     description2: {
-      en: "I built my physique naturally by combining calisthenics and bodybuilding—no steroids, no shortcuts, just smart training.",
-      ar: "بنيت الفورمة ديالي طبيعي بـالجمع بين الكاليستينيكس والبوديبيلدينغ — بلا منشطات، بلا تخربيق، غي ترينمان ذكي.",
-      fr: "J'ai bâti mon physique naturellement en combinant calisthenics et musculation—sans stéroïdes, sans raccourcis, juste un entraînement intelligent."
+      en: "Calisthenics × bodybuilding. No shortcuts. Just the work.",
+      ar: "كاليستينيكس × بوديبيلدينغ. بلا تخربيق.",
+      fr: "Calisthenics × musculation. Pas de raccourcis."
     },
-    description3: {
-      en: "I've helped",
-      ar: "عاونت كتر من",
-      fr: "J'ai aidé"
-    },
-    clients: { en: "200+ people worldwide", ar: "200 واحد فالعالم كامل", fr: "200+ personnes dans le monde" },
-    description4: {
-      en: "achieve elite-level transformations using the same unbreakable system.",
-      ar: "باش يوصلو لهاد التحولات الناضية باستعمال نفس النظام.",
-      fr: "à atteindre des transformations de niveau élite en utilisant ce même système incassable."
-    },
-    description5: {
-      en: "Now, I want to help",
-      ar: "ودابا باغيك نعاونك",
-      fr: "Maintenant, je veux aider"
-    },
-    you: { en: "you", ar: "نتا", fr: "toi" },
+    description3: { en: "", ar: "", fr: "" },
+    clients: { en: "200+", ar: "200+", fr: "200+" },
+    clientsLabel: { en: "clients coached", ar: "عميل", fr: "clients coachés" },
+    naturalLabel: { en: "100% natural", ar: "100% طبيعي", fr: "100% naturel" },
+    description4: { en: "", ar: "", fr: "" },
+    description5: { en: "Your turn.", ar: "دورك.", fr: "À ton tour." },
+    you: { en: "", ar: "", fr: "" },
   },
 
   // Coaching Section
   coaching: {
     title1: { en: "1-ON-1", ar: "تدريب شخصي", fr: "COACHING" },
     title2: { en: "ONLINE COACHING", ar: "أونلاين", fr: "EN LIGNE 1-ON-1" },
-    subtitle: { en: "If you're truly serious and interested in transforming your body 180°, you're in the right place.", ar: "إلا كنتي فعلاً جاد ومهتم باش تبدل الجسم ديالك 180°، راك فالبلاصة الصحيحة.", fr: "Si vous êtes vraiment sérieux et intéressé pour transformer votre corps à 180°, vous êtes au bon endroit." },
-    whatYouGet: { en: "WHAT YOU GET:", ar: "ماذا ستحصل:", fr: "CE QUE VOUS RECEVEZ :" },
+    subtitle: { en: "", ar: "", fr: "" },
+    whatYouGet: { en: "THE METHOD", ar: "النظام", fr: "LA MÉTHODE" },
     features: {
       training: {
-        title: { en: "🔹 Training", ar: "🔹 التدريب", fr: "🔹 Entraînement" },
+        title: { en: "Training", ar: "التدريب", fr: "Entraînement" },
         points: [
-          { en: "Personalized program based on: weak points, timing, goal, and your level", ar: "برنامج مخصص على حساب: نقط الضعف، التوقيت، الهدف، والمستوى ديالك", fr: "Programme personnalisé basé sur : points faibles, emploi du temps, objectif et niveau" },
-          { en: "Everything with my exercise videos", ar: "كولشي بالفيديوهات ديالي د التمارين", fr: "Tout avec mes vidéos d'exercices" },
-          { en: "I check your execution form to ensure you do everything right", ar: "كنصحح ليك التيكنيك ديالك باش نضمن بلي كادير كلشي صحيح", fr: "Je vérifie votre exécution pour m'assurer que vous faites tout correctement" },
-          { en: "Track sets, reps, weights, and training volume", ar: "متابعة الـ sets، reps، الأوزان، والـ volume training", fr: "Suivi des séries, répétitions, charges et volume d'entraînement" },
-          { en: "Weekly updates with new goals to achieve", ar: "تحديث كل سيمانة، كانوجدو فيه أهداف جداد خاصك توصل ليهم", fr: "Mises à jour hebdomadaires avec de nouveaux objectifs à atteindre" }
+          { en: "Custom weekly plan", ar: "برنامج أسبوعي مخصص", fr: "Plan hebdo sur mesure" },
+          { en: "Video form checks", ar: "تصحيح التيكنيك بالفيديو", fr: "Corrections vidéo" },
+          { en: "Log every lift", ar: "تتبع كل رفع", fr: "Suivi de chaque série" },
+          { en: "New targets weekly", ar: "أهداف جديدة كل أسبوع", fr: "Nouveaux objectifs" }
         ]
       },
       nutrition: {
-        title: { en: "🔹 Nutrition", ar: "🔹 التغذية", fr: "🔹 Nutrition" },
+        title: { en: "Nutrition", ar: "التغذية", fr: "Nutrition" },
         points: [
-          { en: "Multiple meal versions so you don't get bored", ar: "بزاف د الإصدارات د الوجبات باش ما يجيكش الملل", fr: "Plusieurs versions de repas pour ne pas s'ennuyer" },
-          { en: "Calories & macros calculated based on your goal", ar: "السعرات والماكروز محسوبين على حساب الهدف ديالك", fr: "Calories & macros calculés selon votre objectif" },
-          { en: "Photos and instructions on how to prepare each meal", ar: "تصاور وتعليمات كيفاش توجد كل وجبة", fr: "Photos et instructions pour préparer chaque repas" },
-          { en: "Choose how many meals you want per day, and what you don't eat", ar: "تقدر تختار شحال من وجبة بغيتي فالنهار، وحتى شنو ما كاتاكلش", fr: "Choisissez le nombre de repas par jour et vos intolérances" },
-          { en: "Weekly adaptation based on your progress", ar: "تكييف كل سيمانة على حساب التطور ديالك", fr: "Adaptation hebdomadaire basée sur vos progrès" }
+          { en: "Macros for your goal", ar: "ماكروز حسب هدفك", fr: "Macros selon objectif" },
+          { en: "Swap meals anytime", ar: "بدّل الوجبات متى بغيتي", fr: "Repas interchangeables" },
+          { en: "Prep guides + photos", ar: "تحضير + صور", fr: "Guides + photos" },
+          { en: "Weekly macro tweaks", ar: "تعديل أسبوعي", fr: "Ajustements hebdo" }
         ]
       },
       support: {
-        title: { en: "🔹 WhatsApp Support", ar: "🔹 متابعة واتساب", fr: "🔹 Support WhatsApp" },
+        title: { en: "Support", ar: "المتابعة", fr: "Support" },
         points: [
-          { en: "Daily check-ins, motivation and accountability", ar: "متابعة يومية، تحفيز ومسؤولية", fr: "Check-ins quotidiens, motivation et responsabilité" },
-          { en: "Message me anytime, we stay together as one team", ar: "تقدر تصيفط ليا فأي وقت، وكانبقاو أنا ونتا فريق واحد", fr: "Écrivez-moi à tout moment, on reste ensemble comme une équipe" },
-          { en: "Direct 1-on-1 support throughout your journey", ar: "دعم مباشر معايا طوال الرحلة ديالك", fr: "Support direct 1-on-1 tout au long de votre parcours" }
+          { en: "Daily WhatsApp check-ins", ar: "متابعة يومية واتساب", fr: "Check-ins WhatsApp" },
+          { en: "Message me anytime", ar: "راسلني أي وقت", fr: "Écris-moi quand tu veux" },
+          { en: "Direct coach access", ar: "وصول مباشر للكوتش", fr: "Accès direct coach" }
         ]
       }
     },
-    whoIsFor: { en: "WHO THIS IS FOR:", ar: "لمن هذا البرنامج:", fr: "POUR QUI EST-CE :" },
+    whoIsFor: { en: "FOR YOU IF", ar: "لك إذا", fr: "POUR TOI SI" },
     whoIsForItems: [
-      { en: "You're serious (no tire-kickers)", ar: "أنت جاد (لا مضيعة للوقت)", fr: "Vous êtes sérieux (pas de curieux)" },
-      { en: "You want expert guidance (not YouTube advice)", ar: "تريد توجيه خبير (ليس نصائح يوتيوب)", fr: "Vous voulez un guidage expert (pas des conseils YouTube)" },
-      { en: "You're ready to invest in yourself", ar: "مستعد للاستثمار في نفسك", fr: "Vous êtes prêt à investir en vous-même" }
+      { en: "You're serious", ar: "أنت جاد", fr: "Tu es sérieux" },
+      { en: "You want a coach", ar: "بغيتي كوتش", fr: "Tu veux un coach" },
+      { en: "You'll do the work", ar: "غادي تخدم", fr: "Tu feras le travail" }
     ],
     investment: { en: "INVESTMENT:", ar: "الاستثمار:", fr: "INVESTISSEMENT :" },
     perMonth: { en: "/month", ar: "/شهر", fr: "/mois" },
     commitment: { en: "(12-week minimum commitment = $600 total)", ar: "(التزام 12 أسبوع = 600$ إجمالي)", fr: "(Engagement min. 12 semaines = 600$ total)" },
     paymentPlans: { en: "Payment plans available. Limited spots to ensure quality.", ar: "خطط دفع متاحة. أماكن محدودة لضمان الجودة.", fr: "Facilités de paiement disponibles. Places limitées pour la qualité." },
     messageMe: { en: "DM ME 'COACHING'", ar: "راسلني 'COACHING'", fr: "DM MOI 'COACHING'" },
-    dmInstructions: { en: "DM me on Instagram to see if you qualify:", ar: "راسلني على انستغرام لنرى إذا كنت مؤهلاً:", fr: "DM sur Instagram pour voir si vous êtes qualifié :" },
-    dmItem1: { en: "Tell me your goal (Muscle, Fat Loss, Strength)", ar: "أخبرني بهدفك (عضلات، دهون، قوة)", fr: "Dites-moi votre objectif (Muscle, Perte de gras, Force)" },
-    dmItem2: { en: "Tell me your experience level", ar: "أخبرني بمستوى خبرتك", fr: "Dites-moi votre niveau d'expérience" },
-    dmItem3: { en: "Tell me when you are ready to start", ar: "أخبرني متى ستكون مستعداً للبدء", fr: "Dites-moi quand vous êtes prêt à commencer" },
+    dmInstructions: { en: "DM me on Instagram:", ar: "راسلني على انستغرام:", fr: "DM sur Instagram :" },
+    dmItem1: { en: "Your goal", ar: "هدفك", fr: "Ton objectif" },
+    dmItem2: { en: "Your experience", ar: "خبرتك", fr: "Ton expérience" },
+    dmItem3: { en: "When you start", ar: "متى تبدا", fr: "Quand tu commences" },
     dmResponse: { en: "I respond personally to every message.", ar: "أرد شخصياً على كل رسالة بنفسي.", fr: "Je réponds personnellement à chaque message." },
-    affordabilityMessage: { en: "Can't afford online coaching right now?", ar: "ما قادرش على التدريب أونلاين دابا؟", fr: "Pas le budget pour le coaching en ligne ?" },
-    checkProducts: { en: "Check out our products", ar: "شوف المنتجات ديالنا", fr: "Voir nos produits" },
-    affordabilityDesc: { en: "for a more budget-friendly option to get started.", ar: "باش تلقى خيار أرخص وتبدا.", fr: "pour une option plus accessible pour commencer." },
+    affordabilityMessage: { en: "Tighter budget?", ar: "ميزانية محدودة؟", fr: "Budget serré ?" },
+    checkProducts: { en: "See Blueprint", ar: "شوف الدليل", fr: "Voir le guide" },
+    affordabilityDesc: { en: "", ar: "", fr: "" },
   },
 
   // Transformations Section
   transformations: {
     title1: { en: "REAL", ar: "نتائج", fr: "RÉSULTATS" },
     title2: { en: "RESULTS", ar: "حقيقية", fr: "RÉELS" },
-    subtitle: { en: "Join the ranks of the Unbreakables.", ar: "نضم لصفوف الـ Unbreakables.", fr: "Rejoignez les rangs des Unbreakables." },
+    subtitle: { en: "Drag to compare.", ar: "اسحب للمقارنة.", fr: "Glissez pour comparer." },
     before: { en: "BEFORE", ar: "قبل", fr: "AVANT" },
     after: { en: "AFTER", ar: "بعد", fr: "APRÈS" },
     testimonials: [
@@ -178,15 +162,15 @@ export const translations = {
       {
         name: { en: "MEHDI", ar: "المهدي", fr: "MEHDI" },
         quote: {
-          en: "From soft and stuck to a lean, athletic look with visible definition. This is what happens when you stop guessing and follow a real hybrid system.",
-          ar: "من فورمة عادية ودهون زايدة لواحد الشكل مشدود ورياضي مع ديطاي باينين. هادا اللي كيوقع مني كتوقف التجارب وكتتبع سيستيم Hybrid حقيقي.",
-          fr: "D’un physique ramolli et bloqué à un look sec et athlétique avec des détails visibles. Voilà ce qui arrive quand tu arrêtes d’improviser et suis un vrai système hybride."
+          en: "−8 kg / 16 weeks. Hybrid system.",
+          ar: "−8 كيلو / 16 سيمانة.",
+          fr: "−8 kg / 16 semaines."
         },
         imageBefore: "/transformation-11-before.png",
         imageAfter: "/transformation-11-after.png"
       }
     ],
-    cta: { en: "BECOME THE NEXT SUCCESS STORY", ar: "كون نتا قصة النجاح الجاية", fr: "DEVENEZ LA PROCHAINE SUCCESS STORY" }
+    cta: { en: "DM ME 'COACHING'", ar: "راسلني 'COACHING'", fr: "DM MOI 'COACHING'" }
   },
 
   // FAQ Section
@@ -198,49 +182,49 @@ export const translations = {
       {
         question: { en: "How does online coaching work?", ar: "كيفاش كيخدم هاد التدريب أونلاين؟", fr: "Comment fonctionne le coaching en ligne ?" },
         answer: {
-          en: "If you're interested, you send me a DM. I'll send you a form with all the info I need to create your personalized plan. Then we proceed with payment and start working directly via WhatsApp.",
-          ar: "إلا كنتي مهتم، صيفط ليا ميساج. غانسيفط ليك فورم فيها كاع المعلومات اللي خاصني باش نقاد ليك البرنامج ديالك. موراها كندوزو للخلاص وكنبداو الخدمة نيشان فـ الواتساب.",
-          fr: "Si vous êtes intéressé, envoyez-moi un DM. Je vous enverrai un formulaire avec toutes les infos nécessaires pour créer votre plan. Ensuite, nous procédons au paiement et commençons à travailler via WhatsApp."
+          en: "DM me. I send a form, build your plan, payment, then we work on WhatsApp.",
+          ar: "صيفط ليا DM. نصيفط فورم، نبني البرنامج، الدفع، وكنخدمو واتساب.",
+          fr: "DM moi. Formulaire, plan, paiement, puis WhatsApp."
         }
       },
       {
         question: { en: "Do I need a gym?", ar: "واش غيخصني ضروري لاصال؟", fr: "Ai-je besoin d'une salle de sport ?" },
         answer: {
-          en: "Ideally yes, but I can work with home setups (pull-up bar, dip station, minimal equipment). Tell me what you have and I'll build around it.",
-          ar: "من الأحسن أه، ولكن نقدر نخدمو حتى فـ الدار إلا عندك شوية دـ الماترييل (بار فيكس، ديب ستيشن). كولي ليا شنو عندك ونقدو عليه لبلان.",
-          fr: "Idéalement oui, mais je peux travailler avec un équipement maison (barre de traction, station dip). Dites-moi ce que vous avez et je construirai autour."
+          en: "Gym is best. Home works with a bar and basics.",
+          ar: "الأحسن لاصال. الدار ممكن مع بار.",
+          fr: "Salle idéale. Maison possible avec barre."
         }
       },
       {
         question: { en: "What if I'm a beginner?", ar: "شنو إلا كنت يلاه بادئ (مبتدئ)؟", fr: "Et si je suis débutant ?" },
         answer: {
-          en: "Perfect. I work with all levels—beginners to advanced. Your program will be tailored to YOUR experience.",
-          ar: "هادي هي أحسن وقتاش تبدا. كنخدم مع كاع المستويات. لبلان غايكون على قدك ونتا كتعلم.",
-          fr: "Parfait. Je travaille avec tous les niveaux. Votre programme sera adapté à VOTRE expérience."
+          en: "Good. Your plan matches your level.",
+          ar: "مزيان. البرنامج على قدك.",
+          fr: "Parfait. Plan adapté à ton niveau."
         }
       },
       {
         question: { en: "Can I see results in 12 weeks?", ar: "واش نقدر نشوف نتائج فـ 12 سيمانة؟", fr: "Puis-je voir des résultats en 12 semaines ?" },
         answer: {
-          en: "Yes, if you follow the plan. Most clients see significant changes in 8-12 weeks (visible muscle, fat loss, strength gains).",
-          ar: "أه، إلا تبعتي لبلان كيفما هو. أغلبية كيشوفو فرق كبير فـ 8 لـ 12 سيمانة (عضلات باينة، نقص فالشحمة، وقوة كتر).",
-          fr: "Oui, si vous suivez le plan. La plupart des clients voient des changements significatifs en 8-12 semaines (muscle visible, perte de gras, force)."
+          en: "Yes — if you follow the plan.",
+          ar: "أه — إلا تبعت البرنامج.",
+          fr: "Oui — si tu suis le plan."
         }
       },
       {
         question: { en: "What if I travel or miss workouts?", ar: "إلا سافرت ولا فتوني حصص شنو غاندير؟", fr: "Et si je voyage ou rate des séances ?" },
         answer: {
-          en: "Life happens. I adjust your plan when needed. The goal is consistency over perfection.",
-          ar: "هانية، حنا للي كنتحكمو فـ لبلان. المهم هو الاستمرارية ماشي الكمال.",
-          fr: "La vie arrive. J'ajuste votre plan si nécessaire. Le but est la régularité, pas la perfection."
+          en: "I adjust. Consistency beats perfection.",
+          ar: "كنعدّل. الاستمرارية أهم.",
+          fr: "J'ajuste. La régularité compte."
         }
       },
       {
         question: { en: "Payment plans?", ar: "ليبلانات دـ الخلاص؟", fr: "Facilités de paiement ?" },
         answer: {
-          en: "Yes, message me and we'll work it out.",
-          ar: "أه، صيفط ليا ميساج ونتفاهمو.",
-          fr: "Oui, écrivez-moi et on trouvera une solution."
+          en: "Yes. DM me to discuss.",
+          ar: "أه. صيفط ليا.",
+          fr: "Oui. DM pour en parler."
         }
       }
     ]
@@ -276,24 +260,24 @@ export const translations = {
   // Final CTA Section
   finalCta: {
     title1: { en: "READY TO", ar: "مستعد", fr: "PRÊT À" },
-    title2: { en: "TRANSFORM", ar: "للتحول", fr: "TRANSFORMER" },
-    line1: { en: "You've seen the results.", ar: "ديجا شفتي النتائج.", fr: "Vous avez vu les résultats." },
-    line2: { en: "You know what you'll get.", ar: "وعارف دابا شنو غاتاخد.", fr: "Vous savez ce que vous aurez." },
-    line3: { en: "Now it's time to decide.", ar: "دابا جا وقت القرار.", fr: "Il est temps de décider." },
-    weeksFrom: { en: "12 weeks from now, you could be:", ar: "من هنا لـ 12 سيمانة، تقدر تكون:", fr: "Dans 12 semaines, vous pourriez :" },
+    title2: { en: "START?", ar: "تبدا؟", fr: "COMMENCER ?" },
+    line1: { en: "", ar: "", fr: "" },
+    line2: { en: "", ar: "", fr: "" },
+    line3: { en: "", ar: "", fr: "" },
+    weeksFrom: { en: "In 12 weeks:", ar: "فـ 12 سيمانة:", fr: "Dans 12 semaines :" },
     benefits: [
-      { en: "10-20 lbs leaner or heavier (depending on goal)", ar: "ديجا نقصتي أو زدتي 5-10 كيلو (على حساب هدفك)", fr: "5-10kg en moins ou en plus (selon l'objectif)" },
-      { en: "Significantly stronger (PRs on all lifts)", ar: "وليتي صحيح كتر (أرقام خيالية فكل التمارين)", fr: "Beaucoup plus fort (PRs sur tous les exos)" },
-      { en: "Confident in your training and nutrition", ar: "واثق فـ ترينمان والماكلة ديالك", fr: "Confiant dans votre entraînement et nutrition" },
-      { en: "Looking in the mirror and loving what you see", ar: "كتشوف فالمرايا وعاجبك الحال", fr: "Fier de ce que vous voyez dans le miroir" }
+      { en: "Leaner or heavier — your call", ar: "أخف أو أثقل — حسب هدفك", fr: "Plus sec ou plus lourd" },
+      { en: "Stronger on every lift", ar: "أقوى فكل تمرين", fr: "Plus fort partout" },
+      { en: "Clear training + nutrition", ar: "تدريب وتغذية واضحة", fr: "Training + nutrition clairs" },
+      { en: "A body you're proud of", ar: "جسم تفتخر بيه", fr: "Un corps dont tu es fier" }
     ],
-    alternative: { en: "Or you could still be guessing, wasting time on random programs.", ar: "أو تقدر تبقى غي كتجرب وتضيع الوقت فـ برامج عشوائية.", fr: "Ou vous pourriez encore deviner, perdant du temps sur des programmes au hasard." },
-    choice: { en: "The choice is yours.", ar: "القرار بين يديك.", fr: "Le choix vous appartient." },
+    alternative: { en: "", ar: "", fr: "" },
+    choice: { en: "", ar: "", fr: "" },
     cta: { en: "DM ME 'COACHING'", ar: "صيفط ليا 'COACHING'", fr: "DM MOI 'COACHING'" },
     dmText: { en: "DM me", ar: "صيفط ليا", fr: "DM moi" },
     coaching: { en: "'COACHING'", ar: "'COACHING'", fr: "'COACHING'" },
     onInstagram: { en: "on Instagram.", ar: "فـ انستغرام.", fr: "sur Instagram." },
-    letsGo: { en: "Let's build something great.", ar: "يلاه نبنيو شي حاجة ناضية.", fr: "Construisons quelque chose de grand." },
+    letsGo: { en: "", ar: "", fr: "" },
   },
 
   // Footer
@@ -353,10 +337,10 @@ export const translations = {
     subtitle: { en: "Get the free guide and exclusive tips delivered to your inbox.", ar: "خود الدليل الفابور ونصائح حصرية فـ إيميل ديالك.", fr: "Recevez le guide gratuit et des conseils exclusifs." },
     nameLabel: { en: "First Name", ar: "الاسم الأول", fr: "Prénom" },
     emailLabel: { en: "Email Address", ar: "البريد الإلكتروني", fr: "Email" },
-    submit: { en: "JOIN WAITLIST", ar: "انضم للقائمة", fr: "REJOINDRE" },
+    submit: { en: "SEND ME THE FREE TOOL", ar: "صيفط ليا الأداة", fr: "ENVOYEZ-MOI L'OUTIL" },
     submitting: { en: "JOINING...", ar: "جاري الانضمام...", fr: "EN COURS..." },
     successTitle: { en: "YOU'RE ON THE LIST!", ar: "تم التسجيل!", fr: "VOUS ÊTES INSCRI(E) !" },
-    successDesc: { en: "We'll email you as soon as it's ready.", ar: "غيفطو ليك إيميل غير يكون واجد.", fr: "On vous enverra un email dès que c'est prêt." },
+    successDesc: { en: "Check your inbox — your Hybrid Split Identifier is on its way.", ar: "شوف الإيميل ديالك — الأداة فالطريق.", fr: "Vérifiez votre boîte — l'outil est en route." },
     privacy: { en: "No spam. Unsubscribe anytime.", ar: "بلا بريد مزعج. تقدر تلغي فـ أي وقت.", fr: "Pas de spam. Désabonnement à tout moment." },
   },
 
@@ -399,6 +383,65 @@ export const translations = {
     blueprintDesc: { en: "Program + Nutrition + Tracker.", ar: "برنامج + تغذية + تتبع.", fr: "Programme + Nutrition + Suivi." },
     freeTitle: { en: "Free Split Finder", ar: "مكتشف الـ Split", fr: "Trouveur de Split" },
     freeDesc: { en: "Find your frequency.", ar: "لقى الريتم ديالك.", fr: "Trouvez votre rythme." }
+  },
+
+  // Welcome gateway (first page — 3 paths)
+  gateway: {
+    badge: { en: "UNBREAKABLES TEAM", ar: "UNBREAKABLES TEAM", fr: "UNBREAKABLES TEAM" },
+    title1: { en: "CHOOSE YOUR", ar: "اختار", fr: "CHOISISSEZ" },
+    title2: { en: "PATH", ar: "مسارك", fr: "PARCOURS" },
+    subtitle: { en: "", ar: "", fr: "" },
+    coaching: {
+      title: { en: "1-on-1 Coaching", ar: "تدريب شخصي", fr: "Coaching 1-on-1" },
+      coverTag: { en: "1:1 COACHING", ar: "تدريب 1:1", fr: "COACHING 1:1" },
+      desc: {
+        en: "12 weeks. Fully custom.",
+        ar: "12 سيمانة. مخصص بالكامل.",
+        fr: "12 semaines. Sur mesure."
+      },
+      cta: { en: "Start Coaching", ar: "بدا", fr: "Commencer" },
+      tag: { en: "01", ar: "01", fr: "01" }
+    },
+    blueprint: {
+      title: { en: "Hybrid Blueprint", ar: "Hybrid Blueprint", fr: "Hybrid Blueprint" },
+      coverTag: { en: "HYBRID PROGRAM — 8 WEEKS", ar: "برنامج HYBRID — 8 سيمانات", fr: "PROGRAMME HYBRID — 8 SEM." },
+      desc: {
+        en: "8-week program. Yours forever.",
+        ar: "برنامج 8 سيمانات. ملكك.",
+        fr: "8 semaines. À vie."
+      },
+      cta: { en: "Get Blueprint", ar: "خود الدليل", fr: "Obtenir" },
+      tag: { en: "02", ar: "02", fr: "02" }
+    },
+    freeTool: {
+      title: { en: "Free Hybrid Tool", ar: "أداة مجانية", fr: "Outil Gratuit" },
+      coverTag: { en: "FREE TOOL", ar: "أداة مجانية", fr: "OUTIL GRATUIT" },
+      desc: {
+        en: "Free split finder + 1RM.",
+        ar: "Split مجاني + 1RM.",
+        fr: "Split gratuit + 1RM."
+      },
+      cta: { en: "Get Access", ar: "خودها", fr: "Accès" },
+      tag: { en: "03", ar: "03", fr: "03" }
+    },
+    explore: { en: "Or explore the full site", ar: "أو استكشف الموقع كامل", fr: "Ou explorer tout le site" }
+  },
+
+  freeToolPage: {
+    title1: { en: "FREE", ar: "أدوات", fr: "OUTILS" },
+    title2: { en: "HYBRID TOOLS", ar: "مجانية", fr: "GRATUITS" },
+    subtitle: {
+      en: "Enter your email below. We'll send the Hybrid Split Identifier to your inbox automatically.",
+      ar: "دخل الإيميل ديالك. غنسيفطو ليك أداة الـ Split أوتوماتيكياً.",
+      fr: "Entrez votre email. Nous envoyons l'identificateur de split automatiquement."
+    },
+    sentTitle: { en: "CHECK YOUR INBOX", ar: "شوف الإيميل ديالك", fr: "VÉRIFIEZ VOTRE BOÎTE" },
+    sentDesc: {
+      en: "Your free tool is on its way. Use the 1RM calculator below while you wait.",
+      ar: "الأداة فالطريق. استعمل حاسبة 1RM لتحت فالانتظار.",
+      fr: "Votre outil est en route. Utilisez le calculateur 1RM ci-dessous."
+    },
+    calculatorTitle: { en: "Bonus: 1RM Calculator", ar: "بونوس: حاسبة 1RM", fr: "Bonus : Calculateur 1RM" }
   }
 };
 

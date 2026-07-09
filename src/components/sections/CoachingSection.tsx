@@ -1,252 +1,251 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Check, Dumbbell, Salad, MessageCircle, CalendarCheck, ShieldCheck, Zap, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/AppContext";
-import { translations } from "@/lib/translations";
-
-const CoachingSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=Hi!%20I%20want%20to%20discuss%20personalized%20coaching%20options%20and%20pricing!";
-  const { language, isRTL } = useLanguage();
-  const t = translations.coaching;
-
-  const features = [
-    { icon: Dumbbell, ...t.features.training },
-    { icon: Salad, ...t.features.nutrition },
-    { icon: MessageCircle, ...t.features.support },
-  ];
-
-  return (
-    <section id="coaching" className="section-padding bg-card pb-24 md:pb-16" ref={ref}>
-      <div className="container-tight px-4 sm:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-7xl mb-4 uppercase tracking-tighter">
-            {t.title1[language]} <span className="text-gradient font-black">{t.title2[language]}</span>
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground uppercase tracking-widest font-bold">
-            {t.subtitle[language]}
-          </p>
-        </motion.div>
-
-        {/* What You Get */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-16"
-        >
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className={`group relative bg-gradient-to-br from-secondary/40 via-card/50 to-background/30 
-                  backdrop-blur-md border-2 border-background/10 rounded-3xl p-8 
-                  hover:border-primary/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-foreground/10
-                  transition-all duration-700 flex flex-col h-full overflow-hidden ${isRTL ? 'text-right' : ''}`}
-              >
-                {/* Decorative gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
-
-                {/* Animated border glow */}
-                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 blur-xl" />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10">
-                  <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    {/* Enhanced icon container */}
-                    <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 
-                      flex items-center justify-center border-2 border-primary/30 
-                      group-hover:scale-110 group-hover:rotate-3 group-hover:border-primary 
-                      group-hover:shadow-lg group-hover:shadow-foreground/10
-                      transition-all duration-500">
-                      {/* Icon glow effect */}
-                      <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <feature.icon className="relative z-10 w-7 h-7 text-primary group-hover:text-background transition-colors duration-500" />
-                    </div>
-
-                    {/* Title with gradient on hover */}
-                    <h4 className="font-display text-xl lg:text-2xl text-foreground uppercase tracking-tighter 
-                      group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r 
-                      group-hover:from-primary group-hover:to-primary/70 transition-all duration-500">
-                      {feature.title[language]}
-                    </h4>
-                  </div>
-
-                  {/* Feature points with enhanced bullets */}
-                  <ul className="space-y-4 flex-grow">
-                    {feature.points.map((point: any, pIndex: number) => (
-                      <motion.li
-                        key={pIndex}
-                        initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.4, delay: 0.5 + pIndex * 0.1 }}
-                        className={`flex gap-3 text-sm lg:text-base text-foreground/80 leading-relaxed 
-                          group-hover:text-foreground transition-colors duration-500 ${isRTL ? 'flex-row-reverse' : ''}`}
-                      >
-                        {/* Gradient bullet point */}
-                        <div className="mt-1.5 w-2 h-2 rounded-full bg-gradient-to-r from-primary to-primary/50 
-                          shadow-sm shadow-foreground/10 flex-shrink-0 group-hover:shadow-md group-hover:shadow-foreground/10 
-                          group-hover:scale-125 transition-all duration-500" />
-                        <span className="flex-1">{point[language]}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Corner accent decoration */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary/5 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Who This Is For */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-16 max-w-2xl mx-auto"
-        >
-          <h3 className="font-display text-2xl md:text-3xl text-center text-primary mb-8">
-            {t.whoIsFor[language]}
-          </h3>
-          <div className="space-y-4">
-            {t.whoIsForItems.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}
-              >
-                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-primary" />
-                </div>
-                <span className="text-foreground text-lg">{item[language]}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Call to Action - Strategic DM Focus */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center max-w-2xl mx-auto"
-        >
-          <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-secondary via-card to-background border-2 border-primary/30 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-              <MessageCircle className="w-24 h-24 text-primary" />
-            </div>
-
-            <h3 className="font-display text-3xl md:text-5xl text-foreground mb-6 uppercase tracking-tight">
-              {language === "ar" ? "هل أنت مستعد لهذا المستوى؟" : "Ready for this level?"}
-            </h3>
-
-            <div className="space-y-6 mb-10">
-              <div className="bg-primary/5 border border-primary/20 p-4 rounded-xl">
-                <p className="text-primary font-black text-xs uppercase tracking-[0.2em] mb-3">
-                  {t.dmInstructions[language]}
-                </p>
-                <div className="space-y-2">
-                  <div className={`flex items-center gap-3 text-sm text-foreground/80 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>{t.dmItem1[language]}</span>
-                  </div>
-                  <div className={`flex items-center gap-3 text-sm text-foreground/80 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>{t.dmItem2[language]}</span>
-                  </div>
-                  <div className={`flex items-center gap-3 text-sm text-foreground/80 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>{t.dmItem3[language]}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <a href="https://ig.me/m/unbreakablesteam?text=COACHING" target="_blank" rel="noopener noreferrer">
-              <Button size="xxl" className="w-full bg-primary hover:bg-primary/90 text-background font-black text-xl uppercase tracking-widest py-8 transform transition-transform active:scale-95 shadow-xl shadow-foreground/10">
-                {t.messageMe[language]}
-              </Button>
-            </a>
-
-            <p className="text-sm text-muted-foreground mt-6 font-medium italic">
-              {t.dmResponse[language]}
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Affordability Message - Redesigned for Maximum Visibility */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mt-20 md:mt-24 max-w-2xl mx-auto px-4"
-        >
-          <div className="relative group p-1 sm:p-[2px] rounded-3xl overflow-hidden">
-            {/* Animated Glow Border */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-glow to-primary opacity-30 group-hover:opacity-100 transition-opacity duration-700 animate-[shimmer_3s_infinite]" />
-
-            <div className="relative bg-card backdrop-blur-3xl rounded-[22px] p-8 sm:p-10 border border-background/5">
-              <div className="flex flex-col items-center gap-6">
-                {/* Visual Icon */}
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
-                  <Zap className="w-8 h-8 text-primary animate-pulse" />
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="font-display text-2xl sm:text-3xl text-foreground uppercase tracking-tight">
-                    {t.affordabilityMessage[language]}
-                  </h4>
-                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-md mx-auto">
-                    {t.affordabilityDesc[language]}
-                  </p>
-                </div>
-
-                {/* Pronounced Action Link */}
-                <a
-                  href="/products"
-                  className="group/link flex items-center gap-3 bg-white/5 hover:bg-primary/10 border border-background/10 hover:border-primary/40 px-8 py-5 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95"
-                >
-                  <span className="text-primary font-black uppercase tracking-widest text-base sm:text-lg">
-                    {t.checkProducts[language]}
-                  </span>
-                  <motion.span
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
-                  >
-                    <ArrowRight className="w-5 h-5 text-primary" />
-                  </motion.span>
-                </a>
-              </div>
-
-              {/* Decorative light flair */}
-              <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-primary/20 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-export default CoachingSection;
-
+import { useRef, useState } from "react";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { Check, ArrowRight, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/AppContext";
+import { translations } from "@/lib/translations";
+import MaskedLines from "@/components/MaskedLines";
+import MagneticCTA from "@/components/motion/MagneticCTA";
+import { IG_DM_URL } from "@/lib/constants";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+
+const METHOD_DETAILS = {
+  training: {
+    en: "Hybrid strength + hypertrophy blocks. Form checks via video. Progressions updated every week based on your log.",
+    ar: "بلوكات قوة + حجم. تصحيح بالفيديو. تحديث أسبوعي حسب السجل.",
+    fr: "Blocs force + hypertrophie. Corrections vidéo. Progressions mises à jour chaque semaine.",
+  },
+  nutrition: {
+    en: "Macros matched to your goal. Swap meals freely. Prep guides with photos. Weekly adjustments from check-ins.",
+    ar: "ماكروز حسب هدفك. بدّل الوجبات. أدلة تحضير. تعديل أسبوعي.",
+    fr: "Macros selon objectif. Repas interchangeables. Guides photo. Ajustements hebdo.",
+  },
+  support: {
+    en: "Daily WhatsApp accountability. Direct access to me — not a bot, not an assistant.",
+    ar: "متابعة يومية واتساب. وصول مباشر ليا — بلا بوت.",
+    fr: "Suivi WhatsApp quotidien. Accès direct à moi — pas un bot.",
+  },
+};
+
+const CoachingSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { language, isRTL } = useLanguage();
+  const t = translations.coaching;
+  const reduced = useReducedMotion();
+  const [active, setActive] = useState(0);
+  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
+
+  const methodRows = [
+    {
+      key: "training" as const,
+      num: "01",
+      title: t.features.training.title[language],
+      points: t.features.training.points,
+    },
+    {
+      key: "nutrition" as const,
+      num: "02",
+      title: t.features.nutrition.title[language],
+      points: t.features.nutrition.points,
+    },
+    {
+      key: "support" as const,
+      num: "03",
+      title: t.features.support.title[language],
+      points: t.features.support.points,
+    },
+  ];
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (reduced || window.innerWidth < 1024) return;
+    if (v < 0.33) setActive(0);
+    else if (v < 0.66) setActive(1);
+    else setActive(2);
+  });
+
+  const activeRow = methodRows[active];
+
+  return (
+    <section id="coaching" className="bg-ink border-t border-white/[0.06]" ref={sectionRef}>
+      <div className="container-tight section-padding !pb-0">
+        <div className={`mb-10 md:mb-14 max-w-2xl ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
+          <p className="font-editorial text-[10px] uppercase tracking-[0.3em] text-red-br mb-3">
+            {t.whatYouGet[language]}
+          </p>
+          <MaskedLines
+            lines={[t.title1[language], t.title2[language]]}
+            lineClassName="text-4xl md:text-5xl lg:text-6xl"
+            redWordIndex={{ line: 1, wordIndex: language === "en" ? 1 : 0 }}
+          />
+        </div>
+      </div>
+
+      {/* Desktop: pinned scrub */}
+      <div className="hidden lg:block relative h-[280vh]">
+        <div className="sticky top-0 h-screen flex items-center">
+          <div className="container-tight w-full grid grid-cols-12 gap-10 items-center">
+            <div className={`col-span-4 space-y-2 ${isRTL ? "order-2 text-right" : ""}`}>
+              {methodRows.map((row, i) => (
+                <button
+                  key={row.num}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  onMouseEnter={() => setHoveredRow(i)}
+                  onMouseLeave={() => setHoveredRow(null)}
+                  className={`relative w-full text-left p-5 border transition-colors ${
+                    active === i ? "border-red-br bg-white/[0.03]" : "border-white/[0.06] hover:border-white/20"
+                  } ${isRTL ? "text-right" : ""}`}
+                >
+                  {hoveredRow === i && (
+                    <div
+                      className="absolute inset-0 opacity-[0.15] bg-cover bg-center pointer-events-none"
+                      style={{ backgroundImage: "url(/hero-placeholder.jpg)" }}
+                    />
+                  )}
+                  <span
+                    className={`font-display text-5xl transition-all duration-500 ${
+                      active === i ? "text-red-br" : "text-white/20"
+                    }`}
+                  >
+                    {row.num}
+                  </span>
+                  <h3 className="font-display text-xl uppercase mt-1 relative z-10">{row.title}</h3>
+                </button>
+              ))}
+            </div>
+
+            <div className={`col-span-8 relative min-h-[320px] ${isRTL ? "order-1 text-right" : ""}`}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, x: isRTL ? -24 : 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: isRTL ? 24 : -24 }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <span className="font-display text-[8rem] leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.12)] absolute -top-8 pointer-events-none">
+                    {activeRow.num}
+                  </span>
+                  <h3 className="font-display text-4xl uppercase mb-6 relative z-10">{activeRow.title}</h3>
+                  <ul className="space-y-3 relative z-10">
+                    {activeRow.points.map((point, pi) => (
+                      <li
+                        key={pi}
+                        className={`flex gap-3 font-editorial text-base text-muted-foreground ${isRTL ? "flex-row-reverse" : ""}`}
+                      >
+                        <span className="text-red-br shrink-0">—</span>
+                        <span>{point[language]}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={() => setOpenAccordion(openAccordion === active ? null : active)}
+                    className="mt-6 font-editorial text-xs uppercase tracking-wider text-red-br flex items-center gap-2"
+                  >
+                    {openAccordion === active ? "Less" : "More"}
+                    <ChevronDown className={`w-4 h-4 transition-transform ${openAccordion === active ? "rotate-180" : ""}`} />
+                  </button>
+                  <div
+                    className="overflow-hidden transition-[max-height] duration-500 ease-expo"
+                    style={{ maxHeight: openAccordion === active ? 120 : 0 }}
+                  >
+                    <p className="font-editorial text-sm text-muted-foreground mt-3 leading-relaxed">
+                      {METHOD_DETAILS[activeRow.key][language]}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile: horizontal snap */}
+      <div className="lg:hidden overflow-x-auto snap-x snap-mandatory flex gap-4 px-5 pb-8 scrollbar-hide">
+        {methodRows.map((row, index) => (
+          <div
+            key={row.num}
+            className="snap-center shrink-0 w-[85vw] max-w-sm border border-white/[0.08] bg-[#111] p-6"
+          >
+            <span className="font-display text-4xl text-red-br">{row.num}</span>
+            <h3 className="font-display text-2xl uppercase mt-2 mb-4">{row.title}</h3>
+            <ul className="space-y-2 mb-4">
+              {row.points.map((point, pi) => (
+                <li key={pi} className="font-editorial text-sm text-muted-foreground">
+                  — {point[language]}
+                </li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              onClick={() => setOpenAccordion(openAccordion === index ? null : index)}
+              className="font-editorial text-xs uppercase text-red-br"
+            >
+              {openAccordion === index ? "Less ↑" : "More ↓"}
+            </button>
+            {openAccordion === index && (
+              <p className="font-editorial text-sm text-muted-foreground mt-3">{METHOD_DETAILS[row.key][language]}</p>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="container-tight section-padding">
+        <div className={`mt-8 max-w-xl ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
+          <h3 className="font-editorial text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
+            {t.whoIsFor[language]}
+          </h3>
+          <ul className="space-y-3">
+            {t.whoIsForItems.map((item, i) => (
+              <li key={i} className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <Check className="w-4 h-4 text-red-br shrink-0" />
+                <span className="font-editorial text-foreground">{item[language]}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-14 pt-10 border-t border-white/[0.06]">
+          <div className={`grid lg:grid-cols-2 gap-10 items-end ${isRTL ? "text-right" : ""}`}>
+            <div>
+              <h3 className="font-display text-3xl md:text-4xl uppercase leading-tight mb-4">
+                {language === "ar" ? "واش راك مستعد؟" : language === "fr" ? "Prêt ?" : "Ready?"}
+              </h3>
+              <p className="font-editorial text-xs uppercase tracking-[0.2em] text-red-br mb-3">
+                {t.dmInstructions[language]}
+              </p>
+              <ul className="space-y-1 font-editorial text-sm text-muted-foreground">
+                <li>— {t.dmItem1[language]}</li>
+                <li>— {t.dmItem2[language]}</li>
+                <li>— {t.dmItem3[language]}</li>
+              </ul>
+            </div>
+            <MagneticCTA href={IG_DM_URL}>{t.messageMe[language]} →</MagneticCTA>
+          </div>
+        </div>
+
+        <div
+          className={`mt-10 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row sm:items-center gap-4 ${isRTL ? "sm:flex-row-reverse text-right" : ""}`}
+        >
+          <p className="font-editorial text-sm text-muted-foreground flex-1">{t.affordabilityMessage[language]}</p>
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-2 font-editorial text-xs font-semibold uppercase tracking-[0.15em] text-red-br hover:gap-3 transition-all shrink-0 nav-link-editorial"
+          >
+            {t.checkProducts[language]}
+            <ArrowRight className="w-4 h-4 cta-arrow" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CoachingSection;

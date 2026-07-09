@@ -1,8 +1,6 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Grid } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -13,21 +11,22 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
-import useEmblaCarousel from 'embla-carousel-react';
+import useEmblaCarousel from "embla-carousel-react";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import PrimaryCTA from "@/components/PrimaryCTA";
+import MaskedLines from "@/components/MaskedLines";
+import { FEATURED_TRANSFORMATION_INDEX } from "@/lib/constants";
 
 const TransformationsSection = () => {
   const scrollRef = useRef(null);
-  const isInView = useInView(scrollRef, { once: true, margin: "0px" });
-  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=The%20transformations%20are%20amazing!%20How%20can%20I%20get%20started%3F";
+  const isInView = useInView(scrollRef, { once: true, margin: "-80px" });
   const { language, isRTL } = useLanguage();
   const t = translations.transformations;
 
   const getImageSources = (index: number, item: (typeof t.testimonials)[number]) => {
-    if ((item as any).imageBefore && (item as any).imageAfter) {
-      return {
-        before: (item as any).imageBefore as string,
-        after: (item as any).imageAfter as string,
-      };
+    if ((item as { imageBefore?: string; imageAfter?: string }).imageBefore) {
+      const typed = item as { imageBefore: string; imageAfter: string };
+      return { before: typed.imageBefore, after: typed.imageAfter };
     }
     const imageIndex = (index % t.testimonials.length) + 1;
     return {
@@ -37,231 +36,183 @@ const TransformationsSection = () => {
   };
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    direction: isRTL ? 'rtl' : 'ltr',
-    align: 'center',
-    containScroll: 'trimSnaps',
-    dragFree: true
+    direction: isRTL ? "rtl" : "ltr",
+    align: "start",
+    containScroll: "trimSnaps",
   });
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const [selectedIndex, setSelectedIndex] = useState(FEATURED_TRANSFORMATION_INDEX);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
   }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
+    emblaApi.scrollTo(FEATURED_TRANSFORMATION_INDEX, true);
     onSelect();
-    setScrollSnaps(emblaApi.scrollSnapList());
-    emblaApi.on('select', onSelect);
-    emblaApi.on('reInit', onSelect);
-  }, [emblaApi, setScrollSnaps, onSelect]);
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
-  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  const active = t.testimonials[selectedIndex];
+  const activeImages = getImageSources(selectedIndex, active);
+  const prevBtnEnabled = selectedIndex > 0;
+  const nextBtnEnabled = selectedIndex < t.testimonials.length - 1;
 
   return (
-    <section id="transformations" className="section-padding overflow-hidden bg-secondary/5" ref={scrollRef}>
-      <div className="container">
-        {/* Header */}
+    <section id="transformations" className="section-padding overflow-hidden bg-ink" ref={scrollRef}>
+      <div className="container-tight">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className={`mb-10 md:mb-14 ${isRTL ? "text-right" : ""}`}
+        >
+          <p className="font-editorial text-[10px] uppercase tracking-[0.3em] text-red-br mb-3">
+            {t.subtitle[language]}
+          </p>
+          <MaskedLines
+            lines={[t.title1[language], t.title2[language]]}
+            lineClassName="text-4xl md:text-5xl lg:text-6xl"
+            redWordIndex={{ line: 1, wordIndex: 0 }}
+          />
+          <div className="hairline w-full max-w-xs mt-6" />
+        </motion.div>
+
+        {/* Featured drag slider */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.55, delay: 0.1 }}
+          className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-end mb-10"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-7xl mb-4 uppercase tracking-tighter">
-            {t.title1[language]} <span className="text-gradient font-black">{t.title2[language]}</span>
-          </h2>
-          <div className="flex flex-col items-center gap-2">
-            <div className="flex items-center justify-center gap-4">
-              <div className="h-px w-8 bg-primary/50" />
-              <p className="text-xl text-muted-foreground uppercase tracking-widest font-bold">
-                {t.subtitle[language]}
-              </p>
-              <div className="h-px w-8 bg-primary/50" />
+          <div className="lg:col-span-8">
+            <BeforeAfterSlider
+              key={selectedIndex}
+              beforeSrc={activeImages.before}
+              afterSrc={activeImages.after}
+              beforeLabel={t.before[language]}
+              afterLabel={t.after[language]}
+              alt={`${active.name[language]} transformation`}
+            />
+          </div>
+          <div className={`lg:col-span-4 pb-2 ${isRTL ? "text-right" : ""}`}>
+            <span className="font-editorial text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              {String(selectedIndex + 1).padStart(2, "0")} / {String(t.testimonials.length).padStart(2, "0")}
+            </span>
+            <h3 className="font-display text-3xl md:text-4xl uppercase mt-2 mb-4">{active.name[language]}</h3>
+            <p className="font-editorial text-base text-muted-foreground leading-relaxed italic">
+              "{active.quote[language]}"
+            </p>
+            <div className={`flex items-center gap-3 mt-8 ${isRTL ? "flex-row-reverse justify-end" : ""}`}>
+              <button
+                type="button"
+                onClick={scrollPrev}
+                disabled={!prevBtnEnabled}
+                className="touch-target w-11 h-11 border border-white/15 flex items-center justify-center text-foreground hover:border-red-br hover:text-red-br transition-colors disabled:opacity-30"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={scrollNext}
+                disabled={!nextBtnEnabled}
+                className="touch-target w-11 h-11 border border-white/15 flex items-center justify-center text-foreground hover:border-red-br hover:text-red-br transition-colors disabled:opacity-30"
+                aria-label="Next"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
-            {/* Swipe Indicator */}
-            <motion.p
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="text-[10px] md:text-xs text-primary font-black uppercase tracking-[0.3em] mt-4"
-            >
-              ← {language === 'en' ? 'SWIPE TO EXPLORE' : 'اسحب للاستكشاف'} →
-            </motion.p>
           </div>
         </motion.div>
 
-        {/* Embla Flick Carousel Container */}
-        <div className="relative group/carousel px-4">
-          {/* Navigation Buttons - Tablet/Desktop */}
-          <div className="hidden md:block">
-            <button
-              onClick={scrollPrev}
-              disabled={!prevBtnEnabled}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-foreground/50 border border-background/10 text-background transition-all hover:bg-primary hover:border-primary disabled:opacity-0 disabled:pointer-events-none group-hover/carousel:translate-x-0 cursor-pointer"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={scrollNext}
-              disabled={!nextBtnEnabled}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-30 w-12 h-12 flex items-center justify-center rounded-full bg-foreground/50 border border-background/10 text-background transition-all hover:bg-primary hover:border-primary disabled:opacity-0 disabled:pointer-events-none group-hover/carousel:translate-x-0 cursor-pointer"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
-
-          <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
-            <div className="flex gap-6 md:gap-8">
-              {t.testimonials.map((item, index) => (
-                <div
+        {/* Thumbnail strip */}
+        <div className="overflow-hidden mb-12" ref={emblaRef}>
+          <div className="flex gap-px bg-white/[0.06]">
+            {t.testimonials.map((item, index) => {
+              const images = getImageSources(index, item);
+              const isActive = index === selectedIndex;
+              return (
+                <button
                   key={index}
-                  className="flex-shrink-0 w-[92vw] sm:w-[500px] md:w-[600px]"
+                  type="button"
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  className={`group/thumb flex-shrink-0 w-24 sm:w-28 md:w-32 aspect-[3/4] relative overflow-hidden transition-all duration-300 ${
+                    isActive ? "opacity-100 ring-1 ring-red-br ring-inset" : "opacity-50 hover:opacity-100"
+                  }`}
                 >
-                  {(() => {
-                    const images = getImageSources(index, item);
-                    return (
-                  <div className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary transition-all duration-500 h-full group">
-                    {/* Before/After Images */}
-                    <div className="aspect-[4/5] sm:aspect-[16/10] bg-muted relative overflow-hidden">
-                      <div className={`absolute inset-0 flex ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        {/* Before Image */}
-                        <div className={`w-1/2 h-full relative ${isRTL ? 'border-l' : 'border-r'} border-border/30`}>
-                          <img
-                            src={images.before}
-                            alt="Before"
-                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
-                          />
-                          <div className="absolute top-4 left-4 bg-foreground/90 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-sm border border-background/10 z-10">
-                            <span className="text-background text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.before[language]}</span>
-                          </div>
-                        </div>
-                        {/* After Image */}
-                        <div className="w-1/2 h-full relative">
-                          <img
-                            src={images.after}
-                            alt="After"
-                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
-                          />
-                          <div className="absolute top-4 right-4 bg-primary px-3 sm:px-4 py-1.5 rounded-sm shadow-xl z-10">
-                            <span className="text-background text-[10px] sm:text-[12px] font-black tracking-widest uppercase">{t.after[language]}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                    );
-                  })()}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Dots Navigation */}
-          <div className="flex justify-center gap-3 mt-10">
-            {scrollSnaps.map((_, index) => (
-              <button
-                key={index}
-                className={`h-1.5 transition-all duration-300 rounded-full ${index === selectedIndex ? 'w-8 bg-primary' : 'w-3 bg-primary/20 hover:bg-primary/40 cursor-pointer'}`}
-                onClick={() => scrollTo(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* See All Button */}
-          <div className="flex justify-center mt-8">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button variant="outline" className="w-full sm:w-auto gap-2 text-primary border-primary/20 hover:bg-primary hover:text-background transition-all tracking-widest uppercase text-xs sm:text-sm font-bold py-6 sm:py-4 shadow-lg shadow-foreground/10">
-                  <Grid className="w-4 h-4" />
-                  {language === 'en' ? 'See All Transformations' : 'شاهد كل التحولات'}
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="max-w-[95vw] w-full h-[90vh] p-0 bg-background/95 backdrop-blur-xl border-background/10">
-                <DialogHeader className="p-6 border-b border-background/10">
-                  <DialogTitle className="text-2xl font-display uppercase tracking-tighter text-center">
-                    {t.title1[language]} <span className="text-primary">{t.title2[language]}</span>
-                  </DialogTitle>
-                </DialogHeader>
-                <ScrollArea className="h-full">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 pb-20">
-                    {t.testimonials.map((item, index) => {
-                      const images = getImageSources(index, item);
-                      return (
-                      <div key={index} className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary transition-all duration-300 group">
-                        {/* Before/After Images */}
-                        <div className="aspect-[4/5] sm:aspect-[16/10] bg-muted relative overflow-hidden">
-                          <div className={`absolute inset-0 flex ${isRTL ? 'flex-row-reverse' : ''}`}>
-                            {/* Before Image */}
-                            <div className={`w-1/2 h-full relative ${isRTL ? 'border-l' : 'border-r'} border-border/30`}>
-                              <img
-                                src={images.before}
-                                alt="Before"
-                                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
-                              />
-                              <div className="absolute top-4 left-4 bg-foreground/90 backdrop-blur-md px-3 py-1 rounded-sm border border-background/10 z-10">
-                                <span className="text-background text-[10px] font-black tracking-widest uppercase">{t.before[language]}</span>
-                              </div>
-                            </div>
-                            {/* After Image */}
-                            <div className="w-1/2 h-full relative">
-                              <img
-                                src={images.after}
-                                alt="After"
-                                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-1000"
-                              />
-                              <div className="absolute top-4 right-4 bg-primary px-3 py-1 rounded-sm shadow-xl z-10">
-                                <span className="text-background text-[10px] font-black tracking-widest uppercase">{t.after[language]}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )})}
-                  </div>
-                  <div className="p-6 pt-0 flex justify-center pb-20">
-                    <DialogTrigger asChild>
-                      <Button variant="outline" className="w-full sm:w-auto uppercase tracking-widest font-black border-primary/20 hover:bg-primary hover:text-background">
-                        {language === 'en' ? 'Close Gallery' : 'إغلاق المعرض'}
-                      </Button>
-                    </DialogTrigger>
-                  </div>
-                </ScrollArea>
-              </DialogContent>
-            </Dialog>
+                  <img
+                    src={images.after}
+                    alt=""
+                    className="h-full w-full object-cover object-top grayscale group-hover/thumb:grayscale-0 group-hover/thumb:scale-105 transition-all duration-500"
+                    loading="lazy"
+                  />
+                  <span className="absolute bottom-0 inset-x-0 bg-ink/90 font-editorial text-[8px] uppercase tracking-wider py-1.5 text-center translate-y-full group-hover/thumb:translate-y-0 group-focus-visible/thumb:translate-y-0 transition-transform duration-300">
+                    {item.name[language]}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Action Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mt-12 md:mt-16 flex flex-col items-center"
-        >
-          <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="inline-block w-full max-w-[92vw]">
-            <Button variant="cta" size="xxl" className="uppercase tracking-wider sm:tracking-widest font-black px-4 sm:px-12 py-6 sm:py-8 md:py-10 text-[13px] sm:text-xl md:text-2xl group w-full sm:w-auto shadow-2xl shadow-foreground/10 ring-1 ring-white/10 flex items-center justify-center min-h-[70px]">
-              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
-                {t.cta[language]}
-                <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>→</motion.span>
-              </span>
-            </Button>
-          </a>
-        </motion.div>
+        <div className={`flex flex-col sm:flex-row items-center gap-6 ${isRTL ? "sm:flex-row-reverse" : ""}`}>
+          <Dialog>
+            <DialogTrigger asChild>
+              <button
+                type="button"
+                className="font-editorial text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-red-br border-b border-transparent hover:border-red-br transition-colors pb-0.5"
+              >
+                {language === "en" ? "View all transformations" : language === "fr" ? "Voir toutes les transformations" : "شاهد كل التحولات"}
+              </button>
+            </DialogTrigger>
+            <DialogContent className="max-w-[95vw] w-full h-[90vh] p-0 bg-ink border-white/10">
+              <DialogHeader className="p-6 border-b border-white/10">
+                <DialogTitle className="font-display text-2xl uppercase tracking-tight text-center">
+                  {t.title1[language]} <span className="text-red-br">{t.title2[language]}</span>
+                </DialogTitle>
+              </DialogHeader>
+              <ScrollArea className="h-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.06] p-px">
+                  {t.testimonials.map((item, index) => {
+                    const images = getImageSources(index, item);
+                    return (
+                      <div key={index} className="bg-ink">
+                        <BeforeAfterSlider
+                          beforeSrc={images.before}
+                          afterSrc={images.after}
+                          beforeLabel={t.before[language]}
+                          afterLabel={t.after[language]}
+                          alt={item.name[language]}
+                          className="aspect-[4/5]"
+                        />
+                        <div className="p-4 border-t border-white/[0.06]">
+                          <p className="font-display text-lg uppercase">{item.name[language]}</p>
+                          <p className="font-editorial text-sm text-muted-foreground mt-1">{item.quote[language]}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </ScrollArea>
+            </DialogContent>
+          </Dialog>
+
+          <PrimaryCTA className="w-full sm:w-auto sm:ml-auto" showFriction={false} />
+        </div>
       </div>
     </section>
   );
 };
+
 export default TransformationsSection;

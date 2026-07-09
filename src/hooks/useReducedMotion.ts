@@ -1,0 +1,19 @@
+import { useEffect, useState } from "react";
+
+/** Respects OS reduced-motion + manual override */
+export const useReducedMotion = () => {
+  const [reduced, setReduced] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handler = () => setReduced(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  return reduced;
+};

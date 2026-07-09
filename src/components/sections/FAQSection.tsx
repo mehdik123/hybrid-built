@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Accordion,
@@ -7,49 +6,53 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
+import PrimaryCTA from "@/components/PrimaryCTA";
 
 const FAQSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=COACHING";
   const { language, isRTL } = useLanguage();
   const t = translations.faq;
 
   return (
-    <section id="faq" className="section-padding bg-secondary/30" ref={ref}>
+    <section id="faq" className="section-padding bg-secondary/20" ref={ref}>
       <div className="container-tight max-w-3xl">
-        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-14"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl mb-4">
-            {t.title1[language]} <span className="text-gradient">{t.title2[language]}</span>
+            {t.title1[language]} <span className="text-red-br">{t.title2[language]}</span>
           </h2>
         </motion.div>
 
-        {/* Accordion */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3">
             {t.items.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-card border border-border rounded-xl px-6 data-[state=open]:border-primary/50 transition-colors duration-300"
+                className="bg-card/80 border border-border px-6 data-[state=open]:border-red-br/40 transition-colors duration-200"
+                data-cursor-label="OPEN"
               >
-                <AccordionTrigger className={`text-foreground hover:text-primary py-5 text-base md:text-lg font-medium ${isRTL ? 'text-right flex-row-reverse' : 'text-left'}`}>
+                <AccordionTrigger
+                  className={`text-foreground hover:text-primary py-5 text-base md:text-lg font-medium ${
+                    isRTL ? "text-right flex-row-reverse" : "text-left"
+                  }`}
+                >
                   {faq.question[language]}
                 </AccordionTrigger>
-                <AccordionContent className={`text-muted-foreground pb-5 text-base leading-relaxed ${isRTL ? 'text-right' : ''}`}>
+                <AccordionContent
+                  className={`text-muted-foreground pb-5 text-base leading-relaxed ${isRTL ? "text-right" : ""}`}
+                >
                   {faq.answer[language]}
                 </AccordionContent>
               </AccordionItem>
@@ -57,18 +60,13 @@ const FAQSection = () => {
           </Accordion>
         </motion.div>
 
-        {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
+          transition={{ duration: 0.5, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mt-14"
         >
-          <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-            <Button size="xl" className="bg-primary hover:bg-primary/90 text-background font-black uppercase tracking-widest px-10 py-6 transform transition-transform active:scale-95 shadow-lg shadow-foreground/10">
-              {t.cta[language]}
-            </Button>
-          </a>
+          <PrimaryCTA className="inline-flex flex-col items-center" showFriction={false} />
         </motion.div>
       </div>
     </section>

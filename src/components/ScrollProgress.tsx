@@ -14,7 +14,7 @@ const ScrollProgress = () => {
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
 
     return () => {
@@ -23,24 +23,21 @@ const ScrollProgress = () => {
     };
   }, [location.pathname]);
 
-  if (progress <= 0.01) {
+  if (location.pathname !== "/coaching" && location.pathname !== "/home") {
     return null;
   }
 
   return (
-    <div className="pointer-events-none fixed right-4 top-28 bottom-24 z-40 hidden md:flex flex-col items-center gap-3">
-      <div className="relative h-full w-px overflow-hidden rounded-full bg-gradient-to-b from-transparent via-primary/20 to-transparent">
-        <div
-          className="absolute inset-0 origin-top bg-gradient-to-b from-primary to-primary/0"
-          style={{ transform: `scaleY(${Math.min(1, Math.max(0, progress))})` }}
-        />
-      </div>
-      <span className="text-[10px] font-black uppercase tracking-[0.35em] text-muted-foreground/60">
-        Scroll
-      </span>
+    <div
+      className="pointer-events-none fixed top-0 left-0 right-0 z-50 h-px bg-white/[0.06]"
+      aria-hidden
+    >
+      <div
+        className="h-full bg-red-br origin-left transition-transform duration-150 ease-out"
+        style={{ transform: `scaleX(${Math.min(1, Math.max(0, progress))})` }}
+      />
     </div>
   );
 };
 
 export default ScrollProgress;
-

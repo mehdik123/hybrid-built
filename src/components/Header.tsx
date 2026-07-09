@@ -1,171 +1,155 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { IG_DM_URL, ASSETS } from "@/lib/constants";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const instagramDMLink = "https://ig.me/m/unbreakablesteam?text=COACHING";
   const { language, setLanguage, isRTL } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
-  const isHomePage = location.pathname === "/";
+  const isCoachingPage = location.pathname === "/coaching" || location.pathname === "/home";
 
   const navLinks = [
-    { label: translations.nav.products[language], href: "/products", type: "page", highlight: true },
-    { label: translations.nav.coaching[language], href: "#coaching", type: "anchor" },
-    { label: translations.nav.about[language], href: "#about", type: "anchor" },
-    { label: translations.nav.results[language], href: "#transformations", type: "anchor" },
-    { label: translations.nav.faq[language], href: "#faq", type: "anchor" },
+    { label: translations.nav.products[language], href: "/products", type: "page" as const },
+    { label: translations.nav.coaching[language], href: "#coaching", type: "anchor" as const },
+    { label: translations.nav.about[language], href: "#about", type: "anchor" as const },
+    { label: translations.nav.results[language], href: "#transformations", type: "anchor" as const },
+    { label: translations.nav.faq[language], href: "#faq", type: "anchor" as const },
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (link: { label: string; href: string; type: string }) => {
+  const handleNavClick = (link: (typeof navLinks)[number]) => {
     if (link.type === "page") {
       navigate(link.href);
       setIsMobileMenuOpen(false);
       return;
     }
-
-    if (!isHomePage) {
-      navigate("/" + link.href);
+    if (!isCoachingPage) {
+      navigate("/coaching" + link.href);
     } else {
-      const element = document.querySelector(link.href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
     }
     setIsMobileMenuOpen(false);
   };
 
   const toggleLanguage = () => {
-    if (language === 'en') setLanguage('fr');
-    else if (language === 'fr') setLanguage('ar');
-    else setLanguage('en');
+    if (language === "en") setLanguage("fr");
+    else if (language === "fr") setLanguage("ar");
+    else setLanguage("en");
   };
 
   return (
     <>
-      <motion.header
-        initial={{ y: 0 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md border-b border-primary/20 py-4" : "py-6 bg-background/60 backdrop-blur-md md:bg-transparent"
-          }`}
+      <header
+        className={`fixed top-0 left-0 right-0 z-[60] transition-colors duration-300 ${
+          isScrolled ? "bg-ink/95 border-b border-white/[0.06] py-3" : "bg-transparent py-5 md:py-6"
+        }`}
       >
         <div className="container-tight px-4 md:px-8">
-          <div className={`flex items-center justify-between h-16 md:h-20 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-1.5 sm:gap-2 md:gap-3 hover:opacity-80 transition-opacity">
-              <img src="/logo.png" alt="UNBREAKABLES TEAM" className="h-7 sm:h-8 md:h-12 w-auto" />
-              <span className="font-display text-base sm:text-lg md:text-2xl text-foreground whitespace-nowrap">
+          <div className={`flex items-center justify-between gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+            <Link to={isCoachingPage ? "/coaching" : "/"} className={`flex items-center gap-2 min-w-0 ${isRTL ? "flex-row-reverse" : ""}`}>
+              <img src={ASSETS.logo} alt="UNBREAKABLES TEAM" className="h-8 md:h-10 w-auto shrink-0" />
+              <span className="font-editorial text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-foreground/80 hidden sm:inline truncate">
                 UNBREAKABLES TEAM
               </span>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className={`hidden md:flex items-center gap-6 lg:gap-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <nav className={`hidden lg:flex items-center gap-6 ${isRTL ? "flex-row-reverse" : ""}`}>
               {navLinks.map((link) => (
                 <button
                   key={link.href}
+                  type="button"
                   onClick={() => handleNavClick(link)}
-                  className={`transition-colors text-sm uppercase tracking-wide font-medium ${link.highlight
-                    ? 'text-primary font-bold px-3 py-1 rounded-md bg-primary/10 hover:bg-primary/20'
-                    : 'text-muted-foreground hover:text-primary'
-                    }`}
+                  className="nav-link-editorial font-editorial text-[11px] uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground"
                 >
                   {link.label}
                 </button>
               ))}
-
-              {/* Language Switcher */}
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all"
-                aria-label="Switch language"
-              >
-                <Globe className="w-4 h-4" />
-                <span className="text-sm font-medium">{language.toUpperCase()}</span>
-              </button>
-
-              <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-                <Button variant="hero" size="sm" className="bg-primary hover:bg-primary/90 text-background font-black text-xs uppercase tracking-widest px-6 h-10 shadow-lg shadow-foreground/10">
-                  {translations.nav.applyNow[language]}
-                </Button>
+              <div className="relative flex items-center gap-0.5 border border-white/10 p-0.5">
+                {(["en", "fr", "ar"] as const).map((lang) => (
+                  <button
+                    key={lang}
+                    type="button"
+                    onClick={() => setLanguage(lang)}
+                    className={`relative z-10 px-2.5 py-1 font-editorial text-[10px] uppercase tracking-wider transition-colors ${
+                      language === lang ? "text-ink" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {language === lang && (
+                      <motion.span
+                        layoutId="lang-pill"
+                        className="absolute inset-0 bg-paper rounded-sm"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{lang}</span>
+                  </button>
+                ))}
+              </div>
+              <a href={IG_DM_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-cta !py-2.5 !px-5 !text-[11px]">
+                {translations.nav.applyNow[language]}
               </a>
             </nav>
 
-            {/* Mobile Menu Button, Language & CTA */}
-            <div className={`flex md:hidden items-center gap-1.5 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <button
-                onClick={() => navigate('/products')}
-                className="bg-accent/10 border border-accent/20 text-accent px-2 sm:px-3 h-8 sm:h-9 rounded-md text-[9px] sm:text-[10px] font-black uppercase tracking-tighter hover:bg-accent/20 transition-all whitespace-nowrap"
+            <div className={`flex lg:hidden items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+              <a
+                href={IG_DM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary-cta !py-2 !px-3 !text-[9px] tracking-wider"
               >
-                {translations.nav.products[language]}
-              </button>
-              <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="mr-0.5 sm:mr-1">
-                <Button variant="hero" size="sm" className="px-2 sm:px-4 h-8 sm:h-9 text-[9px] sm:text-[10px] font-black tracking-tighter bg-primary shadow-lg shadow-foreground/10">
-                  {translations.nav.applyNow[language]}
-                </Button>
+                DM
               </a>
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center justify-center p-1.5 sm:px-2 sm:py-1.5 rounded-md border border-border/50 text-muted-foreground hover:text-primary transition-colors text-[9px] sm:text-[10px] font-bold"
-                aria-label="Switch language"
-              >
-                <Globe className="w-3 h-3" />
-                <span className="hidden sm:inline-block ml-1">{language.toUpperCase()}</span>
-                <span className="sm:hidden">{language.toUpperCase()}</span>
+              <button type="button" onClick={toggleLanguage} className="touch-target p-2 text-muted-foreground" aria-label="Language">
+                <Globe className="w-4 h-4" />
               </button>
               <button
+                type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-1 sm:p-1.5 text-foreground"
-                aria-label="Toggle menu"
+                className="touch-target p-2 text-foreground"
+                aria-label="Menu"
               >
-                {isMobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-background pt-20 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-ink/98 pt-24 px-6 lg:hidden"
           >
-            <nav className="flex flex-col items-center gap-6 p-8">
+            <nav className={`flex flex-col gap-6 ${isRTL ? "items-end text-right" : ""}`}>
               {navLinks.map((link) => (
                 <button
                   key={link.href}
+                  type="button"
                   onClick={() => handleNavClick(link)}
-                  className={`transition-colors text-xl uppercase tracking-wide font-display ${link.highlight
-                    ? 'text-primary font-bold'
-                    : 'text-foreground hover:text-primary'
-                    }`}
+                  className="font-display text-2xl uppercase text-left"
                 >
                   {link.label}
                 </button>
               ))}
-              <a href={instagramDMLink} target="_blank" rel="noopener noreferrer" className="mt-4">
-                <Button variant="hero" size="lg">
-                  {translations.nav.applyNow[language]}
-                </Button>
+              <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="font-editorial text-sm text-muted-foreground">
+                {translations.nav.choosePath[language]}
+              </Link>
+              <a href={IG_DM_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-cta w-full max-w-xs">
+                {translations.nav.applyNow[language]}
               </a>
             </nav>
           </motion.div>

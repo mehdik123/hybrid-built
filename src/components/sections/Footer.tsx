@@ -13,38 +13,38 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-12 md:py-16 border-t border-border bg-card/50">
+    <footer className="py-12 md:py-16 border-t border-white/[0.06] bg-ink">
       <div className="container-tight px-4 md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          className={`text-center ${isRTL ? "rtl" : ""}`}
         >
-          <h3 className="font-display text-2xl md:text-3xl mb-6 text-foreground">
-            {t.title1[language]} <span className="text-gradient">{t.title2[language]}</span>
+          <h3 className="font-display text-xl md:text-2xl uppercase mb-8 text-foreground">
+            {t.title1[language]}{" "}
+            <span className="text-red-br">{t.title2[language]}</span>
           </h3>
 
-          <div className={`flex justify-center gap-4 mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div className={`flex justify-center gap-px bg-white/[0.06] inline-flex mx-auto mb-8 ${isRTL ? "flex-row-reverse" : ""}`}>
             {socialLinks.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:scale-110 transition-all duration-300"
+                className="touch-target w-12 h-12 bg-ink flex items-center justify-center text-muted-foreground hover:text-red-br transition-colors"
                 aria-label={social.label}
               >
                 <social.icon className="w-5 h-5" />
               </a>
             ))}
-            {/* TikTok - custom icon since lucide doesn't have it */}
             <a
               href="https://tiktok.com/@unbreakablesteam"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:scale-110 transition-all duration-300"
+              className="touch-target w-12 h-12 bg-ink flex items-center justify-center text-muted-foreground hover:text-red-br transition-colors"
               aria-label="TikTok"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -53,15 +53,13 @@ const Footer = () => {
             </a>
           </div>
 
-          <p className="text-muted-foreground mb-6">
-            {t.questions[language]}
-          </p>
+          <p className="font-editorial text-sm text-muted-foreground mb-6">{t.questions[language]}</p>
 
-          <div className="pt-6 border-t border-border">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Mehdi | {t.rights[language]}
-            </p>
-          </div>
+          <div className="hairline max-w-xs mx-auto mb-6" />
+
+          <p className="font-editorial text-xs text-muted-foreground/70">
+            © {new Date().getFullYear()} Mehdi · {t.rights[language]}
+          </p>
         </motion.div>
       </div>
     </footer>
