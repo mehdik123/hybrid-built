@@ -58,7 +58,7 @@ const FreeToolPage = () => {
           {!unlocked ? (
             <EmailCaptureForm
               source="free-tool-page"
-              subject="Hybrid Split Identifier — Auto Send"
+              subject="Hybrid Split Identifier Auto Send"
               onSuccess={() => setUnlocked(true)}
             />
           ) : (

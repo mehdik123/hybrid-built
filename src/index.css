@@ -410,4 +410,16 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Instagram official embed inside our player modal */
+  .ig-embed-host iframe {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    min-width: 280px !important;
+    background: #000 !important;
+  }
+
+  .ig-embed-host .instagram-media {
+    margin: 0 auto !important;
+  }
 }

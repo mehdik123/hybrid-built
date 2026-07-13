@@ -10,6 +10,7 @@ import BackButton from "@/components/BackButton";
 import { useLanguage } from "@/contexts/AppContext";
 
 const TransformationsSection = lazy(() => import("@/components/sections/TransformationsSection"));
+const VideoTestimonialSection = lazy(() => import("@/components/sections/VideoTestimonialSection"));
 const CoachingSection = lazy(() => import("@/components/sections/CoachingSection"));
 const FAQSection = lazy(() => import("@/components/sections/FAQSection"));
 const ProductTeaser = lazy(() => import("@/components/sections/ProductTeaser"));
@@ -44,6 +45,7 @@ const Index = () => {
       <KeywordMarquee />
       <Suspense fallback={<SectionLoader />}>
         <TransformationsSection />
+        <VideoTestimonialSection />
         <AboutSection />
         <CoachingSection />
         <FAQSection />

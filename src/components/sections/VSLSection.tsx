@@ -24,16 +24,18 @@ const VSLSection = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="font-display text-4xl md:text-5xl lg:text-6xl mb-4">
-                        {language === "ar" ? "شاهد" : "Watch The"}{" "}
-                        <span className="text-gradient">
-                            {language === "ar" ? "المنهجية" : "Methodology"}
+                    <h2 className="font-display text-4xl md:text-5xl lg:text-6xl mb-4 uppercase">
+                        {language === "ar" ? "شوف" : language === "fr" ? "VOIS LA" : "SEE THE"}{" "}
+                        <span className="text-red-br">
+                            {language === "ar" ? "الطريقة" : language === "fr" ? "MÉTHODE" : "METHOD"}
                         </span>
                     </h2>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto font-editorial">
                         {language === "ar"
-                            ? "اكتشف كيف نبني القوة والشكل الرياضي في وقت واحد"
-                            : "Discover exactly how we build elite strength and aesthetics simultaneously"}
+                            ? "كيفاش كنيني القوة والشكل فنفس الوقت."
+                            : language === "fr"
+                              ? "Comment on construit force et physique en même temps."
+                              : "How we build strength and physique at the same time."}
                     </p>
                 </motion.div>
 
@@ -70,14 +72,16 @@ const VSLSection = () => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="text-center max-w-2xl mx-auto bg-card/30 border border-background/5 p-8 rounded-2xl"
                 >
-                    <p className="text-xl text-foreground font-semibold mb-6">
+                    <p className="text-lg text-foreground font-editorial mb-6">
                         {language === "ar"
-                            ? "هل المنهجية مناسبة لك؟ دعنا نكتشف ذلك."
-                            : "Is this methodology right for you? Let's find out."}
+                            ? "واش هاد السيستيم ليك؟ صيفط ليا ونشوفو."
+                            : language === "fr"
+                              ? "Ce système est pour toi ? DM moi, on regarde."
+                              : "Is this for you? DM me and we find out."}
                     </p>
                     <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
-                        <Button size="xxl" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-background font-black text-lg uppercase tracking-widest px-12 py-8 transform transition-transform active:scale-95 shadow-xl shadow-foreground/10">
-                            {language === "ar" ? "راسلني 'HYBRID'" : "DM ME 'HYBRID'"}
+                        <Button size="xxl" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-background font-black text-lg uppercase tracking-widest px-12 py-8 transform transition-transform active:scale-95">
+                            {language === "ar" ? "راسلني 'HYBRID'" : language === "fr" ? "DM MOI 'HYBRID'" : "DM ME 'HYBRID'"}
                         </Button>
                     </a>
                 </motion.div>

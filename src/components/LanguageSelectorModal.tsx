@@ -1,94 +1,82 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
+import { translations } from "@/lib/translations";
 import { Button } from "@/components/ui/button";
 import { Globe } from "lucide-react";
 
 const LanguageSelectorModal = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const { setLanguage } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+  const { setLanguage, language } = useLanguage();
+  const t = translations.languageModal;
 
-    useEffect(() => {
-        // Only show if no language is saved in localStorage
-        const savedLang = localStorage.getItem('language');
-        if (!savedLang) {
-            const timer = setTimeout(() => setIsOpen(true), 1500); // Slight delay for better UX
-            return () => clearTimeout(timer);
-        }
-    }, []);
+  useEffect(() => {
+    const savedLang = localStorage.getItem("language");
+    if (!savedLang) {
+      const timer = setTimeout(() => setIsOpen(true), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
-    const handleSelect = (lang: "en" | "ar" | "fr") => {
-        setLanguage(lang);
-        setIsOpen(false);
-    };
+  const handleSelect = (lang: "en" | "ar" | "fr") => {
+    setLanguage(lang);
+    setIsOpen(false);
+  };
 
-    return (
-        <AnimatePresence>
-            {isOpen && (
-                <>
-                    {/* Backdrop */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-background/80 backdrop-blur-md z-[100]"
-                    />
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-ink/90 z-[100]"
+          />
 
-                    {/* Modal */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="fixed inset-0 flex items-center justify-center z-[101] p-4 pointer-events-none"
-                    >
-                        <div className="bg-card border border-background/10 rounded-3xl p-8 md:p-12 max-w-lg w-full shadow-2xl shadow-foreground/10 pointer-events-auto relative overflow-hidden group">
-                            {/* Decorative Glow */}
-                            <div className="absolute -top-24 -left-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors duration-700" />
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            className="fixed inset-0 flex items-center justify-center z-[101] p-4 pointer-events-none"
+          >
+            <div className="bg-[#111] border border-white/[0.1] p-8 md:p-10 max-w-md w-full pointer-events-auto">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 border border-red-br/30 mb-6">
+                  <Globe className="w-5 h-5 text-red-br" />
+                </div>
 
-                            <div className="relative z-10 text-center">
-                                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-8 border border-primary/20">
-                                    <Globe className="w-8 h-8 text-primary" />
-                                </div>
+                <h2 className="font-display text-3xl md:text-4xl uppercase tracking-tight mb-3">
+                  {t.title1[language]} <span className="text-red-br">{t.title2[language]}</span>
+                </h2>
+                <p className="text-muted-foreground mb-8 font-editorial text-sm">{t.subtitle[language]}</p>
 
-                                <h2 className="font-display text-3xl md:text-4xl uppercase tracking-tighter mb-4">
-                                    Choose Your <span className="text-red-br">Language</span>
-                                </h2>
-                                <p className="text-muted-foreground mb-10 text-lg">
-                                    Select your preferred language to continue your hybrid journey.
-                                </p>
-
-                                <div className="grid grid-cols-1 gap-4">
-                                    <Button
-                                        size="xl"
-                                        className="bg-primary hover:bg-primary/90 text-background font-black uppercase tracking-widest text-lg py-6 shadow-xl shadow-foreground/10"
-                                        onClick={() => handleSelect("en")}
-                                    >
-                                        English
-                                    </Button>
-                                    <Button
-                                        size="xl"
-                                        variant="outline"
-                                        className="border-primary/20 text-primary hover:bg-primary/10 font-black uppercase tracking-widest text-lg py-6 bg-transparent"
-                                        onClick={() => handleSelect("fr")}
-                                    >
-                                        Français
-                                    </Button>
-                                    <Button
-                                        size="xl"
-                                        variant="outline"
-                                        className="border-primary/20 text-primary hover:bg-primary/10 font-black uppercase tracking-widest text-lg py-6 bg-transparent"
-                                        onClick={() => handleSelect("ar")}
-                                    >
-                                        العربية / Darija
-                                    </Button>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </>
-            )}
-        </AnimatePresence>
-    );
+                <div className="grid grid-cols-1 gap-3">
+                  <Button className="btn-primary-cta w-full !rounded-none" onClick={() => handleSelect("en")}>
+                    English
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-white/15 text-foreground hover:border-red-br hover:text-red-br font-editorial uppercase tracking-widest py-6 bg-transparent !rounded-none"
+                    onClick={() => handleSelect("fr")}
+                  >
+                    Français
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-white/15 text-foreground hover:border-red-br hover:text-red-br font-editorial uppercase tracking-widest py-6 bg-transparent !rounded-none"
+                    onClick={() => handleSelect("ar")}
+                  >
+                    العربية / Darija
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
 };
 
 export default LanguageSelectorModal;

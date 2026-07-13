@@ -14,7 +14,7 @@ const HeroPhoto = () => (
   <EditorialPhoto
     src={ASSETS.heroCoaching}
     fallbackSrc={ASSETS.heroFallback}
-    alt="Mehdi — coach"
+    alt="Mehdi, coach"
     warm
     priority
     className="h-full w-full"
@@ -75,7 +75,7 @@ const HeroSection = () => {
       <div className="mt-10">
         <MagneticCTA href={IG_DM_URL}>{t.cta[language]} →</MagneticCTA>
         <p className="mt-3 font-editorial text-xs text-muted-foreground">
-          {translations.hero.ctaSubtext[language] || "I respond personally to every message."}
+          {translations.hero.ctaSubtext[language] || "I reply to every message myself."}
         </p>
       </div>
       <div

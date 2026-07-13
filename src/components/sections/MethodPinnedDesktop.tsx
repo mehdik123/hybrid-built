@@ -91,7 +91,7 @@ const MethodPinnedDesktop = ({ methodRows, methodDetails, language, isRTL }: Met
                       key={pi}
                       className={`flex gap-3 font-editorial text-base text-muted-foreground ${isRTL ? "flex-row-reverse" : ""}`}
                     >
-                      <span className="text-red-br shrink-0">—</span>
+                      <span className="text-red-br shrink-0">·</span>
                       <span>{point[language]}</span>
                     </li>
                   ))}

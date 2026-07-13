@@ -10,19 +10,19 @@ import { IG_DM_URL } from "@/lib/constants";
 
 const METHOD_DETAILS = {
   training: {
-    en: "Hybrid strength + hypertrophy blocks. Form checks via video. Progressions updated every week based on your log.",
-    ar: "بلوكات قوة + حجم. تصحيح بالفيديو. تحديث أسبوعي حسب السجل.",
-    fr: "Blocs force + hypertrophie. Corrections vidéo. Progressions mises à jour chaque semaine.",
+    en: "You stop guessing what to do Monday. I build the block around your goal: size, strength, skills. You film the hard lifts. I correct them before they steal progress. Every week the targets move up. That is how bodies change.",
+    ar: "كتوقف تخمّن شنو دير نهار الإثنين. كنيني البلوك على هدفك: حجم، قوة، مهارات. تصوّر التمارين الصعيبة. كنصحّحها قبل ما تسرق التقدم. كل أسبوع الأهداف كطلع. هاكا كيتبدّلو الأجسام.",
+    fr: "Tu arrêtes de te demander quoi faire lundi. Je construis le bloc autour de ton objectif: volume, force, skills. Tu filmes les lifts durs. Je corrige avant qu'ils volent ta progression. Chaque semaine les cibles montent. C'est comme ça que les corps changent.",
   },
   nutrition: {
-    en: "Macros matched to your goal. Swap meals freely. Prep guides with photos. Weekly adjustments from check-ins.",
-    ar: "ماكروز حسب هدفك. بدّل الوجبات. أدلة تحضير. تعديل أسبوعي.",
-    fr: "Macros selon objectif. Repas interchangeables. Guides photo. Ajustements hebdo.",
+    en: "Food stops being the thing that ruins training. You get numbers that match your goal, meals you can actually live with, and weekly changes when fat loss stalls or the scale lies. The result: stay full enough to train hard and lean enough to see it.",
+    ar: "الماكلة ما بقيتش هي اللي كتخسر التدريب. كتحصل على أرقام على هدفك، وجبات تقدر تعيش بيها، وتعديل أسبوعي ملي نقص الدهون كيتوقف أو الميزان كيكذب. النتيجة: تشبع باش تدرّب قوي وتبان النتيجة.",
+    fr: "La bouffe arrête de saboter ton training. Des chiffres selon ton objectif, des repas vivables, des ajustements hebdo quand la sèche stagne. Résultat: assez d'énergie pour pousser, assez sec pour le voir.",
   },
   support: {
-    en: "Daily WhatsApp accountability. Direct access to me — not a bot, not an assistant.",
-    ar: "متابعة يومية واتساب. وصول مباشر ليا — بلا بوت.",
-    fr: "Suivi WhatsApp quotidien. Accès direct à moi — pas un bot.",
+    en: "The difference between a PDF and a transform is someone in your pocket. You message me. I course-correct the same day. No group chat noise. No waiting three days. That pressure is what turns plans into physiques.",
+    ar: "الفرق بين PDF وتحوّل هو شي واحد فجيبك. كتصيفط ليا. كنعدّل نهار نتاعو. بلا ضوضاء غروب. بلا انتظار 3 أيام. هاد الضغط هو اللي كيحوّل البرامج لأجسام.",
+    fr: "La différence entre un PDF et une transforme, c'est quelqu'un dans ta poche. Tu m'écris. Je corrige le jour même. Pas de bruit de groupe. Pas d'attente de 3 jours. Cette pression transforme les plans en physiques.",
   },
 };
 
@@ -87,7 +87,7 @@ const CoachingSection = () => {
             <ul className="space-y-2 mb-4">
               {row.points.map((point, pi) => (
                 <li key={pi} className="font-editorial text-sm text-muted-foreground">
-                  — {point[language]}
+                  · {point[language]}
                 </li>
               ))}
             </ul>
@@ -120,19 +120,33 @@ const CoachingSection = () => {
           </ul>
         </div>
 
+        <div className={`mt-12 max-w-xl ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
+          <h3 className="font-editorial text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">
+            {t.bonusesTitle[language]}
+          </h3>
+          <ul className="space-y-3">
+            {t.bonuses.map((bonus, i) => (
+              <li key={i} className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <Check className="w-4 h-4 text-red-br shrink-0" />
+                <span className="font-editorial text-foreground">{bonus[language]}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className="mt-14 pt-10 border-t border-white/[0.06]">
           <div className={`grid lg:grid-cols-2 gap-10 items-end ${isRTL ? "text-right" : ""}`}>
             <div>
               <h3 className="font-display text-3xl md:text-4xl uppercase leading-tight mb-4">
-                {language === "ar" ? "واش راك مستعد؟" : language === "fr" ? "Prêt ?" : "Ready?"}
+                {t.applyHeadline[language]}
               </h3>
               <p className="font-editorial text-xs uppercase tracking-[0.2em] text-red-br mb-3">
                 {t.dmInstructions[language]}
               </p>
               <ul className="space-y-1 font-editorial text-sm text-muted-foreground">
-                <li>— {t.dmItem1[language]}</li>
-                <li>— {t.dmItem2[language]}</li>
-                <li>— {t.dmItem3[language]}</li>
+                <li>· {t.dmItem1[language]}</li>
+                <li>· {t.dmItem2[language]}</li>
+                <li>· {t.dmItem3[language]}</li>
               </ul>
             </div>
             <MagneticCTA href={IG_DM_URL}>{t.messageMe[language]} →</MagneticCTA>

@@ -31,7 +31,7 @@ const HeroBackground = ({ overlayStrength = "default" }: HeroBackgroundProps) =>
             src="/hero-placeholder-v2.jpg"
             alt=""
             className="w-full h-full object-cover"
-            fetchPriority="high"
+            {...{ fetchpriority: "high" }}
           />
         </video>
         <div className={`absolute inset-0 bg-gradient-to-b ${overlayClass}`} />

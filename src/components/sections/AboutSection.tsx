@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 import { ASSETS } from "@/lib/constants";
@@ -36,7 +36,7 @@ const AboutSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className={`lg:col-span-7 space-y-8 ${isRTL ? "lg:order-1 text-right" : ""}`}
+            className={`lg:col-span-7 space-y-6 ${isRTL ? "lg:order-1 text-right" : ""}`}
           >
             <MaskedLines
               lines={[t.title1[language], t.title2[language]]}
@@ -46,7 +46,15 @@ const AboutSection = () => {
 
             <p className="font-editorial text-lg md:text-xl text-ink leading-relaxed">{t.intro[language]}</p>
 
-            <blockquote className="font-editorial text-base md:text-lg italic text-ink/70 border-l-2 border-red-br pl-5">
+            <p className="font-editorial text-sm md:text-base text-ink/70 leading-relaxed">
+              {t.description1[language]}
+            </p>
+
+            <blockquote
+              className={`font-editorial text-base md:text-lg italic text-ink/80 border-red-br ${
+                isRTL ? "border-r-2 pr-5" : "border-l-2 pl-5"
+              }`}
+            >
               "{t.description2[language]}"
             </blockquote>
 
@@ -62,7 +70,7 @@ const AboutSection = () => {
               <div className="bg-paper p-5">
                 <div className="font-display text-3xl text-red-br">{t.naturalLabel[language]}</div>
                 <p className="font-editorial text-xs uppercase tracking-wider text-ink/60 mt-1">
-                  {language === "ar" ? "طبيعي" : language === "fr" ? "naturel" : "built"}
+                  {language === "ar" ? "بلا اختصارات" : language === "fr" ? "sans shortcuts" : "no shortcuts"}
                 </p>
               </div>
             </div>

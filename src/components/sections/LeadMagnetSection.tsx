@@ -27,14 +27,10 @@ const LeadMagnetSection = () => {
             </h2>
             <p className="font-editorial text-ink/70 leading-relaxed mb-6">{t.freeDescription[language]}</p>
             <ul className="space-y-2 mb-8">
-              {[
-                language === "ar" ? "خطة تمارين هجينة (علوي/سفلي)" : "Complete Hybrid Starter Routine",
-                language === "ar" ? "دليل الماكروز الأساسي" : "The Core Hybrid Macro Guide",
-                language === "ar" ? "قائمة تسوق للمحترفين" : "Elite Performance Grocery List",
-              ].map((item) => (
-                <li key={item} className={`flex gap-2 font-editorial text-sm text-ink/80 ${isRTL ? "flex-row-reverse" : ""}`}>
+              {t.freeBullets.map((item) => (
+                <li key={item.en} className={`flex gap-2 font-editorial text-sm text-ink/80 ${isRTL ? "flex-row-reverse" : ""}`}>
                   <Check className="w-4 h-4 text-red-br shrink-0" />
-                  {item}
+                  {item[language]}
                 </li>
               ))}
             </ul>
@@ -47,8 +43,8 @@ const LeadMagnetSection = () => {
               {t.joinWaitlist[language]}
               <ExternalLink className="w-4 h-4" />
             </a>
-            <p className="font-editorial text-xs text-ink/50 mt-3 italic">
-              {language === "en" ? "Instant access — no email required" : language === "fr" ? "Accès instantané" : "الولوج فوري"}
+            <p className="font-editorial text-xs text-ink/50 mt-3">
+              {t.freeAccessNote[language]}
             </p>
           </div>
 
@@ -62,7 +58,7 @@ const LeadMagnetSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-paper/90 via-transparent to-transparent" />
               <p className="absolute bottom-4 left-4 right-4 font-editorial text-xs uppercase tracking-wider text-ink/60">
-                {language === "en" ? "Real hybrid results" : "نتائج حقيقية"}
+                {t.freeProof[language]}
               </p>
             </div>
           </div>

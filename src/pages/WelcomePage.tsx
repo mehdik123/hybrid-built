@@ -35,7 +35,7 @@ const WelcomePage = () => {
             compact
             animIndex={0}
             imageSrc={ASSETS.pathCoaching}
-            imageAlt="Mehdi — 1-on-1 coaching"
+            imageAlt="Mehdi, 1-on-1 coaching"
             coverTag={g.coaching.coverTag[language]}
             index={g.coaching.tag[language]}
             title={g.coaching.title[language]}
@@ -51,7 +51,7 @@ const WelcomePage = () => {
             compact
             animIndex={1}
             imageSrc={ASSETS.pathBlueprint}
-            imageAlt="Mehdi — hybrid program"
+            imageAlt="Mehdi, hybrid program"
             coverTag={g.blueprint.coverTag[language]}
             index={g.blueprint.tag[language]}
             title={g.blueprint.title[language]}
@@ -68,7 +68,7 @@ const WelcomePage = () => {
             animIndex={2}
             as="div"
             imageSrc={ASSETS.pathFreeTool}
-            imageAlt="Mehdi — free tool"
+            imageAlt="Mehdi, free tool"
             coverTag={g.freeTool.coverTag[language]}
             index={g.freeTool.tag[language]}
             title={g.freeTool.title[language]}
@@ -79,7 +79,7 @@ const WelcomePage = () => {
           >
             <EmailCaptureForm
               source="path-page"
-              subject="Free Hybrid Tool — Path Page"
+              subject="Free Hybrid Tool Path Page"
               compact
               className="mb-2"
             />

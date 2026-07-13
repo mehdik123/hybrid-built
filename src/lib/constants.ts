@@ -4,7 +4,7 @@ export const IG_DM_MESSAGE = "Coaching";
 export const IG_DM_URL = `https://ig.me/m/${IG_HANDLE}?text=${encodeURIComponent(IG_DM_MESSAGE)}`;
 
 export const CTA_PRIMARY_EN = "DM me 'Coaching'";
-export const CTA_FRICTION_EN = "I respond personally to every message.";
+export const CTA_FRICTION_EN = "I reply to every message myself.";
 
 /**
  * Editorial photography — one distinct Mehdi image per surface.
@@ -29,10 +29,20 @@ export const ASSETS = {
   /** Mehdi's own transformation — transformations default */
   mehdiTransformBefore: "/transformation-11-before.png",
   mehdiTransformAfter: "/transformation-11-after.png",
+  /** Client video testimonial (cover + optional self-hosted clip) */
+  testimonialCover: "/testimonial-cover.jpg",
+  /** Drop an mp4 here for native in-site playback; otherwise Instagram embed is used */
+  testimonialVideo: "/testimonial-video.mp4",
   /** Generic fallbacks */
   heroFallback: "/hero-fallback.jpg",
   heroPlaceholderAlt: "/hero-placeholder-v2.jpg",
 } as const;
+
+/** Instagram reel used for the in-page video testimonial */
+export const TESTIMONIAL_REEL_URL =
+  "https://www.instagram.com/reel/DPBtPxbjILV/?igsh=MXcweGh2NWZiZmZiNA==";
+export const TESTIMONIAL_REEL_EMBED =
+  "https://www.instagram.com/reel/DPBtPxbjILV/embed";
 
 /** Index of MEHDI in transformations.testimonials */
 export const FEATURED_TRANSFORMATION_INDEX = 10;
