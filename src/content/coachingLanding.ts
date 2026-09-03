@@ -289,8 +289,11 @@ export const landing = {
       ar: "نفس المعيار. التزام أقل. خدّمو بوحدك حتى تكون واجد للـ 1-on-1.",
       fr: "Même standard. Moins d’engagement. Tu le fais seul jusqu’au 1-on-1.",
     } as Localized,
+    comingSoon: { en: "Coming soon", ar: "قريباً", fr: "Bientôt" } as Localized,
+    notifyCta: { en: "DM me for early access", ar: "صيفط ليا للوصول المبكر", fr: "DM pour un accès anticipé" } as Localized,
     items: [
       {
+        id: "blueprint",
         tag: { en: "Digital", ar: "رقمي", fr: "Digital" },
         title: { en: "Hybrid Athlete Blueprint", ar: "Hybrid Athlete Blueprint", fr: "Hybrid Athlete Blueprint" },
         body: {
@@ -298,11 +301,38 @@ export const landing = {
           ar: "برنامج Hybrid لثمانية سيمانات، خطط وجبات، وتراكر. خلص مرة. بقا عندك.",
           fr: "Programme hybride 8 semaines, plans repas et tracker. Paye une fois. C’est à toi.",
         },
-        price: { en: "DM for access", ar: "DM للوصول", fr: "DM pour y accéder" },
-        cta: { en: "See Blueprint", ar: "شوف الدليل", fr: "Voir le Blueprint" },
-        href: "/products",
+        price: { en: "Coming soon", ar: "قريباً", fr: "Bientôt" },
+        cta: { en: "See what’s inside", ar: "شوف شنو غادي يكون", fr: "Voir le contenu" },
+        details: {
+          en: "A self-paced hybrid system for people who want structure without private coaching yet.",
+          ar: "سيستيم Hybrid تخدم بيه بوحدك إلا باقي ما واجدش للكوتشينغ الخاص.",
+          fr: "Un système hybride en autonomie pour qui veut de la structure avant le coaching privé.",
+        },
+        bullets: [
+          {
+            en: "8-week progressive hybrid training (calisthenics × weights)",
+            ar: "تدريب Hybrid تصاعدي لـ 8 سيمانات (كاليسثينكس × أوزان)",
+            fr: "Training hybride progressif 8 semaines (calisthenics × charges)",
+          },
+          {
+            en: "Ready meal plans with simple swaps",
+            ar: "خطط وجبات جاهزة مع بدائل بسيطة",
+            fr: "Plans repas prêts avec swaps simples",
+          },
+          {
+            en: "Workout tracker to lock consistency",
+            ar: "تراكر باش تثبت الاستمرارية",
+            fr: "Tracker pour ancrer la régularité",
+          },
+          {
+            en: "Rules I actually use with clients",
+            ar: "القواعد اللي كنخدم بيها مع العملاء",
+            fr: "Les règles que j’utilise vraiment avec mes clients",
+          },
+        ],
       },
       {
+        id: "checklist",
         tag: { en: "Free", ar: "مجاني", fr: "Gratuit" },
         title: { en: "Health Checklist", ar: "Health Checklist", fr: "Health Checklist" },
         body: {
@@ -310,9 +340,30 @@ export const landing = {
           ar: "أداة مجانية باش تعرف فين راك قبل ما تلتزم بأكثر.",
           fr: "Un lead magnet gratuit pour voir où tu en es vraiment avant d’aller plus loin.",
         },
-        price: { en: "Free", ar: "فابور", fr: "Gratuit" },
-        cta: { en: "Get the checklist", ar: "خود اللائحة", fr: "Recevoir la checklist" },
-        href: "/free-tool",
+        price: { en: "Coming soon", ar: "قريباً", fr: "Bientôt" },
+        cta: { en: "See what’s inside", ar: "شوف شنو غادي يكون", fr: "Voir le contenu" },
+        details: {
+          en: "A short free checklist to audit your training, recovery, and nutrition before you buy anything.",
+          ar: "لائحة مجانية قصيرة باش تقيّم التدريب، الاسترجاع، والتغذية قبل ما تشري أي حاجة.",
+          fr: "Une checklist gratuite courte pour auditer training, récupération et nutrition avant d’acheter quoi que ce soit.",
+        },
+        bullets: [
+          {
+            en: "Quick score of where your routine is leaking",
+            ar: "تقييم سريع فين كتضيع الروتين ديالك",
+            fr: "Un score rapide des fuites de ta routine",
+          },
+          {
+            en: "Clear next actions for sleep, protein, and sessions",
+            ar: "خطوات واضحة للنوم، البروتين، والحصص",
+            fr: "Actions claires pour sommeil, protéines et séances",
+          },
+          {
+            en: "A baseline before coaching or the Blueprint",
+            ar: "نقطة انطلاق قبل الكوتشينغ أو الـ Blueprint",
+            fr: "Une base avant le coaching ou le Blueprint",
+          },
+        ],
       },
     ],
   },
