@@ -14,13 +14,14 @@ const HeroSection = () => {
   const light = useLightMotion();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
+  const isAr = language === "ar";
 
   const headlineLines =
     language === "en"
       ? ["You're building your career.", "Don't let your body fall behind."]
       : language === "fr"
         ? ["Tu construis ta carrière.", "Ne laisse pas ton corps derrière."]
-        : [t.headline[language]];
+        : ["كتبني مسارك.", "ما تخليش جسمك يطيح من وراك."];
 
   const redWordIndex =
     language === "en"
@@ -32,7 +33,7 @@ const HeroSection = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-[72svh] md:min-h-[100svh] flex items-end overflow-hidden bg-ink"
+      className="relative min-h-[72svh] md:min-h-[100svh] flex items-end bg-ink overflow-x-hidden"
     >
       <div className="absolute inset-0">
         <EditorialPhoto
@@ -64,7 +65,7 @@ const HeroSection = () => {
       </div>
 
       <div
-        className={`relative z-10 w-full px-5 pt-20 pb-8 md:px-10 md:pt-32 md:pb-20 lg:px-14 ${
+        className={`relative z-10 w-full px-5 pt-20 pb-12 md:px-10 md:pt-32 md:pb-24 lg:px-14 ${
           isRTL ? "text-right" : ""
         }`}
       >
@@ -82,14 +83,21 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 18 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className={`font-display leading-[1.05] text-foreground ${isRTL ? "mr-0" : ""}`}
+            className={`font-display text-foreground ${isRTL ? "mr-0" : ""} ${
+              isAr ? "leading-[1.4]" : "leading-[1.05]"
+            }`}
           >
             <MaskedLines
               lines={headlineLines}
-              className="inline-block"
-              lineClassName="text-[2.35rem] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[4.25rem]"
+              className="inline-block max-w-full"
+              lineClassName={
+                isAr
+                  ? "text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.5rem]"
+                  : "text-[2.35rem] leading-[1.05] sm:text-5xl md:text-6xl lg:text-[4.25rem]"
+              }
               redWordIndex={redWordIndex}
               stagger={110}
+              rtlSafe={isAr}
             />
           </motion.h1>
 
@@ -97,7 +105,9 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-3 max-w-lg font-editorial text-base md:text-lg text-white/70 leading-relaxed"
+            className={`mt-4 max-w-lg font-editorial text-base md:text-lg text-white/70 ${
+              isAr ? "leading-[1.85]" : "leading-relaxed"
+            }`}
           >
             {t.subhead[language]}
           </motion.p>
@@ -105,7 +115,9 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-2 max-w-lg font-editorial text-sm md:text-base text-white/45"
+            className={`mt-3 max-w-lg font-editorial text-sm md:text-base text-white/45 ${
+              isAr ? "leading-[1.8]" : ""
+            }`}
           >
             {t.warm[language]}
           </motion.p>
@@ -114,7 +126,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`mt-5 md:mt-8 flex flex-col sm:flex-row sm:items-center gap-3 ${
+            className={`mt-6 md:mt-8 flex flex-col sm:flex-row sm:items-center gap-3 ${
               isRTL ? "sm:flex-row-reverse" : ""
             }`}
           >
@@ -123,7 +135,11 @@ const HeroSection = () => {
               {t.ctaSecondary[language]}
             </MagneticCTA>
           </motion.div>
-          <p className="mt-2.5 font-editorial text-xs text-white/45 tracking-wide">
+          <p
+            className={`mt-3 font-editorial text-xs text-white/45 tracking-wide ${
+              isAr ? "leading-[1.9] pb-1" : ""
+            }`}
+          >
             {t.ctaNote[language]}
           </p>
         </div>

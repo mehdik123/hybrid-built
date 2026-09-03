@@ -5,19 +5,17 @@ import { useLanguage } from "@/contexts/AppContext";
 import { IG_DM_URL } from "@/lib/constants";
 import MagneticCTA from "@/components/motion/MagneticCTA";
 import { landing } from "@/content/coachingLanding";
-import { useLightMotion } from "@/hooks/useLightMotion";
 
 const OfferSection = () => {
   const { language, isRTL } = useLanguage();
   const t = landing.offer;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const light = useLightMotion();
 
   return (
     <section id="offer" className="section-padding bg-ink border-t border-white/[0.06]" ref={ref}>
       <div className="container-tight">
-        <div className={`max-w-2xl mb-10 md:mb-14 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
+        <div className={`max-w-2xl ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -43,50 +41,10 @@ const OfferSection = () => {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 md:gap-5 max-w-3xl">
-          {t.tiers.map((tier, i) => (
-            <motion.div
-              key={tier.id}
-              initial={{ opacity: 0, y: 14 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.12 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className={`relative overflow-hidden p-6 md:p-8 border ${
-                tier.featured ? "border-red-br bg-white/[0.03]" : "border-white/[0.08]"
-              } ${isRTL ? "text-right" : ""}`}
-            >
-              {tier.featured && !light && (
-                <motion.div
-                  aria-hidden
-                  className="absolute inset-0 pointer-events-none"
-                  initial={{ opacity: 0 }}
-                  animate={inView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(90deg, transparent 0%, rgba(232,0,28,0.18) 50%, transparent 100%)",
-                    backgroundSize: "200% 100%",
-                  }}
-                />
-              )}
-              <div className={`relative flex items-center gap-3 mb-5 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <span
-                  className={`font-editorial text-[10px] uppercase tracking-[0.2em] ${
-                    tier.featured ? "text-red-br" : "text-white/40"
-                  }`}
-                >
-                  {tier.featured ? t.defaultBadge[language] : t.premiumBadge[language]}
-                </span>
-              </div>
-              <h3 className="relative font-display text-2xl uppercase text-foreground">{tier.name[language]}</h3>
-              <p className="relative mt-4 font-editorial text-sm text-white/55 leading-relaxed">{tier.detail[language]}</p>
-            </motion.div>
-          ))}
-        </div>
-
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.22 }}
+          transition={{ delay: 0.15 }}
           className={`mt-10 md:mt-12 max-w-xl ${isRTL ? "mr-0 ml-auto text-right" : ""}`}
         >
           <p className="font-editorial text-[10px] uppercase tracking-[0.22em] text-white/40 mb-4">
@@ -102,20 +60,11 @@ const OfferSection = () => {
           </ul>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.26 }}
-          className={`mt-8 font-editorial text-sm text-white/45 ${isRTL ? "text-right" : ""}`}
-        >
-          {t.priceNote[language]}
-        </motion.p>
-
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3 }}
-          className="mt-8"
+          transition={{ delay: 0.22 }}
+          className="mt-10"
         >
           <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
         </motion.div>

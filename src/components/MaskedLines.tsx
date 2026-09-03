@@ -10,6 +10,8 @@ interface MaskedLinesProps {
   redWordIndex?: { line: number; wordIndex: number };
   /** Fire when element enters viewport (default true for scroll reveals) */
   inView?: boolean;
+  /** Extra room for Arabic / descenders so overflow mask does not clip glyphs */
+  rtlSafe?: boolean;
 }
 
 const MaskedLines = ({
@@ -19,6 +21,7 @@ const MaskedLines = ({
   stagger = 130,
   redWordIndex,
   inView: useInViewTrigger = true,
+  rtlSafe = false,
 }: MaskedLinesProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
@@ -59,11 +62,16 @@ const MaskedLines = ({
   return (
     <div ref={ref} className={className}>
       {lines.map((line, i) => (
-        <div key={i} className="line overflow-hidden">
+        <div
+          key={i}
+          className={`line ${rtlSafe ? "overflow-visible py-1" : "overflow-hidden pb-[0.18em] -mb-[0.08em]"}`}
+        >
           <span
-            className={`in block font-display uppercase leading-[0.85] tracking-[0.006em] ${lineClassName} ${
-              visible ? (light ? "line-in-fast" : "line-in") : ""
-            }`}
+            className={`in block font-display ${
+              rtlSafe
+                ? "normal-case leading-[1.35] tracking-normal"
+                : "uppercase leading-[0.95] tracking-[0.006em]"
+            } ${lineClassName} ${visible ? (light ? "line-in-fast" : "line-in") : ""}`}
             style={{ transitionDelay: visible ? `${i * stagger}ms` : "0ms" }}
           >
             {renderLine(line, i)}

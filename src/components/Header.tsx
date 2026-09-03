@@ -20,7 +20,7 @@ const Header = () => {
     { label: translations.nav.coaching[language], href: "#audience", type: "anchor" as const },
     { label: translations.nav.results[language], href: "#proof", type: "anchor" as const },
     { label: language === "en" ? "How it works" : language === "fr" ? "Processus" : "كيفاش", href: "#process", type: "anchor" as const },
-    { label: language === "en" ? "Offer" : language === "fr" ? "Offre" : "العرض", href: "#offer", type: "anchor" as const },
+    { label: language === "en" ? "Apply" : language === "fr" ? "Postuler" : "قدّم", href: "#offer", type: "anchor" as const },
     { label: translations.nav.faq[language], href: "#faq", type: "anchor" as const },
     { label: translations.nav.products[language], href: "/products", type: "page" as const },
     {

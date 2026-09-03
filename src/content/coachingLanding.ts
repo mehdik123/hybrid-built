@@ -228,9 +228,9 @@ export const landing = {
   offer: {
     eyebrow: { en: "The offer", ar: "العرض", fr: "L’offre" } as Localized,
     title: {
-      en: "What you get. Then the block that fits.",
-      ar: "شنو كتحصل عليه. من بعد البلوك المناسب.",
-      fr: "Ce que tu reçois. Puis le bloc qui convient.",
+      en: "What you get when we work together.",
+      ar: "شنو كتحصل عليه ملي كنخدمو بجوج.",
+      fr: "Ce que tu reçois quand on travaille ensemble.",
     } as Localized,
     valueLead: {
       en: "Private coaching, a live program in the app, meals built for real life, form feedback, and weekly adjustments. One coach. One system.",
