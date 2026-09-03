@@ -2,64 +2,72 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
 import { landing } from "@/content/coachingLanding";
+import { ASSETS } from "@/lib/constants";
 import { useLightMotion } from "@/hooks/useLightMotion";
 
-const PhoneShell = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+const PhoneShell = ({
+  src,
+  alt,
+  className = "",
+  raised = false,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  raised?: boolean;
+}) => (
   <div
-    className={`relative w-[200px] sm:w-[220px] aspect-[9/19] rounded-[2rem] border border-white/15 bg-[#111] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.55)] ${className}`}
+    className={`relative w-[160px] sm:w-[190px] md:w-[210px] aspect-[9/19] rounded-[2rem] border border-white/15 bg-[#111] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.55)] transition-all duration-500 ${
+      raised ? "translate-y-0 scale-[1.04] z-30 opacity-100" : "translate-y-6 opacity-65 z-10"
+    } ${className}`}
   >
-    <div className="absolute top-2 left-1/2 -translate-x-1/2 h-4 w-20 rounded-full bg-black/80 z-10" />
-    <div className="absolute inset-[6px] rounded-[1.65rem] bg-[#0a0a0a] overflow-hidden">{children}</div>
+    <div className="absolute top-2 left-1/2 -translate-x-1/2 h-4 w-16 rounded-full bg-black/80 z-10 pointer-events-none" />
+    <div className="absolute inset-[5px] rounded-[1.7rem] overflow-hidden bg-black">
+      <img src={src} alt={alt} className="h-full w-full object-cover object-top" loading="lazy" decoding="async" />
+    </div>
   </div>
 );
 
-const AppScreens = ({ active }: { active: number }) => (
-  <div className="relative flex items-end justify-center gap-3 md:gap-4 min-h-[420px] md:min-h-[480px]">
-    <PhoneShell className={`hidden sm:block transition-transform duration-500 ${active === 1 ? "translate-y-0 z-20" : "translate-y-8 opacity-70"}`}>
-      <div className="p-4 pt-8 font-editorial">
-        <p className="text-[8px] uppercase tracking-[0.2em] text-white/35">Nutrition</p>
-        <p className="font-display text-sm text-white mt-1">TODAY</p>
-        {["Eggs, oats, fruit", "Chicken, rice, salad", "Yogurt + honey"].map((meal) => (
-          <div key={meal} className="mt-3 border border-white/[0.08] px-2.5 py-2">
-            <p className="text-[10px] text-white/80">{meal}</p>
-            <p className="text-[8px] text-white/35 mt-1">Swap available</p>
-          </div>
-        ))}
-      </div>
-    </PhoneShell>
+/** Map feature tabs → which phone sits forward */
+const featureToScreen = (active: number) => {
+  if (active === 1) return "nutrition";
+  if (active === 2) return "progress";
+  if (active === 3) return "home";
+  return "train";
+};
 
-    <PhoneShell className={`z-30 transition-transform duration-500 ${active === 0 ? "-translate-y-2" : "translate-y-2"}`}>
-      <div className="p-4 pt-8 font-editorial">
-        <p className="text-[8px] uppercase tracking-[0.2em] text-red-br">Session 03</p>
-        <p className="font-display text-base text-white mt-1">UPPER</p>
-        <p className="text-[9px] text-white/40 mt-1">Updated this week</p>
-        {[
-          ["Bench press", "4 × 6"],
-          ["Weighted pull-up", "4 × 5"],
-          ["Incline DB", "3 × 10"],
-        ].map(([n, s]) => (
-          <div key={n} className="mt-3 flex items-center justify-between border-b border-white/[0.06] pb-2">
-            <span className="text-[11px] text-white/85">{n}</span>
-            <span className="text-[10px] text-white/40">{s}</span>
-          </div>
-        ))}
-      </div>
-    </PhoneShell>
+const AppScreens = ({ active }: { active: number }) => {
+  const focus = featureToScreen(active);
 
-    <PhoneShell className={`hidden sm:block transition-transform duration-500 ${active === 2 ? "translate-y-0 z-20" : "translate-y-8 opacity-70"}`}>
-      <div className="p-4 pt-8 font-editorial">
-        <p className="text-[8px] uppercase tracking-[0.2em] text-white/35">Progress</p>
-        <p className="font-display text-sm text-white mt-1">WEEK 6</p>
-        <div className="mt-5 flex items-end gap-1.5 h-28">
-          {[32, 40, 38, 52, 60, 72].map((h, i) => (
-            <div key={i} className="flex-1 bg-red-br/80" style={{ height: `${h}%`, opacity: 0.45 + i * 0.09 }} />
-          ))}
-        </div>
-        <p className="text-[9px] text-white/45 mt-3">Strength climbing</p>
-      </div>
-    </PhoneShell>
-  </div>
-);
+  return (
+    <div className="relative flex items-end justify-center gap-1.5 sm:gap-3 md:gap-4 min-h-[400px] md:min-h-[500px] px-1 overflow-x-auto">
+      <PhoneShell
+        src={ASSETS.appNutrition}
+        alt="Nutrition screen"
+        className="hidden md:block shrink-0"
+        raised={focus === "nutrition"}
+      />
+      <PhoneShell
+        src={ASSETS.appTrain}
+        alt="Training screen"
+        className="shrink-0"
+        raised={focus === "train"}
+      />
+      <PhoneShell
+        src={ASSETS.appProgress}
+        alt="Strength progress screen"
+        className="shrink-0"
+        raised={focus === "progress"}
+      />
+      <PhoneShell
+        src={ASSETS.appHome}
+        alt="Home screen"
+        className="hidden sm:block shrink-0"
+        raised={focus === "home"}
+      />
+    </div>
+  );
+};
 
 const AppSection = () => {
   const { language, isRTL } = useLanguage();
@@ -105,7 +113,7 @@ const AppSection = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 md:mb-16"
         >
-          <AppScreens active={Math.min(activeIndex, 2)} />
+          <AppScreens active={activeIndex} />
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06]">

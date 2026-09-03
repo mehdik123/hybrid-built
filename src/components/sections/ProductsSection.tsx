@@ -110,12 +110,9 @@ const ProductsSection = () => {
                 </div>
 
                 <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} flex flex-col items-end gap-2`}>
-                  <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg scale-110">
-                    <Zap className="w-5 h-5" />
-                    <span>$20 / 199 درهم</span>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-md text-background/60 px-3 py-1 rounded-full text-sm font-medium line-through">
-                    {t.originalPrice[language]}
+                  <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                    <Zap className="w-4 h-4" />
+                    <span>{language === "en" ? "DM for access" : language === "fr" ? "DM pour accès" : "DM للوصول"}</span>
                   </div>
                 </div>
                 <div className={`absolute bottom-4 ${isRTL ? 'right-4' : 'left-4'} bg-foreground text-background px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 animate-pulse shadow-lg`}>

@@ -78,7 +78,6 @@ const OfferSection = () => {
                 </span>
               </div>
               <h3 className="relative font-display text-2xl uppercase text-foreground">{tier.name[language]}</h3>
-              <p className="relative font-display text-4xl md:text-5xl text-foreground mt-3">{tier.price[language]}</p>
               <p className="relative mt-4 font-editorial text-sm text-white/55 leading-relaxed">{tier.detail[language]}</p>
             </motion.div>
           ))}
@@ -103,11 +102,20 @@ const OfferSection = () => {
           </ul>
         </motion.div>
 
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.26 }}
+          className={`mt-8 font-editorial text-sm text-white/45 ${isRTL ? "text-right" : ""}`}
+        >
+          {t.priceNote[language]}
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3 }}
-          className="mt-10"
+          className="mt-8"
         >
           <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
         </motion.div>

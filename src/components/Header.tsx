@@ -36,6 +36,13 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const handleNavClick = (link: (typeof navLinks)[number]) => {
     if (link.type === "page") {
       navigate(link.href);
@@ -53,8 +60,10 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[60] transition-colors duration-300 ${
-          isScrolled ? "bg-ink/95 border-b border-white/[0.06] py-3" : "bg-transparent py-5 md:py-6"
+        className={`fixed top-0 left-0 right-0 z-[80] transition-colors duration-300 ${
+          isScrolled || isMobileMenuOpen
+            ? "bg-ink border-b border-white/[0.06] py-3"
+            : "bg-transparent py-5 md:py-6"
         }`}
       >
         <div className="container-tight px-4 md:px-8">
@@ -90,8 +99,9 @@ const Header = () => {
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="touch-target p-2 text-foreground"
+                className="touch-target p-2 text-white"
                 aria-label="Menu"
+                aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -106,21 +116,36 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-ink/98 pt-24 px-6 lg:hidden"
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[70] bg-ink lg:hidden"
           >
-            <nav className={`flex flex-col gap-6 ${isRTL ? "items-end text-right" : ""}`}>
+            <nav
+              className={`flex flex-col gap-1 pt-28 px-6 pb-10 h-full overflow-y-auto ${
+                isRTL ? "items-end text-right" : ""
+              }`}
+            >
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   type="button"
                   onClick={() => handleNavClick(link)}
-                  className="font-display text-2xl uppercase text-left"
+                  className={`w-full py-3.5 border-b border-white/[0.08] font-editorial text-lg uppercase tracking-[0.12em] text-white hover:text-red-br transition-colors ${
+                    isRTL ? "text-right" : "text-left"
+                  }`}
                 >
                   {link.label}
                 </button>
               ))}
-              <LanguageToggle scope="header-menu" />
-              <a href={IG_DM_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-cta w-full max-w-xs">
+              <div className="pt-6">
+                <LanguageToggle scope="header-menu" />
+              </div>
+              <a
+                href={IG_DM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary-cta w-full max-w-xs mt-6"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 {translations.nav.applyNow[language]}
               </a>
             </nav>

@@ -251,7 +251,6 @@ export const landing = {
       {
         id: "two-month",
         name: { en: "2 months", ar: "شهرين", fr: "2 mois" },
-        price: { en: "$150", ar: "150$", fr: "150$" },
         detail: {
           en: "The recommended start. Enough time to see the change and lock the habit.",
           ar: "البداية الموصى بها. وقت كافي باش تشوف التغيير وترسّخ العادة.",
@@ -262,7 +261,6 @@ export const landing = {
       {
         id: "three-month",
         name: { en: "3 months", ar: "3 أشهر", fr: "3 mois" },
-        price: { en: "$250", ar: "250$", fr: "250$" },
         detail: {
           en: "More weeks. Deeper results. The plan that actually sticks.",
           ar: "سيمانات أكثر. نتائج أعمق. البرنامج اللي كيثبت.",
@@ -271,6 +269,11 @@ export const landing = {
         featured: false,
       },
     ],
+    priceNote: {
+      en: "Pricing is shared personally after you apply.",
+      ar: "الثمن كنبقاو عليه شخصياً من بعد ما تقدّم.",
+      fr: "Le tarif est partagé en privé après ta candidature.",
+    } as Localized,
     cta: { en: "Apply now", ar: "قدّم دابا", fr: "Postuler" } as Localized,
   },
 
@@ -295,7 +298,7 @@ export const landing = {
           ar: "برنامج Hybrid لثمانية سيمانات، خطط وجبات، وتراكر. خلص مرة. بقا عندك.",
           fr: "Programme hybride 8 semaines, plans repas et tracker. Paye une fois. C’est à toi.",
         },
-        price: { en: "$20", ar: "20$", fr: "20$" },
+        price: { en: "DM for access", ar: "DM للوصول", fr: "DM pour y accéder" },
         cta: { en: "See Blueprint", ar: "شوف الدليل", fr: "Voir le Blueprint" },
         href: "/products",
       },

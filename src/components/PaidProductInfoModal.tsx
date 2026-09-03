@@ -47,15 +47,14 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                             </p>
                         </DialogHeader>
 
-                        {/* Pricing */}
+                        {/* Access note — price shared via DM */}
                         <div className="bg-primary/10 border border-primary/20 rounded-xl p-6 mb-6">
-                            <div className="flex items-center justify-center gap-4 mb-2">
-                                <span className="text-4xl font-black text-primary">$20</span>
-                                <span className="text-2xl text-muted-foreground">/</span>
-                                <span className="text-4xl font-black text-primary">199 DH</span>
-                            </div>
-                            <p className="text-center text-xs text-muted-foreground uppercase tracking-widest">
-                                {t.oneTimePayment[language]}
+                            <p className="text-center font-editorial text-sm text-foreground/80 leading-relaxed">
+                                {language === "en"
+                                  ? "Message me on Instagram for access. Pricing is shared personally."
+                                  : language === "fr"
+                                    ? "Envoie-moi un DM Instagram pour y accéder. Le tarif est partagé en privé."
+                                    : "صيفط ليا DM فـ Instagram للوصول. الثمن كنبقاو عليه شخصياً."}
                             </p>
                         </div>
 
@@ -147,7 +146,7 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">3</span>
-                                    <span className="mt-0.5">{t.step3[language]} <span className="text-primary font-bold">({t.features[0].toString().includes("20") ? "$20" : "199 DH"})</span></span>
+                                    <span className="mt-0.5">{t.step3[language]}</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">4</span>

@@ -33,7 +33,9 @@ const PaidProductSection = () => {
           </div>
 
           <div className={`lg:col-span-7 p-6 md:p-10 ${isRTL ? "lg:order-1" : ""}`}>
-            <p className="font-editorial text-[10px] uppercase tracking-[0.25em] text-red-br mb-3">$20</p>
+            <p className="font-editorial text-[10px] uppercase tracking-[0.25em] text-red-br mb-3">
+              {language === "en" ? "Digital product" : language === "fr" ? "Produit digital" : "منتج رقمي"}
+            </p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl uppercase leading-[0.9] mb-4">
               {t.paidTitle[language]}
             </h2>
@@ -58,9 +60,6 @@ const PaidProductSection = () => {
                 {t.paidButton[language]}
               </button>
             </PaidProductInfoModal>
-            <p className="font-editorial text-xs text-muted-foreground mt-4 line-through opacity-60">
-              {t.originalPrice[language]}
-            </p>
           </div>
         </motion.div>
       </div>

@@ -33,6 +33,11 @@ export const ASSETS = {
   testimonialCover: "/testimonial-cover.jpg",
   /** Drop an mp4 here for native in-site playback; otherwise Instagram embed is used */
   testimonialVideo: "/testimonial-video.mp4",
+  /** Coaching app screens — phone mockups */
+  appHome: "/app-home.jpg",
+  appTrain: "/app-train.jpg",
+  appNutrition: "/app-nutrition.jpg",
+  appProgress: "/app-progress.jpg",
   /** Generic fallbacks */
   heroFallback: "/hero-fallback.jpg",
   heroPlaceholderAlt: "/hero-placeholder-v2.jpg",
