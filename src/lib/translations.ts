@@ -13,9 +13,9 @@ export const translations = {
     faq: { en: "FAQ", ar: "الأسئلة", fr: "FAQ" },
     products: { en: "Products", ar: "المنتجات", fr: "Produits" },
     applyNow: { en: "Apply for coaching", ar: "قدّم للكوتشينغ", fr: "Postuler au coaching" },
-    backToHome: { en: "BACK TO START", ar: "الرجوع للبداية", fr: "RETOUR ACCUEIL" },
+    backToHome: { en: "Portal", ar: "البوابة", fr: "Portail" },
     back: { en: "Back", ar: "رجوع", fr: "Retour" },
-    choosePath: { en: "All Paths", ar: "كل المسارات", fr: "Tous les parcours" },
+    choosePath: { en: "Portal", ar: "البوابة", fr: "Portail" },
   },
 
   hero: {

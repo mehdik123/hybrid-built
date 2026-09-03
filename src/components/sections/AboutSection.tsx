@@ -21,14 +21,14 @@ const AboutSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className={`lg:col-span-5 ${isRTL ? "lg:order-2" : ""}`}
+            className={`lg:col-span-6 ${isRTL ? "lg:order-2" : ""}`}
           >
             <EditorialPhoto
               src={ASSETS.aboutPortrait}
               fallbackSrc={ASSETS.heroFallback}
               alt="MEHDI"
-              className="aspect-[4/5] max-w-md img-wipe"
-              imgClassName="object-cover [object-position:50%_38%]"
+              className="aspect-[4/3] w-full img-wipe"
+              imgClassName="object-cover object-bottom"
             />
           </motion.div>
 
@@ -36,7 +36,7 @@ const AboutSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className={`lg:col-span-7 space-y-6 ${isRTL ? "lg:order-1 text-right" : ""}`}
+            className={`lg:col-span-6 space-y-6 ${isRTL ? "lg:order-1 text-right" : ""}`}
           >
             <MaskedLines
               lines={[t.title1[language], t.title2[language]]}

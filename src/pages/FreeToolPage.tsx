@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import BackButton from "@/components/BackButton";
+import Header from "@/components/Header";
+import LanguageSelectorModal from "@/components/LanguageSelectorModal";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import OneRepMaxCalculator from "@/components/OneRepMaxCalculator";
 import { useLanguage } from "@/contexts/AppContext";
@@ -22,6 +23,8 @@ const FreeToolPage = () => {
 
   return (
     <main className="min-h-screen bg-ink relative overflow-hidden">
+      <LanguageSelectorModal />
+      <Header />
       <div className="absolute inset-0">
         <img
           src={ASSETS.freeToolHero}
@@ -32,9 +35,7 @@ const FreeToolPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/95 to-ink" />
       </div>
 
-      <div className={`relative z-10 pt-10 md:pt-14 pb-20 px-5 md:px-8 container-tight max-w-4xl mx-auto ${isRTL ? "text-right" : ""}`}>
-        <BackButton className="mb-10" />
-
+      <div className={`relative z-10 pt-28 md:pt-36 pb-20 px-5 md:px-8 container-tight max-w-4xl mx-auto ${isRTL ? "text-right" : ""}`}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

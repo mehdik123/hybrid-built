@@ -13,13 +13,21 @@ const Header = () => {
   const { language, isRTL } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
-  const isCoachingPage = location.pathname === "/coaching" || location.pathname === "/home";
+  const isCoachingPage = location.pathname === "/";
 
   const navLinks = [
+    { label: translations.nav.about[language], href: "#about", type: "anchor" as const },
     { label: translations.nav.coaching[language], href: "#audience", type: "anchor" as const },
     { label: translations.nav.results[language], href: "#proof", type: "anchor" as const },
+    { label: language === "en" ? "How it works" : language === "fr" ? "Processus" : "كيفاش", href: "#process", type: "anchor" as const },
     { label: language === "en" ? "Offer" : language === "fr" ? "Offre" : "العرض", href: "#offer", type: "anchor" as const },
+    { label: translations.nav.faq[language], href: "#faq", type: "anchor" as const },
     { label: translations.nav.products[language], href: "/products", type: "page" as const },
+    {
+      label: language === "en" ? "Finder" : language === "fr" ? "Finder" : "الأداة",
+      href: "/free-tool",
+      type: "page" as const,
+    },
   ];
 
   useEffect(() => {
@@ -35,7 +43,7 @@ const Header = () => {
       return;
     }
     if (!isCoachingPage) {
-      navigate("/coaching" + link.href);
+      navigate("/" + link.href);
     } else {
       document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
     }
@@ -51,9 +59,9 @@ const Header = () => {
       >
         <div className="container-tight px-4 md:px-8">
           <div className={`flex items-center justify-between gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-            <Link to={isCoachingPage ? "/coaching" : "/"} className={`flex items-center gap-2 min-w-0 ${isRTL ? "flex-row-reverse" : ""}`}>
+            <Link to="/" className={`flex items-center gap-2 min-w-0 ${isRTL ? "flex-row-reverse" : ""}`}>
               <img src={ASSETS.logo} alt="UNBREAKABLES TEAM" className="h-8 md:h-10 w-auto shrink-0" />
-              <span className="font-editorial text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-foreground/80 hidden sm:inline truncate">
+              <span className="font-editorial text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em] text-foreground/80 hidden md:inline truncate">
                 UNBREAKABLES TEAM
               </span>
             </Link>
@@ -79,14 +87,6 @@ const Header = () => {
 
             <div className={`flex lg:hidden items-center gap-1.5 ${isRTL ? "flex-row-reverse" : ""}`}>
               <LanguageToggle scope="header-mobile" size="sm" />
-              <a
-                href={IG_DM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary-cta !py-2 !px-3 !text-[9px] tracking-wider"
-              >
-                DM
-              </a>
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -119,9 +119,6 @@ const Header = () => {
                   {link.label}
                 </button>
               ))}
-              <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="font-editorial text-sm text-muted-foreground">
-                {translations.nav.choosePath[language]}
-              </Link>
               <LanguageToggle scope="header-menu" />
               <a href={IG_DM_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-cta w-full max-w-xs">
                 {translations.nav.applyNow[language]}

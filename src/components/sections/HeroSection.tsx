@@ -17,17 +17,22 @@ const HeroSection = () => {
 
   const headlineLines =
     language === "en"
-      ? ["I build complete physiques", "for busy people."]
+      ? ["You're building your career.", "Don't let your body fall behind."]
       : language === "fr"
-        ? ["Je construis des physiques", "complets pour les gens occupés."]
+        ? ["Tu construis ta carrière.", "Ne laisse pas ton corps derrière."]
         : [t.headline[language]];
 
-  const redWordIndex = language === "en" ? { line: 1, wordIndex: 1 } : undefined;
+  const redWordIndex =
+    language === "en"
+      ? { line: 1, wordIndex: 3 }
+      : language === "fr"
+        ? { line: 1, wordIndex: 4 }
+        : undefined;
 
   return (
     <section
       ref={ref}
-      className="relative min-h-[100svh] flex items-end overflow-hidden bg-ink"
+      className="relative min-h-[72svh] md:min-h-[100svh] flex items-end overflow-hidden bg-ink"
     >
       <div className="absolute inset-0">
         <EditorialPhoto
@@ -59,7 +64,7 @@ const HeroSection = () => {
       </div>
 
       <div
-        className={`relative z-10 w-full section-padding pt-28 pb-16 md:pt-36 md:pb-24 ${
+        className={`relative z-10 w-full px-5 pt-20 pb-8 md:px-10 md:pt-32 md:pb-20 lg:px-14 ${
           isRTL ? "text-right" : ""
         }`}
       >
@@ -68,7 +73,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="font-editorial text-[10px] uppercase tracking-[0.28em] text-white/50 mb-6"
+            className="font-editorial text-[10px] uppercase tracking-[0.28em] text-white/50 mb-3"
           >
             {t.brand[language]}
           </motion.p>
@@ -92,22 +97,35 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 max-w-lg font-editorial text-base md:text-lg text-white/70 leading-relaxed"
+            className="mt-3 max-w-lg font-editorial text-base md:text-lg text-white/70 leading-relaxed"
           >
             {t.subhead[language]}
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-2 max-w-lg font-editorial text-sm md:text-base text-white/45"
+          >
+            {t.warm[language]}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10"
+            className={`mt-5 md:mt-8 flex flex-col sm:flex-row sm:items-center gap-3 ${
+              isRTL ? "sm:flex-row-reverse" : ""
+            }`}
           >
             <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
-            <p className="mt-4 font-editorial text-xs text-white/45 tracking-wide">
-              {t.ctaNote[language]}
-            </p>
+            <MagneticCTA href="#process" className="btn-ghost-cta" external={false}>
+              {t.ctaSecondary[language]}
+            </MagneticCTA>
           </motion.div>
+          <p className="mt-2.5 font-editorial text-xs text-white/45 tracking-wide">
+            {t.ctaNote[language]}
+          </p>
         </div>
       </div>
     </section>

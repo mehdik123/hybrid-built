@@ -223,6 +223,21 @@
     transform: scale(0.98);
   }
 
+  .btn-ghost-cta {
+    @apply inline-flex items-center justify-center font-editorial font-semibold uppercase tracking-[0.12em] text-sm md:text-base;
+    color: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 1rem 1.75rem;
+    transition: border-color 0.2s var(--ease-smooth), color 0.2s var(--ease-smooth), background 0.2s var(--ease-smooth);
+    touch-action: manipulation;
+  }
+
+  .btn-ghost-cta:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
   /* Path card hover — subtle lift, no glow */
   .path-card {
     transition: transform 0.35s var(--ease-out-expo);

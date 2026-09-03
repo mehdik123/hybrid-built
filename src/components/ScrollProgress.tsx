@@ -23,7 +23,7 @@ const ScrollProgress = () => {
     };
   }, [location.pathname]);
 
-  if (location.pathname !== "/coaching" && location.pathname !== "/home") {
+  if (location.pathname !== "/") {
     return null;
   }
 

@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import BackButton from "@/components/BackButton";
 import Footer from "@/components/sections/Footer";
 import LeadMagnetSection from "@/components/sections/LeadMagnetSection";
 import PaidProductSection from "@/components/sections/PaidProductSection";
@@ -23,7 +22,6 @@ const Products = () => {
       <LanguageSelectorModal />
       <Header />
       <div className={`pt-28 md:pt-36 pb-4 container-tight px-4 sm:px-8 ${isRTL ? "text-right" : ""}`}>
-        <BackButton className="mb-8" />
         <div className="max-w-3xl mb-10 md:mb-14">
           <MaskedLines
             lines={[t.title1[language], t.title2[language]]}
