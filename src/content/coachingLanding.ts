@@ -290,6 +290,16 @@ export const landing = {
       fr: "Même standard. Moins d’engagement. Tu le fais seul jusqu’au 1-on-1.",
     } as Localized,
     comingSoon: { en: "Coming soon", ar: "قريباً", fr: "Bientôt" } as Localized,
+    gateTitle: {
+      en: "Digital products are not available yet.",
+      ar: "المنتجات الرقمية باقي ما جاهزاش.",
+      fr: "Les produits digitaux ne sont pas encore disponibles.",
+    } as Localized,
+    gateBody: {
+      en: "This page is locked while the products are being finished. Here is what is coming. DM me if you want early access when they open.",
+      ar: "هاد الصفحة مقفولة حتى نكمّلو المنتجات. ها شنو غادي يجي. صيفط ليا إلا بغيتي الوصول المبكر ملي يتفتحو.",
+      fr: "Cette page est verrouillée le temps de finaliser les produits. Voici ce qui arrive. DM-moi pour un accès anticipé à l’ouverture.",
+    } as Localized,
     notifyCta: { en: "DM me for early access", ar: "صيفط ليا للوصول المبكر", fr: "DM pour un accès anticipé" } as Localized,
     items: [
       {

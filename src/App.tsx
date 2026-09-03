@@ -8,7 +8,6 @@ import FilmGrain from "@/components/FilmGrain";
 import CustomCursor from "@/components/motion/CustomCursor";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import Index from "./pages/Index";
-import FreeToolPage from "./pages/FreeToolPage";
 import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
 
@@ -28,7 +27,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/coaching" element={<Navigate to="/" replace />} />
               <Route path="/home" element={<Navigate to="/" replace />} />
-              <Route path="/free-tool" element={<FreeToolPage />} />
+              <Route path="/free-tool" element={<Navigate to="/products" replace />} />
               <Route path="/products" element={<Products />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

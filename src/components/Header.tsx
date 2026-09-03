@@ -23,11 +23,6 @@ const Header = () => {
     { label: language === "en" ? "Apply" : language === "fr" ? "Postuler" : "قدّم", href: "#offer", type: "anchor" as const },
     { label: translations.nav.faq[language], href: "#faq", type: "anchor" as const },
     { label: translations.nav.products[language], href: "/products", type: "page" as const },
-    {
-      label: language === "en" ? "Finder" : language === "fr" ? "Finder" : "الأداة",
-      href: "/free-tool",
-      type: "page" as const,
-    },
   ];
 
   useEffect(() => {
