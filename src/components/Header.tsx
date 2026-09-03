@@ -16,11 +16,10 @@ const Header = () => {
   const isCoachingPage = location.pathname === "/coaching" || location.pathname === "/home";
 
   const navLinks = [
+    { label: translations.nav.coaching[language], href: "#audience", type: "anchor" as const },
+    { label: translations.nav.results[language], href: "#proof", type: "anchor" as const },
+    { label: language === "en" ? "Offer" : language === "fr" ? "Offre" : "العرض", href: "#offer", type: "anchor" as const },
     { label: translations.nav.products[language], href: "/products", type: "page" as const },
-    { label: translations.nav.coaching[language], href: "#coaching", type: "anchor" as const },
-    { label: translations.nav.about[language], href: "#about", type: "anchor" as const },
-    { label: translations.nav.results[language], href: "#transformations", type: "anchor" as const },
-    { label: translations.nav.faq[language], href: "#faq", type: "anchor" as const },
   ];
 
   useEffect(() => {

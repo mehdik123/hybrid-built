@@ -1,10 +1,10 @@
 /** Instagram DM — single source of truth for primary conversion */
 export const IG_HANDLE = "unbreakablesteam";
-export const IG_DM_MESSAGE = "Coaching";
+export const IG_DM_MESSAGE = "Apply for coaching";
 export const IG_DM_URL = `https://ig.me/m/${IG_HANDLE}?text=${encodeURIComponent(IG_DM_MESSAGE)}`;
 
-export const CTA_PRIMARY_EN = "DM me 'Coaching'";
-export const CTA_FRICTION_EN = "I reply to every message myself.";
+export const CTA_PRIMARY_EN = "Apply for coaching";
+export const CTA_FRICTION_EN = "I review every application myself.";
 
 /**
  * Editorial photography — one distinct Mehdi image per surface.

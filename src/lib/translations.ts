@@ -12,7 +12,7 @@ export const translations = {
     results: { en: "Results", ar: "النتائج", fr: "Résultats" },
     faq: { en: "FAQ", ar: "الأسئلة", fr: "FAQ" },
     products: { en: "Products", ar: "المنتجات", fr: "Produits" },
-    applyNow: { en: "DM ME 'COACHING'", ar: "راسلني 'COACHING'", fr: "DM MOI 'COACHING'" },
+    applyNow: { en: "Apply for coaching", ar: "قدّم للكوتشينغ", fr: "Postuler au coaching" },
     backToHome: { en: "BACK TO START", ar: "الرجوع للبداية", fr: "RETOUR ACCUEIL" },
     back: { en: "Back", ar: "رجوع", fr: "Retour" },
     choosePath: { en: "All Paths", ar: "كل المسارات", fr: "Tous les parcours" },
@@ -393,7 +393,7 @@ export const translations = {
   },
 
   sticky: {
-    apply: { en: "DM ME 'COACHING'", ar: "صيفط ليا 'COACHING'", fr: "DM MOI 'COACHING'" },
+    apply: { en: "Apply for coaching", ar: "قدّم للكوتشينغ", fr: "Postuler au coaching" },
   },
 
   modal: {

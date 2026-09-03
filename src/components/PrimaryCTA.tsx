@@ -1,7 +1,6 @@
 import { Instagram, ArrowRight } from "lucide-react";
 import { IG_DM_URL, CTA_PRIMARY_EN, CTA_FRICTION_EN } from "@/lib/constants";
 import { useLanguage } from "@/contexts/AppContext";
-import { translations } from "@/lib/translations";
 import MagneticCTA from "@/components/motion/MagneticCTA";
 
 interface PrimaryCTAProps {
@@ -11,7 +10,12 @@ interface PrimaryCTAProps {
 
 const PrimaryCTA = ({ className = "", showFriction = true }: PrimaryCTAProps) => {
   const { language } = useLanguage();
-  const label = language === "en" ? CTA_PRIMARY_EN : translations.hero.cta[language];
+  const label =
+    language === "en"
+      ? CTA_PRIMARY_EN
+      : language === "fr"
+        ? "Postuler au coaching"
+        : "قدّم للكوتشينغ";
 
   return (
     <div className={className}>

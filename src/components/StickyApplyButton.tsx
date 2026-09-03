@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 import { IG_DM_URL } from "@/lib/constants";
@@ -36,7 +35,6 @@ const StickyDMButton = () => {
               rel="noopener noreferrer"
               className="btn-primary-cta w-full py-5"
             >
-              <Instagram className="w-5 h-5" />
               {t.apply[language]}
             </a>
           </div>
