@@ -19,8 +19,6 @@ declare global {
   }
 }
 
-const REEL_PERMALINK = "https://www.instagram.com/reel/DPBtPxbjILV/";
-
 const loadInstagramEmbedScript = (): Promise<void> =>
   new Promise((resolve) => {
     if (window.instgrm?.Embeds) {
@@ -105,7 +103,7 @@ const VideoTestimonialSection = () => {
       embedHostRef.current.innerHTML = "";
       const block = document.createElement("blockquote");
       block.className = "instagram-media";
-      block.setAttribute("data-instgrm-permalink", REEL_PERMALINK);
+      block.setAttribute("data-instgrm-permalink", TESTIMONIAL_REEL_URL.split("?")[0]);
       block.setAttribute("data-instgrm-version", "14");
       block.style.cssText = "background:#000;border:0;margin:0 auto;max-width:100%;width:100%;min-width:280px;";
       embedHostRef.current.appendChild(block);

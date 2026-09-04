@@ -1,236 +1,244 @@
-import { useRef, useState } from "react";
-import {
-  AnimatePresence,
-  motion,
-  useInView,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
 import { landing } from "@/content/coachingLanding";
-import { ASSETS, TESTIMONIAL_REEL_URL } from "@/lib/constants";
-import { useLightMotion } from "@/hooks/useLightMotion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import TestimonialVideoCard from "@/components/TestimonialVideoCard";
 
-/* ─── Extra transformations not in the 4 featured cases ─── */
-const EXTRA_PAIRS = [
-  { beforeImg: "/transformation-1-before.png",  afterImg: "/transformation-1-after.png"  },
-  { beforeImg: "/transformation-5-before.png",  afterImg: "/transformation-5-after.png"  },
-  { beforeImg: "/transformation-6-before.png",  afterImg: "/transformation-6-after.png"  },
-  { beforeImg: "/transformation-8-before.png",  afterImg: "/transformation-8-after.png"  },
-  { beforeImg: "/transformation-9-before.png",  afterImg: "/transformation-9-after.png"  },
+type Lang = "en" | "ar" | "fr";
+
+type RailItem = {
+  beforeImg: string;
+  afterImg: string;
+  name?: Record<Lang, string>;
+  profession?: Record<Lang, string>;
+  timeframe?: Record<Lang, string>;
+};
+
+const EXTRA_PAIRS: RailItem[] = [
+  { beforeImg: "/transformation-1-before.png", afterImg: "/transformation-1-after.png" },
+  { beforeImg: "/transformation-5-before.png", afterImg: "/transformation-5-after.png" },
+  { beforeImg: "/transformation-6-before.png", afterImg: "/transformation-6-after.png" },
+  { beforeImg: "/transformation-8-before.png", afterImg: "/transformation-8-after.png" },
+  { beforeImg: "/transformation-9-before.png", afterImg: "/transformation-9-after.png" },
   { beforeImg: "/transformation-10-before.png", afterImg: "/transformation-10-after.png" },
   { beforeImg: "/transformation-11-before.png", afterImg: "/transformation-11-after.png" },
 ];
 
-/* ─── Single before/after photo with hover-parallax ─── */
-const BAPhoto = ({
-  src,
-  label,
-  delay = 0,
-  inView,
-}: {
-  src: string;
-  label: string;
-  delay?: number;
-  inView: boolean;
-}) => {
-  const light = useLightMotion();
-  const reduced = useReducedMotion();
-  const mx = useMotionValue(0.5);
-  const my = useMotionValue(0.5);
-  const sx = useSpring(mx, { stiffness: 120, damping: 22 });
-  const sy = useSpring(my, { stiffness: 120, damping: 22 });
-  const imgX = useTransform(sx, [0, 1], ["-3%", "3%"]);
-  const imgY = useTransform(sy, [0, 1], ["-3%", "3%"]);
-
-  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (light || reduced) return;
-    const r = e.currentTarget.getBoundingClientRect();
-    mx.set((e.clientX - r.left) / r.width);
-    my.set((e.clientY - r.top) / r.height);
-  };
-  const onLeave = () => {
-    mx.set(0.5);
-    my.set(0.5);
-  };
-
-  return (
-    <motion.div
-      className="relative aspect-[3/4] overflow-hidden bg-muted"
-      initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
-      animate={inView ? { clipPath: "inset(0% 0% 0% 0%)" } : {}}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-    >
-      <motion.img
-        src={src}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="h-full w-full object-cover"
-        style={
-          light || reduced
-            ? undefined
-            : { x: imgX, y: imgY, width: "106%", height: "106%", margin: "-3%" }
-        }
-      />
-      <span className="absolute bottom-2 left-2 font-editorial text-[9px] uppercase tracking-[0.18em] text-white/80 bg-black/55 px-2 py-1 pointer-events-none">
-        {label}
-      </span>
-    </motion.div>
-  );
+const wrapX = (value: number, half: number, rtl: boolean) => {
+  if (half <= 0) return value;
+  let x = value;
+  if (!rtl) {
+    while (x <= -half) x += half;
+    while (x > 0) x -= half;
+    return x;
+  }
+  while (x >= half) x -= half;
+  while (x < 0) x += half;
+  return x;
 };
 
-/* ─── Featured card (shows text) ─── */
-const FeaturedCard = ({
+const BAThumb = ({ src, label }: { src: string; label: string }) => (
+  <div className="relative h-full overflow-hidden bg-muted">
+    <img
+      src={src}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      className="h-full w-full object-cover pointer-events-none"
+      draggable={false}
+    />
+    <span className="absolute bottom-2.5 left-2.5 font-editorial text-[10px] uppercase tracking-[0.16em] text-white/90 bg-black/55 px-2 py-1 pointer-events-none">
+      {label}
+    </span>
+  </div>
+);
+
+const RailTile = ({
   item,
-  index,
-  inView,
   isRTL,
-  language,
-  t,
-}: {
-  item: typeof landing.proof.cases[number];
-  index: number;
-  inView: boolean;
-  isRTL: boolean;
-  language: string;
-  t: typeof landing.proof;
-}) => {
-  const [expanded, setExpanded] = useState(false);
-  const lang = language as "en" | "ar" | "fr";
-
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.06 + index * 0.09, ease: [0.16, 1, 0.3, 1] }}
-      className={isRTL ? "text-right" : ""}
-    >
-      <div className="grid grid-cols-2 gap-1 mb-4">
-        <BAPhoto
-          src={item.beforeImg}
-          label={t.before[lang]}
-          delay={0.08 + index * 0.09}
-          inView={inView}
-        />
-        <BAPhoto
-          src={item.afterImg}
-          label={t.after[lang]}
-          delay={0.12 + index * 0.09}
-          inView={inView}
-        />
-      </div>
-
-      <button
-        type="button"
-        onClick={() => setExpanded((v) => !v)}
-        className={`w-full flex items-center justify-between gap-3 group ${
-          isRTL ? "flex-row-reverse" : ""
-        }`}
-      >
-        <div className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 ${isRTL ? "flex-row-reverse" : ""}`}>
-          <span className="font-display text-xl uppercase text-foreground">{item.name[lang]}</span>
-          <span className="font-editorial text-xs uppercase tracking-[0.14em] text-red-br">
-            {item.profession[lang]}
-          </span>
-          <span className="font-editorial text-xs text-white/40">· {item.timeframe[lang]}</span>
-        </div>
-        <motion.span
-          animate={{ rotate: expanded ? 180 : 0 }}
-          transition={{ duration: 0.25 }}
-          className="shrink-0 text-white/40 group-hover:text-white/70 transition-colors"
-        >
-          <ChevronDown className="w-4 h-4" />
-        </motion.span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {expanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <p className="font-editorial text-sm text-white/55 leading-relaxed pt-3">
-              {item.result[lang]}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* thin red accent rule */}
-      <motion.div
-        className="mt-4 h-px bg-gradient-to-r from-red-br/50 via-red-br/20 to-transparent"
-        initial={{ scaleX: 0 }}
-        animate={inView ? { scaleX: 1 } : {}}
-        transition={{ duration: 0.6, delay: 0.2 + index * 0.07, ease: [0.16, 1, 0.3, 1] }}
-        style={{ transformOrigin: isRTL ? "right" : "left" }}
-      />
-    </motion.article>
-  );
-};
-
-/* ─── Extra card (no text, just the pair) ─── */
-const ExtraCard = ({
-  pair,
-  index,
-  inView,
+  lang,
   before,
   after,
 }: {
-  pair: { beforeImg: string; afterImg: string };
-  index: number;
-  inView: boolean;
+  item: RailItem;
+  isRTL: boolean;
+  lang: Lang;
   before: string;
   after: string;
 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 18 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: 18 }}
-    transition={{ duration: 0.55, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-  >
-    <div className="grid grid-cols-2 gap-1">
-      <BAPhoto src={pair.beforeImg} label={before} delay={0} inView={inView} />
-      <BAPhoto src={pair.afterImg} label={after} delay={0.04} inView={inView} />
+  <article className="shrink-0 w-[340px] sm:w-[400px] md:w-[460px] select-none">
+    <div className="grid grid-cols-2 gap-1.5 h-[280px] sm:h-[340px] md:h-[400px]">
+      <BAThumb src={item.beforeImg} label={before} />
+      <BAThumb src={item.afterImg} label={after} />
     </div>
-  </motion.div>
+    <div className={`mt-3 h-11 ${isRTL ? "text-right" : ""}`}>
+      {item.name && (
+        <p className="font-editorial text-sm leading-snug text-white/70 line-clamp-2">
+          <span className="font-display text-base uppercase text-foreground tracking-wide">
+            {item.name[lang]}
+          </span>
+          {item.profession && (
+            <span className="text-red-br"> · {item.profession[lang]}</span>
+          )}
+          {item.timeframe && (
+            <span className="text-white/40"> · {item.timeframe[lang]}</span>
+          )}
+        </p>
+      )}
+    </div>
+  </article>
 );
 
-/* ─── Main section ─── */
 const ProofSection = () => {
   const { language, isRTL } = useLanguage();
-  const lang = language as "en" | "ar" | "fr";
+  const lang = language as Lang;
   const t = landing.proof;
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [showAll, setShowAll] = useState(false);
+  const sectionRef = useRef(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-80px" });
+  const reduced = useReducedMotion();
 
-  const seeAllLabel = {
-    en: "See all transformations",
-    ar: "شوف كل التحولات",
-    fr: "Voir toutes les transformations",
-  }[lang];
+  const rail: RailItem[] = [
+    ...t.cases.map((c) => ({
+      beforeImg: c.beforeImg,
+      afterImg: c.afterImg,
+      name: c.name,
+      profession: c.profession,
+      timeframe: c.timeframe,
+    })),
+    ...EXTRA_PAIRS,
+  ];
 
-  const collapseLabel = {
-    en: "Show less",
-    ar: "إخفاء",
-    fr: "Réduire",
-  }[lang];
+  const loop = [...rail, ...rail];
+
+  useEffect(() => {
+    const track = trackRef.current;
+    const viewport = viewportRef.current;
+    if (!track || !viewport) return;
+
+    let x = 0;
+    let raf = 0;
+    let lastTime = performance.now();
+    let visible = true;
+    let dragging = false;
+    let lastPointerX = 0;
+    let startX = 0;
+    let startY = 0;
+    let axis: "h" | "v" | null = null;
+    let activePointer: number | null = null;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+      },
+      { rootMargin: "120px" }
+    );
+    io.observe(viewport);
+
+    const paint = () => {
+      const half = track.scrollWidth / 2;
+      x = wrapX(x, half, isRTL);
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+    };
+
+    const baseSpeed = reduced ? 0.25 : 0.55;
+
+    const tick = (time: number) => {
+      if (!visible || dragging) {
+        lastTime = time;
+        raf = requestAnimationFrame(tick);
+        return;
+      }
+
+      const dt = Math.min(time - lastTime, 32);
+      lastTime = time;
+      x += (isRTL ? 1 : -1) * baseSpeed * (dt / 16);
+      paint();
+      raf = requestAnimationFrame(tick);
+    };
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      dragging = true;
+      axis = null;
+      activePointer = e.pointerId;
+      lastPointerX = e.clientX;
+      startX = e.clientX;
+      startY = e.clientY;
+      viewport.setPointerCapture(e.pointerId);
+      viewport.style.cursor = "grabbing";
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!dragging || e.pointerId !== activePointer) return;
+
+      if (!axis) {
+        const adx = Math.abs(e.clientX - startX);
+        const ady = Math.abs(e.clientY - startY);
+        if (adx < 8 && ady < 8) return;
+        axis = adx > ady ? "h" : "v";
+        if (axis === "v") {
+          dragging = false;
+          activePointer = null;
+          viewport.style.cursor = "grab";
+          try {
+            viewport.releasePointerCapture(e.pointerId);
+          } catch {
+            /* already released */
+          }
+          return;
+        }
+      }
+
+      if (axis !== "h") return;
+
+      const dx = e.clientX - lastPointerX;
+      lastPointerX = e.clientX;
+      if (dx === 0) return;
+      x += dx;
+      paint();
+    };
+
+    const endDrag = (e: PointerEvent) => {
+      if (activePointer !== null && e.pointerId !== activePointer) return;
+      dragging = false;
+      activePointer = null;
+      axis = null;
+      lastTime = performance.now();
+      viewport.style.cursor = "grab";
+      try {
+        viewport.releasePointerCapture(e.pointerId);
+      } catch {
+        /* already released */
+      }
+    };
+
+    viewport.addEventListener("pointerdown", onPointerDown);
+    viewport.addEventListener("pointermove", onPointerMove);
+    viewport.addEventListener("pointerup", endDrag);
+    viewport.addEventListener("pointercancel", endDrag);
+
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      io.disconnect();
+      viewport.removeEventListener("pointerdown", onPointerDown);
+      viewport.removeEventListener("pointermove", onPointerMove);
+      viewport.removeEventListener("pointerup", endDrag);
+      viewport.removeEventListener("pointercancel", endDrag);
+    };
+  }, [isRTL, reduced, language]);
 
   return (
-    <section id="proof" className="section-padding bg-ink border-t border-white/[0.06]" ref={ref}>
+    <section
+      id="proof"
+      className="section-padding bg-ink border-t border-white/[0.06]"
+      ref={sectionRef}
+    >
       <div className="container-tight">
-
-        {/* Header */}
-        <div className={`max-w-2xl mb-12 md:mb-16 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
+        <div className={`max-w-2xl mb-8 md:mb-10 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -247,98 +255,41 @@ const ProofSection = () => {
             {t.title[lang]}
           </motion.h2>
         </div>
+      </div>
 
-        {/* Featured 4 */}
-        <div className="grid sm:grid-cols-2 gap-8 md:gap-10">
-          {t.cases.map((item, i) => (
-            <FeaturedCard
-              key={item.name.en}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ delay: 0.1, duration: 0.45 }}
+        ref={viewportRef}
+        className="relative overflow-hidden cursor-grab touch-pan-y"
+        style={{ touchAction: "pan-y" }}
+      >
+        <div
+          ref={trackRef}
+          className="flex w-max gap-5 md:gap-6 will-change-transform"
+          style={{ transform: "translate3d(0,0,0)" }}
+        >
+          {loop.map((item, i) => (
+            <RailTile
+              key={`${item.beforeImg}-${i}`}
               item={item}
-              index={i}
-              inView={inView}
               isRTL={isRTL}
-              language={language}
-              t={t}
+              lang={lang}
+              before={t.before[lang]}
+              after={t.after[lang]}
             />
           ))}
         </div>
+      </motion.div>
 
-        <motion.a
-          href={TESTIMONIAL_REEL_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 10 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.28 }}
-          className={`mt-10 md:mt-12 flex items-center gap-4 border border-white/[0.08] p-3 md:p-4 hover:border-white/20 transition-colors ${
-            isRTL ? "flex-row-reverse text-right" : ""
-          }`}
-        >
-          <img
-            src={ASSETS.testimonialCover}
-            alt=""
-            className="h-16 w-16 md:h-20 md:w-20 object-cover shrink-0"
-          />
-          <div className="min-w-0">
-            <p className="font-editorial text-[10px] uppercase tracking-[0.2em] text-red-br mb-1">
-              {t.voice.tag[lang]}
-            </p>
-            <p className="font-editorial text-sm text-white/70 leading-snug">{t.voice.line[lang]}</p>
-            <p className="font-editorial text-[10px] uppercase tracking-[0.16em] text-white/40 mt-2">
-              {t.voice.cta[lang]}
-            </p>
-          </div>
-        </motion.a>
-
-        {/* Extra transformations (lazy revealed) */}
-        <AnimatePresence>
-          {showAll && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8"
-            >
-              {EXTRA_PAIRS.map((pair, i) => (
-                <ExtraCard
-                  key={pair.beforeImg}
-                  pair={pair}
-                  index={i}
-                  inView={true}
-                  before={t.before[lang]}
-                  after={t.after[lang]}
-                />
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* See all / collapse button */}
-        <motion.div
-          className={`mt-10 ${isRTL ? "text-right" : ""}`}
-          initial={{ opacity: 0, y: 8 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.38 }}
-        >
-          <button
-            type="button"
-            onClick={() => setShowAll((v) => !v)}
-            className={`inline-flex items-center gap-2 font-editorial text-xs uppercase tracking-[0.18em] text-white/60 hover:text-white transition-colors group ${
-              isRTL ? "flex-row-reverse" : ""
-            }`}
-          >
-            <motion.span
-              animate={{ rotate: showAll ? 90 : 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="group-hover:text-red-br transition-colors"
-            >
-              <ArrowRight className="w-4 h-4" />
-            </motion.span>
-            {showAll ? collapseLabel : seeAllLabel}
-          </button>
-        </motion.div>
-
+      <div className="container-tight">
+        <TestimonialVideoCard
+          tag={t.voice.tag[lang]}
+          line={t.voice.line[lang]}
+          cta={t.voice.cta[lang]}
+          inView={inView}
+        />
       </div>
     </section>
   );

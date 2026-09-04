@@ -45,9 +45,9 @@ export const ASSETS = {
 
 /** Instagram reel used for the in-page video testimonial */
 export const TESTIMONIAL_REEL_URL =
-  "https://www.instagram.com/reel/DPBtPxbjILV/?igsh=MXcweGh2NWZiZmZiNA==";
+  "https://www.instagram.com/reel/DVTqyzCjHoN/?utm_source=ig_web_copy_link";
 export const TESTIMONIAL_REEL_EMBED =
-  "https://www.instagram.com/reel/DPBtPxbjILV/embed";
+  "https://www.instagram.com/reel/DVTqyzCjHoN/embed";
 
 /** Index of MEHDI in transformations.testimonials */
 export const FEATURED_TRANSFORMATION_INDEX = 10;

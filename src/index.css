@@ -417,6 +417,27 @@
     width: max-content;
   }
 
+  @keyframes proof-marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  .animate-proof-marquee {
+    animation: proof-marquee 55s linear infinite;
+    width: max-content;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-proof-marquee {
+      animation: none;
+    }
+  }
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
