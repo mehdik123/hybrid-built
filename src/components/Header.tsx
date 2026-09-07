@@ -6,6 +6,7 @@ import { translations } from "@/lib/translations";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IG_DM_URL, ASSETS } from "@/lib/constants";
 import LanguageToggle from "@/components/LanguageToggle";
+import MagneticCTA from "@/components/motion/MagneticCTA";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,9 +85,9 @@ const Header = () => {
               <div className="relative flex items-center">
                 <LanguageToggle scope="header" size="sm" />
               </div>
-              <a href={IG_DM_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-cta !py-2.5 !px-5 !text-[11px]">
+              <MagneticCTA href={IG_DM_URL} className="btn-primary-cta !py-2.5 !px-5 !text-[11px]">
                 {translations.nav.applyNow[language]}
-              </a>
+              </MagneticCTA>
             </nav>
 
             <div className={`flex lg:hidden items-center gap-1.5 ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -134,15 +135,13 @@ const Header = () => {
               <div className="pt-6">
                 <LanguageToggle scope="header-menu" />
               </div>
-              <a
+              <MagneticCTA
                 href={IG_DM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="btn-primary-cta w-full max-w-xs mt-6"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {translations.nav.applyNow[language]}
-              </a>
+              </MagneticCTA>
             </nav>
           </motion.div>
         )}

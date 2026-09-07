@@ -138,7 +138,7 @@ const EmailCaptureForm = ({
             <Button
               type="submit"
               disabled={isLoading}
-              className="btn-primary-cta w-full !rounded-none"
+              className="btn-primary-cta w-full"
             >
               {isLoading ? (
                 <span className="flex items-center gap-2">

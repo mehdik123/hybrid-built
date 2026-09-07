@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 import { IG_DM_URL } from "@/lib/constants";
+import MagneticCTA from "@/components/motion/MagneticCTA";
 
 const StickyDMButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,14 +30,9 @@ const StickyDMButton = () => {
           className="fixed bottom-4 left-0 right-0 z-50 px-4 md:hidden pointer-events-none"
         >
           <div className="max-w-md mx-auto pointer-events-auto">
-            <a
-              href={IG_DM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary-cta w-full py-5"
-            >
+            <MagneticCTA href={IG_DM_URL} className="btn-primary-cta w-full py-5">
               {t.apply[language]}
-            </a>
+            </MagneticCTA>
           </div>
         </motion.div>
       )}

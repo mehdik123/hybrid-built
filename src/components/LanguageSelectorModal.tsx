@@ -52,19 +52,19 @@ const LanguageSelectorModal = () => {
                 <p className="text-muted-foreground mb-8 font-editorial text-sm">{t.subtitle[language]}</p>
 
                 <div className="grid grid-cols-1 gap-3">
-                  <Button className="btn-primary-cta w-full !rounded-none" onClick={() => handleSelect("en")}>
+                  <Button className="btn-primary-cta w-full" onClick={() => handleSelect("en")}>
                     English
                   </Button>
                   <Button
                     variant="outline"
-                    className="w-full border-white/15 text-foreground hover:border-red-br hover:text-red-br font-editorial uppercase tracking-widest py-6 bg-transparent !rounded-none"
+                    className="w-full border-white/15 text-foreground hover:border-red-br hover:text-red-br font-editorial uppercase tracking-widest py-6 bg-transparent rounded-[14px]"
                     onClick={() => handleSelect("fr")}
                   >
                     Français
                   </Button>
                   <Button
                     variant="outline"
-                    className="w-full border-white/15 text-foreground hover:border-red-br hover:text-red-br font-editorial uppercase tracking-widest py-6 bg-transparent !rounded-none"
+                    className="w-full border-white/15 text-foreground hover:border-red-br hover:text-red-br font-editorial uppercase tracking-widest py-6 bg-transparent rounded-[14px]"
                     onClick={() => handleSelect("ar")}
                   >
                     العربية / Darija
