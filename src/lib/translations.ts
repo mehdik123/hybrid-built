@@ -7,15 +7,15 @@ export type Language = 'en' | 'ar' | 'fr';
  */
 export const translations = {
   nav: {
-    about: { en: "About", ar: "من أنا", fr: "À propos" },
-    coaching: { en: "Coaching", ar: "التدريب", fr: "Coaching" },
+    about: { en: "About", ar: "شكون أنا", fr: "À propos" },
+    coaching: { en: "Coaching", ar: "Coaching", fr: "Coaching" },
     results: { en: "Results", ar: "النتائج", fr: "Résultats" },
-    faq: { en: "FAQ", ar: "الأسئلة", fr: "FAQ" },
-    products: { en: "Products", ar: "المنتجات", fr: "Produits" },
-    applyNow: { en: "Apply for coaching", ar: "قدّم للكوتشينغ", fr: "Postuler au coaching" },
-    backToHome: { en: "Portal", ar: "البوابة", fr: "Portail" },
+    faq: { en: "FAQ", ar: "FAQ", fr: "FAQ" },
+    products: { en: "Products", ar: "Products", fr: "Produits" },
+    applyNow: { en: "Apply for coaching", ar: "بدا الـ coaching", fr: "Postuler au coaching" },
+    backToHome: { en: "Portal", ar: "الرئيسية", fr: "Portail" },
     back: { en: "Back", ar: "رجوع", fr: "Retour" },
-    choosePath: { en: "Portal", ar: "البوابة", fr: "Portail" },
+    choosePath: { en: "Portal", ar: "الرئيسية", fr: "Portail" },
   },
 
   hero: {
@@ -43,29 +43,29 @@ export const translations = {
     title2: { en: "AM", ar: "أنا", fr: "-JE" },
     intro: {
       en: "I built my physique the hard way. Then I built a system so you don't waste years guessing.",
-      ar: "بنيت جسمي بالطريقة الصعيبة. ومن بعد بنيت سيستيم باش ما تضيعش سنين فالتخمين.",
+      ar: "بنيت الـ physique ديالي بالطريقة الصعيبة. ومن بعد بنيت system باش نعاونك توصل لنتيجة واضحة بلا ما تضيع سنين فالتجارب والتخمين.",
       fr: "J'ai construit mon physique à la dure. Puis un système pour que tu ne perdes pas des années à chercher.",
     },
     name: { en: "Mehdi", ar: "المهدي", fr: "Mehdi" },
-    followers: { en: "followers", ar: "متابع", fr: "abonnés" },
+    followers: { en: "followers", ar: "followers", fr: "abonnés" },
     description1: {
       en: "8+ years coaching. 200+ clients. 600K+ people watching the process. Morocco-based. 100% natural.",
-      ar: "+8 سنين كوتشينغ. +200 عميل. +600K كيتابعو العملية. من المغرب. 100% طبيعي.",
+      ar: "+8 سنين فـ coaching. +200 clients. +600K كيتابعو الـ journey ديالي. من المغرب. 100% natural.",
       fr: "8+ ans de coaching. 200+ clients. 600K+ qui suivent le process. Basé au Maroc. 100% naturel.",
     },
     description2: {
       en: "Most guys stall because they copy random programs. I fix that. One plan. One coach. One outcome: a hybrid physique that looks strong and performs stronger.",
-      ar: "بزاف كيتوقفو حيت كينقلو برامج عشوائية. أنا كنصلّح هادشي. برنامج واحد. كوتش واحد. نتيجة وحدة: Hybrid Physique قوي فالشكل وفالأداء.",
+      ar: "المشكل اللي كنشوف بزاف هو أن الناس كيقفزو من program لآخر بلا direction واضح. أنا كنبدل هادشي: plan مصاوب عليك، coach واحد متابعك، وهدف واضح. Hybrid Physique قوي فالشكل وفالأداء.",
       fr: "La plupart stagnent en copiant des programmes au hasard. Je corrige ça. Un plan. Un coach. Un résultat: un physique hybride qui a l'air fort et qui l'est.",
     },
     description3: { en: "", ar: "", fr: "" },
     clients: { en: "200+", ar: "200+", fr: "200+" },
-    clientsLabel: { en: "bodies changed", ar: "أجسام تبدّلات", fr: "corps transformés" },
-    naturalLabel: { en: "100% natural", ar: "100% طبيعي", fr: "100% naturel" },
+    clientsLabel: { en: "bodies changed", ar: "أجسام تبدلات", fr: "corps transformés" },
+    naturalLabel: { en: "100% natural", ar: "100% natural", fr: "100% naturel" },
     description4: { en: "", ar: "", fr: "" },
     description5: {
       en: "You bring the work. I bring the map.",
-      ar: "نتا الخدمة. أنا الخريطة.",
+      ar: "الهدف؟ نعاونك توصل لنتيجة حقيقية بلا ما تضيع وقتك.",
       fr: "Toi le travail. Moi la carte.",
     },
     you: { en: "", ar: "", fr: "" },
@@ -213,18 +213,18 @@ export const translations = {
   },
 
   videoTestimonial: {
-    tag: { en: "ON CAMERA", ar: "فالمشهد", fr: "À L'ÉCRAN" },
-    title1: { en: "PROOF", ar: "الدليل", fr: "LA PREUVE" },
-    title2: { en: "ON CAMERA", ar: "فالمشهد", fr: "EN VIDÉO" },
+    tag: { en: "ON CAMERA", ar: "On camera", fr: "À L'ÉCRAN" },
+    title1: { en: "PROOF", ar: "Proof", fr: "LA PREUVE" },
+    title2: { en: "ON CAMERA", ar: "On camera", fr: "EN VIDÉO" },
     subtitle: {
       en: "Watch a client explain what changed.",
-      ar: "سمع عميل كيشرح شنو تبدّل.",
+      ar: "سمع client كيشرح شنو تبدّل.",
       fr: "Écoute un client expliquer ce qui a changé.",
     },
-    play: { en: "Play testimonial", ar: "شغّل الشهادة", fr: "Lancer le témoignage" },
+    play: { en: "Play testimonial", ar: "Play testimonial", fr: "Lancer le témoignage" },
     close: { en: "Close", ar: "سدّ", fr: "Fermer" },
-    openIg: { en: "Open on Instagram", ar: "حل فـ انستغرام", fr: "Ouvrir sur Instagram" },
-    client: { en: "Client result", ar: "نتيجة عميل", fr: "Résultat client" },
+    openIg: { en: "Open on Instagram", ar: "Open on Instagram", fr: "Ouvrir sur Instagram" },
+    client: { en: "Client result", ar: "Client result", fr: "Résultat client" },
   },
 
   faq: {
@@ -350,8 +350,8 @@ export const translations = {
 
   footer: {
     title1: { en: "FOLLOW FOR", ar: "تابعني على", fr: "SUIS POUR" },
-    title2: { en: "FREE CONTENT", ar: "محتوى فابور", fr: "DU GRATUIT" },
-    questions: { en: "Questions? DM me anytime.", ar: "أسئلة؟ صيفط ليا أي وقت.", fr: "Questions ? DM à tout moment." },
+    title2: { en: "FREE CONTENT", ar: "محتوى مجاني", fr: "DU GRATUIT" },
+    questions: { en: "Questions? DM me anytime.", ar: "عندك شي سؤال؟ صيفط ليا فـ أي وقت.", fr: "Questions ? DM à tout moment." },
     rights: { en: "All Rights Reserved", ar: "جميع الحقوق محفوظة", fr: "Tous droits réservés" },
   },
 
@@ -393,7 +393,7 @@ export const translations = {
   },
 
   sticky: {
-    apply: { en: "Apply for coaching", ar: "قدّم للكوتشينغ", fr: "Postuler au coaching" },
+    apply: { en: "Apply for coaching", ar: "بدا الـ coaching", fr: "Postuler au coaching" },
   },
 
   modal: {

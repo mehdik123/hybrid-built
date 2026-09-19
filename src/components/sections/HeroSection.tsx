@@ -21,7 +21,7 @@ const HeroSection = () => {
       ? ["You're building your career.", "Don't let your body fall behind."]
       : language === "fr"
         ? ["Tu construis ta carrière.", "Ne laisse pas ton corps derrière."]
-        : ["كتبني مسارك.", "ما تخليش جسمك يطيح من وراك."];
+        : ["بني مستقبلك،", "ولكن ما تنساش تبني جسمك وصحتك."];
 
   const redWordIndex =
     language === "en"
@@ -135,13 +135,15 @@ const HeroSection = () => {
               {t.ctaSecondary[language]}
             </MagneticCTA>
           </motion.div>
-          <p
-            className={`mt-3 font-editorial text-xs text-white/45 tracking-wide ${
-              isAr ? "leading-[1.9] pb-1" : ""
-            }`}
-          >
-            {t.ctaNote[language]}
-          </p>
+          {t.ctaNote[language] ? (
+            <p
+              className={`mt-3 font-editorial text-xs text-white/45 tracking-wide ${
+                isAr ? "leading-[1.9] pb-1" : ""
+              }`}
+            >
+              {t.ctaNote[language]}
+            </p>
+          ) : null}
         </div>
       </div>
     </section>

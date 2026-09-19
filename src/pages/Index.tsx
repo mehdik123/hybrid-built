@@ -5,7 +5,6 @@ import LanguageSelectorModal from "@/components/LanguageSelectorModal";
 import StickyApplyButton from "@/components/StickyApplyButton";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const AboutSection = lazy(() => import("@/components/sections/AboutSection"));
 const AudienceSection = lazy(() => import("@/components/sections/AudienceSection"));
 const AppSection = lazy(() => import("@/components/sections/AppSection"));
 const ProofSection = lazy(() => import("@/components/sections/ProofSection"));
@@ -45,7 +44,6 @@ const Index = () => {
       <ScrollProgress />
       <HeroSection />
       <Suspense fallback={<SectionLoader />}>
-        <AboutSection />
         <AudienceSection />
         <ProofSection />
         <AppSection />

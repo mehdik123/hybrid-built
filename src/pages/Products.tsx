@@ -34,7 +34,9 @@ const Products = () => {
               }}
             />
             <p className="relative font-editorial text-xs md:text-sm uppercase tracking-[0.28em] text-white font-semibold">
-              {t.comingSoon[language]} — {language === "en" ? "Access locked" : language === "fr" ? "Accès verrouillé" : "الوصول مقفول"}
+              {t.comingSoon[language]}
+              {language === "ar" ? ". " : " — "}
+              {language === "en" ? "Access locked" : language === "fr" ? "Accès verrouillé" : "الوصول مقفول"}
             </p>
           </div>
 
@@ -88,7 +90,7 @@ const Products = () => {
               to="/"
               className="btn-ghost-cta"
             >
-              {language === "en" ? "Back to coaching" : language === "fr" ? "Retour au coaching" : "رجوع للكوتشينغ"}
+              {language === "en" ? "Back to coaching" : language === "fr" ? "Retour au coaching" : "رجوع للـ coaching"}
             </Link>
           </div>
         </div>
