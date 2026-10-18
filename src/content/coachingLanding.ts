@@ -12,9 +12,9 @@ export const landing = {
       fr: "Tu construis ta carrière. Ne laisse pas ton corps derrière.",
     } as Localized,
     subhead: {
-      en: "Online coaching for ambitious people who want a strong, capable body without living in the gym. Your training, your meals, and weekly adjustments, all in one app.",
-      ar: "للناس اللي عندهم الطموح وباغين جسم قوي، athletic ومتناسق، بلا ما يولي الـ gym هو حياتهم كاملة.",
-      fr: "Coaching en ligne pour les ambitieux qui veulent un corps fort et capable sans vivre à la salle. Ton training, tes repas, et des ajustements chaque semaine, dans une seule app.",
+      en: "Online coaching for ambitious people who want an athletic body and great health, while still enjoying life. Train hard, eat well, and keep doing what you love.",
+      ar: "للناس اللي عندهم الطموح وباغين جسم athletic وصحة قوية، وفي نفس الوقت يستمتعو بالحياة. تدرّب مزيان، كول مزيان، وكمّل دير اللي كتحب.",
+      fr: "Coaching en ligne pour les ambitieux qui veulent un corps athletic et une vraie santé, tout en profitant de la vie. Tu t’entraînes, tu manges bien, et tu continues à faire ce que tu aimes.",
     } as Localized,
     warm: {
       en: "Whether you're starting out or leveling up.",
@@ -49,9 +49,9 @@ export const landing = {
         fr: "Tu as testé des programmes au hasard et rien n’a tenu, parce qu’aucun n’était construit pour ta vie",
       },
       {
-        en: "You want to look and feel strong, capable, and lean without living in the gym",
-        ar: "بغيتي تبان وتحس براسك قوي، capable و lean بلا ما تعيش فـ gym",
-        fr: "Tu veux paraître et te sentir fort, capable et sec, sans vivre à la salle",
+        en: "You want to look and feel strong, lean, and healthy while keeping a balanced life",
+        ar: "بغيتي تبان وتحس براسك قوي و lean وصحي، مع حياة متوازنة",
+        fr: "Tu veux paraître et te sentir fort, sec et en santé, avec une vie équilibrée",
       },
       {
         en: "You're ready to commit to the process over months, not days",
@@ -67,54 +67,6 @@ export const landing = {
         fr: "Tu veux une solution magique en deux semaines, ou tu n’es pas prêt à un travail régulier.",
       },
     ] as Localized[],
-  },
-
-  app: {
-    eyebrow: { en: "The coaching app", ar: "الـ coaching app", fr: "L’app de coaching" } as Localized,
-    title: {
-      en: "The thing no other coach in this space gives you.",
-      ar: "أكثر من غير app ديال التمارين.",
-      fr: "Ce qu’aucun autre coach dans cet espace ne te donne.",
-    } as Localized,
-    lead: {
-      en: "Most coaches send a PDF and a chat thread. You get a private app that stays current with you. The app is how I coach properly. It is not a replacement for me.",
-      ar: "بزاف ديال الـ coaches كيعطيوك PDF وكيخليوك بوحدك. هنا عندك app ديالك كتتحدّث معاك وكتجمع training، nutrition و progress. ولكن الـ app غير tool. أنا اللي كنكون كوتش ديالك.",
-      fr: "La plupart envoient un PDF et un fil. Toi, tu as une app privée qui reste à jour avec toi. L’app est l’outil qui me permet de te coacher vraiment. Pas un remplaçant.",
-    } as Localized,
-    features: [
-      {
-        title: { en: "Always current", ar: "ديما محدث", fr: "Toujours à jour" },
-        body: {
-          en: "The program auto-updates. Your next session is already correct. Never a stale PDF.",
-          ar: "الـ program كيتبدل على حساب progress ديالك، باش كل session تعرف بالضبط شنو خاصك تدير. ما كاينش PDF قديم كيبقى تابعك.",
-          fr: "Le programme se met à jour tout seul. Ta prochaine séance est déjà juste. Plus jamais un PDF périmé.",
-        },
-      },
-      {
-        title: { en: "Meals that fit life", ar: "ماكلة كتخدم مع حياتك", fr: "Repas qui tiennent" },
-        body: {
-          en: "Nutrition is built into the app, with structure and swaps you can actually run.",
-          ar: "الـ nutrition داخلة فـ app، مع structure واضح و swaps باش تقدر تبدل الوجبات على حساب نهارك وتفضيلاتك.",
-          fr: "La nutrition est dans l’app, avec une structure et des swaps que tu peux tenir.",
-        },
-      },
-      {
-        title: { en: "Progress you can see", ar: "شوف الـ progress ديالك", fr: "Des progrès visibles" },
-        body: {
-          en: "Training and body metrics are tracked so you see the climb, week by week.",
-          ar: "كنتبّعو training والـ body metrics ديالك باش تعرف واش كتمشي للقدّام، سيمانة بسيمانة.",
-          fr: "Training et métriques sont suivis. Tu vois la montée, semaine après semaine.",
-        },
-      },
-      {
-        title: { en: "I adjust weekly", ar: "كنراجع معاك كل سيمانة", fr: "J’ajuste chaque semaine" },
-        body: {
-          en: "Check-ins become concrete changes in the app. I steer. The tool just makes it clean.",
-          ar: "الـ check-ins ديالك كيتحوّلو لتغييرات حقيقية فـ app. أنا كنقرر شنو خاص يتبدل، والـ tool كتخلي كلشي منظم وواضح.",
-          fr: "Les check-ins deviennent des changements concrets dans l’app. Je pilote. L’outil rend ça net.",
-        },
-      },
-    ],
   },
 
   proof: {
@@ -190,36 +142,36 @@ export const landing = {
   process: {
     eyebrow: { en: "How it works", ar: "كيفاش كنخدمو", fr: "Comment ça marche" } as Localized,
     title: {
-      en: "I learn you first. Then I build around you.",
-      ar: "الأول كنفهم حياتك. من بعد كنبني عليك.",
-      fr: "Je t’apprends d’abord. Ensuite je construis autour de toi.",
+      en: "We understand your situation. Then we build around it.",
+      ar: "كنفهمو وضعيتك. من بعد كنبنيو عليك.",
+      fr: "On comprend ta situation. Ensuite on construit autour.",
     } as Localized,
     steps: [
       {
         num: "01",
-        title: { en: "We dig into your reality", ar: "كنفهمو الواقع ديالك", fr: "On creuse ta réalité" },
+        title: { en: "Your situation, obstacles, and goals", ar: "وضعيتك، العوائق، والأهداف", fr: "Ta situation, tes freins, tes objectifs" },
         body: {
-          en: "Goals, schedule, preferences, injuries, travel, stress, what already failed. I need the full picture before I write a single session.",
-          ar: "الـ goals، الوقت اللي عندك، الـ preferences، الإصابات، السفر، الـ stress، وحتى شنو جربتي قبل وما خدمش. خاصني الصورة كاملة قبل ما نبني ليك حتى session.",
-          fr: "Objectifs, agenda, préférences, blessures, voyages, stress, ce qui a déjà échoué. J’ai besoin du tableau complet avant d’écrire une seule séance.",
+          en: "We start by understanding where you are, what is blocking you, and what you want. Schedule, preferences, past attempts. Clear picture first.",
+          ar: "كنبدو بفهم فين راك، شنو كيعرقلك، وشنو باغي توصل ليه. الـ schedule، التفضيلات، وشنو جربتي قبل. الصورة كاملة الأول.",
+          fr: "On commence par comprendre où tu en es, ce qui te freine, et ce que tu veux. Agenda, préférences, essais passés. D’abord le tableau clair.",
         },
       },
       {
         num: "02",
-        title: { en: "I design your system", ar: "كنبني ليك الـ system", fr: "Je conçois ton système" },
+        title: { en: "Your plan, built for your life", ar: "Plan مصاوب على حياتك", fr: "Ton plan, pensé pour ta vie" },
         body: {
-          en: "Training and nutrition built for your life, not a template. Strength, recovery, food you can actually hold, loaded into the app with intent.",
-          ar: "Training و nutrition على حساب حياتك، ماشي template واجد للجميع. الـ training، الـ recovery والماكلة اللي تقدر تلتزم بيها كيتجمعو كاملين فـ app بطريقة واضحة.",
-          fr: "Training et nutrition pensés pour ta vie, pas un template. Force, récupération, une alimentation tenable, dans l’app avec une vraie intention.",
+          en: "Training and nutrition made for you. Loaded in my app, simple to follow, built around real life.",
+          ar: "Training و nutrition مصاوبين ليك. محمّلين فـ app ديالي، ساهلين تتبعهم، ومبنيين على حياتك الحقيقية.",
+          fr: "Training et nutrition faits pour toi. Dans mon app, simples à suivre, pensés pour la vraie vie.",
         },
       },
       {
         num: "03",
-        title: { en: "I coach you daily", ar: "كنبقاو متابعين يوم بيوم", fr: "Je te coache au quotidien" },
+        title: { en: "Daily support on WhatsApp", ar: "متابعة يومية فـ WhatsApp", fr: "Suivi quotidien sur WhatsApp" },
         body: {
-          en: "We’re on WhatsApp every day. How sessions felt, what’s blocking you, what needs to move. When something has to change, I change it fast. Every week I also rewrite loads, swaps, and priorities so you keep growing, not just staying busy.",
-          ar: "كل نهار فـ WhatsApp: كيف دازت الـ sessions، شنو صعّب عليك، وشنو خاصو يتبدل. ملي كيبان أن شي حاجة خاصها adjustment، كنبدلوها. وكل سيمانة كنراجع الـ loads، الـ swaps والأولويات باش تبقا كتقدم، ماشي غير كتدير التمارين وخلاص.",
-          fr: "On est sur WhatsApp tous les jours. Ressenti des séances, freins, ce qu’il faut bouger. Quand un changement s’impose, je le fais vite. Chaque semaine je réécris aussi charges, swaps et priorités pour que tu progresses vraiment, pas juste pour rester occupé.",
+          en: "We talk every day. How training felt, what is hard, what needs a change. You are never left alone.",
+          ar: "كنهدرو كل نهار. كيفاش داز الـ training، شنو صعيب، وشنو خاصو يتبدل. عمرك ما كتكون بوحدك.",
+          fr: "On parle tous les jours. Ressenti du training, ce qui bloque, ce qu’il faut changer. Tu n’es jamais seul.",
         },
       },
     ],
@@ -233,19 +185,73 @@ export const landing = {
       fr: "Ce que tu obtiens",
     } as Localized,
     valueLead: {
-      en: "Private coaching in one app. Training, meals, form feedback, and daily WhatsApp. One coach. One system.",
-      ar: "Private coaching فـ app واحد. Training، وجبات، form feedback، و WhatsApp يومي. Coach واحد. System واحد.",
-      fr: "Coaching privé dans une seule app. Training, repas, feedback technique, WhatsApp quotidien. Un coach. Un système.",
+      en: "Private coaching in my app. Clear training, real meals, form checks, and daily WhatsApp. One coach. One system.",
+      ar: "Private coaching فـ app ديالي. Training واضح، وجبات حقيقية، مراجعة الـ form، و WhatsApp يومي. Coach واحد. System واحد.",
+      fr: "Coaching privé dans mon app. Training clair, vrais repas, checks de forme, WhatsApp quotidien. Un coach. Un système.",
     } as Localized,
     includedTitle: { en: "Included", ar: "شنو داخل", fr: "Inclus" } as Localized,
     included: [
-      { en: "Custom training in the coaching app", ar: "Custom training فـ coaching app", fr: "Training sur mesure dans l’app" },
-      { en: "Meal structure with swaps", ar: "Meal structure مع swaps", fr: "Structure repas avec swaps" },
-      { en: "Exercise library and form reviews", ar: "Exercise library و form reviews", fr: "Bibliothèque d’exercices et revues de forme" },
-      { en: "Daily WhatsApp. We talk, then I act.", ar: "WhatsApp يومي. كنهدرو، كنراجعو، ومن بعد كنبدلو اللي خاص يتبدل.", fr: "WhatsApp quotidien. On parle, puis j’agis." },
-      { en: "Fast changes when life or progress demands it", ar: "تعديلات سريعة ملي الحياة ولا الـ progress كيطلبوها", fr: "Changements rapides dès que la vie ou la progression l’exige" },
-      { en: "Direct access to me", ar: "Direct access ليا", fr: "Accès direct à moi" },
-    ] as Localized[],
+      {
+        title: {
+          en: "Private coaching in my app",
+          ar: "Private coaching فـ app ديالي",
+          fr: "Coaching privé dans mon app",
+        },
+        detail: {
+          en: "A smooth experience in my app where we track your PRs, milestones, bodyweight, weekly photos, training volume, and muscle progress. Everything in one place.",
+          ar: "تجربة سلسة فـ app ديالي كنتبعو فيها الـ PRs، الـ milestones، الوزن، الصور الأسبوعية، الـ training volume، وتقدم العضلات. كلشي فبلاصة وحدة.",
+          fr: "Une expérience fluide dans mon app: on suit tes PRs, milestones, poids, photos hebdo, volume d’entraînement et progrès musculaire. Tout au même endroit.",
+        },
+      },
+      {
+        title: {
+          en: "Meals built for you",
+          ar: "وجبات مصاوبة ليك",
+          fr: "Repas faits pour toi",
+        },
+        detail: {
+          en: "Tailored meals with the right calories and macros for your goal. Built around your schedule, your taste, and real variety so eating stays enjoyable.",
+          ar: "وجبات مخصصة بـ calories و macros على قد هدفك. على حساب وقتك، ذوقك، وتنويع باش الماكلة تبقا متعة ماشي عذاب.",
+          fr: "Repas sur mesure avec calories et macros adaptés à ton objectif. Pensés pour ton agenda, tes goûts, avec de la variété pour que manger reste agréable.",
+        },
+      },
+      {
+        title: {
+          en: "Video demos and form checks",
+          ar: "فيديوهات التمارين ومراجعة الـ form",
+          fr: "Démos vidéo et checks de forme",
+        },
+        detail: {
+          en: "Every program includes my exercise video demos. I also check your form with you so you train safely and get stronger faster.",
+          ar: "كل program فيه فيديوهات التمارين ديالي. وكنراجع معاك الـ form باش تدرّب بسلامة وتولي أقوى بسرعة.",
+          fr: "Chaque programme inclut mes démos vidéo. Je vérifie aussi ta forme avec toi pour progresser en sécurité et plus vite.",
+        },
+      },
+      {
+        title: {
+          en: "Daily WhatsApp support",
+          ar: "متابعة يومية فـ WhatsApp",
+          fr: "Support WhatsApp quotidien",
+        },
+        detail: {
+          en: "We talk every day. Questions, blockers, wins. You message me, I reply and we move forward together.",
+          ar: "كنهدرو كل نهار. أسئلة، عوائق، نجاحات. كتصيفط ليا، كنجاوب، وكمشيو للقدّام بجوج.",
+          fr: "On parle tous les jours. Questions, freins, avancées. Tu m’écris, je réponds, et on avance ensemble.",
+        },
+      },
+      {
+        title: {
+          en: "Direct access to me",
+          ar: "Direct access ليا",
+          fr: "Accès direct à moi",
+        },
+        detail: {
+          en: "No bots. No assistants. You work with me directly.",
+          ar: "ماشي bots. ماشي assistants. كتخدم معايا مباشرة.",
+          fr: "Pas de bots. Pas d’assistants. Tu travailles directement avec moi.",
+        },
+      },
+    ],
     defaultBadge: { en: "Most popular", ar: "الأكثر طلباً", fr: "Le plus choisi" } as Localized,
     premiumBadge: { en: "Deeper block", ar: "مدة أطول", fr: "Bloc plus long" } as Localized,
     tiers: [
@@ -291,9 +297,9 @@ export const landing = {
       fr: "Pas encore prêt pour le coaching ?",
     } as Localized,
     lead: {
-      en: "Start with a digital product. Same standard. Lower commitment.",
-      ar: "بدا بـ digital product. نفس الـ standard. Commitment أقل.",
-      fr: "Commence avec un produit digital. Même standard. Moins d’engagement.",
+      en: "Start lighter. Build the hybrid body on your own schedule — then level up to coaching when you are ready.",
+      ar: "بدا بأخف. بني الـ hybrid body على وقتك — ومن بعد طلع للـ coaching ملي تكون واجد.",
+      fr: "Commence plus léger. Construis le physique hybride à ton rythme — puis passe au coaching quand tu es prêt.",
     } as Localized,
     comingSoon: { en: "Coming soon", ar: "قريباً", fr: "Bientôt" } as Localized,
     gateTitle: {
@@ -317,25 +323,25 @@ export const landing = {
         shortTitle: { en: "BLUEPRINT", ar: "BLUEPRINT", fr: "BLUEPRINT" },
         title: { en: "Hybrid Athlete Blueprint", ar: "Hybrid Athlete Blueprint", fr: "Hybrid Athlete Blueprint" },
         level: { en: "All levels", ar: "جميع المستويات", fr: "Tous niveaux" },
-        duration: { en: "8 Weeks", ar: "8 سيمانات", fr: "8 semaines" },
+        duration: { en: "3 / 4 / 5 days", ar: "3 / 4 / 5 أيام", fr: "3 / 4 / 5 jours" },
         body: {
-          en: "An 8 week hybrid program, meal plans, and tracker. Pay once. Keep it.",
-          ar: "Hybrid program ديال 8 سيمانات، meal plans و tracker. كتخلص مرة وحدة وكيبقى عندك.",
-          fr: "Programme hybride 8 semaines, plans repas et tracker. Paye une fois. C’est à toi.",
+          en: "The hybrid body: stronger, bigger where it counts, lean and athletic — without living only for the gym.",
+          ar: "الـ hybrid body: أقوى، حجم فالبلايص اللي كتبان، lean و athletic — بلا ما تعيش غير للصالة.",
+          fr: "Le physique hybride: plus fort, plus de muscle où ça compte, sec et athletic — sans vivre que pour la salle.",
         },
         price: { en: "$19.99", ar: "$19.99", fr: "19,99 $" },
         compareAt: { en: "$29.99", ar: "$29.99", fr: "29,99 $" },
         cta: { en: "Get the Blueprint", ar: "خود الـ Blueprint", fr: "Prendre le Blueprint" },
         details: {
-          en: "A self paced hybrid system for people who want structure without private coaching yet.",
-          ar: "Hybrid system تقدر تخدم بيه بوحدك إلا باقي ما واجدش لـ private coaching.",
-          fr: "Un système hybride en autonomie pour qui veut de la structure avant le coaching privé.",
+          en: "This is a guide to the hybrid approach — how to build strength, size, and lean muscle by mixing bodybuilding and calisthenics, strength and endurance. Inside you get 3 full training programs (3, 4, or 5 days per week). Pick the one that matches your week and start building the physique.",
+          ar: "هاد Guide كيشح ليك الـ hybrid approach — كيفاش تبني القوة، الحجم، و lean muscle بالمزج بين bodybuilding و calisthenics، القوة و endurance. داخل كاين 3 programs كاملين (3، 4، ولا 5 أيام فالسيمانة). اختار اللي كيناسب أسبوعك وبدا تبني الجسم.",
+          fr: "Un guide de l’approche hybride — comment construire force, volume et muscle sec en mélangeant musculation et calisthenics, force et endurance. Dedans: 3 programmes complets (3, 4 ou 5 jours/semaine). Choisis celui qui colle à ta semaine et construis le physique.",
         },
         bullets: [
-          { en: "8 week progressive hybrid training (calisthenics and weights)", ar: "8 سيمانات ديال progressive hybrid training (calisthenics و weights)", fr: "Training hybride progressif 8 semaines (calisthenics et charges)" },
-          { en: "Ready meal plans with simple swaps", ar: "Meal plans واجدين مع swaps ساهلين", fr: "Plans repas prêts avec swaps simples" },
-          { en: "Workout tracker to lock consistency", ar: "Workout tracker باش تبقى consistent", fr: "Tracker pour ancrer la régularité" },
-          { en: "Rules I actually use with clients", ar: "القواعد والـ principles اللي كنخدم بيها مع الـ clients", fr: "Les règles que j’utilise vraiment avec mes clients" },
+          { en: "A hybrid physique: strength, size, and lean muscle mass", ar: "Hybrid physique: قوة، حجم، و lean muscle mass", fr: "Physique hybride: force, volume et masse musculaire sèche" },
+          { en: "Look athletic — strong in the gym and with your own bodyweight", ar: "شكل athletic — قوي فالصالة ومع وزن جسمك", fr: "Look athletic — fort en salle et au poids de corps" },
+          { en: "3 complete programs: 3, 4, or 5 days — based on your availability", ar: "3 programs كاملين: 3، 4، ولا 5 أيام — على حساب الوقت ديالك", fr: "3 programmes complets: 3, 4 ou 5 jours — selon ta dispo" },
+          { en: "Bodybuilding + calisthenics. Strength + endurance. One system.", ar: "Bodybuilding + calisthenics. قوة + endurance. System واحد.", fr: "Musculation + calisthenics. Force + endurance. Un seul système." },
         ],
       },
       {
@@ -381,9 +387,9 @@ export const landing = {
       {
         question: { en: "I don't have time. Does this still work?", ar: "ما عنديش الوقت. واش غادي يناسبني؟", fr: "Je n’ai pas le temps. Ça marche quand même ?" },
         answer: {
-          en: "The plan is built around the hours you actually have. Short, focused sessions. No living in the gym. If you can train a few times a week, we have a path.",
-          ar: "الـ plan كيتبنى على الوقت اللي عندك فعلاً. Sessions قصيرة ومركزة، وماشي ضروري تعيش فـ gym. إلا كنتي قادر تدرّب غير شي مرات فالسيمانة، نقدروا نبنيو على هاد الأساس.",
-          fr: "Le plan est construit sur les heures que tu as vraiment. Séances courtes et ciblées. Sans vivre à la salle. Si tu peux t’entraîner quelques fois par semaine, on a un chemin.",
+          en: "The plan is built around the hours you actually have. Short, focused sessions that fit real life. If you can train a few times a week, we have a path.",
+          ar: "الـ plan كيتبنى على الوقت اللي عندك فعلاً. Sessions قصيرة ومركزة كتناسب الحياة الحقيقية. إلا كنتي قادر تدرّب غير شي مرات فالسيمانة، نقدروا نبنيو على هاد الأساس.",
+          fr: "Le plan est construit sur les heures que tu as vraiment. Séances courtes et ciblées qui tiennent dans la vraie vie. Si tu peux t’entraîner quelques fois par semaine, on a un chemin.",
         },
       },
       {

@@ -7,7 +7,6 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 const ProofSection = lazy(() => import("@/components/sections/ProofSection"));
 const OfferSection = lazy(() => import("@/components/sections/OfferSection"));
-const AppSection = lazy(() => import("@/components/sections/AppSection"));
 const ProcessSection = lazy(() => import("@/components/sections/ProcessSection"));
 const EntryProductsSection = lazy(() => import("@/components/sections/EntryProductsSection"));
 const FinalCTASection = lazy(() => import("@/components/sections/FinalCTASection"));
@@ -44,7 +43,6 @@ const Index = () => {
       <Suspense fallback={<SectionLoader />}>
         <ProofSection />
         <OfferSection />
-        <AppSection />
         <ProcessSection />
         <EntryProductsSection />
         <FinalCTASection />

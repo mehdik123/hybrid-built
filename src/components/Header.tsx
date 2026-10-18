@@ -25,10 +25,6 @@ const Header = () => {
       href: "#offer",
     },
     {
-      label: language === "en" ? "App" : language === "fr" ? "App" : "App",
-      href: "#app",
-    },
-    {
       label: language === "en" ? "How it works" : language === "fr" ? "Comment ça marche" : "كيفاش",
       href: "#process",
     },

@@ -15,6 +15,12 @@ type RailItem = {
   timeframe?: Record<Lang, string>;
 };
 
+/** Featured first in the rail */
+const LEAD_PAIR: RailItem = {
+  beforeImg: "/transformation-16-before.png",
+  afterImg: "/transformation-16-after.png",
+};
+
 const EXTRA_PAIRS: RailItem[] = [
   { beforeImg: "/transformation-1-before.png", afterImg: "/transformation-1-after.png" },
   { beforeImg: "/transformation-5-before.png", afterImg: "/transformation-5-after.png" },
@@ -23,6 +29,10 @@ const EXTRA_PAIRS: RailItem[] = [
   { beforeImg: "/transformation-9-before.png", afterImg: "/transformation-9-after.png" },
   { beforeImg: "/transformation-10-before.png", afterImg: "/transformation-10-after.png" },
   { beforeImg: "/transformation-11-before.png", afterImg: "/transformation-11-after.png" },
+  { beforeImg: "/transformation-12-before.png", afterImg: "/transformation-12-after.png" },
+  { beforeImg: "/transformation-13-before.png", afterImg: "/transformation-13-after.png" },
+  { beforeImg: "/transformation-14-before.png", afterImg: "/transformation-14-after.png" },
+  { beforeImg: "/transformation-15-before.png", afterImg: "/transformation-15-after.png" },
 ];
 
 const wrapX = (value: number, half: number, rtl: boolean) => {
@@ -101,6 +111,7 @@ const ProofSection = () => {
   const reduced = useReducedMotion();
 
   const rail: RailItem[] = [
+    LEAD_PAIR,
     ...t.cases.map((c) => ({
       beforeImg: c.beforeImg,
       afterImg: c.afterImg,
