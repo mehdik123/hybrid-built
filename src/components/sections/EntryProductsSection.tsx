@@ -1,164 +1,183 @@
 import { useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
 import { landing } from "@/content/coachingLanding";
 import ComingSoonProductModal from "@/components/ComingSoonProductModal";
+import EmailCaptureModal from "@/components/EmailCaptureModal";
+import MagneticCTA from "@/components/motion/MagneticCTA";
+import { IG_DM_URL } from "@/lib/constants";
 
 const EntryProductsSection = () => {
   const { language, isRTL } = useLanguage();
   const t = landing.products;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const [paidId, setPaidId] = useState<string | null>(null);
 
-  const activeProduct = t.items.find((item) => item.id === activeId) ?? null;
+  const paidProduct = t.items.find((item) => item.id === paidId) ?? null;
+  const blueprint = t.items.find((i) => i.id === "blueprint")!;
+  const split = t.items.find((i) => i.id === "split")!;
 
   return (
-    <section id="products" className="relative overflow-hidden bg-ink" ref={ref}>
-      {/* Loud visual break from paper offer */}
-      <div className="bg-red-br px-5 py-3 md:px-10">
-        <div className="container-tight">
+    <section id="products" className="section-padding bg-ink border-t border-white/[0.06]" ref={ref}>
+      <div className="container-tight">
+        <div className={`max-w-2xl mb-10 md:mb-14 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
           <motion.p
-            initial={{ opacity: 0, y: 6 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className={`font-editorial text-[10px] md:text-xs uppercase tracking-[0.28em] text-white font-semibold ${
-              isRTL ? "text-right" : ""
-            }`}
+            className="font-editorial text-[10px] uppercase tracking-[0.28em] text-red-br mb-4"
           >
             {t.eyebrow[language]}
           </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.04 }}
+            className="font-display text-4xl md:text-5xl uppercase leading-[1.05] text-foreground"
+          >
+            {t.title[language]}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.08 }}
+            className="mt-4 font-editorial text-base text-white/55 max-w-lg"
+          >
+            {t.lead[language]}
+          </motion.p>
         </div>
-      </div>
 
-      <div className="section-padding relative">
         <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-            maskImage: "linear-gradient(to bottom, black, transparent 85%)",
-          }}
-        />
+          className={`flex gap-4 md:gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none -mx-5 px-5 md:mx-0 md:px-0 md:grid md:grid-cols-2 md:overflow-visible ${
+            isRTL ? "flex-row-reverse md:flex-row" : ""
+          }`}
+        >
+          {/* Blueprint — paid with discount */}
+          <motion.button
+            type="button"
+            onClick={() => setPaidId(blueprint.id)}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.1 }}
+            className="group relative shrink-0 w-[78vw] max-w-[380px] md:w-auto md:max-w-none snap-center aspect-[3/4] overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-br"
+          >
+            <img
+              src={blueprint.cover}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              loading="lazy"
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.82) 100%)",
+              }}
+            />
+            <div className="absolute inset-0 flex flex-col p-5 md:p-7">
+              <div className={`flex items-start justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <h3 className="font-display text-3xl md:text-4xl uppercase text-white leading-[0.95]">
+                  {blueprint.shortTitle[language]}
+                </h3>
+                <span className="bg-red-br text-white font-editorial text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 shrink-0">
+                  {blueprint.tag[language]}
+                </span>
+              </div>
 
-        <div className="container-tight relative">
-          <div className={`max-w-3xl mb-12 md:mb-16 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
-            <motion.h2
-              initial={{ opacity: 0, y: 18 }}
+              <p className="mt-auto mb-4 font-editorial text-sm text-white/85 leading-relaxed max-w-[95%]">
+                {blueprint.body[language]}
+              </p>
+
+              <div className={`mb-4 flex items-baseline gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <span className="font-display text-3xl text-white">{blueprint.price[language]}</span>
+                <span className="font-editorial text-base text-white/45 line-through">
+                  {blueprint.compareAt[language]}
+                </span>
+              </div>
+
+              <div className={`flex items-center justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+                <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
+                  {blueprint.level[language]}
+                </span>
+                <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
+                  {blueprint.duration[language]}
+                </span>
+              </div>
+            </div>
+          </motion.button>
+
+          {/* Split Finder — free + email */}
+          <EmailCaptureModal source="split-finder">
+            <motion.button
+              type="button"
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.05, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-3xl sm:text-4xl md:text-6xl uppercase leading-[1.05] text-foreground"
+              transition={{ delay: 0.18 }}
+              className="group relative shrink-0 w-[78vw] max-w-[380px] md:w-auto md:max-w-none snap-center aspect-[3/4] overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-br"
             >
-              {t.title[language]}
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.12 }}
-              className="mt-5 font-editorial text-base md:text-lg text-white/60 max-w-xl"
-            >
-              {t.lead[language]}
-            </motion.p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-5 md:gap-6">
-            {t.items.map((item, i) => {
-              const isFree = item.id === "checklist";
-              return (
-                <motion.button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setActiveId(item.id)}
-                  initial={{ opacity: 0, y: 28 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.14 + i * 0.1, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                  className={`group relative text-left overflow-hidden p-7 md:p-9 min-h-[280px] md:min-h-[320px] flex flex-col transition-transform duration-300 hover:-translate-y-1 ${
-                    isFree
-                      ? "bg-paper text-ink"
-                      : "bg-white/[0.03] border border-white/15 text-foreground"
-                  } ${isRTL ? "text-right" : ""}`}
-                >
-                  <div className={`flex items-start justify-between gap-3 mb-8 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div>
-                      <p
-                        className={`font-editorial text-[10px] uppercase tracking-[0.22em] mb-2 ${
-                          isFree ? "text-ink/45" : "text-white/40"
-                        }`}
-                      >
-                        {item.pathLabel[language]}
-                      </p>
-                      <span
-                        className={`inline-block font-editorial text-[10px] uppercase tracking-[0.18em] px-2.5 py-1 ${
-                          isFree
-                            ? "bg-ink text-paper"
-                            : "bg-red-br text-white"
-                        }`}
-                      >
-                        {item.tag[language]}
-                      </span>
-                    </div>
-                    <span
-                      className={`font-editorial text-[10px] uppercase tracking-[0.16em] ${
-                        isFree ? "text-red-br" : "text-red-br"
-                      }`}
-                    >
-                      {t.comingSoon[language]}
-                    </span>
-                  </div>
-
-                  <h3
-                    className={`font-display text-2xl md:text-4xl uppercase leading-[1.05] mb-4 ${
-                      isFree ? "text-ink" : "text-foreground"
-                    }`}
-                  >
-                    {item.title[language]}
+              <img
+                src={split.cover}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                loading="lazy"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.82) 100%)",
+                }}
+              />
+              <div className="absolute inset-0 flex flex-col p-5 md:p-7">
+                <div className={`flex items-start justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+                  <h3 className="font-display text-3xl md:text-4xl uppercase text-white leading-[0.95]">
+                    {split.shortTitle[language]}
                   </h3>
-                  <p
-                    className={`font-editorial text-sm md:text-base leading-relaxed flex-1 mb-8 ${
-                      isFree ? "text-ink/60" : "text-white/55"
-                    }`}
-                  >
-                    {item.body[language]}
-                  </p>
-
-                  <span
-                    className={`inline-flex items-center gap-2 font-editorial text-xs uppercase tracking-[0.16em] transition-colors ${
-                      isFree
-                        ? "text-ink group-hover:text-red-br"
-                        : "text-white group-hover:text-red-br"
-                    } ${isRTL ? "flex-row-reverse self-end" : "self-start"}`}
-                  >
-                    {item.cta[language]}
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                  <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 shrink-0">
+                    {split.tag[language]}
                   </span>
+                </div>
 
-                  <motion.span
-                    aria-hidden
-                    className={`pointer-events-none absolute -bottom-8 ${
-                      isRTL ? "-left-6" : "-right-6"
-                    } font-display text-[7rem] md:text-[9rem] leading-none opacity-[0.06] ${
-                      isFree ? "text-ink" : "text-white"
-                    }`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 0.06, y: 0 } : {}}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </motion.span>
-                </motion.button>
-              );
-            })}
-          </div>
+                <p className="mt-auto mb-4 font-editorial text-sm text-white/85 leading-relaxed max-w-[95%]">
+                  {split.body[language]}
+                </p>
+
+                <p className="mb-4 font-display text-2xl text-white">{split.price[language]}</p>
+
+                <div className={`flex items-center justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+                  <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
+                    {split.level[language]}
+                  </span>
+                  <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
+                    {split.cta[language]}
+                  </span>
+                </div>
+              </div>
+            </motion.button>
+          </EmailCaptureModal>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.28 }}
+          className="mt-10 flex justify-center"
+        >
+          <MagneticCTA href={IG_DM_URL}>
+            {language === "en"
+              ? "Questions? DM me"
+              : language === "fr"
+                ? "Des questions ? DM moi"
+                : "أسئلة؟ صيفط ليا DM"}
+          </MagneticCTA>
+        </motion.div>
       </div>
 
       <ComingSoonProductModal
-        product={activeProduct}
-        open={!!activeId}
+        product={paidProduct}
+        open={!!paidProduct}
         onOpenChange={(open) => {
-          if (!open) setActiveId(null);
+          if (!open) setPaidId(null);
         }}
       />
     </section>

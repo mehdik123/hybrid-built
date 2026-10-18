@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowDown } from "lucide-react";
 import { useLanguage } from "@/contexts/AppContext";
 import { IG_DM_URL } from "@/lib/constants";
 import MagneticCTA from "@/components/motion/MagneticCTA";
@@ -13,15 +12,10 @@ const OfferSection = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="offer" className="section-paper section-padding relative overflow-hidden" ref={ref}>
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-[rgba(232,0,28,0.08)] blur-3xl"
-      />
-
-      <div className="container-tight relative">
-        <div className={`grid lg:grid-cols-12 gap-10 lg:gap-14 items-start`}>
-          <div className={`lg:col-span-6 ${isRTL ? "text-right lg:order-2" : ""}`}>
+    <section id="offer" className="section-padding bg-ink border-t border-white/[0.06]" ref={ref}>
+      <div className="container-tight">
+        <div className={`grid lg:grid-cols-12 gap-12 lg:gap-16 items-start`}>
+          <div className={`lg:col-span-5 ${isRTL ? "text-right lg:order-2" : ""}`}>
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -30,18 +24,18 @@ const OfferSection = () => {
               {t.eyebrow[language]}
             </motion.p>
             <motion.h2
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.05 }}
-              className="font-display text-3xl md:text-5xl uppercase leading-[1.08]"
+              transition={{ delay: 0.04 }}
+              className="font-display text-4xl md:text-5xl uppercase leading-[1.05] text-foreground"
             >
               {t.title[language]}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.1 }}
-              className="mt-5 font-editorial text-base md:text-lg text-[color:rgba(10,10,10,0.65)] leading-relaxed"
+              transition={{ delay: 0.08 }}
+              className="mt-5 font-editorial text-base text-white/55 leading-relaxed"
             >
               {t.valueLead[language]}
             </motion.p>
@@ -49,61 +43,37 @@ const OfferSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.18 }}
-              className="mt-10 flex flex-col gap-3"
+              transition={{ delay: 0.14 }}
+              className="mt-8 flex flex-col gap-3"
             >
               <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
-              <p className="font-editorial text-xs text-[color:rgba(10,10,10,0.45)]">{t.priceNote[language]}</p>
+              <p className="font-editorial text-xs text-white/35">{t.priceNote[language]}</p>
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.12, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className={`lg:col-span-6 ${isRTL ? "text-right lg:order-1" : ""}`}
-          >
-            <p className="font-editorial text-[10px] uppercase tracking-[0.22em] text-[color:rgba(10,10,10,0.4)] mb-5">
-              {t.includedTitle[language]}
-            </p>
-            <ul className="space-y-0 border-t border-[color:rgba(10,10,10,0.1)]">
+          <div className={`lg:col-span-7 ${isRTL ? "text-right lg:order-1" : ""}`}>
+            <ul className="border-t border-white/[0.1]">
               {t.included.map((item, i) => (
                 <motion.li
                   key={i}
-                  initial={{ opacity: 0, x: isRTL ? 16 : -16 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.16 + i * 0.06 }}
-                  className={`flex gap-4 py-4 border-b border-[color:rgba(10,10,10,0.1)] ${isRTL ? "flex-row-reverse" : ""}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.1 + i * 0.05 }}
+                  className={`flex gap-5 py-5 border-b border-white/[0.1] ${
+                    isRTL ? "flex-row-reverse" : ""
+                  }`}
                 >
-                  <span className="font-display text-sm text-red-br shrink-0 pt-0.5">
+                  <span className="font-editorial text-xs text-red-br shrink-0 pt-1 tracking-wider">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-editorial text-sm md:text-base text-[color:rgba(10,10,10,0.85)] leading-snug">
+                  <span className="font-editorial text-base md:text-lg text-white/85 leading-snug">
                     {item[language]}
                   </span>
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         </div>
-
-        <motion.a
-          href="#products"
-          initial={{ opacity: 0, y: 8 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.35 }}
-          className={`mt-14 md:mt-16 flex items-center gap-3 border-t border-[color:rgba(10,10,10,0.1)] pt-6 font-editorial text-xs uppercase tracking-[0.18em] text-[color:rgba(10,10,10,0.5)] hover:text-red-br transition-colors ${
-            isRTL ? "flex-row-reverse text-right" : ""
-          }`}
-        >
-          <motion.span
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowDown className="w-4 h-4" />
-          </motion.span>
-          {t.pathCue[language]}
-        </motion.a>
       </div>
     </section>
   );

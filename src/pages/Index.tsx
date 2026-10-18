@@ -5,21 +5,19 @@ import LanguageSelectorModal from "@/components/LanguageSelectorModal";
 import StickyApplyButton from "@/components/StickyApplyButton";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const AudienceSection = lazy(() => import("@/components/sections/AudienceSection"));
-const AppSection = lazy(() => import("@/components/sections/AppSection"));
 const ProofSection = lazy(() => import("@/components/sections/ProofSection"));
-const ProcessSection = lazy(() => import("@/components/sections/ProcessSection"));
 const OfferSection = lazy(() => import("@/components/sections/OfferSection"));
+const AppSection = lazy(() => import("@/components/sections/AppSection"));
+const ProcessSection = lazy(() => import("@/components/sections/ProcessSection"));
 const EntryProductsSection = lazy(() => import("@/components/sections/EntryProductsSection"));
-const FAQSection = lazy(() => import("@/components/sections/FAQSection"));
 const FinalCTASection = lazy(() => import("@/components/sections/FinalCTASection"));
 const Footer = lazy(() => import("@/components/sections/Footer"));
 
 const SectionLoader = () => (
-  <div className="min-h-[200px] w-full flex items-center justify-center bg-ink" aria-hidden>
+  <div className="min-h-[160px] w-full flex items-center justify-center bg-ink" aria-hidden>
     <div
-      className="w-8 h-8 rounded-full border border-white/15 border-t-red-br animate-spin"
-      style={{ animationDuration: "0.85s" }}
+      className="w-6 h-6 border border-white/20 border-t-red-br animate-spin"
+      style={{ animationDuration: "0.8s" }}
     />
   </div>
 );
@@ -44,13 +42,11 @@ const Index = () => {
       <ScrollProgress />
       <HeroSection />
       <Suspense fallback={<SectionLoader />}>
-        <AudienceSection />
         <ProofSection />
+        <OfferSection />
         <AppSection />
         <ProcessSection />
-        <OfferSection />
         <EntryProductsSection />
-        <FAQSection />
         <FinalCTASection />
         <Footer />
       </Suspense>

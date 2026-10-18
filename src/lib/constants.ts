@@ -18,8 +18,11 @@ export const ASSETS = {
   pathBlueprint: "/hero-placeholder.jpg",
   /** Path page — free tool card 03 */
   pathFreeTool: "/testimonial-cover.jpg",
-  /** Coaching sales page hero (gym pose) */
+  /** Coaching sales page hero (gym pose / poster) */
   heroCoaching: "/hero-placeholder.jpg",
+  /** Compressed looping hero background (poster first for LCP) */
+  heroVideo: "/hero-bg.mp4",
+  heroPoster: "/hero-poster.jpg",
   /** About section — editorial doorway pose */
   aboutPortrait: "/hero-placeholder-v2.jpg",
   /** Products / blueprint hero */

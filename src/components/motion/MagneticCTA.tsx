@@ -34,8 +34,8 @@ const MagneticCTA = ({
   const x = useSpring(mx, { stiffness: 220, damping: 18, mass: 0.4 });
   const y = useSpring(my, { stiffness: 220, damping: 18, mass: 0.4 });
 
-  const rxTarget = useTransform(py, [0, 1], [9, -9]);
-  const ryTarget = useTransform(px, [0, 1], [-11, 11]);
+  const rxTarget = useTransform(py, [0, 1], [8, -8]);
+  const ryTarget = useTransform(px, [0, 1], [-10, 10]);
   const glareXTarget = useTransform(px, [0, 1], [0, 100]);
   const glareYTarget = useTransform(py, [0, 1], [0, 100]);
 
@@ -43,7 +43,7 @@ const MagneticCTA = ({
   const ry = useSpring(ryTarget, { stiffness: 180, damping: 16 });
   const glareX = useSpring(glareXTarget, { stiffness: 200, damping: 22 });
   const glareY = useSpring(glareYTarget, { stiffness: 200, damping: 22 });
-  const glare = useMotionTemplate`radial-gradient(140px circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.38), transparent 55%)`;
+  const glare = useMotionTemplate`radial-gradient(140px circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.35), transparent 55%)`;
 
   useEffect(() => {
     const mq = window.matchMedia("(pointer: fine)");
@@ -62,8 +62,8 @@ const MagneticCTA = ({
     const ny = (e.clientY - r.top) / r.height;
     px.set(nx);
     py.set(ny);
-    mx.set((nx - 0.5) * r.width * 0.18);
-    my.set((ny - 0.5) * r.height * 0.28);
+    mx.set((nx - 0.5) * r.width * 0.16);
+    my.set((ny - 0.5) * r.height * 0.24);
   };
 
   const onLeave = () => {
@@ -93,8 +93,8 @@ const MagneticCTA = ({
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       onClick={onClick}
-      whileHover={live ? { scale: 1.035 } : undefined}
-      whileTap={{ scale: 0.965 }}
+      whileHover={live ? { scale: 1.03 } : undefined}
+      whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 340, damping: 22 }}
     >
       {live && (

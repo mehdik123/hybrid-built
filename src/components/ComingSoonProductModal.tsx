@@ -20,9 +20,10 @@ interface ComingSoonProductModalProps {
 
 const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProductModalProps) => {
   const { language, isRTL } = useLanguage();
-  const t = landing.products;
 
   if (!product) return null;
+
+  const hasDiscount = Boolean(product.compareAt[language]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -31,21 +32,6 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
           isRTL ? "text-right" : "text-left"
         }`}
       >
-        {/* Coming soon banner */}
-        <div className="relative bg-red-br px-5 py-3.5 overflow-hidden">
-          <div
-            aria-hidden
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(0,0,0,0.25) 8px, rgba(0,0,0,0.25) 16px)",
-            }}
-          />
-          <p className="relative font-editorial text-[11px] uppercase tracking-[0.28em] text-white font-semibold">
-            {t.comingSoon[language]}
-          </p>
-        </div>
-
         <div className="relative p-6 md:p-8">
           <DialogClose
             className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} rounded-full border border-white/15 p-2 text-white/70 hover:text-white hover:border-white/35 transition-colors`}
@@ -53,19 +39,28 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
             <X className="w-4 h-4" />
           </DialogClose>
 
-          <p className="font-editorial text-[10px] uppercase tracking-[0.22em] text-white/40 mb-2">
+          <p className="font-editorial text-[10px] uppercase tracking-[0.22em] text-red-br mb-2">
             {product.tag[language]}
           </p>
           <DialogTitle className="font-display text-2xl md:text-3xl uppercase text-foreground leading-[1.15] pr-10">
             {product.title[language]}
           </DialogTitle>
 
+          <div className={`mt-4 flex items-baseline gap-3 ${isRTL ? "flex-row-reverse justify-end" : ""}`}>
+            <span className="font-display text-3xl text-foreground">{product.price[language]}</span>
+            {hasDiscount && (
+              <span className="font-editorial text-lg text-white/40 line-through">
+                {product.compareAt[language]}
+              </span>
+            )}
+          </div>
+
           <p className="mt-4 font-editorial text-sm md:text-base text-white/70 leading-relaxed">
             {product.details[language]}
           </p>
 
           <p className="mt-6 font-editorial text-[10px] uppercase tracking-[0.22em] text-white/40 mb-3">
-            {language === "en" ? "What’s inside" : language === "fr" ? "Ce qui sera dedans" : "شنو غادي يكون"}
+            {language === "en" ? "What’s inside" : language === "fr" ? "Ce qui est dedans" : "المحتوى"}
           </p>
           <ul className="space-y-3">
             {product.bullets.map((bullet, i) => (
@@ -79,7 +74,7 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
           </ul>
 
           <div className="mt-8">
-            <MagneticCTA href={IG_DM_URL}>{t.notifyCta[language]}</MagneticCTA>
+            <MagneticCTA href={IG_DM_URL}>{product.cta[language]}</MagneticCTA>
           </div>
         </div>
       </DialogContent>

@@ -398,14 +398,14 @@ export const translations = {
 
   modal: {
     title: { en: "GET THE FREE TOOL", ar: "خود الأداة فابور", fr: "OUTIL GRATUIT" },
-    subtitle: { en: "Drop your email. Get the Split Identifier.", ar: "دخل الإيميل. جيب أداة الـ Split.", fr: "Laisse ton email. Reçois le Split Identifier." },
+    subtitle: { en: "Drop your email. Get the Split Finder.", ar: "دخل الإيميل. جيب الـ Split Finder.", fr: "Laisse ton email. Reçois le Split Finder." },
     nameLabel: { en: "First Name", ar: "الاسم", fr: "Prénom" },
     emailLabel: { en: "Email", ar: "الإيميل", fr: "Email" },
     submit: { en: "SEND THE TOOL", ar: "صيفط الأداة", fr: "ENVOYER L'OUTIL" },
     submitting: { en: "SENDING...", ar: "كيسيفط...", fr: "ENVOI..." },
     successTitle: { en: "CHECK YOUR INBOX", ar: "شوف الإيميل", fr: "VÉRIFIE TA BOÎTE" },
-    successDesc: { en: "Check your inbox. Your Hybrid Split Identifier is coming.", ar: "شوف الإيميل. الأداة فالطريق.", fr: "Vérifie ta boîte. L'outil arrive." },
-    privacy: { en: "No spam. Unsubscribe anytime.", ar: "بلا سبام. تقدر تلغي أي وقت.", fr: "Pas de spam. Désabo quand tu veux." },
+    successDesc: { en: "Check your inbox. Your Hybrid Split Finder is coming.", ar: "شوف الإيميل. الـ Split Finder فالطريق.", fr: "Vérifie ta boîte. Le Split Finder arrive." },
+    privacy: { en: "No spam. Unsubscribe anytime.", ar: "بلا spam. تقدر تلغي أي وقت.", fr: "Pas de spam. Désabo quand tu veux." },
   },
 
   paidProductModal: {

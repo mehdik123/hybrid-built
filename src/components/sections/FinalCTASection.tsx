@@ -12,61 +12,34 @@ const FinalCTASection = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section
-      id="final-cta"
-      className="relative overflow-hidden bg-red-br section-padding"
-      ref={ref}
-    >
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-30"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 0.3 } : {}}
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(0,0,0,0.12) 12px, rgba(0,0,0,0.12) 24px)",
-        }}
-      />
-
-      <div className="container-tight relative">
-        <div className={`max-w-3xl ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="font-editorial text-[10px] uppercase tracking-[0.28em] text-white/70 mb-4"
-          >
-            {t.eyebrow[language]}
-          </motion.p>
+    <section id="final-cta" className="section-padding bg-ink border-t border-white/[0.06]" ref={ref}>
+      <div className="container-tight">
+        <div className={`max-w-2xl mx-auto text-center ${isRTL ? "" : ""}`}>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.05, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl uppercase leading-[1.02] text-white"
+            className="font-display text-4xl md:text-6xl uppercase leading-[1.05] text-foreground"
           >
             {t.title[language]}
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.12 }}
-            className="mt-6 font-editorial text-base md:text-lg text-white/80 leading-relaxed max-w-xl"
+            transition={{ delay: 0.08 }}
+            className="mt-5 font-editorial text-base md:text-lg text-white/55 leading-relaxed"
           >
             {t.body[language]}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2 }}
-            className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4"
+            transition={{ delay: 0.16 }}
+            className="mt-9 flex flex-col items-center gap-4"
           >
-            <MagneticCTA href={IG_DM_URL} className="btn-invert-cta">
-              {t.cta[language]}
-            </MagneticCTA>
+            <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
             <a
               href="#products"
-              className={`font-editorial text-xs uppercase tracking-[0.16em] text-white/70 hover:text-white transition-colors ${
-                isRTL ? "text-right" : ""
-              }`}
+              className="font-editorial text-xs uppercase tracking-[0.16em] text-white/40 hover:text-white/70 transition-colors"
             >
               {t.secondary[language]}
             </a>

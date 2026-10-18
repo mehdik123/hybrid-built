@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -89,7 +89,7 @@
 
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/25;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Archivo', system-ui, sans-serif;
     background-color: var(--ink);
     color: hsl(var(--foreground));
   }
@@ -211,7 +211,7 @@
     background: linear-gradient(165deg, #ff1f3a 0%, var(--red-br) 48%, #b80016 100%);
     color: #fff;
     padding: 1rem 1.85rem;
-    border-radius: 14px;
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.2) inset,
@@ -233,95 +233,52 @@
       0 18px 40px -14px rgba(232, 0, 28, 0.62);
   }
 
-  .btn-primary-cta:active {
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.12) inset,
-      0 6px 18px -14px rgba(232, 0, 28, 0.45);
-  }
-
-  /* Soft sweep for plain (non-magnetic) primary buttons */
-  .btn-primary-cta:not(.magnetic-btn)::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      115deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.28) 48%,
-      transparent 62%
-    );
-    transform: translateX(-120%);
-    pointer-events: none;
-  }
-
-  .btn-primary-cta:not(.magnetic-btn) {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-primary-cta:not(.magnetic-btn):hover::after {
-    animation: cta-sheen 0.85s var(--ease-out-expo) forwards;
-  }
-
-  @keyframes cta-sheen {
-    to {
-      transform: translateX(120%);
-    }
-  }
-
   .btn-ghost-cta {
     @apply inline-flex items-center justify-center font-editorial font-semibold uppercase tracking-[0.1em] text-sm md:text-base;
-    color: rgba(255, 255, 255, 0.86);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.04);
     padding: 1rem 1.85rem;
-    border-radius: 14px;
+    border-radius: 12px;
     backdrop-filter: blur(8px);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
     transition:
       border-color 0.22s var(--ease-smooth),
       color 0.22s var(--ease-smooth),
-      background 0.22s var(--ease-smooth),
-      box-shadow 0.22s var(--ease-smooth);
+      background 0.22s var(--ease-smooth);
     touch-action: manipulation;
     will-change: transform;
   }
 
   .btn-ghost-cta:hover {
     color: #fff;
-    border-color: rgba(255, 255, 255, 0.42);
-    background: rgba(255, 255, 255, 0.07);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 12px 28px -20px rgba(0, 0, 0, 0.55);
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.08);
   }
 
-  .btn-ghost-cta:active {
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
-  }
-
-  /* Invert CTA for red climax sections */
   .btn-invert-cta {
     @apply inline-flex items-center justify-center gap-2 font-editorial font-semibold uppercase tracking-[0.1em] text-sm md:text-base;
     background: #fff;
     color: var(--ink);
     padding: 1rem 1.85rem;
-    border-radius: 14px;
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.9);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 14px 34px -18px rgba(0, 0, 0, 0.35);
-    transition: background 0.22s var(--ease-smooth), box-shadow 0.22s var(--ease-smooth), transform 0.18s var(--ease-smooth);
+    transition: background 0.22s var(--ease-smooth), box-shadow 0.22s var(--ease-smooth);
     touch-action: manipulation;
     will-change: transform;
   }
 
   .btn-invert-cta:hover {
     background: #f4f4f4;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 18px 40px -14px rgba(0, 0, 0, 0.4);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .btn-primary-cta:not(.magnetic-btn):hover::after {
-      animation: none;
-    }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 
   /* Path card hover — subtle lift, no glow */
