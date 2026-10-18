@@ -2,19 +2,29 @@ import type { Language } from "@/lib/translations";
 
 export type Localized = Record<Language, string>;
 
-/** Coaching sales page — ambition and self-investment ICP */
+/** Coaching sales page: ambition and self-investment ICP */
 export const landing = {
   hero: {
     brand: { en: "UNBREAKABLES TEAM", ar: "UNBREAKABLES TEAM", fr: "UNBREAKABLES TEAM" } as Localized,
+    label: {
+      en: "Online coaching by El Mehdi Kamal",
+      ar: "Online coaching مع المهدي كمال",
+      fr: "Coaching en ligne par El Mehdi Kamal",
+    } as Localized,
     headline: {
       en: "You're building your career. Don't let your body fall behind.",
       ar: "بني مستقبلك، ولكن ما تنساش تبني جسمك وصحتك.",
       fr: "Tu construis ta carrière. Ne laisse pas ton corps derrière.",
     } as Localized,
     subhead: {
-      en: "Online coaching for ambitious people who want an athletic body and great health, while still enjoying life. Train hard, eat well, and keep doing what you love.",
-      ar: "للناس اللي عندهم الطموح وباغين جسم athletic وصحة قوية، وفي نفس الوقت يستمتعو بالحياة. تدرّب مزيان، كول مزيان، وكمّل دير اللي كتحب.",
-      fr: "Coaching en ligne pour les ambitieux qui veulent un corps athletic et une vraie santé, tout en profitant de la vie. Tu t’entraînes, tu manges bien, et tu continues à faire ce que tu aimes.",
+      en: "1-on-1 coaching for ambitious men and women, built around your real schedule.",
+      ar: "1-on-1 coaching للرجال والنساء الطموحين، مصاوب على الوقت الحقيقي ديالك.",
+      fr: "Coaching 1-on-1 pour hommes et femmes ambitieux, pensé pour ton vrai emploi du temps.",
+    } as Localized,
+    proofLine: {
+      en: "Training, nutrition and check-ins. All in my app.",
+      ar: "Training، nutrition و check-ins. كلشي فـ app ديالي.",
+      fr: "Training, nutrition et check-ins. Tout dans mon app.",
     } as Localized,
     warm: {
       en: "Whether you're starting out or leveling up.",
@@ -22,7 +32,7 @@ export const landing = {
       fr: "Que tu démarres ou que tu montes d’un cran.",
     } as Localized,
     cta: { en: "Apply for coaching", ar: "بدا الـ coaching", fr: "Postuler au coaching" } as Localized,
-    ctaSecondary: { en: "See how it works", ar: "شوف كيفاش كنخدمو", fr: "Voir comment ça marche" } as Localized,
+    ctaSecondary: { en: "See results", ar: "شوف النتائج", fr: "Voir les résultats" } as Localized,
     ctaNote: {
       en: "I review every application myself.",
       ar: "",
@@ -297,9 +307,14 @@ export const landing = {
       fr: "Pas encore prêt pour le coaching ?",
     } as Localized,
     lead: {
-      en: "Start lighter. Build the hybrid body on your own schedule — then level up to coaching when you are ready.",
-      ar: "بدا بأخف. بني الـ hybrid body على وقتك — ومن بعد طلع للـ coaching ملي تكون واجد.",
-      fr: "Commence plus léger. Construis le physique hybride à ton rythme — puis passe au coaching quand tu es prêt.",
+      en: "Start lighter. Build the hybrid body on your own schedule, then level up to coaching when you are ready.",
+      ar: "بدا بأخف. بني الـ hybrid body على وقتك، ومن بعد طلع للـ coaching ملي تكون واجد.",
+      fr: "Commence plus léger. Construis le physique hybride à ton rythme, puis passe au coaching quand tu es prêt.",
+    } as Localized,
+    languagesNote: {
+      en: "The Hybrid Training Program is available in Arabic and English.",
+      ar: "الـ Hybrid Training Program متوفر بالعربية و بالإنجليزية.",
+      fr: "Le Hybrid Training Program est disponible en arabe et en anglais.",
     } as Localized,
     comingSoon: { en: "Coming soon", ar: "قريباً", fr: "Bientôt" } as Localized,
     gateTitle: {
@@ -320,27 +335,45 @@ export const landing = {
         kind: "paid" as const,
         tag: { en: "Paid", ar: "Paid", fr: "Payant" },
         pathLabel: { en: "01", ar: "01", fr: "01" },
-        shortTitle: { en: "BLUEPRINT", ar: "BLUEPRINT", fr: "BLUEPRINT" },
-        title: { en: "Hybrid Athlete Blueprint", ar: "Hybrid Athlete Blueprint", fr: "Hybrid Athlete Blueprint" },
+        shortTitle: {
+          en: "HYBRID TRAINING PROGRAM",
+          ar: "HYBRID TRAINING PROGRAM",
+          fr: "HYBRID TRAINING PROGRAM",
+        },
+        title: {
+          en: "Hybrid Training Program",
+          ar: "Hybrid Training Program",
+          fr: "Hybrid Training Program",
+        },
         level: { en: "All levels", ar: "جميع المستويات", fr: "Tous niveaux" },
         duration: { en: "3 / 4 / 5 days", ar: "3 / 4 / 5 أيام", fr: "3 / 4 / 5 jours" },
+        languages: {
+          en: "Available in Arabic & English",
+          ar: "متوفر بالعربية و الإنجليزية",
+          fr: "Disponible en arabe & anglais",
+        },
         body: {
-          en: "The hybrid body: stronger, bigger where it counts, lean and athletic — without living only for the gym.",
-          ar: "الـ hybrid body: أقوى، حجم فالبلايص اللي كتبان، lean و athletic — بلا ما تعيش غير للصالة.",
-          fr: "Le physique hybride: plus fort, plus de muscle où ça compte, sec et athletic — sans vivre que pour la salle.",
+          en: "The hybrid body: stronger, bigger where it counts, lean and athletic. Without living only for the gym.",
+          ar: "الـ hybrid body: أقوى، حجم فالبلايص اللي كتبان، lean و athletic. بلا ما تعيش غير للصالة.",
+          fr: "Le physique hybride: plus fort, plus de muscle où ça compte, sec et athletic. Sans vivre que pour la salle.",
         },
         price: { en: "$19.99", ar: "$19.99", fr: "19,99 $" },
         compareAt: { en: "$29.99", ar: "$29.99", fr: "29,99 $" },
-        cta: { en: "Get the Blueprint", ar: "خود الـ Blueprint", fr: "Prendre le Blueprint" },
+        cta: {
+          en: "Get the Hybrid Training Program",
+          ar: "خود الـ Hybrid Training Program",
+          fr: "Prendre le Hybrid Training Program",
+        },
         details: {
-          en: "This is a guide to the hybrid approach — how to build strength, size, and lean muscle by mixing bodybuilding and calisthenics, strength and endurance. Inside you get 3 full training programs (3, 4, or 5 days per week). Pick the one that matches your week and start building the physique.",
-          ar: "هاد Guide كيشح ليك الـ hybrid approach — كيفاش تبني القوة، الحجم، و lean muscle بالمزج بين bodybuilding و calisthenics، القوة و endurance. داخل كاين 3 programs كاملين (3، 4، ولا 5 أيام فالسيمانة). اختار اللي كيناسب أسبوعك وبدا تبني الجسم.",
-          fr: "Un guide de l’approche hybride — comment construire force, volume et muscle sec en mélangeant musculation et calisthenics, force et endurance. Dedans: 3 programmes complets (3, 4 ou 5 jours/semaine). Choisis celui qui colle à ta semaine et construis le physique.",
+          en: "This is a guide to the hybrid approach: how to build strength, size, and lean muscle by mixing bodybuilding and calisthenics, strength and endurance. Inside you get 3 full training programs (3, 4, or 5 days per week). Pick the one that matches your week and start building the physique. Available in Arabic and English.",
+          ar: "هاد Guide كيشح ليك الـ hybrid approach: كيفاش تبني القوة، الحجم، و lean muscle بالمزج بين bodybuilding و calisthenics، القوة و endurance. داخل كاين 3 programs كاملين (3، 4، ولا 5 أيام فالسيمانة). اختار اللي كيناسب أسبوعك وبدا تبني الجسم. متوفر بالعربية و الإنجليزية.",
+          fr: "Un guide de l’approche hybride: comment construire force, volume et muscle sec en mélangeant musculation et calisthenics, force et endurance. Dedans: 3 programmes complets (3, 4 ou 5 jours/semaine). Choisis celui qui colle à ta semaine et construis le physique. Disponible en arabe et en anglais.",
         },
         bullets: [
           { en: "A hybrid physique: strength, size, and lean muscle mass", ar: "Hybrid physique: قوة، حجم، و lean muscle mass", fr: "Physique hybride: force, volume et masse musculaire sèche" },
-          { en: "Look athletic — strong in the gym and with your own bodyweight", ar: "شكل athletic — قوي فالصالة ومع وزن جسمك", fr: "Look athletic — fort en salle et au poids de corps" },
-          { en: "3 complete programs: 3, 4, or 5 days — based on your availability", ar: "3 programs كاملين: 3، 4، ولا 5 أيام — على حساب الوقت ديالك", fr: "3 programmes complets: 3, 4 ou 5 jours — selon ta dispo" },
+          { en: "Look athletic. Strong in the gym and with your own bodyweight", ar: "شكل athletic. قوي فالصالة ومع وزن جسمك", fr: "Look athletic. Fort en salle et au poids de corps" },
+          { en: "3 complete programs: 3, 4, or 5 days, based on your availability", ar: "3 programs كاملين: 3، 4، ولا 5 أيام، على حساب الوقت ديالك", fr: "3 programmes complets: 3, 4 ou 5 jours, selon ta dispo" },
+          { en: "Available in Arabic and English", ar: "متوفر بالعربية و الإنجليزية", fr: "Disponible en arabe et en anglais" },
           { en: "Bodybuilding + calisthenics. Strength + endurance. One system.", ar: "Bodybuilding + calisthenics. قوة + endurance. System واحد.", fr: "Musculation + calisthenics. Force + endurance. Un seul système." },
         ],
       },

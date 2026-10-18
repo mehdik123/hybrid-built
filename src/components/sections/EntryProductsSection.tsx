@@ -45,6 +45,14 @@ const EntryProductsSection = () => {
           >
             {t.lead[language]}
           </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.1 }}
+            className="mt-3 font-editorial text-sm text-red-br"
+          >
+            {t.languagesNote[language]}
+          </motion.p>
         </div>
 
         <div
@@ -52,7 +60,7 @@ const EntryProductsSection = () => {
             isRTL ? "flex-row-reverse md:flex-row" : ""
           }`}
         >
-          {/* Blueprint — paid with discount */}
+          {/* Hybrid Training Program */}
           <motion.button
             type="button"
             onClick={() => setPaidId(blueprint.id)}
@@ -76,13 +84,17 @@ const EntryProductsSection = () => {
             />
             <div className="absolute inset-0 flex flex-col p-5 md:p-7">
               <div className={`flex items-start justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <h3 className="font-display text-3xl md:text-4xl uppercase text-white leading-[0.95]">
+                <h3 className="font-display text-2xl md:text-3xl uppercase text-white leading-[0.95] max-w-[14ch]">
                   {blueprint.shortTitle[language]}
                 </h3>
                 <span className="bg-red-br text-white font-editorial text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 shrink-0">
                   {blueprint.tag[language]}
                 </span>
               </div>
+
+              <p className="mt-3 font-editorial text-[11px] uppercase tracking-[0.14em] text-white/90 border border-white/35 px-2.5 py-1.5 w-fit">
+                {blueprint.languages[language]}
+              </p>
 
               <p className="mt-auto mb-4 font-editorial text-sm text-white/85 leading-relaxed max-w-[95%]">
                 {blueprint.body[language]}
@@ -106,7 +118,7 @@ const EntryProductsSection = () => {
             </div>
           </motion.button>
 
-          {/* Split Finder — free + email */}
+          {/* Split Finder */}
           <EmailCaptureModal source="split-finder">
             <motion.button
               type="button"

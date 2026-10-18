@@ -35,7 +35,7 @@ const Products = () => {
             />
             <p className="relative font-editorial text-xs md:text-sm uppercase tracking-[0.28em] text-white font-semibold">
               {t.comingSoon[language]}
-              {language === "ar" ? ". " : " — "}
+              {". "}
               {language === "en" ? "Access locked" : language === "fr" ? "Accès verrouillé" : "الوصول مقفول"}
             </p>
           </div>

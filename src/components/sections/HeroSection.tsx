@@ -12,7 +12,7 @@ const Headline = ({ language }: { language: "en" | "ar" | "fr" }) => {
     return (
       <>
         <span className="block">You&apos;re building your career.</span>
-        <span className="block">
+        <span className="block mt-1">
           Don&apos;t let your <span className="text-red-br">body</span> fall behind.
         </span>
       </>
@@ -22,7 +22,7 @@ const Headline = ({ language }: { language: "en" | "ar" | "fr" }) => {
     return (
       <>
         <span className="block">Tu construis ta carrière.</span>
-        <span className="block">
+        <span className="block mt-1">
           Ne laisse pas ton <span className="text-red-br">corps</span> derrière.
         </span>
       </>
@@ -31,7 +31,7 @@ const Headline = ({ language }: { language: "en" | "ar" | "fr" }) => {
   return (
     <>
       <span className="block">بني مستقبلك،</span>
-      <span className="block">
+      <span className="block mt-1">
         ولكن ما تنساش تبني <span className="text-red-br">جسمك</span> وصحتك.
       </span>
     </>
@@ -107,14 +107,14 @@ const HeroSection = () => {
         <img
           src={heroPosterSrc}
           alt=""
-          className="absolute inset-0 z-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 z-0 h-full w-full object-cover object-[center_18%]"
           fetchPriority="high"
           decoding="async"
         />
 
         <video
           ref={videoRef}
-          className="absolute inset-0 z-[1] h-full w-full object-cover object-center"
+          className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_18%]"
           poster={heroPosterSrc}
           muted
           loop
@@ -128,51 +128,58 @@ const HeroSection = () => {
           <source src={heroVideoSrc} type="video/mp4" />
         </video>
 
-        {/* Light bottom fade only — keeps text readable without washing the video */}
+        {/* Stronger read zone: bottom + text side */}
         <div
           className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, transparent 0%, transparent 45%, rgba(10,10,10,0.45) 72%, rgba(10,10,10,0.82) 100%)",
+              "linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.15) 22%, transparent 40%, rgba(10,10,10,0.55) 62%, rgba(10,10,10,0.94) 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 z-[2] pointer-events-none"
+          style={{
+            background: isRTL
+              ? "linear-gradient(270deg, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.35) 38%, transparent 62%)"
+              : "linear-gradient(90deg, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.35) 38%, transparent 62%)",
           }}
         />
       </div>
 
       <div
-        className={`relative z-10 w-full px-5 pt-24 pb-12 md:px-10 md:pt-32 md:pb-20 lg:px-14 ${
+        className={`relative z-10 w-full px-5 pt-28 pb-14 md:px-10 md:pt-36 md:pb-24 lg:px-14 ${
           isRTL ? "text-right" : ""
         }`}
       >
-        <div className="container-tight max-w-3xl">
+        <div className="container-tight max-w-2xl">
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-[clamp(2.6rem,9vw,5.25rem)] uppercase leading-[0.9] tracking-[0.01em] mb-5 md:mb-7"
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="font-editorial text-[11px] md:text-xs uppercase tracking-[0.22em] text-white/50 mb-6 md:mb-8"
           >
-            <span className="text-white">UNBREAK</span>
-            <span className="text-red-br">ABLES</span>
+            {t.label[language]}
           </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             className={`font-display uppercase text-white ${
               isAr
-                ? "text-[1.85rem] sm:text-3xl md:text-4xl lg:text-[3rem] leading-[1.35]"
-                : "text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.06]"
+                ? "text-[1.75rem] sm:text-3xl md:text-4xl lg:text-[2.85rem] leading-[1.35]"
+                : "text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.08]"
             }`}
           >
             <Headline language={language} />
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className={`mt-5 max-w-xl font-editorial text-base md:text-lg text-white/70 ${
-              isAr ? "leading-[1.85]" : "leading-relaxed"
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className={`mt-5 md:mt-6 max-w-md font-editorial text-[15px] md:text-base text-white/65 ${
+              isAr ? "leading-[1.8]" : "leading-relaxed"
             }`}
           >
             {t.subhead[language]}
@@ -181,19 +188,22 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className={`mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center gap-3 ${
-              isRTL ? "sm:flex-row-reverse" : ""
-            }`}
+            transition={{ duration: 0.5, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+            className={`mt-8 md:mt-10 flex flex-col gap-4 ${isRTL ? "items-end" : "items-start"}`}
           >
-            <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
-            <MagneticCTA href="#proof" className="btn-ghost-cta" external={false}>
-              {language === "en"
-                ? "See results"
-                : language === "fr"
-                  ? "Voir les résultats"
-                  : "شوف النتائج"}
-            </MagneticCTA>
+            <div
+              className={`flex flex-col sm:flex-row sm:items-center gap-3 ${
+                isRTL ? "sm:flex-row-reverse" : ""
+              }`}
+            >
+              <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
+              <MagneticCTA href="#proof" className="btn-ghost-cta" external={false}>
+                {t.ctaSecondary[language]}
+              </MagneticCTA>
+            </div>
+            <p className="font-editorial text-xs md:text-[13px] text-white/40 tracking-wide">
+              {t.proofLine[language]}
+            </p>
           </motion.div>
         </div>
       </div>

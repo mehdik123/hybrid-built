@@ -14,7 +14,7 @@ const ProductsSection = () => {
   const t = translations.products;
 
   const freeDownloadLink = "https://ig.me/m/unbreakablesteam?text=Hey!%20I'm%20interested%20in%20the%20free%20workout%20guide.%20Can%20you%20send%20it%20to%20me%3F";
-  const paidProductLink = "https://ig.me/m/unbreakablesteam?text=Hi!%20I'm%20interested%20in%20the%20Hybrid%20Physique%20Blueprint%20for%20%2415.%20Can%20you%20share%20more%20details%3F";
+  const paidProductLink = "https://ig.me/m/unbreakablesteam?text=Hi!%20I'm%20interested%20in%20the%20Hybrid%20Training%20Program.%20Can%20you%20share%20more%20details%3F";
 
   return (
     <section id="products" className="section-padding bg-card" ref={ref}>

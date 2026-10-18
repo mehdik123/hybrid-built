@@ -46,6 +46,12 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
             {product.title[language]}
           </DialogTitle>
 
+          {"languages" in product && product.languages && (
+            <p className="mt-3 font-editorial text-[11px] uppercase tracking-[0.14em] text-red-br">
+              {product.languages[language]}
+            </p>
+          )}
+
           <div className={`mt-4 flex items-baseline gap-3 ${isRTL ? "flex-row-reverse justify-end" : ""}`}>
             <span className="font-display text-3xl text-foreground">{product.price[language]}</span>
             {hasDiscount && (

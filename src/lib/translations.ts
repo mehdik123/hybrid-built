@@ -145,7 +145,7 @@ export const translations = {
     dmItem3: { en: "When you can start", ar: "متى تقدر تبدا", fr: "Quand tu peux commencer" },
     dmResponse: { en: "I reply to every message myself.", ar: "كنجاوب على كل ميساج براسي.", fr: "Je réponds à chaque message moi-même." },
     affordabilityMessage: { en: "Can't do 1-on-1 yet?", ar: "مازال ما تقدّش على 1-on-1؟", fr: "Pas encore prêt pour le 1-on-1 ?" },
-    checkProducts: { en: "Get the Blueprint", ar: "خود الدليل", fr: "Prendre le Blueprint" },
+    checkProducts: { en: "Get the Hybrid Training Program", ar: "خود الـ Hybrid Training Program", fr: "Prendre le Hybrid Training Program" },
     affordabilityDesc: { en: "", ar: "", fr: "" },
     applyHeadline: { en: "Ready to stop guessing?", ar: "واجد توقف التخمين؟", fr: "Prêt à arrêter de deviner ?" },
   },
@@ -293,7 +293,7 @@ export const translations = {
     freeButton: { en: "Get Free Access", ar: "خودها فابور", fr: "Accès Gratuit" },
     joinWaitlist: { en: "OPEN FREE TOOL", ar: "حل الأداة", fr: "OUVRIR L'OUTIL" },
     comingSoon: { en: "COMING SOON", ar: "قريباً", fr: "BIENTÔT" },
-    paidTitle: { en: "HYBRID BLUEPRINT", ar: "Hybrid Blueprint", fr: "HYBRID BLUEPRINT" },
+    paidTitle: { en: "HYBRID TRAINING PROGRAM", ar: "Hybrid Training Program", fr: "HYBRID TRAINING PROGRAM" },
     paidDescription: { en: "8 weeks of training. 4 meal plans. Tracker. Pay once. Keep forever.", ar: "8 سيمانات تدريب. 4 بلانات ماكلة. تراكر. خلص مرة. بقا عندك.", fr: "8 semaines. 4 plans repas. Tracker. Paye une fois. À toi pour toujours." },
     includes: { en: "What's inside:", ar: "شنو كاين:", fr: "Ce qu'il y a :" },
     features: [
@@ -310,7 +310,7 @@ export const translations = {
     ],
     freeProof: { en: "Real hybrid results", ar: "نتائج حقيقية", fr: "Vrais résultats hybrides" },
     freeAccessNote: { en: "Instant access. No email required.", ar: "ولوج فوري. بلا إيميل.", fr: "Accès instantané. Sans email." },
-    paidButton: { en: "Get Blueprint via DM", ar: "خود الدليل عبر DM", fr: "Blueprint via DM" },
+    paidButton: { en: "Get Hybrid Training via DM", ar: "خود الـ Hybrid Training عبر DM", fr: "Hybrid Training via DM" },
     originalPrice: { en: "", ar: "", fr: "" },
     limitedTime: { en: "INTRO PRICE", ar: "تمن أول", fr: "PRIX INTRO" },
     discountText: { en: "INSTANT ACCESS", ar: "ولوج فوري", fr: "ACCÈS INSTANTANÉ" },
@@ -409,7 +409,7 @@ export const translations = {
   },
 
   paidProductModal: {
-    title: { en: "HYBRID BLUEPRINT", ar: "Hybrid Blueprint", fr: "HYBRID BLUEPRINT" },
+    title: { en: "HYBRID TRAINING PROGRAM", ar: "Hybrid Training Program", fr: "HYBRID TRAINING PROGRAM" },
     subtitle: { en: "The full hybrid system in one product. Pay once.", ar: "السيستيم Hybrid كامل فمنتوج واحد. خلص مرة.", fr: "Le système hybride complet. Paye une fois." },
     oneTimePayment: { en: "ONE-TIME PAYMENT", ar: "خلص مرة وحدة", fr: "PAIEMENT UNIQUE" },
     whatYouGet: { en: "WHAT YOU GET:", ar: "شنو غاتاخد:", fr: "CE QUE TU REÇOIS :" },
@@ -431,19 +431,19 @@ export const translations = {
     },
     howToBuy: { en: "3 STEPS:", ar: "3 خطوات:", fr: "3 ÉTAPES :" },
     step1: { en: "Tap below to open Instagram", ar: "كليكي لتحت باش تحل انستغرام", fr: "Clique pour ouvrir Instagram" },
-    step2: { en: "Send the message 'HYBRID BLUEPRINT'", ar: "صيفط 'HYBRID BLUEPRINT'", fr: "Envoie 'HYBRID BLUEPRINT'" },
+    step2: { en: "Send the message 'HYBRID TRAINING'", ar: "صيفط 'HYBRID TRAINING'", fr: "Envoie 'HYBRID TRAINING'" },
     step3: { en: "I send payment details for your method", ar: "نصيفط ليك معلومات الخلاص", fr: "Je t'envoie les infos de paiement" },
     step4: { en: "Send proof. Get the product the same day.", ar: "صيفط الوصل. جيب البرودوي نهار نتاعو.", fr: "Envoie la preuve. Reçois le produit le jour même." },
-    dmButton: { en: "DM ME 'HYBRID BLUEPRINT'", ar: "صيفط ليا 'HYBRID BLUEPRINT'", fr: "DM MOI 'HYBRID BLUEPRINT'" },
-    dmLinkText: { en: "HYBRID BLUEPRINT", ar: "HYBRID BLUEPRINT", fr: "HYBRID BLUEPRINT" }
+    dmButton: { en: "DM ME 'HYBRID TRAINING'", ar: "صيفط ليا 'HYBRID TRAINING'", fr: "DM MOI 'HYBRID TRAINING'" },
+    dmLinkText: { en: "HYBRID TRAINING", ar: "HYBRID TRAINING", fr: "HYBRID TRAINING" }
   },
 
   productTeaser: {
     title: { en: "GO FASTER SOLO", ar: "سرّع بوحدك", fr: "AVANCE SEUL" },
     subtitle: { en: "Same method. You run it without me.", ar: "نفس الطريقة. نتا اللي كتخدم بيها.", fr: "Même méthode. Tu l'appliques sans moi." },
-    cta: { en: "SEE THE BLUEPRINT", ar: "شوف الدليل", fr: "VOIR LE BLUEPRINT" },
-    blueprintTitle: { en: "Hybrid Blueprint", ar: "Hybrid Blueprint", fr: "Hybrid Blueprint" },
-    blueprintDesc: { en: "Program + meals + tracker. DM for access.", ar: "برنامج + ماكلة + تراكر. DM للوصول.", fr: "Programme + repas + tracker. DM pour y accéder." },
+    cta: { en: "SEE THE PROGRAM", ar: "شوف البرنامج", fr: "VOIR LE PROGRAMME" },
+    blueprintTitle: { en: "Hybrid Training Program", ar: "Hybrid Training Program", fr: "Hybrid Training Program" },
+    blueprintDesc: { en: "Program + guide + tracker. DM for access.", ar: "برنامج + دليل + تراكر. DM للوصول.", fr: "Programme + guide + tracker. DM pour y accéder." },
     freeTitle: { en: "Free Split Finder", ar: "مكتشف الـ Split", fr: "Trouveur de Split" },
     freeDesc: { en: "Know your weekly split.", ar: "عرف الـ Split ديالك.", fr: "Trouve ton split hebdo." }
   },
@@ -465,14 +465,14 @@ export const translations = {
       tag: { en: "01", ar: "01", fr: "01" }
     },
     blueprint: {
-      title: { en: "Hybrid Blueprint", ar: "Hybrid Blueprint", fr: "Hybrid Blueprint" },
-      coverTag: { en: "HYBRID PROGRAM 8 WEEKS", ar: "برنامج HYBRID 8 سيمانات", fr: "PROGRAMME HYBRID 8 SEM." },
+      title: { en: "Hybrid Training Program", ar: "Hybrid Training Program", fr: "Hybrid Training Program" },
+      coverTag: { en: "HYBRID PROGRAM", ar: "برنامج HYBRID", fr: "PROGRAMME HYBRID" },
       desc: {
         en: "Full system. Pay once. Keep forever.",
         ar: "السيستيم كامل. خلص مرة. بقا عندك.",
         fr: "Système complet. Paye une fois. À vie."
       },
-      cta: { en: "Buy Blueprint", ar: "شري الدليل", fr: "Acheter" },
+      cta: { en: "Get the Program", ar: "خود البرنامج", fr: "Prendre le programme" },
       tag: { en: "02", ar: "02", fr: "02" }
     },
     freeTool: {

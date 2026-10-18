@@ -26,7 +26,7 @@ const PaidProductSection = () => {
             <EditorialPhoto
               src={ASSETS.productsHero}
               fallbackSrc={ASSETS.heroFallback}
-              alt="Hybrid Physique Blueprint"
+              alt="Hybrid Training Program"
               warm
               className="aspect-[4/5] w-full"
             />

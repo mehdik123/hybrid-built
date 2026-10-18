@@ -6,6 +6,7 @@ import StickyApplyButton from "@/components/StickyApplyButton";
 import ScrollProgress from "@/components/ScrollProgress";
 
 const ProofSection = lazy(() => import("@/components/sections/ProofSection"));
+const AppPhonesSection = lazy(() => import("@/components/sections/AppPhonesSection"));
 const OfferSection = lazy(() => import("@/components/sections/OfferSection"));
 const ProcessSection = lazy(() => import("@/components/sections/ProcessSection"));
 const EntryProductsSection = lazy(() => import("@/components/sections/EntryProductsSection"));
@@ -42,6 +43,7 @@ const Index = () => {
       <HeroSection />
       <Suspense fallback={<SectionLoader />}>
         <ProofSection />
+        <AppPhonesSection />
         <OfferSection />
         <ProcessSection />
         <EntryProductsSection />
