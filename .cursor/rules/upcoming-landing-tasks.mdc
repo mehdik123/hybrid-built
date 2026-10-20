@@ -9,7 +9,7 @@ When the user returns to the website, **remind them** of remaining pending items
 
 1. ~~Digital product cover~~ — done (`hybrid-training-cover.jpg`)
 2. ~~Split Finder cover~~ — done (`split-finder-cover.jpg`)
-3. ~~Gumroad payment~~ — done (`https://mehdikamal7.gumroad.com/l/ukamgr`, price $24)
+3. ~~Gumroad payment~~ — done (`?wanted=true` checkout from site modal; custom Gumroad HTML cleared; price $24)
 4. **Client names and feedback** — add real client names + testimonials/feedback
 5. **Darija wording (priority)** — large rewrite needed across the site; many Arabic/Darija phrases must be corrected (not small polish). Use `darija-page-copy.txt` and user review when resuming.
 

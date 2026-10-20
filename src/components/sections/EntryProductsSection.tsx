@@ -60,7 +60,7 @@ const EntryProductsSection = () => {
             isRTL ? "flex-row-reverse md:flex-row" : ""
           }`}
         >
-          {/* Hybrid Training Program */}
+          {/* Hybrid Training Program → explain modal, then checkout */}
           <motion.button
             type="button"
             onClick={() => setPaidId(blueprint.id)}
@@ -75,7 +75,6 @@ const EntryProductsSection = () => {
               className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               loading="lazy"
             />
-            {/* Light top so cover art reads; darker bottom for price */}
             <div
               className="absolute inset-0"
               style={{
@@ -104,10 +103,14 @@ const EntryProductsSection = () => {
 
                 <div className={`flex items-center justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
                   <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
-                    {blueprint.level[language]}
+                    {blueprint.duration[language]}
                   </span>
                   <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
-                    {blueprint.duration[language]}
+                    {language === "en"
+                      ? "See details"
+                      : language === "fr"
+                        ? "Voir détails"
+                        : "شوف التفاصيل"}
                   </span>
                 </div>
               </div>

@@ -3,8 +3,10 @@ export const IG_HANDLE = "unbreakablesteam";
 export const IG_DM_MESSAGE = "Apply for coaching";
 export const IG_DM_URL = `https://ig.me/m/${IG_HANDLE}?text=${encodeURIComponent(IG_DM_MESSAGE)}`;
 
-/** Gumroad checkout for Hybrid Athlete Blueprint / Hybrid Training Program */
+/** Gumroad product page */
 export const GUMROAD_HYBRID_URL = "https://mehdikamal7.gumroad.com/l/ukamgr";
+/** Opens Gumroad checkout overlay immediately (skips long product browse) */
+export const GUMROAD_HYBRID_CHECKOUT_URL = `${GUMROAD_HYBRID_URL}?wanted=true`;
 
 export const CTA_PRIMARY_EN = "Apply for coaching";
 export const CTA_FRICTION_EN = "I review every application myself.";

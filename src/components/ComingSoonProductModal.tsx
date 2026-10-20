@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { useLanguage } from "@/contexts/AppContext";
 import { landing } from "@/content/coachingLanding";
-import { GUMROAD_HYBRID_URL, IG_DM_URL } from "@/lib/constants";
+import { GUMROAD_HYBRID_CHECKOUT_URL, IG_DM_URL } from "@/lib/constants";
 import MagneticCTA from "@/components/motion/MagneticCTA";
 
 type ProductItem = (typeof landing.products.items)[number];
@@ -28,8 +28,10 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
     "checkoutUrl" in product && typeof product.checkoutUrl === "string" && product.checkoutUrl
       ? product.checkoutUrl
       : product.kind === "paid"
-        ? GUMROAD_HYBRID_URL
+        ? GUMROAD_HYBRID_CHECKOUT_URL
         : IG_DM_URL;
+  const gallery =
+    "gallery" in product && Array.isArray(product.gallery) ? product.gallery : [];
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -38,7 +40,7 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
           isRTL ? "text-right" : "text-left"
         }`}
       >
-        <div className="relative p-6 md:p-8">
+        <div className="relative p-6 md:p-8 max-h-[85vh] overflow-y-auto">
           <DialogClose
             className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} rounded-full border border-white/15 p-2 text-white/70 hover:text-white hover:border-white/35 transition-colors`}
           >
@@ -71,6 +73,29 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
             {product.details[language]}
           </p>
 
+          {gallery.length > 0 && (
+            <div className="mt-6">
+              <p className="font-editorial text-[10px] uppercase tracking-[0.22em] text-white/40 mb-3">
+                {language === "en"
+                  ? "Inside the app"
+                  : language === "fr"
+                    ? "Dans l’app"
+                    : "داخل الـ app"}
+              </p>
+              <div className={`flex gap-2.5 overflow-x-auto pb-1 ${isRTL ? "flex-row-reverse" : ""}`}>
+                {gallery.map((src) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt=""
+                    className="h-52 w-auto shrink-0 rounded-lg border border-white/10 object-cover object-top"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
           <p className="mt-6 font-editorial text-[10px] uppercase tracking-[0.22em] text-white/40 mb-3">
             {language === "en" ? "What’s inside" : language === "fr" ? "Ce qui est dedans" : "المحتوى"}
           </p>
@@ -90,10 +115,10 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
             {product.kind === "paid" && (
               <p className="mt-3 font-editorial text-xs text-white/35">
                 {language === "en"
-                  ? "Secure checkout on Gumroad. Instant access after payment."
+                  ? "Opens Gumroad checkout. Instant access after payment."
                   : language === "fr"
-                    ? "Paiement sécurisé sur Gumroad. Accès immédiat après paiement."
-                    : "خلاص آمن فـ Gumroad. Access فوري من بعد الخلاص."}
+                    ? "Ouvre le paiement Gumroad. Accès immédiat après paiement."
+                    : "كيحل صفحة الخلاص فـ Gumroad. Access فوري من بعد الخلاص."}
               </p>
             )}
           </div>
