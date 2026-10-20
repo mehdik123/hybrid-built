@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { useLanguage } from "@/contexts/AppContext";
 import { landing } from "@/content/coachingLanding";
-import { IG_DM_URL } from "@/lib/constants";
+import { GUMROAD_HYBRID_URL, IG_DM_URL } from "@/lib/constants";
 import MagneticCTA from "@/components/motion/MagneticCTA";
 
 type ProductItem = (typeof landing.products.items)[number];
@@ -24,6 +24,12 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
   if (!product) return null;
 
   const hasDiscount = Boolean(product.compareAt[language]);
+  const checkoutUrl =
+    "checkoutUrl" in product && typeof product.checkoutUrl === "string" && product.checkoutUrl
+      ? product.checkoutUrl
+      : product.kind === "paid"
+        ? GUMROAD_HYBRID_URL
+        : IG_DM_URL;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -80,7 +86,16 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
           </ul>
 
           <div className="mt-8">
-            <MagneticCTA href={IG_DM_URL}>{product.cta[language]}</MagneticCTA>
+            <MagneticCTA href={checkoutUrl}>{product.cta[language]}</MagneticCTA>
+            {product.kind === "paid" && (
+              <p className="mt-3 font-editorial text-xs text-white/35">
+                {language === "en"
+                  ? "Secure checkout on Gumroad. Instant access after payment."
+                  : language === "fr"
+                    ? "Paiement sécurisé sur Gumroad. Accès immédiat après paiement."
+                    : "خلاص آمن فـ Gumroad. Access فوري من بعد الخلاص."}
+              </p>
+            )}
           </div>
         </div>
       </DialogContent>

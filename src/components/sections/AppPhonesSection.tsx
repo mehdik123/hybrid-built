@@ -11,11 +11,12 @@ const SCREENS = [
   { src: ASSETS.appProgress, label: { en: "Progress", ar: "التقدم", fr: "Progrès" } },
 ] as const;
 
+/** Rest fan positions (active phone goes to center) */
 const CASCADE = [
-  { x: -88, y: -36, z: 60, ry: -30, rx: 10 },
-  { x: -28, y: -46, z: 25, ry: -16, rx: 7 },
-  { x: 32, y: -54, z: -10, ry: -4, rx: 4 },
-  { x: 90, y: -62, z: -45, ry: 10, rx: 2 },
+  { x: -110, y: 8, z: -40, ry: -28, rx: 6 },
+  { x: -40, y: -6, z: -20, ry: -12, rx: 4 },
+  { x: 40, y: -6, z: -20, ry: 12, rx: 4 },
+  { x: 110, y: 8, z: -40, ry: 28, rx: 6 },
 ] as const;
 
 const copy = {
@@ -31,9 +32,9 @@ const copy = {
     fr: "Une expérience fluide: on suit tes PRs, milestones, poids, photos hebdo, volume d’entraînement et progrès musculaire.",
   },
   hint: {
-    en: "Hover or tap a phone",
-    ar: "مرّر أو كليكي على phone",
-    fr: "Survole ou tape un téléphone",
+    en: "Tap a phone to bring it forward",
+    ar: "كليكي على phone باش يجي للقدام",
+    fr: "Tape un téléphone pour l’avancer",
   },
 } as const;
 
@@ -43,7 +44,9 @@ const PhoneCard = ({
   index,
   inView,
   reduced,
+  active,
   hovered,
+  onSelect,
   onHover,
 }: {
   src: string;
@@ -51,77 +54,87 @@ const PhoneCard = ({
   index: number;
   inView: boolean;
   reduced: boolean;
-  hovered: number | null;
-  onHover: (i: number | null) => void;
+  active: boolean;
+  hovered: boolean;
+  onSelect: () => void;
+  onHover: (v: boolean) => void;
 }) => {
   const c = CASCADE[index];
-  const isHovered = hovered === index;
-  const isDimmed = hovered !== null && !isHovered;
+  const raised = active || hovered;
 
   return (
     <motion.button
       type="button"
-      className="absolute left-1/2 top-1/2 border-0 bg-transparent p-0 cursor-pointer"
+      className="absolute left-1/2 top-1/2 border-0 bg-transparent p-0 cursor-pointer touch-manipulation"
       style={{
-        width: "min(168px, 36vw)",
-        marginLeft: "calc(min(168px, 36vw) / -2)",
-        marginTop: "calc(min(168px, 36vw) * 1.05 * -0.5)",
+        width: "min(168px, 34vw)",
+        marginLeft: "calc(min(168px, 34vw) / -2)",
+        marginTop: "calc(min(168px, 34vw) * 1.05 * -0.5)",
         transformStyle: "preserve-3d",
-        zIndex: isHovered ? 50 : 10 + index,
+        zIndex: active ? 60 : raised ? 40 : 10 + index,
         WebkitTapHighlightColor: "transparent",
       }}
-      initial={{ opacity: 0, x: 0, y: 40, rotateY: 0, rotateX: 0, z: -80 }}
+      initial={{ opacity: 0, x: 0, y: 36, rotateY: 0, rotateX: 0, z: -60, scale: 0.92 }}
       animate={
         inView
-          ? {
-              opacity: isDimmed ? 0.35 : 1,
-              x: c.x,
-              y: isHovered ? c.y - 22 : c.y,
-              z: isHovered ? c.z + 80 : c.z,
-              rotateY: isHovered ? c.ry + 10 : c.ry,
-              rotateX: isHovered ? c.rx + 2 : c.rx,
-              scale: isHovered ? 1.1 : 1,
-            }
+          ? active
+            ? {
+                opacity: 1,
+                x: 0,
+                y: -18,
+                z: 120,
+                rotateY: 0,
+                rotateX: 2,
+                scale: 1.18,
+              }
+            : {
+                opacity: raised ? 0.55 : 0.9,
+                x: c.x,
+                y: c.y,
+                z: c.z,
+                rotateY: c.ry,
+                rotateX: c.rx,
+                scale: 1,
+              }
           : {}
       }
-      transition={{ type: "spring", stiffness: 140, damping: 20, mass: 0.9 }}
-      onMouseEnter={() => onHover(index)}
-      onMouseLeave={() => onHover(null)}
-      onClick={() => onHover(isHovered ? null : index)}
+      transition={{ type: "spring", stiffness: 160, damping: 22, mass: 0.85 }}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
+      onClick={onSelect}
       aria-label={label}
+      aria-pressed={active}
     >
       <motion.div
-        className="relative aspect-[9/19] rounded-[1.75rem] border border-white/30 overflow-hidden bg-black"
+        className="relative aspect-[9/19] rounded-[1.75rem] border overflow-hidden bg-black"
         style={{
           transformStyle: "preserve-3d",
-          boxShadow: isHovered
-            ? "0 40px 80px rgba(0,0,0,0.75), 0 0 0 1px rgba(232,0,28,0.5)"
-            : "0 26px 55px rgba(0,0,0,0.6)",
+          borderColor: active ? "rgba(232,0,28,0.65)" : "rgba(255,255,255,0.28)",
+          boxShadow: active
+            ? "0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(232,0,28,0.45)"
+            : "0 22px 48px rgba(0,0,0,0.55)",
         }}
         animate={
-          reduced || !inView
+          reduced || !inView || active
             ? { y: 0 }
-            : hovered === null
-              ? { y: [0, index % 2 === 0 ? -10 : 8, 0] }
-              : { y: 0 }
+            : { y: [0, index % 2 === 0 ? -8 : 6, 0] }
         }
         transition={
-          reduced || !inView
+          reduced || !inView || active
             ? { duration: 0.2 }
-            : hovered === null
-              ? { duration: 3 + index * 0.45, repeat: Infinity, ease: "easeInOut", delay: index * 0.3 }
-              : { duration: 0.2 }
+            : { duration: 3.2 + index * 0.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.25 }
         }
       >
         <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-3 w-12 rounded-full bg-black/90 z-10" />
         <img
           src={src}
-          alt=""
+          alt={label}
           className="absolute inset-0 h-full w-full object-cover object-top"
-          loading="lazy"
+          loading="eager"
           decoding="async"
+          draggable={false}
         />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/75 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
         <span className="absolute bottom-3 left-1/2 -translate-x-1/2 font-editorial text-[9px] uppercase tracking-[0.2em] text-white/90">
           {label}
         </span>
@@ -136,6 +149,7 @@ const AppPhonesSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const reduced = useReducedMotion();
+  const [active, setActive] = useState(0);
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
@@ -175,38 +189,37 @@ const AppPhonesSection = () => {
           </motion.p>
         </div>
 
+        {/* Tab strip: always reachable on mobile */}
         <div
-          className="relative mx-auto w-full max-w-xl sm:max-w-2xl h-[360px] sm:h-[440px] md:h-[500px]"
-          style={{ perspective: "1100px", perspectiveOrigin: "50% 50%" }}
+          className={`mb-4 flex flex-wrap gap-2 ${isRTL ? "justify-end" : "justify-start"} sm:justify-center`}
+        >
+          {SCREENS.map((screen, i) => (
+            <button
+              key={screen.src}
+              type="button"
+              onClick={() => setActive(i)}
+              className={`font-editorial text-[10px] uppercase tracking-[0.16em] px-3 py-2 transition-colors ${
+                active === i
+                  ? "text-white border border-red-br/70 bg-white/[0.04]"
+                  : "text-white/40 border border-white/10 hover:text-white/70"
+              }`}
+            >
+              {screen.label[lang]}
+            </button>
+          ))}
+        </div>
+
+        <div
+          className="relative mx-auto w-full max-w-xl sm:max-w-2xl h-[380px] sm:h-[460px] md:h-[520px] overflow-visible"
+          style={{ perspective: "1200px", perspectiveOrigin: "50% 45%" }}
           onMouseLeave={() => setHovered(null)}
         >
           <div
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-[62%] h-24 w-[80%] -translate-x-1/2 rounded-[100%] bg-black/65 blur-3xl"
           />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(232,0,28,0.12)_0%,transparent_55%)]"
-          />
 
-          <motion.div
-            className="relative h-full w-full"
-            style={{ transformStyle: "preserve-3d" }}
-            animate={
-              reduced || !inView
-                ? { rotateY: 0, rotateX: 0 }
-                : hovered === null
-                  ? { rotateY: [-10, 10, -10], rotateX: [4, -3, 4] }
-                  : { rotateY: 0, rotateX: 2 }
-            }
-            transition={
-              reduced || !inView
-                ? { duration: 0.4 }
-                : hovered === null
-                  ? { duration: 7.5, repeat: Infinity, ease: "easeInOut" }
-                  : { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
-            }
-          >
+          <div className="relative h-full w-full" style={{ transformStyle: "preserve-3d" }}>
             {SCREENS.map((screen, i) => (
               <PhoneCard
                 key={screen.src}
@@ -215,11 +228,13 @@ const AppPhonesSection = () => {
                 index={i}
                 inView={inView}
                 reduced={reduced}
-                hovered={hovered}
-                onHover={setHovered}
+                active={active === i}
+                hovered={hovered === i}
+                onSelect={() => setActive(i)}
+                onHover={(v) => setHovered(v ? i : null)}
               />
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

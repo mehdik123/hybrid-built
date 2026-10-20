@@ -331,8 +331,9 @@ export const landing = {
     items: [
       {
         id: "blueprint",
-        cover: "/about-me.jpg",
+        cover: "/hybrid-training-cover.jpg",
         kind: "paid" as const,
+        checkoutUrl: "https://mehdikamal7.gumroad.com/l/ukamgr",
         tag: { en: "Paid", ar: "Paid", fr: "Payant" },
         pathLabel: { en: "01", ar: "01", fr: "01" },
         shortTitle: {
@@ -357,12 +358,12 @@ export const landing = {
           ar: "الـ hybrid body: أقوى، حجم فالبلايص اللي كتبان، lean و athletic. بلا ما تعيش غير للصالة.",
           fr: "Le physique hybride: plus fort, plus de muscle où ça compte, sec et athletic. Sans vivre que pour la salle.",
         },
-        price: { en: "$19.99", ar: "$19.99", fr: "19,99 $" },
-        compareAt: { en: "$29.99", ar: "$29.99", fr: "29,99 $" },
+        price: { en: "$24", ar: "$24", fr: "24 $" },
+        compareAt: { en: "$34", ar: "$34", fr: "34 $" },
         cta: {
-          en: "Get the Hybrid Training Program",
-          ar: "خود الـ Hybrid Training Program",
-          fr: "Prendre le Hybrid Training Program",
+          en: "Buy on Gumroad",
+          ar: "شري من Gumroad",
+          fr: "Acheter sur Gumroad",
         },
         details: {
           en: "This is a guide to the hybrid approach: how to build strength, size, and lean muscle by mixing bodybuilding and calisthenics, strength and endurance. Inside you get 3 full training programs (3, 4, or 5 days per week). Pick the one that matches your week and start building the physique. Available in Arabic and English.",
@@ -379,7 +380,7 @@ export const landing = {
       },
       {
         id: "split",
-        cover: "/transformation-4-after.png",
+        cover: "/split-finder-cover.jpg",
         kind: "free" as const,
         tag: { en: "Free", ar: "Free", fr: "Gratuit" },
         pathLabel: { en: "02", ar: "02", fr: "02" },

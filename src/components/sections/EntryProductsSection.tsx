@@ -71,49 +71,45 @@ const EntryProductsSection = () => {
           >
             <img
               src={blueprint.cover}
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              alt={blueprint.title[language]}
+              className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               loading="lazy"
             />
+            {/* Light top so cover art reads; darker bottom for price */}
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 35%, rgba(0,0,0,0.82) 100%)",
+                  "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, transparent 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.9) 100%)",
               }}
             />
             <div className="absolute inset-0 flex flex-col p-5 md:p-7">
-              <div className={`flex items-start justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <h3 className="font-display text-2xl md:text-3xl uppercase text-white leading-[0.95] max-w-[14ch]">
-                  {blueprint.shortTitle[language]}
-                </h3>
+              <div className={`flex justify-end ${isRTL ? "justify-start" : ""}`}>
                 <span className="bg-red-br text-white font-editorial text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 shrink-0">
                   {blueprint.tag[language]}
                 </span>
               </div>
 
-              <p className="mt-3 font-editorial text-[11px] uppercase tracking-[0.14em] text-white/90 border border-white/35 px-2.5 py-1.5 w-fit">
-                {blueprint.languages[language]}
-              </p>
+              <div className="mt-auto">
+                <p className="mb-3 font-editorial text-[11px] uppercase tracking-[0.14em] text-white/90 border border-white/35 px-2.5 py-1.5 w-fit">
+                  {blueprint.languages[language]}
+                </p>
 
-              <p className="mt-auto mb-4 font-editorial text-sm text-white/85 leading-relaxed max-w-[95%]">
-                {blueprint.body[language]}
-              </p>
+                <div className={`mb-3 flex items-baseline gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+                  <span className="font-display text-3xl text-white">{blueprint.price[language]}</span>
+                  <span className="font-editorial text-base text-white/45 line-through">
+                    {blueprint.compareAt[language]}
+                  </span>
+                </div>
 
-              <div className={`mb-4 flex items-baseline gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <span className="font-display text-3xl text-white">{blueprint.price[language]}</span>
-                <span className="font-editorial text-base text-white/45 line-through">
-                  {blueprint.compareAt[language]}
-                </span>
-              </div>
-
-              <div className={`flex items-center justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
-                  {blueprint.level[language]}
-                </span>
-                <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
-                  {blueprint.duration[language]}
-                </span>
+                <div className={`flex items-center justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+                  <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
+                    {blueprint.level[language]}
+                  </span>
+                  <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
+                    {blueprint.duration[language]}
+                  </span>
+                </div>
               </div>
             </div>
           </motion.button>
