@@ -80,22 +80,42 @@ export const landing = {
   },
 
   proof: {
-    eyebrow: { en: "Proof", ar: "النتائج", fr: "Preuves" } as Localized,
+    eyebrow: { en: "Client progress", ar: "تقدم الـ clients", fr: "Progrès clients" } as Localized,
     title: {
-      en: "People who take themselves seriously. At every stage.",
-      ar: "ناس قررو ياخدو راسهم بجدية، وكل واحد عندو journey ديالو.",
-      fr: "Des gens qui se prennent au sérieux. À chaque étape.",
+      en: "Different starts. Real progress.",
+      ar: "بدايات مختلفة. تقدم حقيقي.",
+      fr: "Des départs différents. Un vrai progrès.",
+    } as Localized,
+    titleAccent: {
+      en: "Real progress.",
+      ar: "تقدم حقيقي.",
+      fr: "Un vrai progrès.",
+    } as Localized,
+    subhead: {
+      en: "Fat loss, muscle, strength. See what consistent work can look like.",
+      ar: "نقص دهن، عضلات، قوة. شوف كيفاش كيبان العمل المستمر.",
+      fr: "Perte de gras, muscle, force. Voici ce que donne un travail régulier.",
     } as Localized,
     before: { en: "Before", ar: "قبل", fr: "Avant" } as Localized,
     after: { en: "After", ar: "من بعد", fr: "Après" } as Localized,
     voice: {
-      tag: { en: "Client voice", ar: "كلام client", fr: "Voix client" } as Localized,
-      line: {
-        en: "Hear what the process feels like from the inside.",
-        ar: "سمع من عندهم كيفاش دازت معاهم الـ journey.",
-        fr: "Écoute ce que le process donne de l’intérieur.",
+      tag: { en: "The coaching experience", ar: "تجربة الـ coaching", fr: "L’expérience coaching" } as Localized,
+      title: {
+        en: "More than a before & after.",
+        ar: "أكثر من قبل و من بعد.",
+        fr: "Plus qu’un avant / après.",
       } as Localized,
-      cta: { en: "Watch the testimonial", ar: "شوف الـ testimonial", fr: "Voir le témoignage" } as Localized,
+      line: {
+        en: "Hear a client's perspective on the plan, the support and the work behind their progress.",
+        ar: "سمع من client كيفاش بان ليه الـ plan، الدعم، والعمل اللي ورا التقدم.",
+        fr: "Écoute le point de vue d’un client sur le plan, le suivi et le travail derrière ses progrès.",
+      } as Localized,
+      mediaLabel: {
+        en: "Client testimonial",
+        ar: "Client testimonial",
+        fr: "Témoignage client",
+      } as Localized,
+      cta: { en: "Watch the client story", ar: "شوف قصة الـ client", fr: "Voir l’histoire client" } as Localized,
     },
     cases: [
       {
@@ -334,7 +354,11 @@ export const landing = {
         cover: "/hybrid-training-cover.jpg",
         kind: "paid" as const,
         checkoutUrl: "https://mehdikamal7.gumroad.com/l/ukamgr?wanted=true",
-        tag: { en: "Paid", ar: "Paid", fr: "Payant" },
+        tag: {
+          en: "Self-guided program",
+          ar: "برنامج self-guided",
+          fr: "Programme en autonomie",
+        },
         pathLabel: { en: "01", ar: "01", fr: "01" },
         shortTitle: {
           en: "HYBRID TRAINING PROGRAM",
@@ -342,9 +366,9 @@ export const landing = {
           fr: "HYBRID TRAINING PROGRAM",
         },
         title: {
-          en: "Hybrid Training Program",
-          ar: "Hybrid Training Program",
-          fr: "Hybrid Training Program",
+          en: "The Hybrid Athlete Blueprint",
+          ar: "The Hybrid Athlete Blueprint",
+          fr: "The Hybrid Athlete Blueprint",
         },
         level: { en: "All levels", ar: "جميع المستويات", fr: "Tous niveaux" },
         duration: { en: "3 / 4 / 5 days", ar: "3 / 4 / 5 أيام", fr: "3 / 4 / 5 jours" },
@@ -360,15 +384,30 @@ export const landing = {
         },
         price: { en: "$24", ar: "$24", fr: "24 $" },
         compareAt: { en: "$34", ar: "$34", fr: "34 $" },
+        priceNote: {
+          en: "One-time purchase",
+          ar: "خلاص مرة واحدة",
+          fr: "Achat unique",
+        },
         cta: {
-          en: "Buy now",
-          ar: "شري دابا",
-          fr: "Acheter",
+          en: "Get the program",
+          ar: "خود البرنامج",
+          fr: "Obtenir le programme",
         },
         details: {
-          en: "Build an aesthetic body with a hybrid program: bodybuilding mixed with calisthenics. Inside the app, create your account and follow what to do each week. Finish and log your week, and progressive overload updates automatically for the next one. 3, 4, or 5 days. Arabic and English.",
-          ar: "بني جسم aesthetic بـ hybrid program: bodybuilding مخلوط مع calisthenics. فـ app كتخلق account ديالك وكتبع شنو خاصك دير كل أسبوع. ملي تسالي وتسجل الأسبوع، progressive overload كيتبدل أوتوماتيك للأسبوع الجاي. 3، 4، ولا 5 أيام. عربية و إنجليزية.",
-          fr: "Corps aesthetic avec un programme hybride: musculation + calisthenics. Dans l’app, crée ton compte et suis ce qu’il faut faire chaque semaine. Tu finis et tu logs la semaine: le progressive overload se met à jour tout seul pour la suivante. 3, 4 ou 5 jours. Arabe et anglais.",
+          en: "A self-guided bodybuilding and calisthenics program, available in Arabic and English. Choose a 3, 4 or 5-day schedule, follow your workouts in the app and log each week. Progressive overload updates automatically for the next week.",
+          ar: "برنامج self-guided: bodybuilding و calisthenics، بالعربية و الإنجليزية. اختار 3، 4 ولا 5 أيام، تبع الـ workouts فـ app وسجّل كل أسبوع. Progressive overload كيتبدل أوتوماتيك للأسبوع الجاي.",
+          fr: "Programme en autonomie: musculation et calisthenics, en arabe et en anglais. Choisis 3, 4 ou 5 jours, suis tes séances dans l’app et log chaque semaine. Le progressive overload se met à jour automatiquement pour la suivante.",
+        },
+        disclaimer: {
+          en: "This is a self-guided program. Personal coaching and daily support are a separate service.",
+          ar: "هاد برنامج self-guided. الـ coaching الشخصي والمتابعة اليومية خدمة منفصلة.",
+          fr: "Programme en autonomie. Le coaching personnel et le suivi quotidien sont un service séparé.",
+        },
+        checkoutNote: {
+          en: "Exact checkout amount and currency appears at checkout.",
+          ar: "الثمن والعملة النهائيين كيبانو فصفحة الخلاص.",
+          fr: "Le montant et la devise exacts apparaissent au paiement.",
         },
         gallery: [
           "/hybrid-app-home.png",
@@ -376,11 +415,21 @@ export const landing = {
           "/hybrid-app-session.png",
         ],
         bullets: [
-          { en: "Aesthetic body: bodybuilding + calisthenics", ar: "جسم aesthetic: bodybuilding + calisthenics", fr: "Corps aesthetic: musculation + calisthenics" },
-          { en: "Tells you what to do each week", ar: "كيقولك شنو دير كل أسبوع", fr: "Te dit quoi faire chaque semaine" },
-          { en: "Log the week → automatic progressive overload", ar: "سجل الأسبوع → progressive overload أوتوماتيك", fr: "Log la semaine → progressive overload auto" },
-          { en: "App included: create your account and train", ar: "App داخلة: خلق account ديالك وتمرّن", fr: "App incluse: crée ton compte et entraîne-toi" },
-          { en: "3 / 4 / 5 days · Arabic & English", ar: "3 / 4 / 5 أيام · عربية و إنجليزية", fr: "3 / 4 / 5 jours · arabe & anglais" },
+          {
+            en: "App access and weekly workouts",
+            ar: "Access لـ app و workouts أسبوعية",
+            fr: "Accès app et séances hebdo",
+          },
+          {
+            en: "Exercise videos and automatic progression",
+            ar: "فيديوهات التمارين و progression أوتوماتيك",
+            fr: "Vidéos d’exercices et progression auto",
+          },
+          {
+            en: "Arabic and English · 3, 4 or 5 days",
+            ar: "عربية و إنجليزية · 3، 4 ولا 5 أيام",
+            fr: "Arabe et anglais · 3, 4 ou 5 jours",
+          },
         ],
       },
       {

@@ -114,7 +114,7 @@ const HeroSection = () => {
 
         <video
           ref={videoRef}
-          className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_18%]"
+          className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_18%] [transform:translateZ(0)]"
           poster={heroPosterSrc}
           muted
           loop
@@ -124,24 +124,26 @@ const HeroSection = () => {
           controls={false}
           disablePictureInPicture
           aria-hidden
+          // Prefer sharpness; source is ~1.4MB — drop a higher-bitrate MP4 in src/assets to upgrade.
+          style={{ imageRendering: "auto" }}
         >
           <source src={heroVideoSrc} type="video/mp4" />
         </video>
 
-        {/* Stronger read zone: bottom + text side */}
+        {/* Lighter overlays so the hero clip reads sharper */}
         <div
           className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.15) 22%, transparent 40%, rgba(10,10,10,0.55) 62%, rgba(10,10,10,0.94) 100%)",
+              "linear-gradient(180deg, rgba(10,10,10,0.32) 0%, rgba(10,10,10,0.08) 24%, transparent 42%, rgba(10,10,10,0.42) 68%, rgba(10,10,10,0.9) 100%)",
           }}
         />
         <div
           className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background: isRTL
-              ? "linear-gradient(270deg, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.35) 38%, transparent 62%)"
-              : "linear-gradient(90deg, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.35) 38%, transparent 62%)",
+              ? "linear-gradient(270deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.22) 36%, transparent 58%)"
+              : "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.22) 36%, transparent 58%)",
           }}
         />
       </div>

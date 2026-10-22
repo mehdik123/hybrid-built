@@ -4,7 +4,6 @@ import { Instagram, Play, X } from "lucide-react";
 import { useLanguage } from "@/contexts/AppContext";
 import { ASSETS, TESTIMONIAL_REEL_EMBED, TESTIMONIAL_REEL_URL } from "@/lib/constants";
 import { translations } from "@/lib/translations";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 import {
   Dialog,
   DialogContent,
@@ -13,15 +12,16 @@ import {
 
 type Props = {
   tag: string;
+  title: string;
   line: string;
+  mediaLabel: string;
   cta: string;
   inView: boolean;
 };
 
-const TestimonialVideoCard = ({ tag, line, cta, inView }: Props) => {
+const TestimonialVideoCard = ({ tag, title, line, mediaLabel, cta, inView }: Props) => {
   const { language, isRTL } = useLanguage();
   const vt = translations.videoTestimonial;
-  const reduced = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [open, setOpen] = useState(false);
@@ -33,7 +33,6 @@ const TestimonialVideoCard = ({ tag, line, cta, inView }: Props) => {
       try {
         const res = await fetch(ASSETS.testimonialVideo, { method: "HEAD" });
         const type = (res.headers.get("content-type") || "").toLowerCase();
-        // Vite SPA serves index.html (text/html) for missing files — only trust real video.
         if (!cancelled) setUseLocal(res.ok && type.includes("video"));
       } catch {
         if (!cancelled) setUseLocal(false);
@@ -72,13 +71,15 @@ const TestimonialVideoCard = ({ tag, line, cta, inView }: Props) => {
         initial={{ opacity: 0, y: 14 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.18 }}
-        className="mt-10 md:mt-14 grid md:grid-cols-[minmax(0,340px)_1fr] gap-6 md:gap-10 items-center"
+        className={`mt-12 md:mt-16 grid md:grid-cols-[minmax(0,220px)_1fr] lg:grid-cols-[minmax(0,260px)_1fr] gap-6 md:gap-10 items-center ${
+          isRTL ? "md:[direction:rtl]" : ""
+        }`}
       >
         <button
           type="button"
           onClick={openPlayer}
           aria-label={cta}
-          className="group relative w-full max-w-[300px] sm:max-w-[340px] mx-auto md:mx-0 aspect-[9/16] overflow-hidden bg-black ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-br"
+          className="group relative w-full max-w-[220px] sm:max-w-[260px] mx-auto md:mx-0 aspect-[3/4] overflow-hidden rounded-xl bg-black ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-br"
         >
           <img
             src={ASSETS.testimonialCover}
@@ -87,43 +88,38 @@ const TestimonialVideoCard = ({ tag, line, cta, inView }: Props) => {
             decoding="async"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
 
-          {!reduced && (
-            <motion.span
-              className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border border-red-br/45"
-              animate={{ scale: [1, 1.4], opacity: [0.5, 0] }}
-              transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut" }}
-              aria-hidden
-            />
-          )}
+          <span className="absolute inset-0 z-10 flex items-center justify-center">
+            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-red-br text-white shadow-[0_10px_28px_rgba(232,0,28,0.4)] transition-transform duration-300 group-hover:scale-105">
+              <Play className="h-6 w-6 fill-current translate-x-0.5" />
+            </span>
+          </span>
 
-          <span className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4">
-            <span className="flex h-16 w-16 md:h-[4.5rem] md:w-[4.5rem] items-center justify-center rounded-full bg-red-br text-white shadow-[0_12px_40px_rgba(232,0,28,0.45)] transition-transform duration-300 group-hover:scale-105">
-              <Play className="h-7 w-7 md:h-8 md:w-8 fill-current translate-x-0.5" />
-            </span>
-            <span className="font-editorial text-[10px] uppercase tracking-[0.28em] text-white/85">
-              {cta}
-            </span>
+          <span className="absolute bottom-3 left-3 z-10 font-editorial text-[9px] uppercase tracking-[0.2em] text-white/90">
+            {mediaLabel}
           </span>
         </button>
 
-        <div className={`max-w-md ${isRTL ? "text-right" : ""}`}>
+        <div className={`max-w-lg ${isRTL ? "text-right" : "text-left"}`}>
           <p className="font-editorial text-[10px] uppercase tracking-[0.22em] text-red-br mb-3">
             {tag}
           </p>
-          <p className="font-editorial text-lg md:text-xl text-white/75 leading-relaxed">
+          <h3 className="font-display text-2xl md:text-4xl uppercase leading-[1.05] text-foreground tracking-tight">
+            {title}
+          </h3>
+          <p className="mt-4 font-editorial text-sm md:text-base text-white/65 leading-relaxed">
             {line}
           </p>
           <button
             type="button"
             onClick={openPlayer}
-            className={`mt-5 inline-flex items-center gap-2 font-editorial text-xs uppercase tracking-[0.18em] text-white/55 hover:text-white transition-colors ${
+            className={`mt-5 inline-flex items-center gap-2 font-editorial text-sm text-white/85 hover:text-white transition-colors ${
               isRTL ? "flex-row-reverse" : ""
             }`}
           >
-            <Play className="h-3.5 w-3.5 fill-current" />
             {cta}
+            <span className="inline-block border-l-[6px] border-y-[5px] border-y-transparent border-l-white/80 translate-y-px" />
           </button>
         </div>
       </motion.div>

@@ -48,8 +48,16 @@ const wrapX = (value: number, half: number, rtl: boolean) => {
   return x;
 };
 
-const BAThumb = ({ src, label }: { src: string; label: string }) => (
-  <div className="relative h-full overflow-hidden bg-muted">
+const BAThumb = ({
+  src,
+  label,
+  variant,
+}: {
+  src: string;
+  label: string;
+  variant: "before" | "after";
+}) => (
+  <div className="relative h-full overflow-hidden rounded-md bg-muted">
     <img
       src={src}
       alt=""
@@ -58,7 +66,11 @@ const BAThumb = ({ src, label }: { src: string; label: string }) => (
       className="h-full w-full object-cover pointer-events-none"
       draggable={false}
     />
-    <span className="absolute bottom-2.5 left-2.5 font-editorial text-[10px] uppercase tracking-[0.16em] text-white/90 bg-black/55 px-2 py-1 pointer-events-none">
+    <span
+      className={`absolute top-2.5 left-2.5 font-editorial text-[9px] uppercase tracking-[0.16em] px-2 py-1 pointer-events-none ${
+        variant === "after" ? "bg-red-br text-white" : "bg-black text-white"
+      }`}
+    >
       {label}
     </span>
   </div>
@@ -66,36 +78,27 @@ const BAThumb = ({ src, label }: { src: string; label: string }) => (
 
 const RailTile = ({
   item,
-  isRTL,
-  lang,
   before,
   after,
 }: {
   item: RailItem;
-  isRTL: boolean;
-  lang: Lang;
   before: string;
   after: string;
 }) => (
-  <article className="shrink-0 w-[340px] sm:w-[400px] md:w-[460px] select-none">
-    <div className="grid grid-cols-2 gap-1.5 h-[280px] sm:h-[340px] md:h-[400px]">
-      <BAThumb src={item.beforeImg} label={before} />
-      <BAThumb src={item.afterImg} label={after} />
-    </div>
-    <div className={`mt-3 h-11 ${isRTL ? "text-right" : ""}`}>
-      {item.name && (
-        <p className="font-editorial text-sm leading-snug text-white/70 line-clamp-2">
-          <span className="font-display text-base uppercase text-foreground tracking-wide">
-            {item.name[lang]}
-          </span>
-          {item.profession && (
-            <span className="text-red-br"> · {item.profession[lang]}</span>
-          )}
-          {item.timeframe && (
-            <span className="text-white/40"> · {item.timeframe[lang]}</span>
-          )}
-        </p>
-      )}
+  <article
+    data-rail-tile
+    className="relative shrink-0 w-[280px] sm:w-[340px] md:w-[400px] select-none"
+  >
+    {/* Inner scales — outer stays unscaled so center distance stays stable */}
+    <div
+      data-rail-scale
+      className="relative origin-center will-change-transform"
+      style={{ transform: "scale(0.86)", opacity: 0.55 }}
+    >
+      <div className="grid grid-cols-2 gap-1.5 h-[220px] sm:h-[280px] md:h-[340px] shadow-lg shadow-black/40">
+        <BAThumb src={item.beforeImg} label={before} variant="before" />
+        <BAThumb src={item.afterImg} label={after} variant="after" />
+      </div>
     </div>
   </article>
 );
@@ -124,6 +127,9 @@ const ProofSection = () => {
 
   const loop = [...rail, ...rail];
 
+  const titleLead = t.title[lang].replace(t.titleAccent[lang], "").trim();
+  const titleAccent = t.titleAccent[lang];
+
   useEffect(() => {
     const track = trackRef.current;
     const viewport = viewportRef.current;
@@ -140,6 +146,38 @@ const ProofSection = () => {
     let axis: "h" | "v" | null = null;
     let activePointer: number | null = null;
 
+    const applyCenterScale = () => {
+      const vpRect = viewport.getBoundingClientRect();
+      const centerX = vpRect.left + vpRect.width / 2;
+      // Distance at which a card is fully “side” sized
+      const falloff = Math.max(160, vpRect.width * 0.42);
+
+      const tiles = track.querySelectorAll<HTMLElement>("[data-rail-tile]");
+      tiles.forEach((tile) => {
+        const inner = tile.querySelector<HTMLElement>("[data-rail-scale]");
+        if (!inner) return;
+
+        // Measure the unscaled outer shell — avoids scale feedback loops
+        const r = tile.getBoundingClientRect();
+        const tileCenter = r.left + r.width / 2;
+        const dist = Math.abs(tileCenter - centerX);
+        const tNorm = Math.min(1, dist / falloff);
+
+        if (reduced) {
+          inner.style.transform = "scale(1)";
+          inner.style.opacity = "1";
+          return;
+        }
+
+        // Center ~1.18, sides ~0.82 — clear zoom when a pair hits the middle
+        const scale = 1.18 - tNorm * 0.36;
+        const opacity = 1 - tNorm * 0.42;
+        inner.style.transform = `scale(${scale.toFixed(3)})`;
+        inner.style.opacity = Math.max(0.5, opacity).toFixed(3);
+        inner.style.zIndex = String(Math.round((1 - tNorm) * 20));
+      });
+    };
+
     const io = new IntersectionObserver(
       ([entry]) => {
         visible = entry.isIntersecting;
@@ -152,13 +190,15 @@ const ProofSection = () => {
       const half = track.scrollWidth / 2;
       x = wrapX(x, half, isRTL);
       track.style.transform = `translate3d(${x}px, 0, 0)`;
+      applyCenterScale();
     };
 
-    const baseSpeed = reduced ? 0.25 : 0.55;
+    const baseSpeed = reduced ? 0.22 : 0.4;
 
     const tick = (time: number) => {
       if (!visible || dragging) {
         lastTime = time;
+        if (visible) applyCenterScale();
         raf = requestAnimationFrame(tick);
         return;
       }
@@ -231,6 +271,7 @@ const ProofSection = () => {
     viewport.addEventListener("pointerup", endDrag);
     viewport.addEventListener("pointercancel", endDrag);
 
+    paint();
     raf = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(raf);
@@ -261,10 +302,19 @@ const ProofSection = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.05 }}
-            className="font-display text-3xl md:text-5xl uppercase leading-[1.08] text-foreground"
+            className="font-display text-3xl md:text-5xl uppercase leading-[1.05] tracking-tight"
           >
-            {t.title[lang]}
+            <span className="text-foreground">{titleLead} </span>
+            <span className="text-white/45">{titleAccent}</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.08 }}
+            className="mt-4 font-editorial text-sm md:text-base text-white/55 leading-relaxed max-w-md"
+          >
+            {t.subhead[lang]}
+          </motion.p>
         </div>
       </div>
 
@@ -273,20 +323,18 @@ const ProofSection = () => {
         animate={inView ? { opacity: 1 } : {}}
         transition={{ delay: 0.1, duration: 0.45 }}
         ref={viewportRef}
-        className="relative overflow-hidden cursor-grab touch-pan-y"
+        className="relative overflow-x-clip overflow-y-visible cursor-grab touch-pan-y py-8 md:py-12"
         style={{ touchAction: "pan-y" }}
       >
         <div
           ref={trackRef}
-          className="flex w-max gap-5 md:gap-6 will-change-transform"
+          className="flex w-max items-center gap-3 md:gap-5 will-change-transform"
           style={{ transform: "translate3d(0,0,0)" }}
         >
           {loop.map((item, i) => (
             <RailTile
               key={`${item.beforeImg}-${i}`}
               item={item}
-              isRTL={isRTL}
-              lang={lang}
               before={t.before[lang]}
               after={t.after[lang]}
             />
@@ -297,7 +345,9 @@ const ProofSection = () => {
       <div className="container-tight">
         <TestimonialVideoCard
           tag={t.voice.tag[lang]}
+          title={t.voice.title[lang]}
           line={t.voice.line[lang]}
+          mediaLabel={t.voice.mediaLabel[lang]}
           cta={t.voice.cta[lang]}
           inView={inView}
         />

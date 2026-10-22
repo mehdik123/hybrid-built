@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Gumroad API dumps (may contain signed paid-file download URLs)
+gumroad/publish.json
+gumroad/publish-short.json
+gumroad/preview.json
+gumroad/publish*.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
