@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
 import { ASSETS } from "@/lib/constants";
@@ -9,14 +9,6 @@ const SCREENS = [
   { src: ASSETS.appTrain, label: { en: "Train", ar: "تدريب", fr: "Train" } },
   { src: ASSETS.appNutrition, label: { en: "Nutrition", ar: "تغذية", fr: "Nutrition" } },
   { src: ASSETS.appProgress, label: { en: "Progress", ar: "التقدم", fr: "Progrès" } },
-] as const;
-
-/** Rest fan positions (active phone goes to center) */
-const CASCADE = [
-  { x: -110, y: 8, z: -40, ry: -28, rx: 6 },
-  { x: -40, y: -6, z: -20, ry: -12, rx: 4 },
-  { x: 40, y: -6, z: -20, ry: 12, rx: 4 },
-  { x: 110, y: 8, z: -40, ry: 28, rx: 6 },
 ] as const;
 
 const copy = {
@@ -32,125 +24,102 @@ const copy = {
     fr: "Une expérience fluide: on suit tes PRs, milestones, poids, photos hebdo, volume d’entraînement et progrès musculaire.",
   },
   hint: {
-    en: "Tap a phone to bring it forward",
-    ar: "كليكي على phone باش يجي للقدام",
-    fr: "Tape un téléphone pour l’avancer",
+    en: "Tap a screen to focus it",
+    ar: "كليكي على screen باش تركز عليها",
+    fr: "Tape un écran pour le mettre en avant",
   },
 } as const;
 
 const PhoneCard = ({
   src,
   label,
-  index,
   inView,
-  reduced,
   active,
-  hovered,
+  index,
   onSelect,
-  onHover,
 }: {
   src: string;
   label: string;
-  index: number;
   inView: boolean;
-  reduced: boolean;
   active: boolean;
-  hovered: boolean;
+  index: number;
   onSelect: () => void;
-  onHover: (v: boolean) => void;
-}) => {
-  const c = CASCADE[index];
-  const raised = active || hovered;
-
-  return (
-    <motion.button
-      type="button"
-      className="absolute left-1/2 top-1/2 border-0 bg-transparent p-0 cursor-pointer touch-manipulation"
+}) => (
+  <motion.button
+    type="button"
+    onClick={onSelect}
+    aria-label={label}
+    aria-pressed={active}
+    initial={{ opacity: 0, y: 28 }}
+    animate={
+      inView
+        ? {
+            opacity: 1,
+            y: active ? -10 : 0,
+            scale: active ? 1.06 : 0.94,
+          }
+        : {}
+    }
+    transition={{ type: "spring", stiffness: 220, damping: 24, delay: index * 0.06 }}
+    className="relative shrink-0 snap-center border-0 bg-transparent p-0 cursor-pointer touch-manipulation"
+    style={{
+      width: "min(148px, 38vw)",
+      zIndex: active ? 20 : 10,
+      WebkitTapHighlightColor: "transparent",
+    }}
+  >
+    <div
+      className="relative aspect-[9/19] rounded-[1.6rem] border overflow-hidden bg-black transition-[border-color,box-shadow] duration-300"
       style={{
-        width: "min(168px, 34vw)",
-        marginLeft: "calc(min(168px, 34vw) / -2)",
-        marginTop: "calc(min(168px, 34vw) * 1.05 * -0.5)",
-        transformStyle: "preserve-3d",
-        zIndex: active ? 60 : raised ? 40 : 10 + index,
-        WebkitTapHighlightColor: "transparent",
+        borderColor: active ? "rgba(232,0,28,0.7)" : "rgba(255,255,255,0.22)",
+        boxShadow: active
+          ? "0 28px 56px rgba(0,0,0,0.65), 0 0 0 1px rgba(232,0,28,0.35)"
+          : "0 16px 36px rgba(0,0,0,0.45)",
       }}
-      initial={{ opacity: 0, x: 0, y: 36, rotateY: 0, rotateX: 0, z: -60, scale: 0.92 }}
-      animate={
-        inView
-          ? active
-            ? {
-                opacity: 1,
-                x: 0,
-                y: -18,
-                z: 120,
-                rotateY: 0,
-                rotateX: 2,
-                scale: 1.18,
-              }
-            : {
-                opacity: raised ? 0.55 : 0.9,
-                x: c.x,
-                y: c.y,
-                z: c.z,
-                rotateY: c.ry,
-                rotateX: c.rx,
-                scale: 1,
-              }
-          : {}
-      }
-      transition={{ type: "spring", stiffness: 160, damping: 22, mass: 0.85 }}
-      onMouseEnter={() => onHover(true)}
-      onMouseLeave={() => onHover(false)}
-      onClick={onSelect}
-      aria-label={label}
-      aria-pressed={active}
     >
-      <motion.div
-        className="relative aspect-[9/19] rounded-[1.75rem] border overflow-hidden bg-black"
-        style={{
-          transformStyle: "preserve-3d",
-          borderColor: active ? "rgba(232,0,28,0.65)" : "rgba(255,255,255,0.28)",
-          boxShadow: active
-            ? "0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(232,0,28,0.45)"
-            : "0 22px 48px rgba(0,0,0,0.55)",
-        }}
-        animate={
-          reduced || !inView || active
-            ? { y: 0 }
-            : { y: [0, index % 2 === 0 ? -8 : 6, 0] }
-        }
-        transition={
-          reduced || !inView || active
-            ? { duration: 0.2 }
-            : { duration: 3.2 + index * 0.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.25 }
-        }
-      >
-        <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-3 w-12 rounded-full bg-black/90 z-10" />
-        <img
-          src={src}
-          alt={label}
-          className="absolute inset-0 h-full w-full object-cover object-top"
-          loading="eager"
-          decoding="async"
-          draggable={false}
-        />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-        <span className="absolute bottom-3 left-1/2 -translate-x-1/2 font-editorial text-[9px] uppercase tracking-[0.2em] text-white/90">
-          {label}
-        </span>
-      </motion.div>
-    </motion.button>
-  );
-};
+      <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-2.5 w-10 rounded-full bg-black/90 z-10" />
+      <img
+        src={src}
+        alt={label}
+        className="absolute inset-0 h-full w-full object-cover object-top"
+        loading="eager"
+        decoding="async"
+        draggable={false}
+      />
+      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/85 to-transparent pointer-events-none" />
+      <span className="absolute bottom-2.5 left-1/2 -translate-x-1/2 font-editorial text-[9px] uppercase tracking-[0.18em] text-white/90">
+        {label}
+      </span>
+    </div>
+  </motion.button>
+);
 
 const AppPhonesSection = () => {
   const { language, isRTL } = useLanguage();
   const lang = language as "en" | "ar" | "fr";
   const ref = useRef(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const reduced = useReducedMotion();
   const [active, setActive] = useState(0);
-  const [hovered, setHovered] = useState<number | null>(null);
+
+  // Gentle auto-cycle so every screen gets focus without a click
+  useEffect(() => {
+    if (!inView || reduced) return;
+    const id = window.setInterval(() => {
+      setActive((prev) => (prev + 1) % SCREENS.length);
+    }, 3200);
+    return () => window.clearInterval(id);
+  }, [inView, reduced]);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.children[active] as HTMLElement | undefined;
+    if (!card) return;
+    const left = card.offsetLeft - (el.clientWidth - card.clientWidth) / 2;
+    el.scrollTo({ left, behavior: "smooth" });
+  }, [active]);
 
   return (
     <section id="app" className="section-padding pt-6 md:pt-10 bg-ink" ref={ref}>
@@ -189,9 +158,8 @@ const AppPhonesSection = () => {
           </motion.p>
         </div>
 
-        {/* Tab strip: always reachable on mobile */}
         <div
-          className={`mb-4 flex flex-wrap gap-2 ${isRTL ? "justify-end" : "justify-start"} sm:justify-center`}
+          className={`mb-5 flex flex-wrap gap-2 ${isRTL ? "justify-end" : "justify-start"} sm:justify-center`}
         >
           {SCREENS.map((screen, i) => (
             <button
@@ -209,17 +177,19 @@ const AppPhonesSection = () => {
           ))}
         </div>
 
-        <div
-          className="relative mx-auto w-full max-w-xl sm:max-w-2xl h-[380px] sm:h-[460px] md:h-[520px] overflow-visible"
-          style={{ perspective: "1200px", perspectiveOrigin: "50% 45%" }}
-          onMouseLeave={() => setHovered(null)}
-        >
+        <div className="relative">
           <div
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-[62%] h-24 w-[80%] -translate-x-1/2 rounded-[100%] bg-black/65 blur-3xl"
+            className="pointer-events-none absolute left-1/2 top-[70%] h-20 w-[70%] -translate-x-1/2 rounded-[100%] bg-black/50 blur-3xl"
           />
 
-          <div className="relative h-full w-full" style={{ transformStyle: "preserve-3d" }}>
+          <div
+            ref={scrollerRef}
+            className={`relative flex items-end gap-3 sm:gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory pb-4 pt-6 px-4 sm:px-2 scrollbar-none ${
+              isRTL ? "flex-row-reverse" : ""
+            } sm:justify-center sm:overflow-visible`}
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
             {SCREENS.map((screen, i) => (
               <PhoneCard
                 key={screen.src}
@@ -227,11 +197,8 @@ const AppPhonesSection = () => {
                 label={screen.label[lang]}
                 index={i}
                 inView={inView}
-                reduced={reduced}
                 active={active === i}
-                hovered={hovered === i}
                 onSelect={() => setActive(i)}
-                onHover={(v) => setHovered(v ? i : null)}
               />
             ))}
           </div>

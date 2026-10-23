@@ -193,7 +193,7 @@ const ProofSection = () => {
       applyCenterScale();
     };
 
-    const baseSpeed = reduced ? 0.22 : 0.4;
+    const baseSpeed = reduced ? 0.3 : 0.55;
 
     const tick = (time: number) => {
       if (!visible || dragging) {
