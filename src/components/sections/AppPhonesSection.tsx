@@ -12,20 +12,20 @@ const SCREENS = [
 ] as const;
 
 const copy = {
-  eyebrow: { en: "My coaching app", ar: "الـ app ديالي", fr: "Mon app de coaching" },
+  eyebrow: { en: "My coaching app", ar: "تطبيق التدريب ديالي", fr: "Mon app de coaching" },
   title: {
     en: "Private coaching in my app.",
-    ar: "Private coaching فـ app ديالي.",
+    ar: "أنا اللي كنوجّهك. التطبيق غير كيساعدنا ننظمو.",
     fr: "Coaching privé dans mon app.",
   },
   lead: {
     en: "A smooth experience where we track your PRs, milestones, bodyweight, weekly photos, training volume, and muscle progress.",
-    ar: "تجربة سلسة كنتبعو فيها الـ PRs، الـ milestones، الوزن، الصور الأسبوعية، الـ training volume، وتقدم العضلات.",
+    ar: "بزاف ديال الكوتشات كيعطيوك PDF وكيخليوك بوحدك. أنا اللي كنقاد البرنامج وكنتابع معاك نهار بنهار. التطبيق غير بلاصة كتلقا فيها التمارين، الماكلة والتقدم ديالك.",
     fr: "Une expérience fluide: on suit tes PRs, milestones, poids, photos hebdo, volume d’entraînement et progrès musculaire.",
   },
   hint: {
     en: "Tap a screen to focus it",
-    ar: "كليكي على screen باش تركز عليها",
+    ar: "كليكي على الشاشة باش تركز عليها",
     fr: "Tape un écran pour le mettre en avant",
   },
 } as const;

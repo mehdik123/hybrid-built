@@ -32,7 +32,7 @@ const Headline = ({ language }: { language: "en" | "ar" | "fr" }) => {
     <>
       <span className="block">بني مستقبلك،</span>
       <span className="block mt-1">
-        ولكن ما تنساش تبني <span className="text-red-br">جسمك</span> وصحتك.
+        وما تنساش <span className="text-red-br">صحتك</span> والجسم ديالك.
       </span>
     </>
   );

@@ -12,10 +12,10 @@ export const translations = {
     results: { en: "Results", ar: "النتائج", fr: "Résultats" },
     faq: { en: "FAQ", ar: "FAQ", fr: "FAQ" },
     products: { en: "Products", ar: "Products", fr: "Produits" },
-    applyNow: { en: "Apply for coaching", ar: "بدا الـ coaching", fr: "Postuler au coaching" },
-    backToHome: { en: "Portal", ar: "الرئيسية", fr: "Portail" },
+    applyNow: { en: "Apply for coaching", ar: "بدا معايا", fr: "Postuler au coaching" },
+    backToHome: { en: "Portal", ar: "رجع للصفحة الرئيسية", fr: "Portail" },
     back: { en: "Back", ar: "رجوع", fr: "Retour" },
-    choosePath: { en: "Portal", ar: "الرئيسية", fr: "Portail" },
+    choosePath: { en: "Portal", ar: "رجع للصفحة الرئيسية", fr: "Portail" },
   },
 
   hero: {
@@ -349,9 +349,9 @@ export const translations = {
   },
 
   footer: {
-    title1: { en: "FOLLOW FOR", ar: "تابعني على", fr: "SUIS POUR" },
+    title1: { en: "FOLLOW FOR", ar: "تبعني على", fr: "SUIS POUR" },
     title2: { en: "FREE CONTENT", ar: "محتوى مجاني", fr: "DU GRATUIT" },
-    questions: { en: "Questions? DM me anytime.", ar: "عندك شي سؤال؟ صيفط ليا فـ أي وقت.", fr: "Questions ? DM à tout moment." },
+    questions: { en: "Questions? DM me anytime.", ar: "عندك شي سؤال؟ مرحبا، صيفط ليا فـ أي وقت.", fr: "Questions ? DM à tout moment." },
     rights: { en: "All Rights Reserved", ar: "جميع الحقوق محفوظة", fr: "Tous droits réservés" },
   },
 
@@ -393,7 +393,7 @@ export const translations = {
   },
 
   sticky: {
-    apply: { en: "Apply for coaching", ar: "بدا الـ coaching", fr: "Postuler au coaching" },
+    apply: { en: "Apply for coaching", ar: "بدا معايا", fr: "Postuler au coaching" },
   },
 
   modal: {
@@ -509,7 +509,7 @@ export const translations = {
   languageModal: {
     title1: { en: "CHOOSE YOUR", ar: "اختار", fr: "CHOISIS TA" },
     title2: { en: "LANGUAGE", ar: "اللغة", fr: "LANGUE" },
-    subtitle: { en: "Pick a language to continue.", ar: "اختار اللغة باش تكمل.", fr: "Choisis une langue pour continuer." },
+    subtitle: { en: "Pick a language to continue.", ar: "اختار اللغة اللي بغيتي تكمل بها.", fr: "Choisis une langue pour continuer." },
   },
 
   notFound: {

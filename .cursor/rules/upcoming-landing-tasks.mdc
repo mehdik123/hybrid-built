@@ -11,7 +11,7 @@ When the user returns to the website, **remind them** of remaining pending items
 2. ~~Split Finder cover~~ — done (`split-finder-cover.jpg`)
 3. ~~Gumroad payment~~ — done (`?wanted=true` checkout from site modal; custom Gumroad HTML cleared; price $24)
 4. **Client names and feedback** — add real client names + testimonials/feedback
-5. **Darija wording (priority)** — large rewrite needed across the site; many Arabic/Darija phrases must be corrected (not small polish). Use `darija-page-copy.txt` and user review when resuming.
+5. ~~Darija wording~~ — humanised pass applied (2026-10-24). Re-review live AR pages if anything still feels off.
 6. **Hero video quality** — current `hero-bg.mp4` is ~1.4MB (looks compressed). Replace with a higher-bitrate master when the user provides it.
 
 Context: coaching funnel site (`hybrid-built`).
