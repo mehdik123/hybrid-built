@@ -1,4 +1,4 @@
-import { X, Zap, Check, MessageCircle } from "lucide-react";
+import { X, Zap, Check, MessageCircle, Landmark } from "lucide-react";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
 import {
@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
+import { IG_HYBRID_DM_URL } from "@/lib/constants";
 
 interface PaidProductInfoModalProps {
     children: React.ReactNode;
@@ -130,6 +131,21 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                             </div>
                         </div>
 
+                        <div className="mb-6 border border-primary/25 bg-primary/5 p-5">
+                            <h3 className="mb-2 font-bold text-base text-foreground uppercase tracking-wide">
+                                {t.bankTransferTitle[language]}
+                            </h3>
+                            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                                {t.bankTransferDesc[language]}
+                            </p>
+                            <a href={IG_HYBRID_DM_URL} target="_blank" rel="noopener noreferrer" className="block w-full">
+                                <Button variant="outline" className="min-h-11 w-full whitespace-normal border-primary text-primary">
+                                    <Landmark className="h-4 w-4 shrink-0" aria-hidden="true" />
+                                    {t.bankTransferCta[language]}
+                                </Button>
+                            </a>
+                        </div>
+
                         {/* Payment Process */}
                         <div className="mb-8 bg-primary/5 border border-primary/20 rounded-xl p-5">
                             <h3 className="font-bold text-lg mb-3 text-primary uppercase tracking-wide">
@@ -157,7 +173,7 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
 
                         {/* CTA Buttons */}
                         <div className="flex flex-col gap-4">
-                            <a href={`https://ig.me/m/unbreakablesteam?text=${encodeURIComponent(t.dmLinkText[language])}`} target="_blank" rel="noopener noreferrer" className="block w-full">
+                            <a href={IG_HYBRID_DM_URL} target="_blank" rel="noopener noreferrer" className="block w-full">
                                 <Button
                                     size="lg"
                                     className="w-full bg-primary hover:bg-primary/90 text-background font-black uppercase tracking-widest text-base sm:text-lg transition-all shadow-lg shadow-foreground/10 flex items-center justify-center gap-3 py-8 sm:py-9"

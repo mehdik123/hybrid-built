@@ -429,13 +429,20 @@ export const translations = {
       cash: { en: "Cash agencies (Wafacash, CashPlus)", ar: "وكالات الكاش (Wafacash, CashPlus)", fr: "Agences cash (Wafacash...)" },
       intl: { en: "International (Western Union)", ar: "دولي (Western Union)", fr: "International (Western Union)" }
     },
+    bankTransferTitle: { en: "Pay by bank transfer", ar: "خلص بالتحويل البنكي", fr: "Payer par virement bancaire" },
+    bankTransferDesc: {
+      en: "Can't pay by card? Message me on Instagram with HYBRID. I'll send you the bank-transfer details for the program.",
+      ar: "ماقدرتيش تخلص بالبطاقة؟ صيفط ليا HYBRID فـ Instagram ونصيفط ليك معلومات التحويل البنكي ديال البرنامج.",
+      fr: "Tu ne peux pas payer par carte ? Envoie-moi HYBRID sur Instagram et je t’enverrai les coordonnées bancaires du programme."
+    },
+    bankTransferCta: { en: "Message HYBRID for bank details", ar: "صيفط HYBRID لمعلومات التحويل", fr: "Envoyer HYBRID pour les coordonnées" },
     howToBuy: { en: "3 STEPS:", ar: "3 خطوات:", fr: "3 ÉTAPES :" },
     step1: { en: "Tap below to open Instagram", ar: "كليكي لتحت باش تحل انستغرام", fr: "Clique pour ouvrir Instagram" },
-    step2: { en: "Send the message 'HYBRID TRAINING'", ar: "صيفط 'HYBRID TRAINING'", fr: "Envoie 'HYBRID TRAINING'" },
+    step2: { en: "Send the message 'HYBRID'", ar: "صيفط 'HYBRID'", fr: "Envoie 'HYBRID'" },
     step3: { en: "I send payment details for your method", ar: "نصيفط ليك معلومات الخلاص", fr: "Je t'envoie les infos de paiement" },
     step4: { en: "Send proof. Get the product the same day.", ar: "صيفط الوصل. جيب البرودوي نهار نتاعو.", fr: "Envoie la preuve. Reçois le produit le jour même." },
-    dmButton: { en: "DM ME 'HYBRID TRAINING'", ar: "صيفط ليا 'HYBRID TRAINING'", fr: "DM MOI 'HYBRID TRAINING'" },
-    dmLinkText: { en: "HYBRID TRAINING", ar: "HYBRID TRAINING", fr: "HYBRID TRAINING" }
+    dmButton: { en: "DM ME 'HYBRID'", ar: "صيفط ليا 'HYBRID'", fr: "DM MOI 'HYBRID'" },
+    dmLinkText: { en: "HYBRID", ar: "HYBRID", fr: "HYBRID" }
   },
 
   productTeaser: {
@@ -490,20 +497,94 @@ export const translations = {
   },
 
   freeToolPage: {
-    title1: { en: "FREE", ar: "أدوات", fr: "OUTILS" },
-    title2: { en: "HYBRID TOOLS", ar: "مجانية", fr: "GRATUITS" },
+    title1: { en: "FIND YOUR", ar: "اكتشف", fr: "TROUVE TON" },
+    title2: { en: "HYBRID SPLIT", ar: "تقسيمة التدريب", fr: "SPLIT HYBRIDE" },
     subtitle: {
-      en: "Drop your email. Get the Split Identifier in your inbox.",
-      ar: "دخل الإيميل. جيب أداة الـ Split فالبوكس.",
-      fr: "Laisse ton email. Reçois le Split Identifier."
+      en: "Choose your training days and main goal. Get a split that fits your week, instantly.",
+      ar: "اختار أيام التدريب والهدف ديالك. اكتشف تقسيمة مناسبة لبرنامجك فوراً.",
+      fr: "Choisis tes jours d’entraînement et ton objectif. Obtiens tout de suite un split adapté."
     },
-    sentTitle: { en: "CHECK YOUR INBOX", ar: "شوف الإيميل ديالك", fr: "VÉRIFIE TA BOÎTE" },
+    sentTitle: { en: "YOUR STARTING SPLIT", ar: "تقسيمة البداية ديالك", fr: "TON SPLIT DE DÉPART" },
     sentDesc: {
-      en: "Tool is coming. Use the 1RM calculator below while you wait.",
-      ar: "الأداة فالطريق. استعمل حاسبة 1RM لتحت.",
-      fr: "L'outil arrive. Utilise le 1RM ci-dessous."
+      en: "Adjust your training days and focus to see a split that works for you.",
+      ar: "بدل أيام التدريب والهدف باش تلقى تقسيمة مناسبة ليك.",
+      fr: "Ajuste tes jours d’entraînement et ton objectif pour trouver un split adapté."
     },
-    calculatorTitle: { en: "Bonus: 1RM Calculator", ar: "بونوس: حاسبة 1RM", fr: "Bonus : Calculateur 1RM" }
+    calculatorTitle: { en: "YOUR WEEKLY TRAINING DAYS", ar: "أيام التدريب فالسيمانة", fr: "TES JOURS D’ENTRAÎNEMENT" },
+    focusTitle: { en: "YOUR MAIN FOCUS", ar: "الهدف الرئيسي ديالك", fr: "TON OBJECTIF PRINCIPAL" },
+    goals: {
+      muscle: { en: "Build muscle", ar: "بناء العضلات", fr: "Prendre du muscle" },
+      strength: { en: "Build strength", ar: "زيادة القوة", fr: "Gagner en force" },
+      hybrid: { en: "Hybrid balance", ar: "توازن هايبرد", fr: "Équilibre hybride" }
+    },
+    recommendationTitle: { en: "YOUR STARTING SPLIT", ar: "تقسيمة البداية ديالك", fr: "TON SPLIT DE DÉPART" },
+    focusNotes: {
+      muscle: {
+        en: "Give each muscle group enough quality work and recovery between sessions.",
+        ar: "ركز على تمارين كافية لكل مجموعة عضلية وخلي وقت للاسترجاع بين الحصص.",
+        fr: "Travaille chaque groupe musculaire avec assez de volume et de récupération."
+      },
+      strength: {
+        en: "Prioritize controlled, progressive work on your main lifts and skills.",
+        ar: "عطي الأولوية للتدرج والتحكم فالحركات والتمارين الأساسية.",
+        fr: "Mise sur une progression maîtrisée pour tes mouvements et exercices principaux."
+      },
+      hybrid: {
+        en: "Balance weighted training with bodyweight work across the week.",
+        ar: "وازن بين الأوزان وتمارين وزن الجسم خلال السيمانة.",
+        fr: "Équilibre le travail avec charges et au poids du corps dans la semaine."
+      }
+    },
+    sessionsLabel: { en: "SESSIONS", ar: "الحصص", fr: "SÉANCES" },
+    noEmail: { en: "Free to use. No email needed.", ar: "مجاني وبلا إيميل.", fr: "Gratuit, sans email." },
+    daysLabel: { en: "days / week", ar: "أيام / الأسبوع", fr: "jours / semaine" },
+    splits: {
+      two: {
+        title: { en: "Full body, twice a week", ar: "الجسم كامل، جوج مرات فالسيمانة", fr: "Corps complet, deux fois par semaine" },
+        sessions: [
+          { en: "Full body A", ar: "الجسم كامل A", fr: "Corps complet A" },
+          { en: "Full body B", ar: "الجسم كامل B", fr: "Corps complet B" }
+        ]
+      },
+      three: {
+        title: { en: "Full body, three times a week", ar: "الجسم كامل، 3 مرات فالسيمانة", fr: "Corps complet, trois fois par semaine" },
+        sessions: [
+          { en: "Full body A", ar: "الجسم كامل A", fr: "Corps complet A" },
+          { en: "Full body B", ar: "الجسم كامل B", fr: "Corps complet B" },
+          { en: "Full body C", ar: "الجسم كامل C", fr: "Corps complet C" }
+        ]
+      },
+      four: {
+        title: { en: "Upper / lower split", ar: "تقسيمة الجزء العلوي / السفلي", fr: "Split haut / bas du corps" },
+        sessions: [
+          { en: "Upper body A", ar: "الجزء العلوي A", fr: "Haut du corps A" },
+          { en: "Lower body A", ar: "الجزء السفلي A", fr: "Bas du corps A" },
+          { en: "Upper body B", ar: "الجزء العلوي B", fr: "Haut du corps B" },
+          { en: "Lower body B", ar: "الجزء السفلي B", fr: "Bas du corps B" }
+        ]
+      },
+      five: {
+        title: { en: "Hybrid 5-day split", ar: "تقسيمة هايبرد ديال 5 أيام", fr: "Split hybride sur 5 jours" },
+        sessions: [
+          { en: "Push", ar: "دفع", fr: "Poussée" },
+          { en: "Pull", ar: "سحب", fr: "Tirage" },
+          { en: "Legs", ar: "الأرجل", fr: "Jambes" },
+          { en: "Upper body + skills", ar: "الجزء العلوي + المهارات", fr: "Haut du corps + skills" },
+          { en: "Full body", ar: "الجسم كامل", fr: "Corps complet" }
+        ]
+      },
+      six: {
+        title: { en: "Push / pull / legs, twice a week", ar: "دفع / سحب / أرجل، جوج مرات فالسيمانة", fr: "Poussée / tirage / jambes, deux fois par semaine" },
+        sessions: [
+          { en: "Push A", ar: "دفع A", fr: "Poussée A" },
+          { en: "Pull A", ar: "سحب A", fr: "Tirage A" },
+          { en: "Legs A", ar: "الأرجل A", fr: "Jambes A" },
+          { en: "Push B", ar: "دفع B", fr: "Poussée B" },
+          { en: "Pull B", ar: "سحب B", fr: "Tirage B" },
+          { en: "Legs B", ar: "الأرجل B", fr: "Jambes B" }
+        ]
+      }
+    }
   },
 
   languageModal: {

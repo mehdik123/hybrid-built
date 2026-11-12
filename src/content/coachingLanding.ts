@@ -443,9 +443,9 @@ export const landing = {
         level: { en: "All levels", ar: "جميع المستويات", fr: "Tous niveaux" },
         duration: { en: "Free", ar: "مجاني", fr: "Gratuit" },
         body: {
-          en: "Tell it your days and goal. Get the split that fits. Drop your email to unlock it.",
+          en: "Choose your training days and goal. Get a split that fits, instantly and free.",
           ar: "أداة مجانية تعاونك تعرف فين واقف دابا قبل ما تلتزم بشي برنامج أكبر.",
-          fr: "Dis tes jours et ton objectif. Reçois le split. Laisse ton email pour y accéder.",
+          fr: "Choisis tes jours et ton objectif. Trouve un split adapté, gratuitement et tout de suite.",
         },
         price: { en: "Free", ar: "مجاني", fr: "Gratuit" },
         compareAt: { en: "", ar: "", fr: "" },
@@ -458,7 +458,7 @@ export const landing = {
         bullets: [
           { en: "Built around your available training days", ar: "تقييم سريع باش تعرف فين كتتعطل routine ديالك", fr: "Construit autour de tes jours dispo" },
           { en: "Clear split for strength and aesthetics", ar: "خطوات واضحة على النوم، البروتين والحصص التدريبية", fr: "Split clair force + esthétique" },
-          { en: "Sent to your email instantly", ar: "نقطة انطلاق تعرف بها المستوى ديالك قبل الـ coaching ولا الـ Blueprint", fr: "Envoyé à ton email immédiatement" },
+          { en: "Instant access, no email needed", ar: "ولوج فوري بلا إيميل", fr: "Accès immédiat, sans email" },
         ],
       },
     ],

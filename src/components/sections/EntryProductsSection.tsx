@@ -6,9 +6,11 @@ import ComingSoonProductModal from "@/components/ComingSoonProductModal";
 import EmailCaptureModal from "@/components/EmailCaptureModal";
 import MagneticCTA from "@/components/motion/MagneticCTA";
 import { IG_DM_URL } from "@/lib/constants";
+import { useNavigate } from "react-router-dom";
 
 const EntryProductsSection = () => {
   const { language, isRTL } = useLanguage();
+  const navigate = useNavigate();
   const t = landing.products;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -118,14 +120,14 @@ const EntryProductsSection = () => {
           </motion.button>
 
           {/* Split Finder */}
-          <EmailCaptureModal source="split-finder">
-            <motion.button
-              type="button"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.18 }}
-              className="group relative shrink-0 w-[78vw] max-w-[380px] md:w-auto md:max-w-none snap-center aspect-[3/4] overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-br"
-            >
+          <motion.button
+            type="button"
+            onClick={() => navigate("/split-finder")}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.18 }}
+            className="group relative shrink-0 w-[78vw] max-w-[380px] md:w-auto md:max-w-none snap-center aspect-[3/4] overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-br"
+          >
               <img
                 src={split.cover}
                 alt=""
@@ -164,8 +166,7 @@ const EntryProductsSection = () => {
                   </span>
                 </div>
               </div>
-            </motion.button>
-          </EmailCaptureModal>
+          </motion.button>
         </div>
 
         <motion.div

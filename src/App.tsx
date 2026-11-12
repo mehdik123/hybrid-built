@@ -9,6 +9,7 @@ import CustomCursor from "@/components/motion/CustomCursor";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
+import FreeToolPage from "./pages/FreeToolPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,7 +28,8 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/coaching" element={<Navigate to="/" replace />} />
               <Route path="/home" element={<Navigate to="/" replace />} />
-              <Route path="/free-tool" element={<Navigate to="/products" replace />} />
+              <Route path="/free-tool" element={<FreeToolPage />} />
+              <Route path="/split-finder" element={<FreeToolPage />} />
               <Route path="/products" element={<Products />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

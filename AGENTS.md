@@ -1,0 +1,2 @@
+- Keep the free Split Finder on its own page and link directly to it so access never depends on email capture.
+- Keep offer-specific Instagram message URLs in `src/lib/constants.ts` so digital-product inquiries stay distinct from coaching inquiries.

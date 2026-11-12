@@ -2,6 +2,8 @@
 export const IG_HANDLE = "unbreakablesteam";
 export const IG_DM_MESSAGE = "Apply for coaching";
 export const IG_DM_URL = `https://ig.me/m/${IG_HANDLE}?text=${encodeURIComponent(IG_DM_MESSAGE)}`;
+/** Instagram DM for the HYBRID digital program, not online coaching */
+export const IG_HYBRID_DM_URL = `https://ig.me/m/${IG_HANDLE}?text=${encodeURIComponent("HYBRID")}`;
 
 /** Gumroad product page */
 export const GUMROAD_HYBRID_URL = "https://mehdikamal7.gumroad.com/l/ukamgr";
