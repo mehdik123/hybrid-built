@@ -1,5 +1,11 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { Language } from '@/lib/translations';
+
+/** Bumped key so old English localStorage prefs don't override Arabic default */
+const LANG_STORAGE_KEY = 'hybrid-built-lang-v2';
+
+const isLanguage = (value: string | null): value is Language =>
+    value === 'en' || value === 'ar' || value === 'fr';
 
 interface AppContextType {
     language: Language;
@@ -13,21 +19,28 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-    const [language, setLanguage] = useState<Language>(() => {
-        const saved = localStorage.getItem('language');
-        return (saved === 'en' || saved === 'ar' || saved === 'fr') ? saved : 'ar';
+    const [language, setLanguageState] = useState<Language>(() => {
+        const saved = localStorage.getItem(LANG_STORAGE_KEY);
+        return isLanguage(saved) ? saved : 'ar';
     });
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const isRTL = language === 'ar';
 
+    const setLanguage = useCallback((lang: Language) => {
+        setLanguageState(lang);
+        localStorage.setItem(LANG_STORAGE_KEY, lang);
+    }, []);
+
     const toggleLanguage = () => {
-        setLanguage(prev => prev === 'en' ? 'ar' : 'en'); // Cycle logic could be improved if button is used, but modal sets directly
+        setLanguage(language === 'en' ? 'ar' : 'en');
     };
 
     useEffect(() => {
-        localStorage.setItem('language', language);
+        localStorage.setItem(LANG_STORAGE_KEY, language);
+        // Drop legacy key so it can't fight the new default
+        localStorage.removeItem('language');
         document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
         document.documentElement.lang = language;
     }, [language, isRTL]);

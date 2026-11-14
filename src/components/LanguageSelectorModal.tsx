@@ -11,7 +11,8 @@ const LanguageSelectorModal = () => {
   const t = translations.languageModal;
 
   useEffect(() => {
-    const savedLang = localStorage.getItem("language");
+    // Arabic is the site default — only prompt once if they've never chosen via the new key
+    const savedLang = localStorage.getItem("hybrid-built-lang-v2");
     if (!savedLang) {
       const timer = setTimeout(() => setIsOpen(true), 1500);
       return () => clearTimeout(timer);
