@@ -15,7 +15,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [language, setLanguage] = useState<Language>(() => {
         const saved = localStorage.getItem('language');
-        return (saved === 'en' || saved === 'ar' || saved === 'fr') ? saved : 'en';
+        return (saved === 'en' || saved === 'ar' || saved === 'fr') ? saved : 'ar';
     });
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);

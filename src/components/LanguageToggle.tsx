@@ -2,9 +2,9 @@ import { useLanguage } from "@/contexts/AppContext";
 import type { Language } from "@/lib/translations";
 
 const LANGUAGES: { code: Language; short: string; aria: string }[] = [
-  { code: "en", short: "EN", aria: "English" },
-  { code: "fr", short: "FR", aria: "Français" },
   { code: "ar", short: "AR", aria: "العربية" },
+  { code: "fr", short: "FR", aria: "Français" },
+  { code: "en", short: "EN", aria: "English" },
 ];
 
 interface LanguageToggleProps {

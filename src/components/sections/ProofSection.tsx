@@ -294,7 +294,7 @@ const ProofSection = () => {
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="font-editorial text-[10px] uppercase tracking-[0.28em] text-red-br mb-4"
+            className="font-editorial text-[11px] uppercase tracking-[0.12em] text-red-br mb-3"
           >
             {t.eyebrow[lang]}
           </motion.p>
@@ -302,7 +302,7 @@ const ProofSection = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.05 }}
-            className="font-display text-3xl md:text-5xl uppercase leading-[1.05] tracking-tight"
+            className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight"
           >
             <span className="text-foreground">{titleLead} </span>
             <span className="text-white/45">{titleAccent}</span>

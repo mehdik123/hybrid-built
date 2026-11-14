@@ -41,7 +41,7 @@ const SocialProofStrip = () => {
                 isRTL ? "first:border-l-0" : ""
               }`}
             >
-              <p className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.5rem] uppercase tracking-tight text-white leading-none">
+              <p className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight text-white leading-none">
                 {stat.value}
               </p>
               <div

@@ -14,17 +14,17 @@ const SCREENS = [
 const copy = {
   eyebrow: { en: "My coaching app", ar: "تطبيق التدريب ديالي", fr: "Mon app de coaching" },
   title: {
-    en: "Private coaching in my app.",
+    en: "I coach you. The app keeps it organized.",
     ar: "أنا اللي كنوجّهك. التطبيق غير كيساعدنا ننظمو.",
     fr: "Coaching privé dans mon app.",
   },
   lead: {
-    en: "A smooth experience where we track your PRs, milestones, bodyweight, weekly photos, training volume, and muscle progress.",
+    en: "Most coaches hand you a PDF and disappear. I write the plan and check in with you every day. The app is where you see training, meals, and progress in one place.",
     ar: "بزاف ديال الكوتشات كيعطيوك PDF وكيخليوك بوحدك. أنا اللي كنقاد البرنامج وكنتابع معاك نهار بنهار. التطبيق غير بلاصة كتلقا فيها التمارين، الماكلة والتقدم ديالك.",
     fr: "Une expérience fluide: on suit tes PRs, milestones, poids, photos hebdo, volume d’entraînement et progrès musculaire.",
   },
   hint: {
-    en: "Tap a screen to focus it",
+    en: "Tap a screen to bring it forward",
     ar: "كليكي على الشاشة باش تركز عليها",
     fr: "Tape un écran pour le mettre en avant",
   },
@@ -128,7 +128,7 @@ const AppPhonesSection = () => {
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="font-editorial text-[10px] uppercase tracking-[0.28em] text-red-br mb-4"
+            className="font-editorial text-[11px] uppercase tracking-[0.12em] text-red-br mb-3"
           >
             {copy.eyebrow[lang]}
           </motion.p>
@@ -136,7 +136,7 @@ const AppPhonesSection = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.04 }}
-            className="font-display text-3xl md:text-5xl uppercase leading-[1.08] text-foreground"
+            className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight text-foreground"
           >
             {copy.title[lang]}
           </motion.h2>

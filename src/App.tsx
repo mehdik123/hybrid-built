@@ -4,8 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppProvider } from "@/contexts/AppContext";
-import FilmGrain from "@/components/FilmGrain";
-import CustomCursor from "@/components/motion/CustomCursor";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
@@ -19,8 +17,6 @@ const App = () => (
     <AppProvider>
       <SmoothScrollProvider>
         <TooltipProvider>
-          <FilmGrain />
-          <CustomCursor />
           <Toaster />
           <Sonner />
           <BrowserRouter>

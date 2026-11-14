@@ -14,9 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Anton', 'sans-serif'],
-        editorial: ['Archivo', 'sans-serif'],
+        sans: ['DM Sans', 'ui-sans-serif', 'sans-serif'],
+        display: ['Outfit', 'ui-sans-serif', 'sans-serif'],
+        editorial: ['DM Sans', 'ui-sans-serif', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

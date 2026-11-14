@@ -102,10 +102,10 @@ const TestimonialVideoCard = ({ tag, title, line, mediaLabel, cta, inView }: Pro
         </button>
 
         <div className={`max-w-lg ${isRTL ? "text-right" : "text-left"}`}>
-          <p className="font-editorial text-[10px] uppercase tracking-[0.22em] text-red-br mb-3">
+          <p className="font-editorial text-[11px] uppercase tracking-[0.12em] text-red-br mb-3">
             {tag}
           </p>
-          <h3 className="font-display text-2xl md:text-4xl uppercase leading-[1.05] text-foreground tracking-tight">
+          <h3 className="font-display text-2xl md:text-4xl leading-[1.08] text-foreground tracking-tight">
             {title}
           </h3>
           <p className="mt-4 font-editorial text-sm md:text-base text-white/65 leading-relaxed">

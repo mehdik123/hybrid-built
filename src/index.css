@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,38 +6,38 @@
 
 @layer base {
   :root {
-    /* UNBREAKABLE TEAM — design tokens */
-    --ink: #0a0a0a;
-    --paper: #f2f0eb;
-    --red-br: #e8001c;
-    --red-dim: rgba(232, 0, 28, 0.12);
-    --hairline: rgba(255, 255, 255, 0.08);
-    --hairline-dark: rgba(10, 10, 10, 0.12);
+    /* Clean athletic — Apple-adjacent: soft ink, rounded, quiet type */
+    --ink: #111111;
+    --paper: #f5f5f7;
+    --red-br: #ff2d3d;
+    --red-dim: rgba(255, 45, 61, 0.12);
+    --hairline: rgba(255, 255, 255, 0.1);
+    --hairline-dark: rgba(10, 10, 10, 0.1);
 
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
     /* shadcn mapping */
-    --background: 0 0% 4%;
+    --background: 0 0% 6.5%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 6%;
+    --card: 0 0% 9%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 6%;
+    --popover: 0 0% 9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 355 100% 45%;
+    --primary: 355 100% 59%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 10%;
+    --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 58%;
-    --accent: 40 14% 94%;
-    --accent-foreground: 0 0% 4%;
+    --muted-foreground: 0 0% 62%;
+    --accent: 240 5% 96%;
+    --accent-foreground: 0 0% 6%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 16%;
-    --input: 0 0% 12%;
-    --ring: 355 100% 45%;
-    --radius: 0px;
+    --border: 0 0% 18%;
+    --input: 0 0% 14%;
+    --ring: 355 100% 59%;
+    --radius: 1rem;
   }
 
   .dark {
@@ -89,25 +89,32 @@
 
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/25;
-    font-family: 'Archivo', system-ui, sans-serif;
+    font-family: 'DM Sans', ui-sans-serif, sans-serif;
     background-color: var(--ink);
     color: hsl(var(--foreground));
+    letter-spacing: -0.011em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Anton', sans-serif;
-    letter-spacing: 0.006em;
-    font-weight: 400;
+    font-family: 'Outfit', ui-sans-serif, sans-serif;
+    letter-spacing: -0.03em;
+    font-weight: 600;
   }
 }
 
 @layer components {
   .font-editorial {
-    font-family: 'Archivo', sans-serif;
+    font-family: 'DM Sans', ui-sans-serif, sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Outfit', ui-sans-serif, sans-serif;
+    letter-spacing: -0.03em;
+    font-weight: 600;
   }
 
   .section-padding {
-    @apply px-5 py-16 md:px-10 md:py-24 lg:px-14;
+    @apply px-5 py-20 md:px-10 md:py-28 lg:px-14;
   }
 
   .container-tight {
@@ -205,72 +212,68 @@
     color: var(--ink);
   }
 
-  /* Primary CTA — soft modern + magnetic 3D (motion in MagneticCTA) */
+  /* Primary CTA — clean pill, Apple-like */
   .btn-primary-cta {
-    @apply inline-flex items-center justify-center gap-2 font-editorial font-semibold uppercase tracking-[0.1em] text-sm md:text-base;
-    background: linear-gradient(165deg, #ff1f3a 0%, var(--red-br) 48%, #b80016 100%);
+    @apply inline-flex items-center justify-center gap-2 font-editorial font-semibold text-sm md:text-[15px];
+    background: var(--red-br);
     color: #fff;
-    padding: 1rem 1.85rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.2) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.18) inset,
-      0 12px 30px -16px rgba(232, 0, 28, 0.55);
+    padding: 0.95rem 1.6rem;
+    border-radius: 980px;
+    border: none;
+    box-shadow: 0 8px 24px -12px rgba(255, 45, 61, 0.55);
     transition:
-      background 0.22s var(--ease-smooth),
-      box-shadow 0.22s var(--ease-smooth),
-      border-color 0.22s var(--ease-smooth);
+      background 0.2s var(--ease-smooth),
+      box-shadow 0.2s var(--ease-smooth),
+      transform 0.2s var(--ease-smooth);
     touch-action: manipulation;
     will-change: transform;
+    letter-spacing: -0.01em;
   }
 
   .btn-primary-cta:hover {
-    border-color: rgba(255, 255, 255, 0.24);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.26) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.16) inset,
-      0 18px 40px -14px rgba(232, 0, 28, 0.62);
+    background: #ff4452;
+    box-shadow: 0 12px 28px -12px rgba(255, 45, 61, 0.65);
   }
 
   .btn-ghost-cta {
-    @apply inline-flex items-center justify-center font-editorial font-semibold uppercase tracking-[0.1em] text-sm md:text-base;
-    color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    background: rgba(255, 255, 255, 0.04);
-    padding: 1rem 1.85rem;
-    border-radius: 12px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    @apply inline-flex items-center justify-center font-editorial font-medium text-sm md:text-[15px];
+    color: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.95rem 1.6rem;
+    border-radius: 980px;
+    backdrop-filter: blur(12px);
     transition:
-      border-color 0.22s var(--ease-smooth),
-      color 0.22s var(--ease-smooth),
-      background 0.22s var(--ease-smooth);
+      border-color 0.2s var(--ease-smooth),
+      color 0.2s var(--ease-smooth),
+      background 0.2s var(--ease-smooth);
     touch-action: manipulation;
     will-change: transform;
+    letter-spacing: -0.01em;
   }
 
   .btn-ghost-cta:hover {
     color: #fff;
-    border-color: rgba(255, 255, 255, 0.45);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.1);
   }
 
   .btn-invert-cta {
-    @apply inline-flex items-center justify-center gap-2 font-editorial font-semibold uppercase tracking-[0.1em] text-sm md:text-base;
+    @apply inline-flex items-center justify-center gap-2 font-editorial font-semibold text-sm md:text-[15px];
     background: #fff;
     color: var(--ink);
-    padding: 1rem 1.85rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 14px 34px -18px rgba(0, 0, 0, 0.35);
-    transition: background 0.22s var(--ease-smooth), box-shadow 0.22s var(--ease-smooth);
+    padding: 0.95rem 1.6rem;
+    border-radius: 980px;
+    border: none;
+    box-shadow: 0 8px 24px -14px rgba(0, 0, 0, 0.4);
+    transition: background 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth);
     touch-action: manipulation;
     will-change: transform;
+    letter-spacing: -0.01em;
   }
 
   .btn-invert-cta:hover {
-    background: #f4f4f4;
+    background: #f5f5f7;
   }
 
   .scrollbar-none {

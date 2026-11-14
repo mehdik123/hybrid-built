@@ -23,7 +23,7 @@ const OfferSection = () => {
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              className="font-editorial text-[10px] uppercase tracking-[0.28em] text-red-br mb-4"
+              className="font-editorial text-[11px] uppercase tracking-[0.12em] text-red-br mb-3"
             >
               {t.eyebrow[language]}
             </motion.p>
@@ -31,7 +31,7 @@ const OfferSection = () => {
               initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.04 }}
-              className="font-display text-4xl md:text-5xl uppercase leading-[1.05] text-foreground"
+              className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight text-foreground"
             >
               {t.title[language]}
             </motion.h2>
@@ -77,7 +77,7 @@ const OfferSection = () => {
                     key={item.title.en}
                     initial={{ opacity: 0, x: isRTL ? 18 : -18 }}
                     animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.06 + i * 0.07, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ delay: Math.min(0.04 * i, 0.12), duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     className="relative border-b border-white/[0.08] last:border-b-0"
                   >
                     <button

@@ -27,7 +27,7 @@ export const landing = {
       fr: "Training, nutrition et check-ins. Tout dans mon app.",
     } as Localized,
     warm: {
-      en: "Whether you're starting out or leveling up.",
+      en: "Beginner or years in the gym — same standard.",
       ar: "سواء كنتي باقي يالله بادي، ولا كتدرب من مدة طويلة.",
       fr: "Que tu démarres ou que tu montes d’un cran.",
     } as Localized,
@@ -49,22 +49,22 @@ export const landing = {
     } as Localized,
     forItems: [
       {
-        en: "You bring real standards to your work and want the same for your body",
+        en: "You take work seriously and want the same bar for your training",
         ar: "كتعطي لخدمتك قيمة، وبغيتي حتى صحتك وجسمك تعطيهم نفس الاهتمام.",
         fr: "Tu imposes de vrais standards à ton travail et tu veux la même chose pour ton corps",
       },
       {
-        en: "You've tried random programs and nothing stuck, because none were built for your life",
+        en: "You've bounced between programs and nothing held, because none fit your week",
         ar: "جربتي برامج مختلفة، ولكن باقي ما وصلتيش للنتيجة اللي باغي.",
         fr: "Tu as testé des programmes au hasard et rien n’a tenu, parce qu’aucun n’était construit pour ta vie",
       },
       {
-        en: "You want to look and feel strong, lean, and healthy while keeping a balanced life",
+        en: "You want strength, lean muscle, and a life that still has room outside the gym",
         ar: "باغي جسم قوي و lean وتحس براسك قادر تدير بزاف ديال الحوايج، بلا ما تبقى نهارك كامل فالجيم.",
         fr: "Tu veux paraître et te sentir fort, sec et en santé, avec une vie équilibrée",
       },
       {
-        en: "You're ready to commit to the process over months, not days",
+        en: "You'll stay with the work for months, not a two-week streak",
         ar: "مستعد تخدم على راسك باستمرار، بالشهور، ماشي غير بحماس ديال شي أيام.",
         fr: "Tu es prêt à t’engager sur des mois, pas des jours",
       },
@@ -72,7 +72,7 @@ export const landing = {
     notTitle: { en: "It's not for you if", ar: "ماشي مناسب ليك إلا كنتي...", fr: "Ce n’est pas pour toi si" } as Localized,
     notItems: [
       {
-        en: "You want a magic two-week fix, or you're not ready to put in consistent work.",
+        en: "You want a two-week shortcut, or you won't train with any consistency.",
         ar: "كتسنى نتيجة فـ جوج سيمانات، أو ما عندكش الاستعداد تلتزم وتخدم بانتظام.",
         fr: "Tu veux une solution magique en deux semaines, ou tu n’es pas prêt à un travail régulier.",
       },
@@ -92,7 +92,7 @@ export const landing = {
       fr: "Un vrai progrès.",
     } as Localized,
     subhead: {
-      en: "Fat loss, muscle, strength. See what consistent work can look like.",
+      en: "Fat loss, muscle, strength — from people who kept showing up.",
       ar: "نقص دهن، عضلات، قوة. شوف كيفاش كيبان العمل المستمر.",
       fr: "Perte de gras, muscle, force. Voici ce que donne un travail régulier.",
     } as Localized,
@@ -106,7 +106,7 @@ export const landing = {
         fr: "Plus qu’un avant / après.",
       } as Localized,
       line: {
-        en: "Hear a client's perspective on the plan, the support and the work behind their progress.",
+        en: "A client on the plan, the check-ins, and what the work actually felt like.",
         ar: "سمع التجربة ديالهم، وكيفاش دازت الرحلة ديالهم معايا.",
         fr: "Écoute le point de vue d’un client sur le plan, le suivi et le travail derrière ses progrès.",
       } as Localized,
@@ -172,7 +172,7 @@ export const landing = {
   process: {
     eyebrow: { en: "How it works", ar: "كيفاش غادي نخدمو", fr: "Comment ça marche" } as Localized,
     title: {
-      en: "We understand your situation. Then we build around it.",
+      en: "First your week. Then the plan.",
       ar: "أولاً نفهم حياتك، ومن بعد نبني ليك البرنامج المناسب.",
       fr: "On comprend ta situation. Ensuite on construit autour.",
     } as Localized,
@@ -181,7 +181,7 @@ export const landing = {
         num: "01",
         title: { en: "Your situation, obstacles, and goals", ar: "كنبداو بفهم الوضع ديالك", fr: "Ta situation, tes freins, tes objectifs" },
         body: {
-          en: "We start by understanding where you are, what is blocking you, and what you want. Schedule, preferences, past attempts. Clear picture first.",
+          en: "Where you are, what blocks you, what you want. Hours available, preferences, what you already tried. Full picture before any program.",
           ar: "الهدف ديالك، شحال عندك من الوقت، شنو كيناسبك، واش عندك شي إصابة، واش كتسافر بزاف ولا كتدوز من الضغط، وشنو جربتي من قبل. خاصني نفهم الصورة كاملة قبل ما نوجد ليك البرنامج.",
           fr: "On commence par comprendre où tu en es, ce qui te freine, et ce que tu veux. Agenda, préférences, essais passés. D’abord le tableau clair.",
         },
@@ -190,7 +190,7 @@ export const landing = {
         num: "02",
         title: { en: "Your plan, built for your life", ar: "كنوجد ليك plan على قياسك", fr: "Ton plan, pensé pour ta vie" },
         body: {
-          en: "Training and nutrition made for you. Loaded in my app, simple to follow, built around real life.",
+          en: "Training and meals written for your schedule. In my app, easy to follow on a normal week.",
           ar: "Training و nutrition على حساب ظروفك، ماشي شي template كنعطيوه لأي واحد. كننظمو التمارين، الراحة والماكلة بطريقة تقدر تطبقها فحياتك اليومية، وكلشي كيبقى واضح فـ app.",
           fr: "Training et nutrition faits pour toi. Dans mon app, simples à suivre, pensés pour la vraie vie.",
         },
@@ -199,7 +199,7 @@ export const landing = {
         num: "03",
         title: { en: "Daily support on WhatsApp", ar: "كنبقاو على تواصل وكنعدلو حسب الحاجة", fr: "Suivi quotidien sur WhatsApp" },
         body: {
-          en: "We talk every day. How training felt, what is hard, what needs a change. You are never left alone.",
+          en: "We talk every day: how the session went, what felt hard, what to change. I reply. You are not training alone.",
           ar: "كنبقاو على تواصل كل نهار فـ WhatsApp: كيف دازت الحصص، شنو لقيتي صعيب، وواش كاين شي حاجة ما خداماش معاك. إلا احتاج البرنامج شي تعديل، كنديروه. وكل سيمانة كنراجعو الأوزان، بدائل الماكلة والأولويات باش تبقى كتقدم، ماشي غير كتدير التمارين بلا اتجاه.",
           fr: "On parle tous les jours. Ressenti du training, ce qui bloque, ce qu’il faut changer. Tu n’es jamais seul.",
         },
@@ -215,7 +215,7 @@ export const landing = {
       fr: "Ce que tu obtiens",
     } as Localized,
     valueLead: {
-      en: "Private coaching in my app. Clear training, real meals, form checks, and daily WhatsApp. One coach. One system.",
+      en: "Private coaching in my app: training, meals, form checks, daily WhatsApp. You work with me — not a PDF and not a bot.",
       ar: "كنخدم معاك شخصياً: كنقاد ليك البرنامج، كنراجعو فالتطبيق، كننظم معاك الماكلة، كنصحّح الحركة ديالك، وكنبقاو على تواصل كل نهار. ملي كتحتاج تعديل، كنديرو. أنا الكوتش ديالك، والخطة وحدة وواضحة باش تقرب لهدفك.",
       fr: "Coaching privé dans mon app. Training clair, vrais repas, checks de forme, WhatsApp quotidien. Un coach. Un système.",
     } as Localized,
@@ -299,7 +299,7 @@ export const landing = {
         id: "three-month",
         name: { en: "3 months", ar: "3 شهور", fr: "3 mois" },
         detail: {
-          en: "More weeks. Deeper results. The plan that actually sticks.",
+          en: "Extra weeks to push progress further and lock the habit.",
           ar: "وقت أكثر باش نطورو التقدم ديالك ونخدمو على نتيجة أكبر وباستمرارية.",
           fr: "Plus de semaines. Des résultats plus profonds. Le plan qui tient vraiment.",
         },
@@ -307,13 +307,13 @@ export const landing = {
       },
     ],
     priceNote: {
-      en: "Pricing is shared personally after you apply.",
+      en: "Pricing is shared after you apply.",
       ar: "الثمن والتفاصيل كنحددوهم من بعد ما تعمّر الـ application.",
       fr: "Le tarif est partagé en privé après ta candidature.",
     } as Localized,
     cta: { en: "Apply for coaching", ar: "بدا معايا", fr: "Postuler au coaching" } as Localized,
     pathCue: {
-      en: "Ready for 1 on 1? Apply above. Not there yet? Two lighter doors below.",
+      en: "Ready for 1-on-1? Apply above. Not yet? Two lighter options below.",
       ar: "واجد للـ 1-on-1؟ عمّر الـ application من الفوق. باقي كتفكر؟ كاينين حتى جوج اختيارات أبسط لتحت.",
       fr: "Prêt pour le 1 on 1 ? Postule au dessus. Pas encore ? Deux portes plus légères en bas.",
     } as Localized,
@@ -327,7 +327,7 @@ export const landing = {
       fr: "Pas encore prêt pour le coaching ?",
     } as Localized,
     lead: {
-      en: "Start lighter. Build the hybrid body on your own schedule, then level up to coaching when you are ready.",
+      en: "Start on your own schedule. Move to 1-on-1 when you want full coaching.",
       ar: "نفس الاهتمام بالجودة، ولكن التزام أقل. خدم بوحدك دابا، وملي تحس راسك واجد تقدر تنتقل للـ 1-on-1.",
       fr: "Commence plus léger. Construis le physique hybride à ton rythme, puis passe au coaching quand tu es prêt.",
     } as Localized,
@@ -443,13 +443,13 @@ export const landing = {
         level: { en: "All levels", ar: "جميع المستويات", fr: "Tous niveaux" },
         duration: { en: "Free", ar: "مجاني", fr: "Gratuit" },
         body: {
-          en: "Choose your training days and goal. Get a split that fits, instantly and free.",
-          ar: "أداة مجانية تعاونك تعرف فين واقف دابا قبل ما تلتزم بشي برنامج أكبر.",
-          fr: "Choisis tes jours et ton objectif. Trouve un split adapté, gratuitement et tout de suite.",
+          en: "Tell it your days and goal. Get the split that fits. Open it now — no signup.",
+          ar: "أداة مجانية تعاونك تعرف فين واقف دابا قبل ما تلتزم بشي برنامج أكبر. حلها دابا، بلا تسجيل.",
+          fr: "Dis tes jours et ton objectif. Reçois le split. Ouvre-le maintenant, sans inscription.",
         },
         price: { en: "Free", ar: "مجاني", fr: "Gratuit" },
         compareAt: { en: "", ar: "", fr: "" },
-        cta: { en: "Get it free", ar: "اكتشف شنو فيها", fr: "Obtenir gratuitement" },
+        cta: { en: "Open the tool", ar: "حل الأداة", fr: "Ouvrir l’outil" },
         details: {
           en: "A free tool to find the hybrid split that matches your schedule before you commit further.",
           ar: "Checklist خفيفة ومجانية تراجع بها training و recovery و nutrition ديالك قبل ما تشري شي حاجة.",
@@ -458,7 +458,7 @@ export const landing = {
         bullets: [
           { en: "Built around your available training days", ar: "تقييم سريع باش تعرف فين كتتعطل routine ديالك", fr: "Construit autour de tes jours dispo" },
           { en: "Clear split for strength and aesthetics", ar: "خطوات واضحة على النوم، البروتين والحصص التدريبية", fr: "Split clair force + esthétique" },
-          { en: "Instant access, no email needed", ar: "ولوج فوري بلا إيميل", fr: "Accès immédiat, sans email" },
+          { en: "Instant access. No signup.", ar: "ولوج فوري. بلا تسجيل.", fr: "Accès immédiat. Sans inscription." },
         ],
       },
     ],
@@ -467,7 +467,7 @@ export const landing = {
   faq: {
     eyebrow: { en: "Before you decide", ar: "قبل ما تاخد القرار", fr: "Avant de décider" } as Localized,
     title: {
-      en: "Clear answers. No fog.",
+      en: "Straight answers to the usual questions.",
       ar: "أجوبة واضحة على الأسئلة اللي ممكن تكون عندك.",
       fr: "Des réponses claires. Sans brouillard.",
     } as Localized,
@@ -475,7 +475,7 @@ export const landing = {
       {
         question: { en: "I don't have time. Does this still work?", ar: "ما عنديش الوقت الكافي. واش غادي يناسبني؟", fr: "Je n’ai pas le temps. Ça marche quand même ?" },
         answer: {
-          en: "The plan is built around the hours you actually have. Short, focused sessions that fit real life. If you can train a few times a week, we have a path.",
+          en: "The plan uses the hours you actually have. Short sessions. If you can train a few times a week, we can build around that.",
           ar: "البرنامج كيتبنى على الوقت اللي متوفر عندك فعلاً. الحصص كتكون مركزة، وماشي خاصك تبقى نهارك كامل فالجيم. حتى إلا قدرت تتمرن غير شي مرات فالسيمانة، نقدروا نبنيو plan مناسب لهاد الشي.",
           fr: "Le plan est construit sur les heures que tu as vraiment. Séances courtes et ciblées qui tiennent dans la vraie vie. Si tu peux t’entraîner quelques fois par semaine, on a un chemin.",
         },
@@ -483,7 +483,7 @@ export const landing = {
       {
         question: { en: "I'm a beginner. Is this too advanced?", ar: "أنا باقي مبتدئ. واش البرنامج ماشي صعيب عليا؟", fr: "Je suis débutant. C’est trop avancé ?" },
         answer: {
-          en: "No. Your starting point is part of the application. The plan matches your level from week one. Ambition matters more than experience.",
+          en: "No. Your starting point is in the application. The plan matches your level from week one. Willingness beats experience.",
           ar: "لا، كنحسبو المستوى ديالك من الأول، وكنبني البرنامج على حساب فين نتا دابا. ماشي مهم شحال عندك من تجربة؛ المهم تكون باغي تتعلم وتتطور.",
           fr: "Non. Ton point de départ est dans la candidature. Le plan épouse ton niveau dès la semaine 1. L’ambition compte plus que l’expérience.",
         },
@@ -491,7 +491,7 @@ export const landing = {
       {
         question: { en: "Is this just an app?", ar: "واش غادي ناخد غير app؟", fr: "C’est juste une app ?" },
         answer: {
-          en: "The app is the tool. I still write the plan, watch your check ins, and coach you on WhatsApp every day. You are coached. You are not left alone with software.",
+          en: "The app holds the plan. I write it, review your check-ins, and coach you on WhatsApp every day. Software alone is not the offer.",
           ar: "لا. التطبيق غير كيساعدنا ننظمو كلشي. أنا اللي كنوجد البرنامج، كنراجع معاك التقدم، وكنبقى متابعك كل نهار فـ WhatsApp. ما غاديش نعطيك software ونخليك بوحدك.",
           fr: "L’app est l’outil. Je construis le plan, je lis tes check ins, et je te coache sur WhatsApp chaque jour. Tu es coaché. Pas laissé seul avec un logiciel.",
         },
@@ -499,7 +499,7 @@ export const landing = {
       {
         question: { en: "What if it doesn't fit me?", ar: "وشنو إلا بان لينا أن الـ coaching ما مناسبش ليا؟", fr: "Et si ça ne me convient pas ?" },
         answer: {
-          en: "That's why you apply first. I read every application. If we are not a fit, I will say so. The filter exists so neither of us wastes months.",
+          en: "You apply first. I read every application. If it is not a fit, I say so. Better that than wasting months.",
           ar: "على هاد الشي كاين الـ application. كنقرا كل طلب بوحدو، وإلا شفت أن الخدمة ما غاديش تناسبك، غادي نقولها ليك بصراحة. بغيتك تختار الحل اللي فعلاً يقدر يعاونك، ماشي تضيع وقتك وفلوسك.",
           fr: "C’est pour ça que tu postules d’abord. Je lis chaque candidature. Si le fit n’est pas bon, je le dirai. Le filtre existe pour que personne ne perde des mois.",
         },
@@ -510,18 +510,18 @@ export const landing = {
   finalCta: {
     eyebrow: { en: "Your next step", ar: "الخطوة الجاية", fr: "Ta prochaine étape" } as Localized,
     title: {
-      en: "Your body isn't going to change by waiting.",
+      en: "Waiting will not change your physique.",
       ar: "التغيير ما كيجيش بوحدو؛ كيبدا بقرار.",
       fr: "Ton corps ne va pas changer en attendant.",
     } as Localized,
     body: {
-      en: "Tell me your goal, your schedule, and your starting point. I reply personally.",
+      en: "Send your goal, your available hours, and where you start. I reply myself.",
       ar: "شرح ليا شنو باغي تحقق، شحال من الوقت تقدر تخصص، وفين وصلتي دابا. غادي نشوف طلبك ونجاوبك بنفسي.",
       fr: "Dis moi ton objectif, ton agenda, et ton point de départ. Je réponds en personne.",
     } as Localized,
     cta: { en: "Apply for coaching", ar: "بدا معايا", fr: "Postuler au coaching" } as Localized,
     secondary: {
-      en: "Or check digital products",
+      en: "Or open the digital products below",
       ar: "ولا رجع للفوق وشوف الاختيارات الأخرى إلا مازال ما واجدش للـ 1-on-1.",
       fr: "Ou vois les produits digitaux",
     } as Localized,

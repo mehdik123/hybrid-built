@@ -10,6 +10,13 @@ export const GUMROAD_HYBRID_URL = "https://mehdikamal7.gumroad.com/l/ukamgr";
 /** Opens Gumroad checkout overlay immediately (skips long product browse) */
 export const GUMROAD_HYBRID_CHECKOUT_URL = `${GUMROAD_HYBRID_URL}?wanted=true`;
 
+/** Free Hybrid Split Finder tool (no email gate) */
+export const SPLIT_FINDER_URL = "https://gainz-frequency-finder.lovable.app";
+
+/** Bank transfer: contact first — RIB is sent privately, never shown on site */
+export const IG_HYBRID_TRANSFER_DM = `HYBRID — I want to pay by bank transfer`;
+export const IG_HYBRID_TRANSFER_DM_URL = `https://ig.me/m/${IG_HANDLE}?text=${encodeURIComponent(IG_HYBRID_TRANSFER_DM)}`;
+
 export const CTA_PRIMARY_EN = "Apply for coaching";
 export const CTA_FRICTION_EN = "I review every application myself.";
 

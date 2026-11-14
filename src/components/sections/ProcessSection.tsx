@@ -18,7 +18,7 @@ const ProcessSection = () => {
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="font-editorial text-[10px] uppercase tracking-[0.28em] text-red-br mb-4"
+            className="font-editorial text-[11px] uppercase tracking-[0.12em] text-red-br mb-3"
           >
             {t.eyebrow[language]}
           </motion.p>
@@ -26,7 +26,7 @@ const ProcessSection = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.04 }}
-            className="font-display text-4xl md:text-5xl uppercase leading-[1.05] text-foreground"
+            className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight text-foreground"
           >
             {t.title[language]}
           </motion.h2>
@@ -38,13 +38,13 @@ const ProcessSection = () => {
               key={step.num}
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.08 + i * 0.1 }}
+              transition={{ delay: Math.min(0.05 * i, 0.1), duration: 0.35 }}
               className={isRTL ? "text-right" : ""}
             >
-              <p className="font-editorial text-xs tracking-[0.2em] text-white/35 mb-3">
+              <p className="font-editorial text-xs tracking-[0.08em] text-white/40 mb-3">
                 {step.num}
               </p>
-              <h3 className="font-display text-2xl uppercase text-foreground mb-3 leading-tight">
+              <h3 className="font-display text-xl md:text-2xl text-foreground mb-3 leading-snug tracking-tight">
                 {step.title[language]}
               </h3>
               <p className="font-editorial text-sm text-white/55 leading-relaxed">

@@ -72,8 +72,8 @@ const Header = () => {
           <div className={`flex items-center justify-between gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
             <Link to="/" className={`flex items-center gap-2.5 min-w-0 ${isRTL ? "flex-row-reverse" : ""}`}>
               <img src={ASSETS.logo} alt="UNBREAKABLES TEAM" className="h-8 md:h-9 w-auto shrink-0" />
-              <span className="font-display text-sm md:text-base uppercase tracking-[0.04em] text-foreground hidden sm:inline">
-                UNBREAKABLES
+              <span className="font-display text-sm md:text-base tracking-tight text-foreground hidden sm:inline">
+                Unbreakables
               </span>
             </Link>
 
@@ -83,7 +83,7 @@ const Header = () => {
                   key={link.href}
                   type="button"
                   onClick={() => handleNavClick(link.href)}
-                  className="font-editorial text-[11px] uppercase tracking-[0.16em] text-white/55 hover:text-white transition-colors"
+                  className="font-editorial text-[13px] text-white/60 hover:text-white transition-colors"
                 >
                   {link.label}
                 </button>

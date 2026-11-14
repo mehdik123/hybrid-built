@@ -18,28 +18,28 @@ const FinalCTASection = () => {
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="font-display text-4xl md:text-6xl uppercase leading-[1.05] text-foreground"
+            className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight text-foreground"
           >
             {t.title[language]}
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.08 }}
+            transition={{ delay: 0.05 }}
             className="mt-5 font-editorial text-base md:text-lg text-white/55 leading-relaxed"
           >
             {t.body[language]}
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.16 }}
+            transition={{ delay: 0.08 }}
             className="mt-9 flex flex-col items-center gap-4"
           >
             <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
             <a
               href="#products"
-              className="font-editorial text-xs uppercase tracking-[0.16em] text-white/40 hover:text-white/70 transition-colors"
+              className="font-editorial text-sm text-white/45 hover:text-white/75 transition-colors"
             >
               {t.secondary[language]}
             </a>

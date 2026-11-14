@@ -158,7 +158,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="font-editorial text-[11px] md:text-xs uppercase tracking-[0.22em] text-white/50 mb-6 md:mb-8"
+            className="font-editorial text-[11px] md:text-xs uppercase tracking-[0.14em] text-white/55 mb-5 md:mb-7"
           >
             {t.label[language]}
           </motion.p>
@@ -167,10 +167,10 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className={`font-display uppercase text-white ${
+            className={`font-display text-white tracking-tight ${
               isAr
                 ? "text-[1.75rem] sm:text-3xl md:text-4xl lg:text-[2.85rem] leading-[1.35]"
-                : "text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.08]"
+                : "text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.35rem] leading-[1.05]"
             }`}
           >
             <Headline language={language} />
