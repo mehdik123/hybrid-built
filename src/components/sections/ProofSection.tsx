@@ -57,13 +57,13 @@ const BAThumb = ({
   label: string;
   variant: "before" | "after";
 }) => (
-  <div className="relative h-full overflow-hidden bg-muted">
+  <div className="relative h-full overflow-hidden rounded-md bg-muted">
     <img
       src={src}
       alt=""
       loading="lazy"
       decoding="async"
-      className="h-full w-full object-cover object-[center_20%] pointer-events-none scale-[1.02]"
+      className="h-full w-full object-cover pointer-events-none"
       draggable={false}
     />
     <span
@@ -95,7 +95,7 @@ const RailTile = ({
       className="relative origin-center will-change-transform"
       style={{ transform: "scale(0.86)", opacity: 0.55 }}
     >
-      <div className="grid grid-cols-2 gap-1 h-[240px] sm:h-[300px] md:h-[380px] shadow-lg shadow-black/50">
+      <div className="grid grid-cols-2 gap-1.5 h-[220px] sm:h-[280px] md:h-[340px] shadow-lg shadow-black/40">
         <BAThumb src={item.beforeImg} label={before} variant="before" />
         <BAThumb src={item.afterImg} label={after} variant="after" />
       </div>
