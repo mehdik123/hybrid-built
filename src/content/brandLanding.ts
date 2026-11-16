@@ -2,7 +2,7 @@ import type { Language } from "@/lib/translations";
 
 export type Localized = Record<Language, string>;
 
-/** Personal brand homepage — El Mehdi Kamal */
+/** Personal brand homepage. El Mehdi Kamal */
 export const brand = {
   name: "EL MEHDI KAMAL",
   hero: {
@@ -33,9 +33,9 @@ export const brand = {
         fr: "Mon approche combine force, calisthenics, musculation et conditioning. Un physique impressionnant ne doit pas se faire au détriment de la performance, de la santé ou du plaisir.",
       },
       {
-        en: "I believe in consistency, intelligent training and sustainable habits — making fitness more accessible while showing what's possible through natural training and discipline.",
-        ar: "كنآمن بالاستمرارية، التدريب الذكي والعادات المستدامة — باش نخلّي الـ fitness أقرب للناس، ونورّي شنو ممكن بالـ natural training والـ discipline.",
-        fr: "Je crois en la régularité, un training intelligent et des habitudes durables — rendre le fitness plus accessible, et montrer ce que permettent l’entraînement naturel et la discipline.",
+        en: "I believe in consistency, intelligent training and sustainable habits. Making fitness more accessible while showing what's possible through natural training and discipline.",
+        ar: "كنآمن بالاستمرارية، التدريب الذكي والعادات المستدامة. باش نخلّي الـ fitness أقرب للناس، ونورّي شنو ممكن بالـ natural training والـ discipline.",
+        fr: "Je crois en la régularité, un training intelligent et des habitudes durables. Rendre le fitness plus accessible, et montrer ce que permettent l’entraînement naturel et la discipline.",
       },
     ] as Localized[],
   },
@@ -47,17 +47,17 @@ export const brand = {
       fr: "Deux chemins. Un seul standard.",
     } as Localized,
     lead: {
-      en: "Choose the experience that fits how you want to train — both built with the same attention to quality.",
-      ar: "اختار التجربة اللي كتناسبك — بجوجهم بنفس الاهتمام بالجودة.",
-      fr: "Choisis l’expérience qui te convient — les deux avec le même niveau d’exigence.",
+      en: "Choose the experience that fits how you want to train. Both built with the same attention to quality.",
+      ar: "اختار التجربة اللي كتناسبك. بجوجهم بنفس الاهتمام بالجودة.",
+      fr: "Choisis l’expérience qui te convient. Les deux avec le même niveau d’exigence.",
     } as Localized,
     coaching: {
       tag: { en: "01", ar: "01", fr: "01" } as Localized,
       title: { en: "Online Coaching With Mehdi", ar: "Online Coaching مع المهدي", fr: "Coaching en ligne avec Mehdi" } as Localized,
       body: {
-        en: "Personalized coaching, individual guidance, accountability and continuous progress — with me in your corner.",
-        ar: "تدريب شخصي، توجيه فردي، متابعة مستمرة وتقدم واضح — وأنا معاك فكل خطوة.",
-        fr: "Coaching personnalisé, guidance individuelle, accountability et progrès continu — avec moi à tes côtés.",
+        en: "Personalized coaching, individual guidance, accountability and continuous progress. With me in your corner.",
+        ar: "تدريب شخصي، توجيه فردي، متابعة مستمرة وتقدم واضح. وأنا معاك فكل خطوة.",
+        fr: "Coaching personnalisé, guidance individuelle, accountability et progrès continu. Avec moi à tes côtés.",
       } as Localized,
       cta: { en: "Explore online coaching", ar: "اكتشف الـ online coaching", fr: "Explorer le coaching en ligne" } as Localized,
     },
@@ -65,14 +65,14 @@ export const brand = {
       tag: { en: "02", ar: "02", fr: "02" } as Localized,
       title: { en: "Hybrid Build", ar: "Hybrid Build", fr: "Hybrid Build" } as Localized,
       subtitle: {
-        en: "The 8-Week Hybrid Athlete Program",
+        en: "The 8 Week Hybrid Athlete Program",
         ar: "برنامج Hybrid Athlete لمدة 8 سيمانات",
         fr: "Le programme Hybrid Athlete 8 semaines",
       } as Localized,
       body: {
-        en: "A structured, self-guided system combining calisthenics and bodybuilding — built to follow on your own schedule.",
-        ar: "نظام منظم self-guided كيجمع calisthenics و bodybuilding — تقدر تتبعو بإيقاعك.",
-        fr: "Un système structuré en autonomie: calisthenics + musculation — conçu pour ton rythme.",
+        en: "A structured program you follow on your own. Calisthenics and bodybuilding, on your schedule.",
+        ar: "نظام منظم تقدر تتبعو بوحدك. Calisthenics و bodybuilding بإيقاعك.",
+        fr: "Un programme structuré à suivre en autonomie. Calisthenics et musculation, à ton rythme.",
       } as Localized,
       cta: { en: "Discover Hybrid Build", ar: "اكتشف Hybrid Build", fr: "Découvrir Hybrid Build" } as Localized,
     },

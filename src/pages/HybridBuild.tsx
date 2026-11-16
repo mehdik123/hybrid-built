@@ -44,14 +44,14 @@ const HybridBuild = () => {
   const labels = {
     productName: "HYBRID BUILD",
     subtitle: {
-      en: "The 8-Week Hybrid Athlete Program",
+      en: "The 8 Week Hybrid Athlete Program",
       ar: "برنامج Hybrid Athlete لمدة 8 سيمانات",
       fr: "Le programme Hybrid Athlete 8 semaines",
     },
     positioning: {
-      en: "A structured, self-guided training system combining calisthenics and bodybuilding.",
-      ar: "نظام تدريب منظم self-guided كيجمع calisthenics و bodybuilding.",
-      fr: "Un système d’entraînement structuré en autonomie: calisthenics + musculation.",
+      en: "A structured training system you follow on your own. Calisthenics and bodybuilding.",
+      ar: "نظام تدريب منظم تقدر تتبعو بوحدك. Calisthenics و bodybuilding.",
+      fr: "Un système d’entraînement structuré à suivre en autonomie. Calisthenics et musculation.",
     },
     payCard:
       language === "ar" ? "خلص بالبطاقة" : language === "fr" ? "Payer par carte" : "Pay by card",
@@ -294,10 +294,10 @@ const HybridBuild = () => {
             </Link>
             <Link to="/coaching" className="block text-center font-editorial text-sm text-white/40 hover:text-white/70 transition-colors">
               {language === "ar"
-                ? "باغي 1-on-1 coaching؟"
+                ? "باغي online coaching؟"
                 : language === "fr"
-                  ? "Tu préfères le coaching 1-on-1 ?"
-                  : "Prefer 1-on-1 coaching?"}
+                  ? "Tu préfères le coaching en ligne ?"
+                  : "Prefer online coaching?"}
             </Link>
           </div>
         </div>

@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/AppContext";
 import { brand } from "@/content/brandLanding";
-import { IG_HANDLE, IG_PROFILE_URL } from "@/lib/constants";
 import { getGsap, prefersReducedMotion } from "@/lib/gsap";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -18,14 +17,14 @@ const BrandPresence = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         root.querySelectorAll("[data-pres]"),
-        { y: 28, opacity: 0 },
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          stagger: 0.07,
-          duration: 0.7,
+          stagger: 0.06,
+          duration: 0.65,
           ease: "power3.out",
-          scrollTrigger: { trigger: root, start: "top 75%" },
+          scrollTrigger: { trigger: root, start: "top 80%" },
         }
       );
     }, root);
@@ -41,15 +40,15 @@ const BrandPresence = () => {
     <section
       id="presence"
       ref={setRefs}
-      className="bg-black border-t border-white/[0.08] px-5 py-12 md:px-10 md:py-20 lg:px-14"
+      className="bg-black border-t border-white/[0.08] px-5 py-10 md:px-10 md:py-14 lg:px-14"
     >
       <div className={`max-w-[1280px] mx-auto ${isRTL ? "text-right" : ""}`}>
-        <p data-pres className="font-editorial text-[11px] uppercase tracking-[0.22em] text-red-br mb-3">
+        <p data-pres className="font-editorial text-[11px] uppercase tracking-[0.22em] text-red-br mb-2">
           {t.eyebrow[language]}
         </p>
         <h2
           data-pres
-          className={`mega-type text-white max-w-3xl mb-8 md:mb-10 ${
+          className={`mega-type text-white max-w-3xl mb-6 md:mb-8 ${
             language === "ar"
               ? "text-[clamp(1.8rem,5vw,3.4rem)] leading-[1.15]"
               : "text-[clamp(2.4rem,6vw,4.5rem)]"
@@ -58,19 +57,19 @@ const BrandPresence = () => {
           {t.title[language]}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.08] mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.08]">
           {t.stats.map((stat) => (
             <div
               key={stat.label.en}
               data-pres
-              className="bg-black px-5 py-6 md:px-8 md:py-8"
+              className="bg-black px-5 py-5 md:px-8 md:py-7"
             >
               <p
                 data-count
                 data-end={stat.end}
                 data-decimals={stat.decimals}
                 data-suffix={stat.suffix}
-                className="mega-type text-white text-[clamp(2.4rem,6vw,4rem)] mb-2"
+                className="mega-type text-white text-[clamp(2.2rem,5.5vw,3.6rem)] mb-1.5"
               >
                 0{stat.suffix}
               </p>
@@ -79,17 +78,6 @@ const BrandPresence = () => {
               </p>
             </div>
           ))}
-        </div>
-
-        <div data-pres>
-          <a
-            href={IG_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost-cta inline-flex"
-          >
-            Instagram · @{IG_HANDLE}
-          </a>
         </div>
       </div>
     </section>
