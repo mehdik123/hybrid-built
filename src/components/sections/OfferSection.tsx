@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
-import { IG_DM_URL } from "@/lib/constants";
+import { ASSETS, IG_DM_URL } from "@/lib/constants";
 import MagneticCTA from "@/components/motion/MagneticCTA";
 import { landing } from "@/content/coachingLanding";
 
@@ -16,10 +16,44 @@ const OfferSection = () => {
   const openIndex = hovered ?? active;
 
   return (
-    <section id="offer" className="section-padding bg-ink border-t border-white/[0.06]" ref={ref}>
-      <div className="container-tight">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className={`lg:col-span-5 ${isRTL ? "text-right lg:order-2" : ""}`}>
+    <section id="offer" className="relative bg-ink border-t border-white/[0.06] overflow-hidden" ref={ref}>
+      <div className="grid lg:grid-cols-12 lg:min-h-[88vh]">
+        {/* Oversized editorial — about-me.jpg */}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className={`relative lg:col-span-5 min-h-[52vh] lg:min-h-full ${isRTL ? "lg:order-2" : ""}`}
+        >
+          <img
+            src={ASSETS.offerEditorial}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
+          />
+          <div
+            className="absolute inset-0 pointer-events-none lg:hidden"
+            style={{
+              background:
+                "linear-gradient(180deg, transparent 40%, rgba(17,17,17,0.85) 100%)",
+            }}
+          />
+          <div
+            className={`absolute inset-0 pointer-events-none hidden lg:block ${
+              isRTL
+                ? "bg-gradient-to-l from-ink via-ink/40 to-transparent"
+                : "bg-gradient-to-r from-transparent via-ink/20 to-ink"
+            }`}
+          />
+        </motion.div>
+
+        <div
+          className={`lg:col-span-7 section-padding flex flex-col justify-center ${
+            isRTL ? "text-right lg:order-1" : ""
+          }`}
+        >
+          <div className="max-w-xl mx-auto lg:mx-0 w-full">
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -57,19 +91,7 @@ const OfferSection = () => {
                   : "مرّر أو كليكي باش تشوف التفاصيل"}
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.14 }}
-              className="mt-8 flex flex-col gap-3"
-            >
-              <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
-              <p className="font-editorial text-xs text-white/35">{t.priceNote[language]}</p>
-            </motion.div>
-          </div>
-
-          <div className={`lg:col-span-7 ${isRTL ? "text-right lg:order-1" : ""}`}>
-            <ul className="relative space-y-0">
+            <ul className="relative mt-8 space-y-0">
               {t.included.map((item, i) => {
                 const isOpen = openIndex === i;
                 return (
@@ -108,13 +130,13 @@ const OfferSection = () => {
                       </AnimatePresence>
 
                       <div
-                        className={`flex gap-4 md:gap-5 px-4 md:px-5 py-5 md:py-6 transition-colors duration-300 ${
-                          isOpen ? "bg-white/[0.035]" : "bg-transparent hover:bg-white/[0.02]"
-                        } ${isRTL ? "flex-row-reverse" : ""}`}
+                        className={`flex gap-4 md:gap-5 px-1 md:px-2 py-5 md:py-6 transition-colors duration-300 ${
+                          isRTL ? "flex-row-reverse" : ""
+                        }`}
                       >
                         <motion.span
                           animate={{
-                            color: isOpen ? "rgb(232, 0, 28)" : "rgba(255,255,255,0.35)",
+                            color: isOpen ? "rgb(255, 45, 61)" : "rgba(255,255,255,0.35)",
                             scale: isOpen ? 1.05 : 1,
                           }}
                           transition={{ duration: 0.25 }}
@@ -126,7 +148,7 @@ const OfferSection = () => {
                         <div className="min-w-0 flex-1">
                           <div className={`flex items-start justify-between gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
                             <p
-                              className={`font-display text-lg md:text-xl uppercase leading-snug transition-colors duration-300 ${
+                              className={`font-display text-lg md:text-xl leading-snug transition-colors duration-300 ${
                                 isOpen ? "text-foreground" : "text-white/70 group-hover:text-foreground"
                               }`}
                             >
@@ -165,6 +187,16 @@ const OfferSection = () => {
                 );
               })}
             </ul>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.14 }}
+              className="mt-8 flex flex-col gap-3"
+            >
+              <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
+              <p className="font-editorial text-xs text-white/35">{t.priceNote[language]}</p>
+            </motion.div>
           </div>
         </div>
       </div>

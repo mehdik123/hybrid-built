@@ -21,31 +21,36 @@ export const CTA_PRIMARY_EN = "Apply for coaching";
 export const CTA_FRICTION_EN = "I review every application myself.";
 
 /**
- * Editorial photography — one distinct Mehdi image per surface.
- * Do not reuse the same path on multiple sections.
+ * Editorial photography — one distinct Mehdi image per Index surface.
+ * Do not reuse the same path on multiple primary sections.
  */
 export const ASSETS = {
   logo: "/logo.png",
-  /** Path page — coaching card 01 (centered full-body portrait) */
+  /** Offer section — oversized balcony/doorway portrait */
   pathCoaching: "/about-me.jpg",
-  /** Path page — blueprint card 02 (gym pose — crops well) */
+  offerEditorial: "/about-me.jpg",
+  /** Process step 01 — gym lat-spread */
   pathBlueprint: "/hero-placeholder.jpg",
-  /** Path page — free tool card 03 */
+  processApply: "/hero-placeholder.jpg",
+  /** Path / free-tool surfaces */
   pathFreeTool: "/testimonial-cover.jpg",
-  /** Coaching sales page hero (gym pose / poster) */
+  /** Coaching sales page hero still (also process step 02) */
   heroCoaching: "/hero-placeholder.jpg",
   /** Compressed looping hero background (poster first for LCP) */
   heroVideo: "/hero-bg.mp4",
   heroPoster: "/hero-poster.jpg",
-  /** About section — editorial doorway pose */
+  /** Process step 02 — low-angle doorway pose */
   aboutPortrait: "/hero-placeholder-v2.jpg",
+  processCheckin: "/hero-placeholder-v2.jpg",
   /** Products / blueprint hero */
   productsHero: "/testimonial-cover.jpg",
-  /** Free tool page */
+  /** Process step 03 + free tool — gym full-body */
   freeToolHero: "/hero-fallback.jpg",
-  /** Mehdi's own transformation — transformations default */
+  processTrain: "/hero-fallback.jpg",
+  /** Mehdi's own transformation — Final CTA full-bleed */
   mehdiTransformBefore: "/transformation-11-before.png",
   mehdiTransformAfter: "/transformation-11-after.png",
+  finalCtaBg: "/transformation-11-after.png",
   /** Client video testimonial (cover + optional self-hosted clip) */
   testimonialCover: "/testimonial-cover.jpg",
   /** Drop an mp4 here for native in-site playback; otherwise Instagram embed is used */

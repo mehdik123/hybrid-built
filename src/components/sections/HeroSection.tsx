@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
 import { IG_DM_URL } from "@/lib/constants";
 import MagneticCTA from "@/components/motion/MagneticCTA";
@@ -44,6 +44,7 @@ const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-40px" });
+  const reduceMotion = useReducedMotion();
   const isAr = language === "ar";
 
   useEffect(() => {
@@ -103,47 +104,51 @@ const HeroSection = () => {
       ref={sectionRef}
       className="relative min-h-[92svh] md:min-h-[100svh] flex items-end bg-ink overflow-hidden"
     >
-      <div className="absolute inset-0 bg-ink">
-        <img
-          src={heroPosterSrc}
-          alt=""
-          className="absolute inset-0 z-0 h-full w-full object-cover object-[center_18%]"
-          fetchPriority="high"
-          decoding="async"
-        />
-
-        <video
-          ref={videoRef}
-          className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_18%] [transform:translateZ(0)]"
-          poster={heroPosterSrc}
-          muted
-          loop
-          autoPlay
-          playsInline
-          preload="auto"
-          controls={false}
-          disablePictureInPicture
-          aria-hidden
-          // Prefer sharpness; source is ~1.4MB — drop a higher-bitrate MP4 in src/assets to upgrade.
-          style={{ imageRendering: "auto" }}
+      <div className="absolute inset-0 bg-ink overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          initial={reduceMotion ? false : { scale: 1.06 }}
+          animate={reduceMotion ? undefined : { scale: 1 }}
+          transition={{ duration: 8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <source src={heroVideoSrc} type="video/mp4" />
-        </video>
+          <img
+            src={heroPosterSrc}
+            alt=""
+            className="absolute inset-0 z-0 h-full w-full object-cover object-[center_22%]"
+            fetchPriority="high"
+            decoding="async"
+          />
 
-        {/* Lighter overlays so the hero clip reads sharper */}
+          <video
+            ref={videoRef}
+            className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_22%] [transform:translateZ(0)]"
+            poster={heroPosterSrc}
+            muted
+            loop
+            autoPlay
+            playsInline
+            preload="auto"
+            controls={false}
+            disablePictureInPicture
+            aria-hidden
+          >
+            <source src={heroVideoSrc} type="video/mp4" />
+          </video>
+        </motion.div>
+
         <div
           className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,10,10,0.32) 0%, rgba(10,10,10,0.08) 24%, transparent 42%, rgba(10,10,10,0.42) 68%, rgba(10,10,10,0.9) 100%)",
+              "linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.12) 28%, transparent 44%, rgba(10,10,10,0.5) 70%, rgba(10,10,10,0.94) 100%)",
           }}
         />
         <div
           className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background: isRTL
-              ? "linear-gradient(270deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.22) 36%, transparent 58%)"
-              : "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.22) 36%, transparent 58%)",
+              ? "linear-gradient(270deg, rgba(10,10,10,0.62) 0%, rgba(10,10,10,0.28) 38%, transparent 62%)"
+              : "linear-gradient(90deg, rgba(10,10,10,0.62) 0%, rgba(10,10,10,0.28) 38%, transparent 62%)",
           }}
         />
       </div>
@@ -155,10 +160,19 @@ const HeroSection = () => {
       >
         <div className="container-tight max-w-2xl">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="font-editorial text-[11px] md:text-xs uppercase tracking-[0.14em] text-white/55 mb-5 md:mb-7"
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display text-[1.65rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] tracking-tight text-white mb-4 md:mb-5"
+          >
+            {t.brand[language]}
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.45, delay: 0.04, ease: [0.16, 1, 0.3, 1] }}
+            className="font-editorial text-[11px] md:text-xs uppercase tracking-[0.14em] text-white/50 mb-5 md:mb-6"
           >
             {t.label[language]}
           </motion.p>
@@ -166,11 +180,11 @@ const HeroSection = () => {
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className={`font-display text-white tracking-tight ${
+            transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className={`font-display text-white/95 tracking-tight ${
               isAr
-                ? "text-[1.75rem] sm:text-3xl md:text-4xl lg:text-[2.85rem] leading-[1.35]"
-                : "text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.35rem] leading-[1.05]"
+                ? "text-[1.35rem] sm:text-2xl md:text-3xl lg:text-[2.15rem] leading-[1.4]"
+                : "text-[1.4rem] sm:text-2xl md:text-3xl lg:text-[2.35rem] leading-[1.15]"
             }`}
           >
             <Headline language={language} />
@@ -179,7 +193,7 @@ const HeroSection = () => {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             className={`mt-5 md:mt-6 max-w-md font-editorial text-[15px] md:text-base text-white/65 ${
               isAr ? "leading-[1.8]" : "leading-relaxed"
             }`}
@@ -190,7 +204,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
             className={`mt-8 md:mt-10 flex flex-col gap-4 ${isRTL ? "items-end" : "items-start"}`}
           >
             <div
