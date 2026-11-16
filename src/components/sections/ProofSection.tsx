@@ -55,13 +55,13 @@ const BAThumb = ({
   label: string;
   variant: "before" | "after";
 }) => (
-  <div className="relative h-full w-full overflow-hidden bg-muted">
+  <div className="relative h-full min-h-0 w-full overflow-hidden bg-muted">
     <img
       src={src}
       alt=""
       loading="lazy"
       decoding="async"
-      className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
+      className="absolute inset-0 block h-full w-full object-cover object-center pointer-events-none"
       draggable={false}
     />
     <span
@@ -291,36 +291,41 @@ const ProofSection = () => {
       >
         <div
           ref={trackRef}
-          className="flex w-max items-center gap-3 md:gap-4 px-5 md:px-10 will-change-transform"
+          className="flex w-max items-start gap-4 md:gap-5 px-5 md:px-10 will-change-transform"
           style={{ transform: "translate3d(0,0,0)" }}
         >
           {loop.map((item, i) => (
             <article
               key={`${item.beforeImg}-${i}`}
               data-rail-tile
-              className="relative shrink-0 w-[300px] sm:w-[340px] md:w-[400px] select-none"
+              className="relative shrink-0 w-[280px] sm:w-[320px] md:w-[380px] select-none"
             >
               <div
                 data-rail-scale
-                className="relative origin-center will-change-transform"
-                style={{ opacity: 0.7 }}
+                className="relative flex flex-col will-change-transform"
+                style={{ opacity: 0.75 }}
               >
-                {/* Fixed equal frames — every pair same size */}
-                <div className="grid grid-cols-2 gap-1 h-[250px] sm:h-[280px] md:h-[320px] w-full shadow-lg shadow-black/40">
+                {/* Identical frame for every pair */}
+                <div className="grid grid-cols-2 gap-[2px] w-full h-[260px] md:h-[300px] overflow-hidden bg-black">
                   <BAThumb src={item.beforeImg} label={t.before[lang]} variant="before" />
                   <BAThumb src={item.afterImg} label={t.after[lang]} variant="after" />
                 </div>
-                {item.name && (
-                  <div className={`mt-3 ${isRTL ? "text-right" : ""}`}>
-                    <p className="font-display text-white text-sm md:text-base">{item.name[lang]}</p>
-                    {item.timeframe && (
-                      <p className="font-editorial text-[11px] text-white/50 mt-0.5">
-                        {item.timeframe[lang]}
+                {/* Fixed caption slot so all tiles share the same total height */}
+                <div
+                  className={`mt-2 h-[44px] px-0.5 ${isRTL ? "text-right" : "text-left"}`}
+                >
+                  {item.name ? (
+                    <>
+                      <p className="font-display text-white text-sm leading-tight truncate">
+                        {item.name[lang]}
+                      </p>
+                      <p className="font-editorial text-[11px] text-white/50 mt-0.5 truncate">
+                        {item.timeframe?.[lang]}
                         {item.profession ? ` · ${item.profession[lang]}` : ""}
                       </p>
-                    )}
-                  </div>
-                )}
+                    </>
+                  ) : null}
+                </div>
               </div>
             </article>
           ))}
