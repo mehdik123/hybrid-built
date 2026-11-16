@@ -10,7 +10,6 @@ import {
   ASSETS,
   GUMROAD_HYBRID_CHECKOUT_URL,
   IG_HYBRID_TRANSFER_DM_URL,
-  SPLIT_FINDER_URL,
 } from "@/lib/constants";
 import { getGsap, prefersReducedMotion } from "@/lib/gsap";
 
@@ -81,12 +80,6 @@ const HybridBuild = () => {
           : "Gumroad checkout. Access after payment.",
     backHome:
       language === "ar" ? "الرجوع للرئيسية" : language === "fr" ? "Retour à l’accueil" : "Back to home",
-    splitCta:
-      language === "ar"
-        ? "جرّب Split Finder مجاناً"
-        : language === "fr"
-          ? "Essayer Split Finder gratuitement"
-          : "Try Split Finder free",
     whatsInside:
       language === "ar" ? "شنو كاين داخل" : language === "fr" ? "Ce qui est inclus" : "What's inside",
   };
@@ -143,20 +136,9 @@ const HybridBuild = () => {
                   </span>
                 )}
               </div>
-              <div
-                data-hb
-                className={`flex flex-wrap gap-3 mt-6 ${isRTL ? "flex-row-reverse" : ""}`}
-              >
+              <div data-hb className="mt-6">
                 <a href="#checkout" className="btn-primary-cta">
                   {hybrid.cta[language]}
-                </a>
-                <a
-                  href={SPLIT_FINDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-ghost-cta"
-                >
-                  {labels.splitCta}
                 </a>
               </div>
             </div>
