@@ -1,5 +1,7 @@
+import { useEffect, useRef } from "react";
 import { Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/AppContext";
+import { getGsap, prefersReducedMotion } from "@/lib/gsap";
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
@@ -15,6 +17,7 @@ const STATS = [
 
 const SocialProofStrip = () => {
   const { language, isRTL } = useLanguage();
+  const ref = useRef<HTMLElement>(null);
 
   const line =
     language === "ar"
@@ -23,38 +26,66 @@ const SocialProofStrip = () => {
         ? "Des centaines de milliers suivent le travail."
         : "Hundreds of thousands follow the work.";
 
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || prefersReducedMotion()) return;
+    const { gsap } = getGsap();
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        el.querySelectorAll("[data-stat]"),
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 80%" },
+        }
+      );
+    }, el);
+    return () => ctx.revert();
+  }, [language]);
+
   return (
     <section
-      className="border-t border-white/[0.06] bg-ink"
+      ref={ref}
+      className="relative border-y border-white/[0.08] bg-ink overflow-hidden"
       aria-label={line}
     >
-      <div className={`container-tight px-5 py-10 md:px-10 md:py-14 ${isRTL ? "text-right" : ""}`}>
-        <p className="font-editorial text-sm md:text-[15px] text-white/70 mb-8 md:mb-10">
+      <p
+        aria-hidden
+        className={`pointer-events-none absolute top-1/2 -translate-y-1/2 mega-type text-white/[0.04] whitespace-nowrap ${
+          isRTL ? "right-0" : "left-0"
+        } text-[clamp(4rem,18vw,14rem)]`}
+      >
+        UNBREAKABLES
+      </p>
+      <div className={`container-tight px-5 py-16 md:px-10 md:py-24 ${isRTL ? "text-right" : ""}`}>
+        <p className="font-editorial text-sm md:text-base text-white/55 mb-12 md:mb-16 max-w-md">
           {line}
         </p>
-
-        <div className="grid grid-cols-3 divide-x divide-white/15">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6">
           {STATS.map((stat) => (
             <div
               key={stat.value + stat.label.en}
-              className={`flex flex-col items-center justify-center px-2 sm:px-4 ${
-                isRTL ? "first:border-l-0" : ""
-              }`}
+              data-stat
+              className={`${isRTL ? "sm:text-right" : ""}`}
             >
-              <p className="font-display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] tracking-tight text-white leading-none">
+              <p className="mega-type text-[clamp(3.5rem,10vw,7rem)] text-white leading-none">
                 {stat.value}
               </p>
               <div
-                className={`mt-3 md:mt-4 flex items-center gap-1.5 text-white/75 ${
-                  isRTL ? "flex-row-reverse" : ""
+                className={`mt-3 flex items-center gap-2 text-red-br ${
+                  isRTL ? "flex-row-reverse justify-end" : ""
                 }`}
               >
                 {stat.icon === "tt" ? (
-                  <TikTokIcon className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                  <TikTokIcon className="h-4 w-4" />
                 ) : (
-                  <Instagram className="h-3.5 w-3.5 md:h-4 md:w-4" strokeWidth={1.75} />
+                  <Instagram className="h-4 w-4" strokeWidth={1.75} />
                 )}
-                <span className="font-editorial text-[11px] md:text-sm tracking-wide">
+                <span className="font-editorial text-xs uppercase tracking-[0.18em]">
                   {stat.label[language]}
                 </span>
               </div>

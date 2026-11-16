@@ -18,13 +18,13 @@ const EntryProductsSection = () => {
   const split = t.items.find((i) => i.id === "split")!;
 
   return (
-    <section id="products" className="section-padding bg-ink border-t border-white/[0.06]" ref={ref}>
+    <section id="products" className="section-padding bg-ink border-t border-white/[0.08]" ref={ref}>
       <div className="container-tight">
-        <div className={`max-w-2xl mb-10 md:mb-14 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
+        <div className={`max-w-4xl mb-10 md:mb-14 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="font-editorial text-[11px] uppercase tracking-[0.12em] text-red-br mb-3"
+            className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-4"
           >
             {t.eyebrow[language]}
           </motion.p>
@@ -32,7 +32,11 @@ const EntryProductsSection = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.04 }}
-            className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight text-foreground"
+            className={`mega-type text-white ${
+              language === "ar"
+                ? "text-[clamp(1.85rem,5vw,3.5rem)] leading-[1.2]"
+                : "text-[clamp(2.6rem,7vw,5.5rem)]"
+            }`}
           >
             {t.title[language]}
           </motion.h2>

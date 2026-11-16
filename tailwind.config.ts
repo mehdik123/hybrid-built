@@ -17,6 +17,7 @@ export default {
         sans: ['DM Sans', 'ui-sans-serif', 'sans-serif'],
         display: ['Outfit', 'ui-sans-serif', 'sans-serif'],
         editorial: ['DM Sans', 'ui-sans-serif', 'sans-serif'],
+        impact: ['Bebas Neue', 'Outfit', 'ui-sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

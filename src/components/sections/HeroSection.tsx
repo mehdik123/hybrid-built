@@ -1,57 +1,26 @@
 import { useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
 import { IG_DM_URL } from "@/lib/constants";
 import MagneticCTA from "@/components/motion/MagneticCTA";
 import { landing } from "@/content/coachingLanding";
+import { getGsap, prefersReducedMotion } from "@/lib/gsap";
 import heroVideoSrc from "@/assets/hero-bg.mp4";
 import heroPosterSrc from "@/assets/hero-poster.jpg";
-
-const Headline = ({ language }: { language: "en" | "ar" | "fr" }) => {
-  if (language === "en") {
-    return (
-      <>
-        <span className="block">You&apos;re building your career.</span>
-        <span className="block mt-1">
-          Don&apos;t let your <span className="text-red-br">body</span> fall behind.
-        </span>
-      </>
-    );
-  }
-  if (language === "fr") {
-    return (
-      <>
-        <span className="block">Tu construis ta carrière.</span>
-        <span className="block mt-1">
-          Ne laisse pas ton <span className="text-red-br">corps</span> derrière.
-        </span>
-      </>
-    );
-  }
-  return (
-    <>
-      <span className="block">بني مستقبلك،</span>
-      <span className="block mt-1">
-        وما تنساش <span className="text-red-br">صحتك</span> والجسم ديالك.
-      </span>
-    </>
-  );
-};
 
 const HeroSection = () => {
   const { language, isRTL } = useLanguage();
   const t = landing.hero;
-  const sectionRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-40px" });
+  const mediaRef = useRef<HTMLDivElement>(null);
+  const brandRef = useRef<HTMLHeadingElement>(null);
+  const copyRef = useRef<HTMLDivElement>(null);
   const isAr = language === "ar";
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
     let cancelled = false;
-
     const kick = async () => {
       if (cancelled) return;
       try {
@@ -61,60 +30,93 @@ const HeroSection = () => {
         video.volume = 0;
         await video.play();
       } catch {
-        /* wait for gesture / next tick */
+        /* autoplay blocked until gesture */
       }
     };
-
     void kick();
-
-    const onReady = () => void kick();
-    video.addEventListener("loadedmetadata", onReady);
-    video.addEventListener("loadeddata", onReady);
-    video.addEventListener("canplay", onReady);
-
-    const unlock = () => {
-      void kick();
-    };
+    const unlock = () => void kick();
     document.addEventListener("touchstart", unlock, { once: true, passive: true });
     document.addEventListener("pointerdown", unlock, { once: true });
-
     const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) void kick();
+      ([e]) => {
+        if (e.isIntersecting) void kick();
         else video.pause();
       },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
     io.observe(video);
-
     return () => {
       cancelled = true;
-      video.removeEventListener("loadedmetadata", onReady);
-      video.removeEventListener("loadeddata", onReady);
-      video.removeEventListener("canplay", onReady);
       document.removeEventListener("touchstart", unlock);
       document.removeEventListener("pointerdown", unlock);
       io.disconnect();
     };
   }, []);
 
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const { gsap, ScrollTrigger } = getGsap();
+    const reduced = prefersReducedMotion();
+    const ctx = gsap.context(() => {
+      if (!reduced) {
+        const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+        tl.fromTo(
+          mediaRef.current,
+          { clipPath: "inset(100% 0 0 0)", scale: 1.12 },
+          { clipPath: "inset(0% 0 0 0)", scale: 1, duration: 1.35 },
+          0
+        )
+          .fromTo(
+            brandRef.current,
+            { yPercent: 110, opacity: 0 },
+            { yPercent: 0, opacity: 1, duration: 1 },
+            0.35
+          )
+          .fromTo(
+            copyRef.current?.querySelectorAll("[data-hero-line]"),
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.7, stagger: 0.08 },
+            0.55
+          );
+      }
+
+      gsap.to(mediaRef.current, {
+        yPercent: reduced ? 0 : 18,
+        ease: "none",
+        scrollTrigger: {
+          trigger: root,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }, root);
+
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === root) st.kill();
+      });
+    };
+  }, [language]);
+
   return (
     <section
-      ref={sectionRef}
-      className="relative min-h-[92svh] md:min-h-[100svh] flex items-end bg-ink overflow-hidden"
+      ref={rootRef}
+      className="relative h-[100svh] min-h-[640px] overflow-hidden bg-ink"
     >
-      <div className="absolute inset-0 bg-ink">
+      <div ref={mediaRef} className="absolute inset-0 will-change-transform">
         <img
           src={heroPosterSrc}
           alt=""
-          className="absolute inset-0 z-0 h-full w-full object-cover object-[center_18%]"
+          className="absolute inset-0 z-0 h-full w-full object-cover object-[center_20%]"
           fetchPriority="high"
           decoding="async"
         />
-
         <video
           ref={videoRef}
-          className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_18%] [transform:translateZ(0)]"
+          className="absolute inset-0 z-[1] h-full w-full object-cover object-[center_20%]"
           poster={heroPosterSrc}
           muted
           loop
@@ -124,78 +126,78 @@ const HeroSection = () => {
           controls={false}
           disablePictureInPicture
           aria-hidden
-          // Prefer sharpness; source is ~1.4MB — drop a higher-bitrate MP4 in src/assets to upgrade.
-          style={{ imageRendering: "auto" }}
         >
           <source src={heroVideoSrc} type="video/mp4" />
         </video>
-
-        {/* Lighter overlays so the hero clip reads sharper */}
         <div
           className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,10,10,0.32) 0%, rgba(10,10,10,0.08) 24%, transparent 42%, rgba(10,10,10,0.42) 68%, rgba(10,10,10,0.9) 100%)",
+              "linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.15) 32%, rgba(5,5,5,0.2) 55%, rgba(5,5,5,0.92) 100%)",
           }}
         />
         <div
           className="absolute inset-0 z-[2] pointer-events-none"
           style={{
             background: isRTL
-              ? "linear-gradient(270deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.22) 36%, transparent 58%)"
-              : "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.22) 36%, transparent 58%)",
+              ? "linear-gradient(270deg, rgba(5,5,5,0.75) 0%, transparent 55%)"
+              : "linear-gradient(90deg, rgba(5,5,5,0.75) 0%, transparent 55%)",
           }}
         />
       </div>
 
       <div
-        className={`relative z-10 w-full px-5 pt-28 pb-14 md:px-10 md:pt-36 md:pb-24 lg:px-14 ${
+        className={`relative z-10 h-full flex flex-col justify-end px-5 pb-10 md:px-10 md:pb-14 lg:px-14 ${
           isRTL ? "text-right" : ""
         }`}
       >
-        <div className="container-tight max-w-2xl">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="font-editorial text-[11px] md:text-xs uppercase tracking-[0.14em] text-white/55 mb-5 md:mb-7"
-          >
-            {t.label[language]}
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className={`font-display text-white tracking-tight ${
+        <div className="overflow-hidden mb-4 md:mb-6">
+          <h1
+            ref={brandRef}
+            className={`mega-type text-white ${
               isAr
-                ? "text-[1.75rem] sm:text-3xl md:text-4xl lg:text-[2.85rem] leading-[1.35]"
-                : "text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.35rem] leading-[1.05]"
+                ? "text-[clamp(2.4rem,9vw,6.5rem)] leading-[1.05]"
+                : "text-[clamp(3.6rem,16vw,12rem)]"
             }`}
           >
-            <Headline language={language} />
-          </motion.h1>
+            {t.brand[language]}
+          </h1>
+        </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className={`mt-5 md:mt-6 max-w-md font-editorial text-[15px] md:text-base text-white/65 ${
-              isAr ? "leading-[1.8]" : "leading-relaxed"
+        <div
+          ref={copyRef}
+          className={`grid gap-8 md:grid-cols-12 md:gap-6 items-end max-w-[1280px] w-full mx-auto`}
+        >
+          <div className={`md:col-span-7 ${isRTL ? "md:col-start-6" : ""}`}>
+            <p
+              data-hero-line
+              className={`font-display text-white/95 ${
+                isAr
+                  ? "text-xl sm:text-2xl md:text-3xl leading-[1.45]"
+                  : "text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.1]"
+              }`}
+            >
+              {t.headline[language]}
+            </p>
+            <p
+              data-hero-line
+              className={`mt-4 max-w-md font-editorial text-[15px] md:text-base text-white/65 ${
+                isAr ? "leading-[1.85]" : "leading-relaxed"
+              }`}
+            >
+              {t.subhead[language]}
+            </p>
+          </div>
+
+          <div
+            data-hero-line
+            className={`md:col-span-5 flex flex-col gap-4 ${
+              isRTL ? "md:items-start md:col-start-1 md:row-start-1" : "md:items-end"
             }`}
-          >
-            {t.subhead[language]}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-            className={`mt-8 md:mt-10 flex flex-col gap-4 ${isRTL ? "items-end" : "items-start"}`}
           >
             <div
-              className={`flex flex-col sm:flex-row sm:items-center gap-3 ${
-                isRTL ? "sm:flex-row-reverse" : ""
+              className={`flex flex-col sm:flex-row gap-3 ${
+                isRTL ? "sm:flex-row-reverse md:justify-start" : "md:justify-end"
               }`}
             >
               <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
@@ -203,10 +205,10 @@ const HeroSection = () => {
                 {t.ctaSecondary[language]}
               </MagneticCTA>
             </div>
-            <p className="font-editorial text-xs md:text-[13px] text-white/40 tracking-wide">
+            <p className="font-editorial text-xs tracking-[0.14em] uppercase text-white/40">
               {t.proofLine[language]}
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

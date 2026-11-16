@@ -1,170 +1,147 @@
-import { useRef, useState } from "react";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/contexts/AppContext";
-import { IG_DM_URL } from "@/lib/constants";
+import { ASSETS, IG_DM_URL } from "@/lib/constants";
 import MagneticCTA from "@/components/motion/MagneticCTA";
 import { landing } from "@/content/coachingLanding";
+import { getGsap, prefersReducedMotion } from "@/lib/gsap";
 
 const OfferSection = () => {
   const { language, isRTL } = useLanguage();
   const t = landing.offer;
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const rootRef = useRef<HTMLElement>(null);
+  const imgRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const [hovered, setHovered] = useState<number | null>(null);
 
-  const openIndex = hovered ?? active;
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root || prefersReducedMotion()) return;
+    const { gsap } = getGsap();
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        imgRef.current,
+        { clipPath: "inset(12% 12% 12% 12%)", scale: 1.15 },
+        {
+          clipPath: "inset(0% 0% 0% 0%)",
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root,
+            start: "top 75%",
+            end: "top 15%",
+            scrub: true,
+          },
+        }
+      );
+      gsap.fromTo(
+        root.querySelectorAll("[data-offer-item]"),
+        { x: isRTL ? 40 : -40, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.08,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: { trigger: root, start: "top 60%" },
+        }
+      );
+    }, root);
+    return () => ctx.revert();
+  }, [isRTL, language]);
 
   return (
-    <section id="offer" className="section-padding bg-ink border-t border-white/[0.06]" ref={ref}>
-      <div className="container-tight">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className={`lg:col-span-5 ${isRTL ? "text-right lg:order-2" : ""}`}>
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              className="font-editorial text-[11px] uppercase tracking-[0.12em] text-red-br mb-3"
-            >
-              {t.eyebrow[language]}
-            </motion.p>
-            <motion.h2
-              initial={{ opacity: 0, y: 14 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.04 }}
-              className="font-display text-3xl md:text-5xl leading-[1.08] tracking-tight text-foreground"
-            >
-              {t.title[language]}
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.08 }}
-              className="mt-5 font-editorial text-base text-white/55 leading-relaxed"
-            >
-              {t.valueLead[language]}
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.12 }}
-              className="mt-4 font-editorial text-[11px] uppercase tracking-[0.18em] text-white/30 hidden md:block"
-            >
-              {language === "en"
-                ? "Hover or click a line for details"
-                : language === "fr"
-                  ? "Survole ou clique pour les détails"
-                  : "مرّر أو كليكي باش تشوف التفاصيل"}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.14 }}
-              className="mt-8 flex flex-col gap-3"
-            >
-              <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
-              <p className="font-editorial text-xs text-white/35">{t.priceNote[language]}</p>
-            </motion.div>
+    <section id="offer" ref={rootRef} className="relative bg-ink border-t border-white/[0.08]">
+      <div className="grid lg:grid-cols-12 min-h-[100svh]">
+        <div
+          className={`relative lg:col-span-5 min-h-[50vh] lg:min-h-full overflow-hidden ${
+            isRTL ? "lg:order-2" : ""
+          }`}
+        >
+          <div ref={imgRef} className="absolute inset-0 will-change-transform">
+            <img
+              src={ASSETS.pathCoaching}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover object-[center_18%]"
+            />
           </div>
+          <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 bg-gradient-to-t from-ink via-ink/50 to-transparent lg:hidden">
+            <p className="mega-type text-white text-5xl">{t.eyebrow[language]}</p>
+          </div>
+        </div>
 
-          <div className={`lg:col-span-7 ${isRTL ? "text-right lg:order-1" : ""}`}>
-            <ul className="relative space-y-0">
-              {t.included.map((item, i) => {
-                const isOpen = openIndex === i;
-                return (
-                  <motion.li
-                    key={item.title.en}
-                    initial={{ opacity: 0, x: isRTL ? 18 : -18 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: Math.min(0.04 * i, 0.12), duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative border-b border-white/[0.08] last:border-b-0"
+        <div
+          className={`lg:col-span-7 flex flex-col justify-center px-5 py-16 md:px-12 lg:px-16 lg:py-24 ${
+            isRTL ? "text-right lg:order-1" : ""
+          }`}
+        >
+          <p className="hidden lg:block font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-4">
+            {t.eyebrow[language]}
+          </p>
+          <h2
+            className={`mega-type text-white mb-6 ${
+              language === "ar"
+                ? "text-[clamp(1.85rem,4.5vw,3.5rem)] leading-[1.2]"
+                : "text-[clamp(3rem,7vw,5.5rem)]"
+            }`}
+          >
+            {t.title[language]}
+          </h2>
+          <p className="font-editorial text-base text-white/55 leading-relaxed max-w-xl mb-10">
+            {t.valueLead[language]}
+          </p>
+
+          <ul className="space-y-0 border-t border-white/10">
+            {t.included.map((item, i) => {
+              const open = active === i;
+              return (
+                <li key={item.title.en} data-offer-item className="border-b border-white/10">
+                  <button
+                    type="button"
+                    onClick={() => setActive(i)}
+                    className={`w-full py-5 md:py-6 flex gap-4 md:gap-6 items-start ${
+                      isRTL ? "flex-row-reverse text-right" : "text-left"
+                    }`}
                   >
-                    <button
-                      type="button"
-                      aria-expanded={isOpen}
-                      onClick={() => setActive(i)}
-                      onMouseEnter={() => setHovered(i)}
-                      onMouseLeave={() => setHovered(null)}
-                      onFocus={() => setHovered(i)}
-                      onBlur={() => setHovered(null)}
-                      className={`group relative w-full text-left transition-colors duration-300 ${
-                        isRTL ? "text-right" : ""
+                    <span
+                      className={`font-impact text-2xl md:text-3xl shrink-0 ${
+                        open ? "text-red-br" : "text-white/25"
                       }`}
                     >
-                      <AnimatePresence>
-                        {isOpen && (
-                          <motion.span
-                            layoutId="offer-active-bar"
-                            className={`absolute top-0 bottom-0 w-[2px] bg-red-br ${
-                              isRTL ? "right-0" : "left-0"
-                            }`}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                          />
-                        )}
-                      </AnimatePresence>
-
-                      <div
-                        className={`flex gap-4 md:gap-5 px-4 md:px-5 py-5 md:py-6 transition-colors duration-300 ${
-                          isOpen ? "bg-white/[0.035]" : "bg-transparent hover:bg-white/[0.02]"
-                        } ${isRTL ? "flex-row-reverse" : ""}`}
-                      >
-                        <motion.span
-                          animate={{
-                            color: isOpen ? "rgb(232, 0, 28)" : "rgba(255,255,255,0.35)",
-                            scale: isOpen ? 1.05 : 1,
-                          }}
-                          transition={{ duration: 0.25 }}
-                          className="font-editorial text-xs shrink-0 pt-1 tracking-[0.18em]"
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <div className={`flex justify-between gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+                        <span
+                          className={`font-display text-lg md:text-2xl ${
+                            open ? "text-white" : "text-white/60"
+                          }`}
                         >
-                          {String(i + 1).padStart(2, "0")}
-                        </motion.span>
-
-                        <div className="min-w-0 flex-1">
-                          <div className={`flex items-start justify-between gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-                            <p
-                              className={`font-display text-lg md:text-xl uppercase leading-snug transition-colors duration-300 ${
-                                isOpen ? "text-foreground" : "text-white/70 group-hover:text-foreground"
-                              }`}
-                            >
-                              {item.title[language]}
-                            </p>
-                            <motion.span
-                              animate={{ rotate: isOpen ? 45 : 0, opacity: isOpen ? 1 : 0.35 }}
-                              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                              className="font-display text-xl leading-none text-red-br shrink-0 mt-0.5"
-                              aria-hidden
-                            >
-                              +
-                            </motion.span>
-                          </div>
-
-                          <AnimatePresence initial={false} mode="wait">
-                            {isOpen && (
-                              <motion.div
-                                key={`detail-${i}`}
-                                initial={{ opacity: 0, height: 0, filter: "blur(4px)" }}
-                                animate={{ opacity: 1, height: "auto", filter: "blur(0px)" }}
-                                exit={{ opacity: 0, height: 0, filter: "blur(4px)" }}
-                                transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-                                className="overflow-hidden"
-                              >
-                                <p className="font-editorial text-sm md:text-[15px] text-white/55 leading-relaxed pt-3 pb-1">
-                                  {item.detail[language]}
-                                </p>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
+                          {item.title[language]}
+                        </span>
+                        <span className="text-red-br text-xl leading-none" aria-hidden>
+                          {open ? "—" : "+"}
+                        </span>
                       </div>
-                    </button>
-                  </motion.li>
-                );
-              })}
-            </ul>
+                      <div
+                        className={`overflow-hidden transition-[max-height,opacity] duration-400 ${
+                          open ? "max-h-40 opacity-100 mt-3" : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <p className="font-editorial text-sm text-white/50 leading-relaxed">
+                          {item.detail[language]}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="mt-10 flex flex-col gap-3">
+            <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>
+            <p className="font-editorial text-xs text-white/35">{t.priceNote[language]}</p>
           </div>
         </div>
       </div>
