@@ -292,7 +292,7 @@ const HybridBuild = () => {
             <Link to="/" className="btn-ghost-cta w-full justify-center">
               {labels.backHome}
             </Link>
-            <Link to="/coaching" className="block text-center font-editorial text-sm text-white/40 hover:text-white/70 transition-colors">
+            <Link to="/" className="block text-center font-editorial text-sm text-white/40 hover:text-white/70 transition-colors">
               {language === "ar"
                 ? "باغي online coaching؟"
                 : language === "fr"

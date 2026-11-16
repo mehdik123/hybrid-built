@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppProvider } from "@/contexts/AppContext";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
-import BrandHome from "./pages/BrandHome";
 import Coaching from "./pages/Coaching";
 import HybridBuild from "./pages/HybridBuild";
 import Products from "./pages/Products";
@@ -23,8 +22,8 @@ const App = () => (
           <Sonner />
           <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
             <Routes>
-              <Route path="/" element={<BrandHome />} />
-              <Route path="/coaching" element={<Coaching />} />
+              <Route path="/" element={<Coaching />} />
+              <Route path="/coaching" element={<Navigate to="/" replace />} />
               <Route path="/hybrid-build" element={<HybridBuild />} />
               <Route path="/home" element={<Navigate to="/" replace />} />
               <Route path="/free-tool" element={<FreeToolPage />} />

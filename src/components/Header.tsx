@@ -21,29 +21,13 @@ const Header = ({ variant }: HeaderProps) => {
 
   const resolvedVariant: HeaderVariant =
     variant ??
-    (location.pathname === "/coaching"
-      ? "coaching"
-      : location.pathname === "/hybrid-build"
-        ? "product"
+    (location.pathname === "/hybrid-build"
+      ? "product"
+      : location.pathname === "/" || location.pathname === "/coaching"
+        ? "coaching"
         : "brand");
 
   const isCoachingPage = resolvedVariant === "coaching";
-  const isBrandPage = resolvedVariant === "brand";
-
-  const brandLinks = [
-    {
-      label: language === "en" ? "Presence" : language === "fr" ? "Présence" : "الحضور",
-      href: "#presence",
-    },
-    {
-      label: "Coaching",
-      to: "/coaching",
-    },
-    {
-      label: "Hybrid Build",
-      to: "/hybrid-build",
-    },
-  ];
 
   const coachingLinks = [
     {
@@ -70,24 +54,16 @@ const Header = ({ variant }: HeaderProps) => {
 
   const productLinks = [
     { label: language === "en" ? "Home" : language === "fr" ? "Accueil" : "الرئيسية", to: "/" },
-    { label: "Coaching", to: "/coaching" },
     {
       label: language === "en" ? "Checkout" : language === "fr" ? "Paiement" : "الخلاص",
       href: "#checkout",
     },
   ];
 
-  const navLinks =
-    resolvedVariant === "coaching"
-      ? coachingLinks
-      : resolvedVariant === "product"
-        ? productLinks
-        : brandLinks;
+  const navLinks = resolvedVariant === "product" ? productLinks : coachingLinks;
 
   const applyLabel =
     language === "en" ? "Apply" : language === "fr" ? "Postuler" : "بدا الـ coaching";
-  const brandCta =
-    language === "en" ? "Explore" : language === "fr" ? "Explorer" : "اكتشف";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24);
@@ -103,20 +79,18 @@ const Header = ({ variant }: HeaderProps) => {
   }, [isMenuOpen]);
 
   const handleHashClick = (href: string) => {
-    if (isBrandPage || isCoachingPage || resolvedVariant === "product") {
-      const onPage =
-        (isBrandPage && location.pathname === "/") ||
-        (isCoachingPage && location.pathname === "/coaching") ||
-        (resolvedVariant === "product" && location.pathname === "/hybrid-build");
-      if (onPage) {
-        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-      } else if (isCoachingPage) {
-        navigate("/coaching" + href);
-      } else if (resolvedVariant === "product") {
-        navigate("/hybrid-build" + href);
-      } else {
-        navigate("/" + href);
-      }
+    const onCoachingHome =
+      location.pathname === "/" || location.pathname === "/coaching";
+    const onProduct = location.pathname === "/hybrid-build";
+
+    if ((isCoachingPage && onCoachingHome) || (resolvedVariant === "product" && onProduct)) {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    } else if (isCoachingPage) {
+      navigate("/" + href);
+    } else if (resolvedVariant === "product") {
+      navigate("/hybrid-build" + href);
+    } else {
+      navigate("/" + href);
     }
     setIsMenuOpen(false);
   };
@@ -152,10 +126,10 @@ const Header = ({ variant }: HeaderProps) => {
                 </MagneticCTA>
               ) : (
                 <Link
-                  to={resolvedVariant === "product" ? "/coaching" : "/#presence"}
+                  to="/"
                   className="btn-primary-cta !py-2.5 !px-4 !text-[11px] hidden sm:inline-flex"
                 >
-                  {resolvedVariant === "product" ? applyLabel : brandCta}
+                  {applyLabel}
                 </Link>
               )}
               <button

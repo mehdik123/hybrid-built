@@ -1,1 +1,1 @@
-export { default } from "./BrandHome";
+export { default } from "./Coaching";
