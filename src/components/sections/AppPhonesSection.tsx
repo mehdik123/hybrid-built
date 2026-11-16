@@ -133,7 +133,7 @@ const AppPhonesSection = () => {
     <section
       id="app"
       ref={rootRef}
-      className="relative section-padding bg-ink border-t border-white/[0.08] overflow-hidden"
+      className="relative section-padding pb-16 md:pb-28 bg-ink border-t border-white/[0.08] overflow-hidden isolate"
     >
       <div className="container-tight">
         <div className={`max-w-3xl mb-10 md:mb-14 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
@@ -175,7 +175,7 @@ const AppPhonesSection = () => {
 
         <div
           ref={stageRef}
-          className="relative mx-auto h-[400px] sm:h-[460px] md:h-[540px] max-w-4xl"
+          className="relative mx-auto h-[320px] sm:h-[400px] md:h-[520px] max-w-4xl overflow-visible"
         >
           <div
             aria-hidden

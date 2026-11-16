@@ -46,6 +46,34 @@ const wrapX = (value: number, half: number, rtl: boolean) => {
   return x;
 };
 
+const BAThumb = ({
+  src,
+  label,
+  variant,
+}: {
+  src: string;
+  label: string;
+  variant: "before" | "after";
+}) => (
+  <div className="relative h-full overflow-hidden bg-muted">
+    <img
+      src={src}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      className="h-full w-full object-cover object-[center_18%] pointer-events-none"
+      draggable={false}
+    />
+    <span
+      className={`absolute top-2 left-2 font-editorial text-[9px] uppercase tracking-[0.14em] px-2 py-1 pointer-events-none ${
+        variant === "after" ? "bg-red-br text-white" : "bg-black text-white"
+      }`}
+    >
+      {label}
+    </span>
+  </div>
+);
+
 const ProofSection = () => {
   const { language, isRTL } = useLanguage();
   const lang = language as Lang;
@@ -76,17 +104,16 @@ const ProofSection = () => {
     const { gsap } = getGsap();
     const reduced = prefersReducedMotion();
 
-    // Title entrance
     const titleCtx = gsap.context(() => {
       gsap.fromTo(
         section.querySelector("[data-proof-title]"),
-        { y: 40, opacity: 0 },
+        { y: 36, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
+          duration: 0.75,
           ease: "power3.out",
-          scrollTrigger: { trigger: section, start: "top 78%" },
+          scrollTrigger: { trigger: section, start: "top 80%" },
         }
       );
     }, section);
@@ -102,44 +129,31 @@ const ProofSection = () => {
     let axis: "h" | "v" | null = null;
     let activePointer: number | null = null;
 
-    const applyCenterEffects = () => {
+    const applyCenterScale = () => {
       const vpRect = viewport.getBoundingClientRect();
       const centerX = vpRect.left + vpRect.width / 2;
-      const falloff = Math.max(140, vpRect.width * 0.4);
+      const falloff = Math.max(150, vpRect.width * 0.42);
       const tiles = track.querySelectorAll<HTMLElement>("[data-rail-tile]");
 
       tiles.forEach((tile) => {
-        const scaleEl = tile.querySelector<HTMLElement>("[data-rail-scale]");
-        const wipe = tile.querySelector<HTMLElement>("[data-wipe]");
-        if (!scaleEl) return;
-
+        const inner = tile.querySelector<HTMLElement>("[data-rail-scale]");
+        if (!inner) return;
         const r = tile.getBoundingClientRect();
         const tileCenter = r.left + r.width / 2;
         const dist = Math.abs(tileCenter - centerX);
         const tNorm = Math.min(1, dist / falloff);
-        const focus = 1 - tNorm;
 
         if (reduced) {
-          scaleEl.style.transform = "scale(1)";
-          scaleEl.style.opacity = "1";
-          if (wipe) wipe.style.clipPath = "inset(0 0% 0 0)";
+          inner.style.transform = "scale(1)";
+          inner.style.opacity = "1";
           return;
         }
 
-        const scale = 0.86 + focus * 0.2;
-        scaleEl.style.transform = `scale(${scale.toFixed(3)})`;
-        scaleEl.style.opacity = String(Math.max(0.5, 0.55 + focus * 0.45));
-        scaleEl.style.zIndex = String(Math.round(focus * 20));
-
-        // Before→after wipe: fully revealed (after) when centered
-        if (wipe) {
-          const reveal = focus; // 0 side → 1 center
-          if (isRTL) {
-            wipe.style.clipPath = `inset(0 ${reveal * 100}% 0 0)`;
-          } else {
-            wipe.style.clipPath = `inset(0 ${(1 - reveal) * 100}% 0 0)`;
-          }
-        }
+        const scale = 1.12 - tNorm * 0.28;
+        const opacity = 1 - tNorm * 0.4;
+        inner.style.transform = `scale(${scale.toFixed(3)})`;
+        inner.style.opacity = Math.max(0.55, opacity).toFixed(3);
+        inner.style.zIndex = String(Math.round((1 - tNorm) * 20));
       });
     };
 
@@ -155,15 +169,15 @@ const ProofSection = () => {
       const half = track.scrollWidth / 2;
       x = wrapX(x, half, isRTL);
       track.style.transform = `translate3d(${x}px, 0, 0)`;
-      applyCenterEffects();
+      applyCenterScale();
     };
 
-    const baseSpeed = reduced ? 0.25 : 0.5;
+    const baseSpeed = reduced ? 0.28 : 0.52;
 
     const tick = (time: number) => {
       if (!visible || dragging) {
         lastTime = time;
-        if (visible) applyCenterEffects();
+        if (visible) applyCenterScale();
         raf = requestAnimationFrame(tick);
         return;
       }
@@ -206,9 +220,8 @@ const ProofSection = () => {
         }
       }
       if (axis !== "h") return;
-      const dx = e.clientX - lastPointerX;
+      x += e.clientX - lastPointerX;
       lastPointerX = e.clientX;
-      x += dx;
       paint();
     };
 
@@ -231,7 +244,6 @@ const ProofSection = () => {
     viewport.addEventListener("pointerup", endDrag);
     viewport.addEventListener("pointercancel", endDrag);
 
-    // Wait a frame so images/layout settle
     requestAnimationFrame(() => {
       paint();
       raf = requestAnimationFrame(tick);
@@ -280,62 +292,36 @@ const ProofSection = () => {
       >
         <div
           ref={trackRef}
-          className="flex w-max items-center gap-3 md:gap-5 px-5 md:px-10 will-change-transform"
+          className="flex w-max items-center gap-3 md:gap-4 px-5 md:px-10 will-change-transform"
           style={{ transform: "translate3d(0,0,0)" }}
         >
           {loop.map((item, i) => (
             <article
               key={`${item.beforeImg}-${i}`}
               data-rail-tile
-              className="relative shrink-0 w-[78vw] sm:w-[360px] md:w-[440px] lg:w-[500px] select-none"
+              className="relative shrink-0 w-[82vw] max-w-[340px] sm:w-[360px] md:w-[420px] select-none"
             >
               <div
                 data-rail-scale
                 className="relative origin-center will-change-transform"
                 style={{ transform: "scale(0.88)", opacity: 0.6 }}
               >
-                <div className="relative aspect-[3/4] overflow-hidden bg-muted shadow-lg shadow-black/40">
-                  <img
-                    src={item.afterImg}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
-                    draggable={false}
-                  />
-                  <div
-                    data-wipe
-                    className="absolute inset-0"
-                    style={{ clipPath: isRTL ? "inset(0 0 0 0)" : "inset(0 100% 0 0)" }}
-                  >
-                    <img
-                      src={item.beforeImg}
-                      alt=""
-                      loading="lazy"
-                      decoding="async"
-                      className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
-                      draggable={false}
-                    />
-                  </div>
-                  <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px bg-white/50" />
-                  <span className="absolute top-2.5 left-2.5 font-editorial text-[9px] uppercase tracking-[0.16em] bg-black text-white px-2 py-1">
-                    {t.before[lang]}
-                  </span>
-                  <span className="absolute top-2.5 right-2.5 font-editorial text-[9px] uppercase tracking-[0.16em] bg-red-br text-white px-2 py-1">
-                    {t.after[lang]}
-                  </span>
-                  {item.name && (
-                    <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/85 to-transparent">
-                      <p className="font-display text-white text-base">{item.name[lang]}</p>
-                      {item.timeframe && (
-                        <p className="font-editorial text-[11px] text-white/60">
-                          {item.timeframe[lang]}
-                          {item.profession ? ` · ${item.profession[lang]}` : ""}
-                        </p>
-                      )}
-                    </div>
-                  )}
+                {/* Clear side-by-side before | after — no wipe/split overlay */}
+                <div className="grid grid-cols-2 gap-1 h-[240px] sm:h-[280px] md:h-[340px] shadow-lg shadow-black/40">
+                  <BAThumb src={item.beforeImg} label={t.before[lang]} variant="before" />
+                  <BAThumb src={item.afterImg} label={t.after[lang]} variant="after" />
                 </div>
+                {item.name && (
+                  <div className={`mt-3 ${isRTL ? "text-right" : ""}`}>
+                    <p className="font-display text-white text-sm md:text-base">{item.name[lang]}</p>
+                    {item.timeframe && (
+                      <p className="font-editorial text-[11px] text-white/50 mt-0.5">
+                        {item.timeframe[lang]}
+                        {item.profession ? ` · ${item.profession[lang]}` : ""}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
             </article>
           ))}
