@@ -28,140 +28,146 @@ const AppPhonesSection = () => {
   const { language, isRTL } = useLanguage();
   const lang = language as "en" | "ar" | "fr";
   const rootRef = useRef<HTMLElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(1);
+  const pinRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
 
   useEffect(() => {
     const root = rootRef.current;
-    const stage = stageRef.current;
-    if (!root || !stage) return;
+    const pin = pinRef.current;
+    const track = trackRef.current;
+    if (!root || !pin || !track) return;
+
     const { gsap, ScrollTrigger } = getGsap();
     const reduced = prefersReducedMotion();
-    const phones = stage.querySelectorAll<HTMLElement>("[data-phone]");
-
-    const layoutPhones = (index: number, animate: boolean) => {
-      phones.forEach((phone, i) => {
-        const dist = i - index;
-        const abs = Math.abs(dist);
-        const dir = isRTL ? -1 : 1;
-        const props = {
-          x: dist * 72 * dir,
-          y: abs * 14 - (abs === 0 ? 28 : 0),
-          scale: abs === 0 ? 1.1 : Math.max(0.78, 0.96 - abs * 0.08),
-          opacity: abs === 0 ? 1 : Math.max(0.28, 0.7 - abs * 0.18),
-          rotate: dist * 4 * dir,
-          zIndex: 20 - abs,
-          duration: animate ? 0.55 : 0,
-          ease: "power3.out",
-          overwrite: "auto" as const,
-        };
-        gsap.to(phone, props);
-      });
-    };
 
     const ctx = gsap.context(() => {
+      const getTravel = () => {
+        const max = track.scrollWidth - pin.clientWidth;
+        return Math.max(0, max);
+      };
+
+      // Start: first phone fully in view on the left
+      gsap.set(track, { x: 0 });
+
       if (reduced) {
-        layoutPhones(active, false);
+        // Fallback: allow native horizontal swipe
+        pin.style.overflowX = "auto";
         return;
       }
 
-      gsap.from(phones, {
-        y: 100,
-        opacity: 0,
-        scale: 0.8,
-        stagger: 0.07,
-        duration: 0.9,
-        ease: "power3.out",
-        scrollTrigger: { trigger: root, start: "top 72%" },
-        onComplete: () => layoutPhones(active, true),
-      });
-
-      ScrollTrigger.create({
-        trigger: root,
-        start: "top 60%",
-        end: "bottom 35%",
-        scrub: true,
-        onUpdate: (self) => {
-          const idx = Math.min(
-            SCREENS.length - 1,
-            Math.max(0, Math.round(self.progress * (SCREENS.length - 1)))
-          );
-          setActive(idx);
-        },
-      });
-
-      gsap.to(stage, {
-        y: -30,
+      const tween = gsap.to(track, {
+        x: () => (isRTL ? getTravel() : -getTravel()),
         ease: "none",
         scrollTrigger: {
           trigger: root,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
+          start: "top top",
+          end: () => `+=${Math.max(getTravel() * 1.35, window.innerHeight * 1.6)}`,
+          pin: true,
+          scrub: 0.65,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const idx = Math.min(
+              SCREENS.length - 1,
+              Math.round(self.progress * (SCREENS.length - 1))
+            );
+            setActive(idx);
+          },
         },
       });
+
+      // Emphasize the phone nearest viewport center
+      const phones = track.querySelectorAll<HTMLElement>("[data-phone]");
+      ScrollTrigger.create({
+        trigger: root,
+        start: "top top",
+        end: () => `+=${Math.max(getTravel() * 1.35, window.innerHeight * 1.6)}`,
+        scrub: true,
+        onUpdate: () => {
+          const center = window.innerWidth / 2;
+          phones.forEach((phone, i) => {
+            const r = phone.getBoundingClientRect();
+            const c = r.left + r.width / 2;
+            const dist = Math.abs(c - center);
+            const falloff = window.innerWidth * 0.35;
+            const t = Math.min(1, dist / falloff);
+            const focus = 1 - t;
+            gsap.set(phone, {
+              scale: 0.88 + focus * 0.14,
+              opacity: 0.45 + focus * 0.55,
+              zIndex: Math.round(focus * 20),
+            });
+          });
+        },
+      });
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
     }, root);
 
-    return () => ctx.revert();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const onResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", onResize);
+
+    // Refresh after images layout
+    const t = window.setTimeout(() => ScrollTrigger.refresh(), 200);
+
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("resize", onResize);
+      ctx.revert();
+    };
   }, [language, isRTL]);
 
-  useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) return;
-    const { gsap } = getGsap();
-    const phones = stage.querySelectorAll<HTMLElement>("[data-phone]");
-    const dir = isRTL ? -1 : 1;
-    phones.forEach((phone, i) => {
-      const dist = i - active;
-      const abs = Math.abs(dist);
-      gsap.to(phone, {
-        x: dist * 72 * dir,
-        y: abs * 14 - (abs === 0 ? 28 : 0),
-        scale: abs === 0 ? 1.1 : Math.max(0.78, 0.96 - abs * 0.08),
-        opacity: abs === 0 ? 1 : Math.max(0.28, 0.7 - abs * 0.18),
-        rotate: dist * 4 * dir,
-        zIndex: 20 - abs,
-        duration: prefersReducedMotion() ? 0 : 0.5,
-        ease: "power3.out",
-        overwrite: "auto",
-      });
-    });
-  }, [active, isRTL]);
+  const jumpTo = (index: number) => {
+    setActive(index);
+    const root = rootRef.current;
+    if (!root) return;
+    const { ScrollTrigger } = getGsap();
+    const st = ScrollTrigger.getAll().find((s) => s.trigger === root);
+    if (!st) return;
+    const progress = SCREENS.length <= 1 ? 0 : index / (SCREENS.length - 1);
+    const scroll = st.start + (st.end - st.start) * progress;
+    window.scrollTo({ top: scroll, behavior: "smooth" });
+  };
 
   return (
     <section
       id="app"
       ref={rootRef}
-      className="relative section-padding pb-16 md:pb-28 bg-ink border-t border-white/[0.08] overflow-hidden isolate"
+      className="relative bg-ink border-t border-white/[0.08]"
     >
-      <div className="container-tight">
-        <div className={`max-w-3xl mb-10 md:mb-14 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
-          <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-4">
+      <div className="px-5 pt-10 pb-4 md:px-10 md:pt-16 lg:px-14">
+        <div className={`max-w-3xl ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
+          <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-3">
             {copy.eyebrow[lang]}
           </p>
           <h2
             className={`mega-type text-white ${
               lang === "ar"
-                ? "text-[clamp(1.75rem,5vw,3.4rem)] leading-[1.2]"
-                : "text-[clamp(2.4rem,6.5vw,5rem)]"
+                ? "text-[clamp(1.6rem,5vw,3.2rem)] leading-[1.2]"
+                : "text-[clamp(2.2rem,6vw,4.5rem)]"
             }`}
           >
             {copy.title[lang]}
           </h2>
-          <p className="mt-5 font-editorial text-base text-white/55 leading-relaxed max-w-xl">
+          <p className="mt-3 md:mt-4 font-editorial text-sm md:text-base text-white/55 leading-relaxed max-w-xl">
             {copy.lead[lang]}
           </p>
         </div>
 
         <div
-          className={`mb-8 flex flex-wrap gap-2 ${isRTL ? "justify-end" : "justify-start"} md:justify-center`}
+          className={`mt-5 mb-2 flex flex-wrap gap-2 ${
+            isRTL ? "justify-end" : "justify-start"
+          }`}
         >
           {SCREENS.map((screen, i) => (
             <button
               key={screen.src}
               type="button"
-              onClick={() => setActive(i)}
+              onClick={() => jumpTo(i)}
               className={`font-editorial text-[10px] uppercase tracking-[0.16em] px-3 py-2 transition-colors ${
                 active === i
                   ? "text-white border border-red-br bg-red-br/10"
@@ -172,25 +178,26 @@ const AppPhonesSection = () => {
             </button>
           ))}
         </div>
+      </div>
 
+      {/* Horizontal phone strip — scrolls L→R as you scroll down */}
+      <div
+        ref={pinRef}
+        className="relative w-full overflow-hidden pb-10 md:pb-14"
+      >
         <div
-          ref={stageRef}
-          className="relative mx-auto h-[320px] sm:h-[400px] md:h-[520px] max-w-4xl overflow-visible"
+          ref={trackRef}
+          className={`flex items-end gap-4 md:gap-6 px-5 md:px-10 will-change-transform ${
+            isRTL ? "flex-row-reverse" : ""
+          }`}
+          style={{ width: "max-content" }}
         >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 bottom-6 h-24 w-[70%] -translate-x-1/2 rounded-[100%] bg-red-br/15 blur-3xl"
-          />
-
           {SCREENS.map((screen, i) => (
-            <button
+            <figure
               key={screen.src}
-              type="button"
               data-phone
-              onClick={() => setActive(i)}
-              aria-label={screen.label[lang]}
-              aria-pressed={active === i}
-              className="absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2 w-[min(190px,40vw)] md:w-[210px] aspect-[9/19] border border-white/20 bg-black overflow-hidden shadow-2xl shadow-black/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-br will-change-transform"
+              className="relative shrink-0 w-[58vw] max-w-[220px] sm:w-[200px] md:w-[240px] lg:w-[260px] aspect-[9/19] border border-white/20 bg-black overflow-hidden shadow-2xl shadow-black/50 will-change-transform"
+              style={{ opacity: i === 0 ? 1 : 0.55, transform: "scale(0.92)" }}
             >
               <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-2 w-10 rounded-full bg-black/90 z-10" />
               <img
@@ -201,12 +208,14 @@ const AppPhonesSection = () => {
                 decoding="async"
                 draggable={false}
               />
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/90 to-transparent" />
-              <span className="absolute bottom-2.5 left-1/2 -translate-x-1/2 font-editorial text-[9px] uppercase tracking-[0.16em] text-white/90">
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/90 to-transparent pointer-events-none" />
+              <figcaption className="absolute bottom-2.5 left-1/2 -translate-x-1/2 font-editorial text-[9px] uppercase tracking-[0.16em] text-white/90">
                 {screen.label[lang]}
-              </span>
-            </button>
+              </figcaption>
+            </figure>
           ))}
+          {/* Trailing spacer so last phone can reach center */}
+          <div className="shrink-0 w-[20vw] md:w-[30vw]" aria-hidden />
         </div>
       </div>
     </section>
