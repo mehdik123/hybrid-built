@@ -3,11 +3,13 @@ import { useLanguage } from "@/contexts/AppContext";
 import { brand } from "@/content/brandLanding";
 import { IG_HANDLE, IG_PROFILE_URL } from "@/lib/constants";
 import { getGsap, prefersReducedMotion } from "@/lib/gsap";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const BrandPresence = () => {
   const { language, isRTL } = useLanguage();
   const t = brand.presence;
-  const rootRef = useRef<HTMLElement>(null);
+  const countRef = useCountUp([language]);
+  const rootRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -30,8 +32,17 @@ const BrandPresence = () => {
     return () => ctx.revert();
   }, [language]);
 
+  const setRefs = (node: HTMLElement | null) => {
+    rootRef.current = node;
+    countRef.current = node;
+  };
+
   return (
-    <section id="presence" ref={rootRef} className="bg-black border-t border-white/[0.08] px-5 py-16 md:px-10 md:py-24 lg:px-14">
+    <section
+      id="presence"
+      ref={setRefs}
+      className="bg-black border-t border-white/[0.08] px-5 py-16 md:px-10 md:py-24 lg:px-14"
+    >
       <div className={`max-w-[1280px] mx-auto ${isRTL ? "text-right" : ""}`}>
         <p data-pres className="font-editorial text-[11px] uppercase tracking-[0.22em] text-red-br mb-3">
           {t.eyebrow[language]}
@@ -54,7 +65,15 @@ const BrandPresence = () => {
               data-pres
               className="bg-black px-5 py-8 md:px-8 md:py-10"
             >
-              <p className="mega-type text-white text-[clamp(2.4rem,6vw,4rem)] mb-2">{stat.value}</p>
+              <p
+                data-count
+                data-end={stat.end}
+                data-decimals={stat.decimals}
+                data-suffix={stat.suffix}
+                className="mega-type text-white text-[clamp(2.4rem,6vw,4rem)] mb-2"
+              >
+                0{stat.suffix}
+              </p>
               <p className="font-editorial text-sm text-white/45 uppercase tracking-wider">
                 {stat.label[language]}
               </p>

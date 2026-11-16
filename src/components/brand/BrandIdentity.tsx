@@ -51,7 +51,7 @@ const BrandIdentity = () => {
           <div data-id-img className="absolute inset-0">
             <img
               src={ASSETS.identityPortrait}
-              alt="Mehdi Kamel"
+              alt="El Mehdi Kamal"
               className="h-full w-full object-cover object-[center_18%]"
               loading="lazy"
             />

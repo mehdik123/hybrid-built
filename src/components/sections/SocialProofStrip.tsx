@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react";
 import { Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/AppContext";
-import { getGsap, prefersReducedMotion } from "@/lib/gsap";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
@@ -10,14 +9,32 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 );
 
 const STATS = [
-  { value: "534K", label: { en: "Instagram", ar: "Instagram", fr: "Instagram" }, icon: "ig" as const },
-  { value: "267.7K", label: { en: "TikTok", ar: "TikTok", fr: "TikTok" }, icon: "tt" as const },
-  { value: "3.6K", label: { en: "Coaching", ar: "Coaching", fr: "Coaching" }, icon: "ig" as const },
+  {
+    end: 534,
+    decimals: 0,
+    suffix: "K",
+    label: { en: "Instagram", ar: "Instagram", fr: "Instagram" },
+    icon: "ig" as const,
+  },
+  {
+    end: 267.7,
+    decimals: 1,
+    suffix: "K",
+    label: { en: "TikTok", ar: "TikTok", fr: "TikTok" },
+    icon: "tt" as const,
+  },
+  {
+    end: 3.6,
+    decimals: 1,
+    suffix: "K",
+    label: { en: "Coaching", ar: "Coaching", fr: "Coaching" },
+    icon: "ig" as const,
+  },
 ];
 
 const SocialProofStrip = () => {
   const { language, isRTL } = useLanguage();
-  const ref = useRef<HTMLElement>(null);
+  const ref = useCountUp([language]);
 
   const line =
     language === "ar"
@@ -26,34 +43,12 @@ const SocialProofStrip = () => {
         ? "Des centaines de milliers suivent le travail."
         : "Hundreds of thousands follow the work.";
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || prefersReducedMotion()) return;
-    const { gsap } = getGsap();
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        el.querySelectorAll("[data-stat]"),
-        { y: 24, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.08,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 90%" },
-        }
-      );
-    }, el);
-    return () => ctx.revert();
-  }, [language]);
-
   return (
     <section
       ref={ref}
       className="relative border-y border-white/[0.08] bg-ink"
       aria-label={line}
     >
-      {/* Mobile: one compact horizontal row */}
       <div className={`md:hidden px-5 py-4 ${isRTL ? "text-right" : ""}`}>
         <p className="font-editorial text-[11px] text-white/45 mb-3 leading-snug">{line}</p>
         <div
@@ -61,12 +56,17 @@ const SocialProofStrip = () => {
         >
           {STATS.map((stat) => (
             <div
-              key={stat.value + stat.label.en}
-              data-stat
+              key={stat.label.en}
               className="flex-1 min-w-0 text-center border border-white/10 px-1.5 py-2"
             >
-              <p className="font-impact text-[1.35rem] leading-none text-white tracking-wide">
-                {stat.value}
+              <p
+                data-count
+                data-end={stat.end}
+                data-decimals={stat.decimals}
+                data-suffix={stat.suffix}
+                className="font-impact text-[1.35rem] leading-none text-white tracking-wide"
+              >
+                0{stat.suffix}
               </p>
               <div
                 className={`mt-1.5 flex items-center justify-center gap-1 text-white/50 ${
@@ -87,14 +87,19 @@ const SocialProofStrip = () => {
         </div>
       </div>
 
-      {/* Desktop: more expressive */}
       <div className={`hidden md:block container-tight px-10 py-16 lg:px-14 ${isRTL ? "text-right" : ""}`}>
         <p className="font-editorial text-sm text-white/50 mb-10 max-w-md">{line}</p>
         <div className="grid grid-cols-3 gap-8">
           {STATS.map((stat) => (
-            <div key={stat.value + stat.label.en} data-stat>
-              <p className="mega-type text-[clamp(3.5rem,8vw,6.5rem)] text-white leading-none">
-                {stat.value}
+            <div key={stat.label.en}>
+              <p
+                data-count
+                data-end={stat.end}
+                data-decimals={stat.decimals}
+                data-suffix={stat.suffix}
+                className="mega-type text-[clamp(3.5rem,8vw,6.5rem)] text-white leading-none"
+              >
+                0{stat.suffix}
               </p>
               <div
                 className={`mt-3 flex items-center gap-2 text-red-br ${

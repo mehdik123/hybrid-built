@@ -2,9 +2,9 @@ import type { Language } from "@/lib/translations";
 
 export type Localized = Record<Language, string>;
 
-/** Personal brand homepage — Mehdi Kamel */
+/** Personal brand homepage — El Mehdi Kamal */
 export const brand = {
-  name: "MEHDI KAMEL",
+  name: "EL MEHDI KAMAL",
   hero: {
     roles: { en: "ATHLETE. CREATOR. COACH.", ar: "ATHLETE. CREATOR. COACH.", fr: "ATHLETE. CRÉATEUR. COACH." } as Localized,
     support: {
@@ -23,9 +23,9 @@ export const brand = {
     } as Localized,
     body: [
       {
-        en: "I'm Mehdi Kamel, a natural hybrid athlete, fitness coach and content creator from Morocco.",
-        ar: "أنا المهدي كامل، natural hybrid athlete، كوتش فـ fitness وصانع محتوى من المغرب.",
-        fr: "Je suis Mehdi Kamel, athlète hybride naturel, coach fitness et créateur de contenu depuis le Maroc.",
+        en: "I'm El Mehdi Kamal, a natural hybrid athlete, fitness coach and content creator from Morocco.",
+        ar: "أنا المهدي كمال، natural hybrid athlete، كوتش فـ fitness وصانع محتوى من المغرب.",
+        fr: "Je suis El Mehdi Kamal, athlète hybride naturel, coach fitness et créateur de contenu depuis le Maroc.",
       },
       {
         en: "My approach combines strength, calisthenics, bodybuilding and athletic conditioning. An impressive physique shouldn't come at the expense of performance, health or enjoying life.",
@@ -90,9 +90,24 @@ export const brand = {
       fr: "Des centaines de milliers suivent le travail sur Instagram et TikTok.",
     } as Localized,
     stats: [
-      { value: "534K+", label: { en: "Instagram", ar: "Instagram", fr: "Instagram" } },
-      { value: "267K+", label: { en: "TikTok", ar: "TikTok", fr: "TikTok" } },
-      { value: "3.6K", label: { en: "Coaching clients", ar: "Coaching clients", fr: "Clients coaching" } },
+      {
+        end: 534,
+        decimals: 0,
+        suffix: "K+",
+        label: { en: "Instagram", ar: "Instagram", fr: "Instagram" },
+      },
+      {
+        end: 267,
+        decimals: 0,
+        suffix: "K+",
+        label: { en: "TikTok", ar: "TikTok", fr: "TikTok" },
+      },
+      {
+        end: 3.6,
+        decimals: 1,
+        suffix: "K",
+        label: { en: "Coaching clients", ar: "Coaching clients", fr: "Clients coaching" },
+      },
     ],
     collabLabel: {
       en: "Selected collaborations",

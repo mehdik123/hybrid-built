@@ -11,9 +11,9 @@ export const landing = {
       fr: "ONLINE COACHING AVEC MEHDI",
     } as Localized,
     label: {
-      en: "Online coaching by Mehdi Kamel",
-      ar: "Online coaching مع المهدي كامل",
-      fr: "Coaching en ligne par Mehdi Kamel",
+      en: "Online coaching by El Mehdi Kamal",
+      ar: "Online coaching مع المهدي كمال",
+      fr: "Coaching en ligne par El Mehdi Kamal",
     } as Localized,
     headline: {
       en: "You're building your career. Don't let your body fall behind.",

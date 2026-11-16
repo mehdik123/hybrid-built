@@ -4,7 +4,6 @@ import BrandHero from "@/components/brand/BrandHero";
 import LanguageSelectorModal from "@/components/LanguageSelectorModal";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const BrandIdentity = lazy(() => import("@/components/brand/BrandIdentity"));
 const BrandWork = lazy(() => import("@/components/brand/BrandWork"));
 const BrandPresence = lazy(() => import("@/components/brand/BrandPresence"));
 const BrandClosing = lazy(() => import("@/components/brand/BrandClosing"));
@@ -19,7 +18,7 @@ const SectionLoader = () => (
   </div>
 );
 
-/** MEHDI KAMEL personal brand homepage */
+/** El Mehdi Kamal personal brand homepage */
 const BrandHome = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -32,7 +31,6 @@ const BrandHome = () => {
       <ScrollProgress />
       <BrandHero />
       <Suspense fallback={<SectionLoader />}>
-        <BrandIdentity />
         <BrandWork />
         <BrandPresence />
         <BrandClosing />

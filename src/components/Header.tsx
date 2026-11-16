@@ -32,10 +32,6 @@ const Header = ({ variant }: HeaderProps) => {
 
   const brandLinks = [
     {
-      label: language === "en" ? "Identity" : language === "fr" ? "Identité" : "الهوية",
-      href: "#identity",
-    },
-    {
       label: language === "en" ? "Work" : language === "fr" ? "Travail" : "العمل",
       href: "#work",
     },

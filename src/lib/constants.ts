@@ -21,7 +21,7 @@ export const IG_HYBRID_TRANSFER_DM_URL = `https://ig.me/m/${IG_HANDLE}?text=${en
 export const CTA_PRIMARY_EN = "Apply for coaching";
 export const CTA_FRICTION_EN = "I review every application myself.";
 
-export const BRAND_NAME = "MEHDI KAMEL";
+export const BRAND_NAME = "EL MEHDI KAMAL";
 export const SITE_URL = "https://mehdikamel.com";
 
 /**
