@@ -5,7 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppProvider } from "@/contexts/AppContext";
 import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
-import Index from "./pages/Index";
+import BrandHome from "./pages/BrandHome";
+import Coaching from "./pages/Coaching";
+import HybridBuild from "./pages/HybridBuild";
 import Products from "./pages/Products";
 import FreeToolPage from "./pages/FreeToolPage";
 import NotFound from "./pages/NotFound";
@@ -21,8 +23,9 @@ const App = () => (
           <Sonner />
           <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
             <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/coaching" element={<Navigate to="/" replace />} />
+              <Route path="/" element={<BrandHome />} />
+              <Route path="/coaching" element={<Coaching />} />
+              <Route path="/hybrid-build" element={<HybridBuild />} />
               <Route path="/home" element={<Navigate to="/" replace />} />
               <Route path="/free-tool" element={<FreeToolPage />} />
               <Route path="/split-finder" element={<FreeToolPage />} />

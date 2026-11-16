@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
 import { landing } from "@/content/coachingLanding";
-import ComingSoonProductModal from "@/components/ComingSoonProductModal";
 import MagneticCTA from "@/components/motion/MagneticCTA";
 import { IG_DM_URL, SPLIT_FINDER_URL } from "@/lib/constants";
 
@@ -11,9 +11,7 @@ const EntryProductsSection = () => {
   const t = landing.products;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [paidId, setPaidId] = useState<string | null>(null);
 
-  const paidProduct = t.items.find((item) => item.id === paidId) ?? null;
   const blueprint = t.items.find((i) => i.id === "blueprint")!;
   const split = t.items.find((i) => i.id === "split")!;
 
@@ -63,62 +61,68 @@ const EntryProductsSection = () => {
             isRTL ? "flex-row-reverse md:flex-row" : ""
           }`}
         >
-          {/* Hybrid Training Program → explain modal, then checkout */}
-          <motion.button
-            type="button"
-            onClick={() => setPaidId(blueprint.id)}
+          {/* Hybrid Build → dedicated sales page */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="group relative shrink-0 w-[78vw] max-w-[380px] md:w-auto md:max-w-none snap-center aspect-[3/4] overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-br"
+            className="shrink-0 w-[78vw] max-w-[380px] md:w-auto md:max-w-none snap-center"
           >
-            <img
-              src={blueprint.cover}
-              alt={blueprint.title[language]}
-              className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-              loading="lazy"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, transparent 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.9) 100%)",
-              }}
-            />
-            <div className="absolute inset-0 flex flex-col p-5 md:p-7">
-              <div className={`flex justify-end ${isRTL ? "justify-start" : ""}`}>
-                <span className="bg-red-br text-white font-editorial text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 shrink-0">
-                  {blueprint.tag[language]}
-                </span>
-              </div>
-
-              <div className="mt-auto">
-                <p className="mb-3 font-editorial text-[11px] uppercase tracking-[0.14em] text-white/90 border border-white/35 px-2.5 py-1.5 w-fit">
-                  {blueprint.languages[language]}
-                </p>
-
-                <div className={`mb-3 flex items-baseline gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-                  <span className="font-display text-3xl text-white">{blueprint.price[language]}</span>
-                  <span className="font-editorial text-base text-white/45 line-through">
-                    {blueprint.compareAt[language]}
+            <Link
+              to="/hybrid-build"
+              className="group relative block aspect-[3/4] overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-br"
+            >
+              <img
+                src={blueprint.cover}
+                alt={blueprint.title[language]}
+                className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(0,0,0,0.15) 0%, transparent 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.9) 100%)",
+                }}
+              />
+              <div className="absolute inset-0 flex flex-col p-5 md:p-7">
+                <div className={`flex justify-end ${isRTL ? "justify-start" : ""}`}>
+                  <span className="bg-red-br text-white font-editorial text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 shrink-0">
+                    {blueprint.tag[language]}
                   </span>
                 </div>
 
-                <div className={`flex items-center justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-                  <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
-                    {blueprint.duration[language]}
-                  </span>
-                  <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
-                    {language === "en"
-                      ? "See details"
-                      : language === "fr"
-                        ? "Voir détails"
-                        : "شوف التفاصيل"}
-                  </span>
+                <div className="mt-auto">
+                  <h3 className="mb-2 font-display text-2xl md:text-3xl text-white leading-tight tracking-tight">
+                    HYBRID BUILD
+                  </h3>
+                  <p className="mb-3 font-editorial text-[11px] uppercase tracking-[0.14em] text-white/90 border border-white/35 px-2.5 py-1.5 w-fit">
+                    {blueprint.languages[language]}
+                  </p>
+
+                  <div className={`mb-3 flex items-baseline gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <span className="font-display text-3xl text-white">{blueprint.price[language]}</span>
+                    <span className="font-editorial text-base text-white/45 line-through">
+                      {blueprint.compareAt[language]}
+                    </span>
+                  </div>
+
+                  <div className={`flex items-center justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
+                      {blueprint.duration[language]}
+                    </span>
+                    <span className="bg-white text-ink font-editorial text-[10px] uppercase tracking-[0.14em] px-3 py-1.5">
+                      {language === "en"
+                        ? "See details"
+                        : language === "fr"
+                          ? "Voir détails"
+                          : "شوف التفاصيل"}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.button>
+            </Link>
+          </motion.div>
 
           {/* Split Finder — direct tool access, no email gate */}
           <motion.a
@@ -187,13 +191,6 @@ const EntryProductsSection = () => {
         </motion.div>
       </div>
 
-      <ComingSoonProductModal
-        product={paidProduct}
-        open={!!paidProduct}
-        onOpenChange={(open) => {
-          if (!open) setPaidId(null);
-        }}
-      />
     </section>
   );
 };

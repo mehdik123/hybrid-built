@@ -11,9 +11,9 @@ export const landing = {
       fr: "ONLINE COACHING AVEC MEHDI",
     } as Localized,
     label: {
-      en: "Online coaching by El Mehdi Kamal",
-      ar: "Online coaching مع المهدي كمال",
-      fr: "Coaching en ligne par El Mehdi Kamal",
+      en: "Online coaching by Mehdi Kamel",
+      ar: "Online coaching مع المهدي كامل",
+      fr: "Coaching en ligne par Mehdi Kamel",
     } as Localized,
     headline: {
       en: "You're building your career. Don't let your body fall behind.",
@@ -365,14 +365,14 @@ export const landing = {
         },
         pathLabel: { en: "01", ar: "اختيار 01", fr: "01" },
         shortTitle: {
-          en: "HYBRID TRAINING PROGRAM",
-          ar: "HYBRID TRAINING PROGRAM",
-          fr: "HYBRID TRAINING PROGRAM",
+          en: "HYBRID BUILD",
+          ar: "HYBRID BUILD",
+          fr: "HYBRID BUILD",
         },
         title: {
-          en: "The Hybrid Athlete Blueprint",
-          ar: "Hybrid Athlete Blueprint",
-          fr: "The Hybrid Athlete Blueprint",
+          en: "HYBRID BUILD",
+          ar: "HYBRID BUILD",
+          fr: "HYBRID BUILD",
         },
         level: { en: "All levels", ar: "جميع المستويات", fr: "Tous niveaux" },
         duration: { en: "3 / 4 / 5 days", ar: "3 / 4 / 5 أيام", fr: "3 / 4 / 5 jours" },
