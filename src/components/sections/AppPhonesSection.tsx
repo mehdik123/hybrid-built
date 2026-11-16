@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
 import { ASSETS } from "@/lib/constants";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { getGsap, prefersReducedMotion } from "@/lib/gsap";
 
 const SCREENS = [
   { src: ASSETS.appHome, label: { en: "Home", ar: "الرئيسية", fr: "Accueil" } },
@@ -23,147 +22,140 @@ const copy = {
     ar: "بزاف ديال الكوتشات كيعطيوك PDF وكيخليوك بوحدك. أنا اللي كنقاد البرنامج وكنتابع معاك نهار بنهار. التطبيق غير بلاصة كتلقا فيها التمارين، الماكلة والتقدم ديالك.",
     fr: "Une expérience fluide: on suit tes PRs, milestones, poids, photos hebdo, volume d’entraînement et progrès musculaire.",
   },
-  hint: {
-    en: "Tap a screen to bring it forward",
-    ar: "كليكي على الشاشة باش تركز عليها",
-    fr: "Tape un écran pour le mettre en avant",
-  },
 } as const;
-
-const PhoneCard = ({
-  src,
-  label,
-  inView,
-  active,
-  index,
-  onSelect,
-}: {
-  src: string;
-  label: string;
-  inView: boolean;
-  active: boolean;
-  index: number;
-  onSelect: () => void;
-}) => (
-  <motion.button
-    type="button"
-    onClick={onSelect}
-    aria-label={label}
-    aria-pressed={active}
-    initial={{ opacity: 0, y: 28 }}
-    animate={
-      inView
-        ? {
-            opacity: 1,
-            y: active ? -10 : 0,
-            scale: active ? 1.06 : 0.94,
-          }
-        : {}
-    }
-    transition={{ type: "spring", stiffness: 220, damping: 24, delay: index * 0.06 }}
-    className="relative shrink-0 snap-center border-0 bg-transparent p-0 cursor-pointer touch-manipulation"
-    style={{
-      width: "min(148px, 38vw)",
-      zIndex: active ? 20 : 10,
-      WebkitTapHighlightColor: "transparent",
-    }}
-  >
-    <div
-      className="relative aspect-[9/19] rounded-[1.6rem] border overflow-hidden bg-black transition-[border-color,box-shadow] duration-300"
-      style={{
-        borderColor: active ? "rgba(232,0,28,0.7)" : "rgba(255,255,255,0.22)",
-        boxShadow: active
-          ? "0 28px 56px rgba(0,0,0,0.65), 0 0 0 1px rgba(232,0,28,0.35)"
-          : "0 16px 36px rgba(0,0,0,0.45)",
-      }}
-    >
-      <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-2.5 w-10 rounded-full bg-black/90 z-10" />
-      <img
-        src={src}
-        alt={label}
-        className="absolute inset-0 h-full w-full object-cover object-top"
-        loading="eager"
-        decoding="async"
-        draggable={false}
-      />
-      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/85 to-transparent pointer-events-none" />
-      <span className="absolute bottom-2.5 left-1/2 -translate-x-1/2 font-editorial text-[9px] uppercase tracking-[0.18em] text-white/90">
-        {label}
-      </span>
-    </div>
-  </motion.button>
-);
 
 const AppPhonesSection = () => {
   const { language, isRTL } = useLanguage();
   const lang = language as "en" | "ar" | "fr";
-  const ref = useRef(null);
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const reduced = useReducedMotion();
-  const [active, setActive] = useState(0);
-
-  // Gentle auto-cycle so every screen gets focus without a click
-  useEffect(() => {
-    if (!inView || reduced) return;
-    const id = window.setInterval(() => {
-      setActive((prev) => (prev + 1) % SCREENS.length);
-    }, 3200);
-    return () => window.clearInterval(id);
-  }, [inView, reduced]);
+  const rootRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(1);
 
   useEffect(() => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const card = el.children[active] as HTMLElement | undefined;
-    if (!card) return;
-    const left = card.offsetLeft - (el.clientWidth - card.clientWidth) / 2;
-    el.scrollTo({ left, behavior: "smooth" });
-  }, [active]);
+    const root = rootRef.current;
+    const stage = stageRef.current;
+    if (!root || !stage) return;
+    const { gsap, ScrollTrigger } = getGsap();
+    const reduced = prefersReducedMotion();
+    const phones = stage.querySelectorAll<HTMLElement>("[data-phone]");
+
+    const layoutPhones = (index: number, animate: boolean) => {
+      phones.forEach((phone, i) => {
+        const dist = i - index;
+        const abs = Math.abs(dist);
+        const dir = isRTL ? -1 : 1;
+        const props = {
+          x: dist * 72 * dir,
+          y: abs * 14 - (abs === 0 ? 28 : 0),
+          scale: abs === 0 ? 1.1 : Math.max(0.78, 0.96 - abs * 0.08),
+          opacity: abs === 0 ? 1 : Math.max(0.28, 0.7 - abs * 0.18),
+          rotate: dist * 4 * dir,
+          zIndex: 20 - abs,
+          duration: animate ? 0.55 : 0,
+          ease: "power3.out",
+          overwrite: "auto" as const,
+        };
+        gsap.to(phone, props);
+      });
+    };
+
+    const ctx = gsap.context(() => {
+      if (reduced) {
+        layoutPhones(active, false);
+        return;
+      }
+
+      gsap.from(phones, {
+        y: 100,
+        opacity: 0,
+        scale: 0.8,
+        stagger: 0.07,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: { trigger: root, start: "top 72%" },
+        onComplete: () => layoutPhones(active, true),
+      });
+
+      ScrollTrigger.create({
+        trigger: root,
+        start: "top 60%",
+        end: "bottom 35%",
+        scrub: true,
+        onUpdate: (self) => {
+          const idx = Math.min(
+            SCREENS.length - 1,
+            Math.max(0, Math.round(self.progress * (SCREENS.length - 1)))
+          );
+          setActive(idx);
+        },
+      });
+
+      gsap.to(stage, {
+        y: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: root,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }, root);
+
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language, isRTL]);
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const { gsap } = getGsap();
+    const phones = stage.querySelectorAll<HTMLElement>("[data-phone]");
+    const dir = isRTL ? -1 : 1;
+    phones.forEach((phone, i) => {
+      const dist = i - active;
+      const abs = Math.abs(dist);
+      gsap.to(phone, {
+        x: dist * 72 * dir,
+        y: abs * 14 - (abs === 0 ? 28 : 0),
+        scale: abs === 0 ? 1.1 : Math.max(0.78, 0.96 - abs * 0.08),
+        opacity: abs === 0 ? 1 : Math.max(0.28, 0.7 - abs * 0.18),
+        rotate: dist * 4 * dir,
+        zIndex: 20 - abs,
+        duration: prefersReducedMotion() ? 0 : 0.5,
+        ease: "power3.out",
+        overwrite: "auto",
+      });
+    });
+  }, [active, isRTL]);
 
   return (
-    <section id="app" className="section-padding bg-ink border-t border-white/[0.08]" ref={ref}>
+    <section
+      id="app"
+      ref={rootRef}
+      className="relative section-padding bg-ink border-t border-white/[0.08] overflow-hidden"
+    >
       <div className="container-tight">
-        <div className={`max-w-4xl mb-10 md:mb-14 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-4"
-          >
+        <div className={`max-w-3xl mb-10 md:mb-14 ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
+          <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-4">
             {copy.eyebrow[lang]}
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 14 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.04 }}
+          </p>
+          <h2
             className={`mega-type text-white ${
               lang === "ar"
-                ? "text-[clamp(1.85rem,5vw,3.5rem)] leading-[1.2]"
-                : "text-[clamp(2.6rem,7vw,5.5rem)]"
+                ? "text-[clamp(1.75rem,5vw,3.4rem)] leading-[1.2]"
+                : "text-[clamp(2.4rem,6.5vw,5rem)]"
             }`}
           >
             {copy.title[lang]}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.08 }}
-            className="mt-4 font-editorial text-base text-white/55 leading-relaxed max-w-xl"
-          >
+          </h2>
+          <p className="mt-5 font-editorial text-base text-white/55 leading-relaxed max-w-xl">
             {copy.lead[lang]}
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.12 }}
-            className="mt-3 font-editorial text-[11px] uppercase tracking-[0.18em] text-white/30"
-          >
-            {copy.hint[lang]}
-          </motion.p>
+          </p>
         </div>
 
         <div
-          className={`mb-5 flex flex-wrap gap-2 ${isRTL ? "justify-end" : "justify-start"} sm:justify-center`}
+          className={`mb-8 flex flex-wrap gap-2 ${isRTL ? "justify-end" : "justify-start"} md:justify-center`}
         >
           {SCREENS.map((screen, i) => (
             <button
@@ -172,7 +164,7 @@ const AppPhonesSection = () => {
               onClick={() => setActive(i)}
               className={`font-editorial text-[10px] uppercase tracking-[0.16em] px-3 py-2 transition-colors ${
                 active === i
-                  ? "text-white border border-red-br/70 bg-white/[0.04]"
+                  ? "text-white border border-red-br bg-red-br/10"
                   : "text-white/40 border border-white/10 hover:text-white/70"
               }`}
             >
@@ -181,31 +173,40 @@ const AppPhonesSection = () => {
           ))}
         </div>
 
-        <div className="relative">
+        <div
+          ref={stageRef}
+          className="relative mx-auto h-[400px] sm:h-[460px] md:h-[540px] max-w-4xl"
+        >
           <div
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-[70%] h-20 w-[70%] -translate-x-1/2 rounded-[100%] bg-black/50 blur-3xl"
+            className="pointer-events-none absolute left-1/2 bottom-6 h-24 w-[70%] -translate-x-1/2 rounded-[100%] bg-red-br/15 blur-3xl"
           />
 
-          <div
-            ref={scrollerRef}
-            className={`relative flex items-end gap-3 sm:gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory pb-4 pt-6 px-4 sm:px-2 scrollbar-none ${
-              isRTL ? "flex-row-reverse" : ""
-            } sm:justify-center sm:overflow-visible`}
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {SCREENS.map((screen, i) => (
-              <PhoneCard
-                key={screen.src}
+          {SCREENS.map((screen, i) => (
+            <button
+              key={screen.src}
+              type="button"
+              data-phone
+              onClick={() => setActive(i)}
+              aria-label={screen.label[lang]}
+              aria-pressed={active === i}
+              className="absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2 w-[min(190px,40vw)] md:w-[210px] aspect-[9/19] border border-white/20 bg-black overflow-hidden shadow-2xl shadow-black/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-br will-change-transform"
+            >
+              <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-2 w-10 rounded-full bg-black/90 z-10" />
+              <img
                 src={screen.src}
-                label={screen.label[lang]}
-                index={i}
-                inView={inView}
-                active={active === i}
-                onSelect={() => setActive(i)}
+                alt={screen.label[lang]}
+                className="absolute inset-0 h-full w-full object-cover object-top"
+                loading="eager"
+                decoding="async"
+                draggable={false}
               />
-            ))}
-          </div>
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/90 to-transparent" />
+              <span className="absolute bottom-2.5 left-1/2 -translate-x-1/2 font-editorial text-[9px] uppercase tracking-[0.16em] text-white/90">
+                {screen.label[lang]}
+              </span>
+            </button>
+          ))}
         </div>
       </div>
     </section>

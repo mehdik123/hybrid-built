@@ -9,6 +9,9 @@ type Lang = "en" | "ar" | "fr";
 type RailItem = {
   beforeImg: string;
   afterImg: string;
+  name?: Record<Lang, string>;
+  profession?: Record<Lang, string>;
+  timeframe?: Record<Lang, string>;
 };
 
 const LEAD_PAIR: RailItem = {
@@ -35,18 +38,26 @@ const ProofSection = () => {
   const lang = language as Lang;
   const t = landing.proof;
   const pinRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   const rail: RailItem[] = [
     LEAD_PAIR,
-    ...t.cases.map((c) => ({ beforeImg: c.beforeImg, afterImg: c.afterImg })),
+    ...t.cases.map((c) => ({
+      beforeImg: c.beforeImg,
+      afterImg: c.afterImg,
+      name: c.name,
+      profession: c.profession,
+      timeframe: c.timeframe,
+    })),
     ...EXTRA_PAIRS,
   ];
 
   useEffect(() => {
     const section = pinRef.current;
     const track = trackRef.current;
+    const stage = stageRef.current;
     if (!section || !track) return;
 
     const { gsap, ScrollTrigger } = getGsap();
@@ -56,36 +67,92 @@ const ProofSection = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         titleRef.current,
-        { xPercent: isRTL ? 12 : -12, opacity: 0.15 },
+        { y: 48, opacity: 0 },
         {
-          xPercent: 0,
+          y: 0,
           opacity: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "top 20%",
-            scrub: true,
-          },
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: { trigger: section, start: "top 75%" },
         }
       );
 
-      mm.add("(min-width: 768px)", () => {
-        if (reduced) return;
-        const getScroll = () => -(track.scrollWidth - window.innerWidth + 48);
-        const tween = gsap.to(track, {
-          x: () => (isRTL ? -getScroll() : getScroll()),
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: () => `+=${Math.max(track.scrollWidth * 0.85, window.innerHeight * 2.2)}`,
-            pin: true,
-            scrub: 0.85,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
+      // Cinematic wipe on each pair as it passes center
+      const cards = track.querySelectorAll<HTMLElement>("[data-xform-card]");
+      cards.forEach((card) => {
+        const wipe = card.querySelector<HTMLElement>("[data-wipe]");
+        const scaleEl = card.querySelector<HTMLElement>("[data-scale]");
+        if (!wipe || !scaleEl) return;
+
+        if (reduced) {
+          wipe.style.clipPath = "inset(0 0% 0 0)";
+          scaleEl.style.transform = "scale(1)";
+          scaleEl.style.opacity = "1";
+          return;
+        }
+
+        // Mobile / vertical: wipe as each card enters view
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 85%",
+          end: "top 40%",
+          scrub: true,
+          onUpdate: (self) => {
+            if (window.matchMedia("(min-width: 768px)").matches) return;
+            const p = self.progress;
+            if (isRTL) {
+              wipe.style.clipPath = `inset(0 ${p * 100}% 0 0)`;
+            } else {
+              wipe.style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`;
+            }
+            const s = 0.92 + p * 0.08;
+            scaleEl.style.transform = `scale(${s})`;
+            scaleEl.style.opacity = String(0.6 + p * 0.4);
           },
         });
+      });
+
+      mm.add("(min-width: 768px)", () => {
+        if (reduced) return;
+
+        const getScroll = () => -(track.scrollWidth - window.innerWidth + 64);
+
+        const tween = gsap.to(track, {
+          x: () => (isRTL ? Math.abs(getScroll()) : getScroll()),
+          ease: "none",
+          scrollTrigger: {
+            trigger: stage,
+            start: "top top",
+            end: () => `+=${Math.max(track.scrollWidth * 0.9, window.innerHeight * 2.4)}`,
+            pin: true,
+            scrub: 0.75,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const center = window.innerWidth / 2;
+              cards.forEach((card) => {
+                const wipe = card.querySelector<HTMLElement>("[data-wipe]");
+                const scaleEl = card.querySelector<HTMLElement>("[data-scale]");
+                if (!wipe || !scaleEl) return;
+                const r = card.getBoundingClientRect();
+                const c = r.left + r.width / 2;
+                const dist = Math.abs(c - center);
+                const falloff = window.innerWidth * 0.4;
+                const tNorm = Math.min(1, dist / falloff);
+                const reveal = 1 - tNorm;
+                if (isRTL) {
+                  wipe.style.clipPath = `inset(0 ${reveal * 100}% 0 0)`;
+                } else {
+                  wipe.style.clipPath = `inset(0 ${(1 - reveal) * 100}% 0 0)`;
+                }
+                const s = 0.88 + reveal * 0.14;
+                scaleEl.style.transform = `scale(${s})`;
+                scaleEl.style.opacity = String(0.55 + reveal * 0.45);
+              });
+            },
+          },
+        });
+
         return () => {
           tween.scrollTrigger?.kill();
           tween.kill();
@@ -102,22 +169,22 @@ const ProofSection = () => {
 
   return (
     <section id="proof" ref={pinRef} className="relative bg-ink overflow-hidden">
-      <div className="px-5 pt-20 md:px-10 md:pt-28 lg:px-14">
-        <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-4">
+      <div className="px-5 pt-16 md:px-10 md:pt-24 lg:px-14">
+        <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-3">
           {t.eyebrow[lang]}
         </p>
         <h2
           ref={titleRef}
           className={`mega-type text-white mb-3 ${
             lang === "ar"
-              ? "text-[clamp(2rem,7vw,5rem)] leading-[1.15] max-w-4xl"
-              : "text-[clamp(3rem,11vw,8.5rem)] max-w-[90vw]"
+              ? "text-[clamp(1.75rem,6vw,4rem)] leading-[1.15] max-w-4xl"
+              : "text-[clamp(2.6rem,9vw,7rem)] max-w-[92vw]"
           } ${isRTL ? "text-right ml-auto" : ""}`}
         >
           {t.title[lang]}
         </h2>
         <p
-          className={`font-editorial text-sm md:text-base text-white/50 max-w-md mb-10 md:mb-14 ${
+          className={`font-editorial text-sm md:text-base text-white/50 max-w-md mb-8 md:mb-12 ${
             isRTL ? "mr-0 ml-auto text-right" : ""
           }`}
         >
@@ -125,52 +192,84 @@ const ProofSection = () => {
         </p>
       </div>
 
-      <div className="relative md:h-[70vh] flex items-center">
+      <div ref={stageRef} className="relative md:h-screen flex flex-col justify-center">
+        <p
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mega-type text-white/[0.03] text-[clamp(5rem,22vw,18rem)] whitespace-nowrap"
+        >
+          RESULTS
+        </p>
+
         <div
           ref={trackRef}
-          className={`flex gap-3 md:gap-5 px-5 md:px-10 will-change-transform ${
+          className={`relative z-[1] flex gap-4 md:gap-6 px-5 md:px-10 will-change-transform ${
             isRTL ? "flex-row-reverse" : ""
-          } overflow-x-auto md:overflow-visible scrollbar-none pb-8 md:pb-0`}
+          } overflow-x-auto md:overflow-visible scrollbar-none pb-6 md:pb-0`}
         >
           {rail.map((item, i) => (
             <article
               key={`${item.beforeImg}-${i}`}
-              className="relative shrink-0 w-[78vw] sm:w-[420px] md:w-[520px] lg:w-[560px]"
+              data-xform-card
+              className="relative shrink-0 w-[85vw] sm:w-[420px] md:w-[520px] lg:w-[580px]"
             >
-              <div className="grid grid-cols-2 gap-1 h-[42vh] md:h-[58vh] min-h-[280px]">
-                <div className="relative overflow-hidden bg-muted">
+              <div
+                data-scale
+                className="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-muted will-change-transform origin-center"
+                style={{ transform: "scale(0.92)", opacity: 0.7 }}
+              >
+                {/* After (base) */}
+                <img
+                  src={item.afterImg}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
+                  draggable={false}
+                />
+                {/* Before (wipes away to reveal after) */}
+                <div
+                  data-wipe
+                  className="absolute inset-0"
+                  style={{ clipPath: isRTL ? "inset(0 0 0 0)" : "inset(0 100% 0 0)" }}
+                >
                   <img
                     src={item.beforeImg}
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover object-[center_18%] scale-105"
+                    className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
                     draggable={false}
                   />
-                  <span className="absolute top-3 left-3 font-editorial text-[10px] uppercase tracking-[0.16em] bg-black text-white px-2 py-1">
-                    {t.before[lang]}
-                  </span>
                 </div>
-                <div className="relative overflow-hidden bg-muted">
-                  <img
-                    src={item.afterImg}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover object-[center_18%] scale-105"
-                    draggable={false}
-                  />
-                  <span className="absolute top-3 left-3 font-editorial text-[10px] uppercase tracking-[0.16em] bg-red-br text-white px-2 py-1">
-                    {t.after[lang]}
-                  </span>
-                </div>
+
+                {/* Divider line hint */}
+                <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px bg-white/40 mix-blend-overlay" />
+
+                <span className="absolute top-3 left-3 font-editorial text-[9px] uppercase tracking-[0.16em] bg-black/80 text-white px-2 py-1">
+                  {t.before[lang]}
+                </span>
+                <span className="absolute top-3 right-3 font-editorial text-[9px] uppercase tracking-[0.16em] bg-red-br text-white px-2 py-1">
+                  {t.after[lang]}
+                </span>
+
+                {item.name && (
+                  <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                    <p className="font-display text-white text-lg">{item.name[lang]}</p>
+                    {item.timeframe && (
+                      <p className="font-editorial text-xs text-white/60 mt-0.5">
+                        {item.timeframe[lang]}
+                        {item.profession ? ` · ${item.profession[lang]}` : ""}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
             </article>
           ))}
         </div>
       </div>
 
-      <div className="container-tight px-5 pb-20 md:px-10 md:pb-28">
+      <div className="container-tight px-5 pb-16 md:px-10 md:pb-24">
         <TestimonialVideoCard
           tag={t.voice.tag[lang]}
           title={t.voice.title[lang]}

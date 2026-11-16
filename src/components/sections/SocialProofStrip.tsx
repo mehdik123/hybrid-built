@@ -33,14 +33,14 @@ const SocialProofStrip = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el.querySelectorAll("[data-stat]"),
-        { y: 60, opacity: 0 },
+        { y: 24, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.9,
-          stagger: 0.12,
+          duration: 0.6,
+          stagger: 0.08,
           ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 80%" },
+          scrollTrigger: { trigger: el, start: "top 90%" },
         }
       );
     }, el);
@@ -50,29 +50,50 @@ const SocialProofStrip = () => {
   return (
     <section
       ref={ref}
-      className="relative border-y border-white/[0.08] bg-ink overflow-hidden"
+      className="relative border-y border-white/[0.08] bg-ink"
       aria-label={line}
     >
-      <p
-        aria-hidden
-        className={`pointer-events-none absolute top-1/2 -translate-y-1/2 mega-type text-white/[0.04] whitespace-nowrap ${
-          isRTL ? "right-0" : "left-0"
-        } text-[clamp(4rem,18vw,14rem)]`}
-      >
-        UNBREAKABLES
-      </p>
-      <div className={`container-tight px-5 py-16 md:px-10 md:py-24 ${isRTL ? "text-right" : ""}`}>
-        <p className="font-editorial text-sm md:text-base text-white/55 mb-12 md:mb-16 max-w-md">
-          {line}
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6">
+      {/* Mobile: one compact horizontal row */}
+      <div className={`md:hidden px-5 py-4 ${isRTL ? "text-right" : ""}`}>
+        <p className="font-editorial text-[11px] text-white/45 mb-3 leading-snug">{line}</p>
+        <div
+          className={`flex items-stretch justify-between gap-2 ${isRTL ? "flex-row-reverse" : ""}`}
+        >
           {STATS.map((stat) => (
             <div
               key={stat.value + stat.label.en}
               data-stat
-              className={`${isRTL ? "sm:text-right" : ""}`}
+              className="flex-1 min-w-0 text-center border border-white/10 px-1.5 py-2"
             >
-              <p className="mega-type text-[clamp(3.5rem,10vw,7rem)] text-white leading-none">
+              <p className="font-impact text-[1.35rem] leading-none text-white tracking-wide">
+                {stat.value}
+              </p>
+              <div
+                className={`mt-1.5 flex items-center justify-center gap-1 text-white/50 ${
+                  isRTL ? "flex-row-reverse" : ""
+                }`}
+              >
+                {stat.icon === "tt" ? (
+                  <TikTokIcon className="h-2.5 w-2.5 shrink-0" />
+                ) : (
+                  <Instagram className="h-2.5 w-2.5 shrink-0" strokeWidth={1.75} />
+                )}
+                <span className="font-editorial text-[9px] uppercase tracking-[0.08em] truncate">
+                  {stat.label[language]}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: more expressive */}
+      <div className={`hidden md:block container-tight px-10 py-16 lg:px-14 ${isRTL ? "text-right" : ""}`}>
+        <p className="font-editorial text-sm text-white/50 mb-10 max-w-md">{line}</p>
+        <div className="grid grid-cols-3 gap-8">
+          {STATS.map((stat) => (
+            <div key={stat.value + stat.label.en} data-stat>
+              <p className="mega-type text-[clamp(3.5rem,8vw,6.5rem)] text-white leading-none">
                 {stat.value}
               </p>
               <div

@@ -10,32 +10,38 @@ const FinalCTASection = () => {
   const t = landing.finalCta;
   const rootRef = useRef<HTMLElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
-  const typeRef = useRef<HTMLHeadingElement>(null);
+  const typeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root || prefersReducedMotion()) return;
     const { gsap } = getGsap();
     const ctx = gsap.context(() => {
-      gsap.to(mediaRef.current, {
-        scale: 1.12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: root,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
       gsap.fromTo(
-        typeRef.current,
-        { y: 80, opacity: 0 },
+        mediaRef.current,
+        { scale: 1.18, clipPath: "inset(8% 8% 8% 8%)" },
+        {
+          scale: 1,
+          clipPath: "inset(0% 0% 0% 0%)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: root,
+            start: "top 80%",
+            end: "top 20%",
+            scrub: true,
+          },
+        }
+      );
+      gsap.fromTo(
+        typeRef.current?.querySelectorAll("[data-final-line]"),
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          stagger: 0.1,
+          duration: 0.85,
           ease: "power3.out",
-          scrollTrigger: { trigger: root, start: "top 65%" },
+          scrollTrigger: { trigger: root, start: "top 60%" },
         }
       );
     }, root);
@@ -61,29 +67,40 @@ const FinalCTASection = () => {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(5,5,5,0.25) 0%, rgba(5,5,5,0.35) 40%, rgba(5,5,5,0.92) 100%)",
+            "linear-gradient(180deg, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.35) 40%, rgba(5,5,5,0.94) 100%)",
         }}
       />
 
       <div
+        ref={typeRef}
         className={`relative z-10 w-full px-5 pb-14 pt-32 md:px-10 md:pb-20 lg:px-14 ${
           isRTL ? "text-right" : ""
         }`}
       >
+        <p
+          data-final-line
+          className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-4"
+        >
+          {t.eyebrow[language]}
+        </p>
         <h2
-          ref={typeRef}
+          data-final-line
           className={`mega-type text-white max-w-5xl ${
             language === "ar"
-              ? "text-[clamp(2rem,6vw,4.5rem)] leading-[1.2]"
-              : "text-[clamp(3.2rem,10vw,8rem)]"
+              ? "text-[clamp(1.9rem,6vw,4.2rem)] leading-[1.2]"
+              : "text-[clamp(3rem,9.5vw,7.5rem)]"
           }`}
         >
           {t.title[language]}
         </h2>
-        <p className="mt-6 font-editorial text-base md:text-lg text-white/65 max-w-lg leading-relaxed">
+        <p
+          data-final-line
+          className="mt-6 font-editorial text-base md:text-lg text-white/65 max-w-lg leading-relaxed"
+        >
           {t.body[language]}
         </p>
         <div
+          data-final-line
           className={`mt-10 flex flex-col gap-4 ${isRTL ? "items-end" : "items-start"}`}
         >
           <MagneticCTA href={IG_DM_URL}>{t.cta[language]}</MagneticCTA>

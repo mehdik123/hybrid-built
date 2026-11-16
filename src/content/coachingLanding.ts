@@ -5,7 +5,11 @@ export type Localized = Record<Language, string>;
 /** Coaching sales page: ambition and self-investment ICP */
 export const landing = {
   hero: {
-    brand: { en: "UNBREAKABLES TEAM", ar: "UNBREAKABLES TEAM", fr: "UNBREAKABLES TEAM" } as Localized,
+    brand: {
+      en: "ONLINE COACHING WITH MEHDI",
+      ar: "ONLINE COACHING مع المهدي",
+      fr: "ONLINE COACHING AVEC MEHDI",
+    } as Localized,
     label: {
       en: "Online coaching by El Mehdi Kamal",
       ar: "Online coaching مع المهدي كمال",

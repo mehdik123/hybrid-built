@@ -151,13 +151,13 @@ const HeroSection = () => {
           isRTL ? "text-right" : ""
         }`}
       >
-        <div className="overflow-hidden mb-4 md:mb-6">
+        <div className="overflow-hidden mb-4 md:mb-6 max-w-[1280px] w-full mx-auto">
           <h1
             ref={brandRef}
-            className={`mega-type text-white ${
+            className={`mega-type text-white max-w-[18ch] ${
               isAr
-                ? "text-[clamp(2.4rem,9vw,6.5rem)] leading-[1.05]"
-                : "text-[clamp(3.6rem,16vw,12rem)]"
+                ? "text-[clamp(1.85rem,7vw,4.5rem)] leading-[1.1]"
+                : "text-[clamp(2.4rem,9vw,7rem)] leading-[0.92]"
             }`}
           >
             {t.brand[language]}
