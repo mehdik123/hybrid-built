@@ -150,7 +150,7 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
 
             {isPaid ? (
               <>
-                <div className="grid grid-cols-2 gap-2 mb-3">
+                <div className="grid grid-cols-2 gap-2 mb-2">
                   <button
                     type="button"
                     onClick={() => setPayMode("card")}
@@ -174,6 +174,13 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
                     {labels.payTransfer}
                   </button>
                 </div>
+                <p className="mb-3 font-editorial text-[11px] text-white/45 leading-relaxed">
+                  {language === "ar"
+                    ? "كل عملية شراء فيها رمز دخول شخصي باش تفتح الـ app."
+                    : language === "fr"
+                      ? "Chaque achat inclut un code d’accès personnel pour débloquer l’app."
+                      : "Each purchase includes a personal access code to unlock the app."}
+                </p>
 
                 {payMode === "card" ? (
                   <>

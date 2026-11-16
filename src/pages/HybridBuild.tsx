@@ -225,7 +225,7 @@ const HybridBuild = () => {
           <h2 className="mega-type text-white text-[clamp(2rem,5vw,3rem)] mb-2">{labels.productName}</h2>
           <p className="font-editorial text-sm text-white/50 mb-8">{labels.subtitle[language]}</p>
 
-          <div className={`flex gap-2 mb-6 ${isRTL ? "flex-row-reverse" : ""}`}>
+          <div className={`flex gap-2 mb-3 ${isRTL ? "flex-row-reverse" : ""}`}>
             <button
               type="button"
               onClick={() => setPayMode("card")}
@@ -249,6 +249,13 @@ const HybridBuild = () => {
               {labels.payTransfer}
             </button>
           </div>
+          <p className="font-editorial text-sm text-white/55 mb-6 leading-relaxed">
+            {language === "ar"
+              ? "كل عملية شراء فيها رمز دخول شخصي باش تفتح الـ app."
+              : language === "fr"
+                ? "Chaque achat inclut un code d’accès personnel pour débloquer l’app."
+                : "Each purchase includes a personal access code to unlock the app."}
+          </p>
 
           {payMode === "card" ? (
             <div>

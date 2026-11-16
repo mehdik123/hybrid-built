@@ -440,7 +440,11 @@ export const translations = {
     step1: { en: "Tap below to open Instagram", ar: "كليكي لتحت باش تحل انستغرام", fr: "Clique pour ouvrir Instagram" },
     step2: { en: "Send the message 'HYBRID'", ar: "صيفط 'HYBRID'", fr: "Envoie 'HYBRID'" },
     step3: { en: "I send payment details for your method", ar: "نصيفط ليك معلومات الخلاص", fr: "Je t'envoie les infos de paiement" },
-    step4: { en: "Send proof. Get the product the same day.", ar: "صيفط الوصل. جيب البرودوي نهار نتاعو.", fr: "Envoie la preuve. Reçois le produit le jour même." },
+    step4: {
+      en: "Send me your receipt in DM. I'll send you the PDF and your personal access code.",
+      ar: "صيفط ليا الوصل فـ DM. غادي نصيفط ليك الـ PDF و رمز الدخول الشخصي ديالك.",
+      fr: "Envoie-moi ton reçu en DM. Je t’envoie le PDF et ton code d’accès personnel.",
+    },
     dmButton: { en: "DM ME 'HYBRID'", ar: "صيفط ليا 'HYBRID'", fr: "DM MOI 'HYBRID'" },
     dmLinkText: { en: "HYBRID", ar: "HYBRID", fr: "HYBRID" }
   },
