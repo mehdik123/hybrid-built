@@ -12,7 +12,7 @@ export const brand = {
       ar: "Natural hybrid athlete. كنينيو ناس أقوى وأكثر قدرة عبر تدريب ذكي و discipline.",
       fr: "Athlète hybride naturel. Je construis des corps plus forts et plus capables grâce à un training intelligent et la discipline.",
     } as Localized,
-    ctaWork: { en: "Explore my work", ar: "اكتشف خدمتي", fr: "Découvrir mon travail" } as Localized,
+    ctaWork: { en: "Continue", ar: "كمل", fr: "Continuer" } as Localized,
   },
   identity: {
     eyebrow: { en: "Identity", ar: "الهوية", fr: "Identité" } as Localized,

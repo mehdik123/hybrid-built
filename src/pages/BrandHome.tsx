@@ -4,7 +4,6 @@ import BrandHero from "@/components/brand/BrandHero";
 import LanguageSelectorModal from "@/components/LanguageSelectorModal";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const BrandWork = lazy(() => import("@/components/brand/BrandWork"));
 const BrandPresence = lazy(() => import("@/components/brand/BrandPresence"));
 const BrandClosing = lazy(() => import("@/components/brand/BrandClosing"));
 const Footer = lazy(() => import("@/components/sections/Footer"));
@@ -31,7 +30,6 @@ const BrandHome = () => {
       <ScrollProgress />
       <BrandHero />
       <Suspense fallback={<SectionLoader />}>
-        <BrandWork />
         <BrandPresence />
         <BrandClosing />
         <Footer />

@@ -32,10 +32,6 @@ const Header = ({ variant }: HeaderProps) => {
 
   const brandLinks = [
     {
-      label: language === "en" ? "Work" : language === "fr" ? "Travail" : "العمل",
-      href: "#work",
-    },
-    {
       label: language === "en" ? "Presence" : language === "fr" ? "Présence" : "الحضور",
       href: "#presence",
     },
@@ -156,7 +152,7 @@ const Header = ({ variant }: HeaderProps) => {
                 </MagneticCTA>
               ) : (
                 <Link
-                  to={resolvedVariant === "product" ? "/coaching" : "/#work"}
+                  to={resolvedVariant === "product" ? "/coaching" : "/#presence"}
                   className="btn-primary-cta !py-2.5 !px-4 !text-[11px] hidden sm:inline-flex"
                 >
                   {resolvedVariant === "product" ? applyLabel : brandCta}

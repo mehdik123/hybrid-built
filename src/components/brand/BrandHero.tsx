@@ -130,7 +130,7 @@ const BrandHero = () => {
           </p>
           <div data-hero>
             <a
-              href="#work"
+              href="#presence"
               className="btn-primary-cta inline-flex"
             >
               {t.ctaWork[language]}
