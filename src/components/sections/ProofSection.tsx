@@ -55,17 +55,17 @@ const BAThumb = ({
   label: string;
   variant: "before" | "after";
 }) => (
-  <div className="relative h-full overflow-hidden bg-muted">
+  <div className="relative h-full w-full overflow-hidden bg-muted">
     <img
       src={src}
       alt=""
       loading="lazy"
       decoding="async"
-      className="h-full w-full object-cover object-[center_18%] pointer-events-none"
+      className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
       draggable={false}
     />
     <span
-      className={`absolute top-2 left-2 font-editorial text-[9px] uppercase tracking-[0.14em] px-2 py-1 pointer-events-none ${
+      className={`absolute top-2 left-2 z-[1] font-editorial text-[9px] uppercase tracking-[0.14em] px-2 py-1 pointer-events-none ${
         variant === "after" ? "bg-red-br text-white" : "bg-black text-white"
       }`}
     >
@@ -143,16 +143,15 @@ const ProofSection = () => {
         const dist = Math.abs(tileCenter - centerX);
         const tNorm = Math.min(1, dist / falloff);
 
+        // Uniform card size — only opacity/z-index change at center (no scale jump)
         if (reduced) {
-          inner.style.transform = "scale(1)";
           inner.style.opacity = "1";
           return;
         }
 
-        const scale = 1.12 - tNorm * 0.28;
-        const opacity = 1 - tNorm * 0.4;
-        inner.style.transform = `scale(${scale.toFixed(3)})`;
-        inner.style.opacity = Math.max(0.55, opacity).toFixed(3);
+        const opacity = 1 - tNorm * 0.35;
+        inner.style.transform = "scale(1)";
+        inner.style.opacity = Math.max(0.6, opacity).toFixed(3);
         inner.style.zIndex = String(Math.round((1 - tNorm) * 20));
       });
     };
@@ -299,15 +298,15 @@ const ProofSection = () => {
             <article
               key={`${item.beforeImg}-${i}`}
               data-rail-tile
-              className="relative shrink-0 w-[82vw] max-w-[340px] sm:w-[360px] md:w-[420px] select-none"
+              className="relative shrink-0 w-[300px] sm:w-[340px] md:w-[400px] select-none"
             >
               <div
                 data-rail-scale
                 className="relative origin-center will-change-transform"
-                style={{ transform: "scale(0.88)", opacity: 0.6 }}
+                style={{ opacity: 0.7 }}
               >
-                {/* Clear side-by-side before | after — no wipe/split overlay */}
-                <div className="grid grid-cols-2 gap-1 h-[240px] sm:h-[280px] md:h-[340px] shadow-lg shadow-black/40">
+                {/* Fixed equal frames — every pair same size */}
+                <div className="grid grid-cols-2 gap-1 h-[250px] sm:h-[280px] md:h-[320px] w-full shadow-lg shadow-black/40">
                   <BAThumb src={item.beforeImg} label={t.before[lang]} variant="before" />
                   <BAThumb src={item.afterImg} label={t.after[lang]} variant="after" />
                 </div>
