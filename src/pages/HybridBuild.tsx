@@ -100,75 +100,85 @@ const HybridBuild = () => {
       <Header variant="product" />
       <ScrollProgress />
 
-      <section ref={heroRef} className="relative min-h-[92svh] flex items-end overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={ASSETS.hybridCover}
-            alt=""
-            className="h-full w-full object-cover object-top"
-            fetchPriority="high"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.92) 100%)",
-            }}
-          />
-        </div>
-        <div
-          className={`relative z-10 w-full max-w-[1280px] mx-auto px-5 pb-14 pt-32 md:px-10 md:pb-20 lg:px-14 ${
-            isRTL ? "text-right" : ""
-          }`}
-        >
-          <p data-hb className="font-editorial text-[11px] uppercase tracking-[0.28em] text-red-br mb-4">
-            {hybrid.tag[language]}
-          </p>
-          <h1
-            data-hb
-            className="mega-type text-white text-[clamp(2.8rem,10vw,7rem)] leading-[0.9] mb-3"
-          >
-            {labels.productName}
-          </h1>
-          <p data-hb className="font-editorial text-base md:text-lg text-white/70 mb-3">
-            {labels.subtitle[language]}
-          </p>
-          <p
-            data-hb
-            className={`max-w-xl font-editorial text-[15px] text-white/55 mb-8 ${
-              language === "ar" ? "leading-[1.85]" : "leading-relaxed"
-            }`}
-          >
-            {labels.positioning[language]}
-          </p>
-          <div data-hb className={`flex flex-wrap items-center gap-4 mb-2 ${isRTL ? "flex-row-reverse" : ""}`}>
-            <span className="mega-type text-white text-3xl md:text-4xl">{hybrid.price[language]}</span>
-            {hybrid.compareAt[language] && (
-              <span className="font-editorial text-white/35 line-through text-lg">
-                {hybrid.compareAt[language]}
-              </span>
-            )}
-            {"priceNote" in hybrid && hybrid.priceNote && (
-              <span className="font-editorial text-sm text-white/45">{hybrid.priceNote[language]}</span>
-            )}
-          </div>
-          <div data-hb className={`flex flex-wrap gap-3 mt-6 ${isRTL ? "flex-row-reverse" : ""}`}>
-            <a href="#checkout" className="btn-primary-cta">
-              {hybrid.cta[language]}
-            </a>
-            <a
-              href={SPLIT_FINDER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost-cta"
-            >
-              {labels.splitCta}
-            </a>
+      {/* Cover has baked-in poster text — keep it as a card, never under page copy */}
+      <section ref={heroRef} className="relative bg-black border-b border-white/[0.08]">
+        <div className="max-w-[1280px] mx-auto px-5 pt-28 pb-12 md:px-10 md:pt-32 md:pb-16 lg:px-14">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className={`lg:col-span-6 ${isRTL ? "text-right lg:order-2" : ""}`}>
+              <p data-hb className="font-editorial text-[11px] uppercase tracking-[0.28em] text-red-br mb-4">
+                {hybrid.tag[language]}
+              </p>
+              <h1
+                data-hb
+                className="mega-type text-white text-[clamp(2.6rem,8vw,5.5rem)] leading-[0.9] mb-3"
+              >
+                {labels.productName}
+              </h1>
+              <p data-hb className="font-editorial text-base md:text-lg text-white/70 mb-3">
+                {labels.subtitle[language]}
+              </p>
+              <p
+                data-hb
+                className={`max-w-xl font-editorial text-[15px] text-white/55 mb-8 ${
+                  language === "ar" ? "leading-[1.85]" : "leading-relaxed"
+                }`}
+              >
+                {labels.positioning[language]}
+              </p>
+              <div
+                data-hb
+                className={`flex flex-wrap items-center gap-4 mb-2 ${isRTL ? "flex-row-reverse" : ""}`}
+              >
+                <span className="mega-type text-white text-3xl md:text-4xl">
+                  {hybrid.price[language]}
+                </span>
+                {hybrid.compareAt[language] && (
+                  <span className="font-editorial text-white/35 line-through text-lg">
+                    {hybrid.compareAt[language]}
+                  </span>
+                )}
+                {"priceNote" in hybrid && hybrid.priceNote && (
+                  <span className="font-editorial text-sm text-white/45">
+                    {hybrid.priceNote[language]}
+                  </span>
+                )}
+              </div>
+              <div
+                data-hb
+                className={`flex flex-wrap gap-3 mt-6 ${isRTL ? "flex-row-reverse" : ""}`}
+              >
+                <a href="#checkout" className="btn-primary-cta">
+                  {hybrid.cta[language]}
+                </a>
+                <a
+                  href={SPLIT_FINDER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost-cta"
+                >
+                  {labels.splitCta}
+                </a>
+              </div>
+            </div>
+
+            <div className={`lg:col-span-6 ${isRTL ? "lg:order-1" : ""}`}>
+              <div
+                data-hb
+                className="relative z-0 mx-auto w-full max-w-[380px] overflow-hidden border border-white/10 bg-[#0a0a0a]"
+              >
+                <img
+                  src={ASSETS.hybridCover}
+                  alt="Hybrid Build program cover"
+                  className="block w-full h-auto max-h-[70vh] object-contain object-top"
+                  fetchPriority="high"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-white/[0.08] px-5 py-16 md:px-10 md:py-24 lg:px-14">
+      <section className="relative z-10 bg-black border-t border-white/[0.08] px-5 py-16 md:px-10 md:py-24 lg:px-14">
         <div className={`max-w-[1280px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 ${isRTL ? "text-right" : ""}`}>
           <div className="lg:col-span-6">
             <h2
@@ -181,7 +191,7 @@ const HybridBuild = () => {
               {labels.whatsInside}
             </h2>
             <p
-              className={`font-editorial text-[15px] md:text-base text-white/60 mb-8 ${
+              className={`font-editorial text-[15px] md:text-base text-white/70 mb-8 ${
                 language === "ar" ? "leading-[1.85]" : "leading-relaxed"
               }`}
             >
