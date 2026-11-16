@@ -41,7 +41,7 @@ const BrandPresence = () => {
     <section
       id="presence"
       ref={setRefs}
-      className="bg-black border-t border-white/[0.08] px-5 py-16 md:px-10 md:py-24 lg:px-14"
+      className="bg-black border-t border-white/[0.08] px-5 py-12 md:px-10 md:py-20 lg:px-14"
     >
       <div className={`max-w-[1280px] mx-auto ${isRTL ? "text-right" : ""}`}>
         <p data-pres className="font-editorial text-[11px] uppercase tracking-[0.22em] text-red-br mb-3">
@@ -49,7 +49,7 @@ const BrandPresence = () => {
         </p>
         <h2
           data-pres
-          className={`mega-type text-white max-w-3xl mb-12 md:mb-16 ${
+          className={`mega-type text-white max-w-3xl mb-8 md:mb-10 ${
             language === "ar"
               ? "text-[clamp(1.8rem,5vw,3.4rem)] leading-[1.15]"
               : "text-[clamp(2.4rem,6vw,4.5rem)]"
@@ -58,12 +58,12 @@ const BrandPresence = () => {
           {t.title[language]}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.08] mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.08] mb-8">
           {t.stats.map((stat) => (
             <div
               key={stat.label.en}
               data-pres
-              className="bg-black px-5 py-8 md:px-8 md:py-10"
+              className="bg-black px-5 py-6 md:px-8 md:py-8"
             >
               <p
                 data-count
@@ -81,22 +81,7 @@ const BrandPresence = () => {
           ))}
         </div>
 
-        {t.collabs.length > 0 && (
-          <div data-pres className="border-t border-white/[0.08] pt-10">
-            <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-white/40 mb-6">
-              {t.collabLabel[language]}
-            </p>
-            <div className={`flex flex-wrap gap-x-10 gap-y-4 ${isRTL ? "justify-end" : ""}`}>
-              {t.collabs.map((c) => (
-                <span key={c.name} className="font-impact text-2xl md:text-3xl text-white/80 tracking-wide">
-                  {c.name}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <div data-pres className="mt-14">
+        <div data-pres>
           <a
             href={IG_PROFILE_URL}
             target="_blank"
