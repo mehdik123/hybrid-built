@@ -33,14 +33,26 @@ const EXTRA_PAIRS: RailItem[] = [
   { beforeImg: "/transformation-15-before.png", afterImg: "/transformation-15-after.png" },
 ];
 
+const wrapX = (value: number, half: number, rtl: boolean) => {
+  if (half <= 0) return value;
+  let x = value;
+  if (!rtl) {
+    while (x <= -half) x += half;
+    while (x > 0) x -= half;
+    return x;
+  }
+  while (x >= half) x -= half;
+  while (x < 0) x += half;
+  return x;
+};
+
 const ProofSection = () => {
   const { language, isRTL } = useLanguage();
   const lang = language as Lang;
   const t = landing.proof;
-  const pinRef = useRef<HTMLElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
 
   const rail: RailItem[] = [
     LEAD_PAIR,
@@ -53,128 +65,197 @@ const ProofSection = () => {
     })),
     ...EXTRA_PAIRS,
   ];
+  const loop = [...rail, ...rail];
 
   useEffect(() => {
-    const section = pinRef.current;
     const track = trackRef.current;
-    const stage = stageRef.current;
-    if (!section || !track) return;
+    const viewport = viewportRef.current;
+    const section = sectionRef.current;
+    if (!track || !viewport || !section) return;
 
-    const { gsap, ScrollTrigger } = getGsap();
+    const { gsap } = getGsap();
     const reduced = prefersReducedMotion();
-    const mm = gsap.matchMedia();
 
-    const ctx = gsap.context(() => {
+    // Title entrance
+    const titleCtx = gsap.context(() => {
       gsap.fromTo(
-        titleRef.current,
-        { y: 48, opacity: 0 },
+        section.querySelector("[data-proof-title]"),
+        { y: 40, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.9,
+          duration: 0.8,
           ease: "power3.out",
-          scrollTrigger: { trigger: section, start: "top 75%" },
+          scrollTrigger: { trigger: section, start: "top 78%" },
         }
       );
+    }, section);
 
-      // Cinematic wipe on each pair as it passes center
-      const cards = track.querySelectorAll<HTMLElement>("[data-xform-card]");
-      cards.forEach((card) => {
-        const wipe = card.querySelector<HTMLElement>("[data-wipe]");
-        const scaleEl = card.querySelector<HTMLElement>("[data-scale]");
-        if (!wipe || !scaleEl) return;
+    let x = 0;
+    let raf = 0;
+    let lastTime = performance.now();
+    let visible = true;
+    let dragging = false;
+    let lastPointerX = 0;
+    let startX = 0;
+    let startY = 0;
+    let axis: "h" | "v" | null = null;
+    let activePointer: number | null = null;
+
+    const applyCenterEffects = () => {
+      const vpRect = viewport.getBoundingClientRect();
+      const centerX = vpRect.left + vpRect.width / 2;
+      const falloff = Math.max(140, vpRect.width * 0.4);
+      const tiles = track.querySelectorAll<HTMLElement>("[data-rail-tile]");
+
+      tiles.forEach((tile) => {
+        const scaleEl = tile.querySelector<HTMLElement>("[data-rail-scale]");
+        const wipe = tile.querySelector<HTMLElement>("[data-wipe]");
+        if (!scaleEl) return;
+
+        const r = tile.getBoundingClientRect();
+        const tileCenter = r.left + r.width / 2;
+        const dist = Math.abs(tileCenter - centerX);
+        const tNorm = Math.min(1, dist / falloff);
+        const focus = 1 - tNorm;
 
         if (reduced) {
-          wipe.style.clipPath = "inset(0 0% 0 0)";
           scaleEl.style.transform = "scale(1)";
           scaleEl.style.opacity = "1";
+          if (wipe) wipe.style.clipPath = "inset(0 0% 0 0)";
           return;
         }
 
-        // Mobile / vertical: wipe as each card enters view
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top 85%",
-          end: "top 40%",
-          scrub: true,
-          onUpdate: (self) => {
-            if (window.matchMedia("(min-width: 768px)").matches) return;
-            const p = self.progress;
-            if (isRTL) {
-              wipe.style.clipPath = `inset(0 ${p * 100}% 0 0)`;
-            } else {
-              wipe.style.clipPath = `inset(0 ${(1 - p) * 100}% 0 0)`;
-            }
-            const s = 0.92 + p * 0.08;
-            scaleEl.style.transform = `scale(${s})`;
-            scaleEl.style.opacity = String(0.6 + p * 0.4);
-          },
-        });
+        const scale = 0.86 + focus * 0.2;
+        scaleEl.style.transform = `scale(${scale.toFixed(3)})`;
+        scaleEl.style.opacity = String(Math.max(0.5, 0.55 + focus * 0.45));
+        scaleEl.style.zIndex = String(Math.round(focus * 20));
+
+        // Before→after wipe: fully revealed (after) when centered
+        if (wipe) {
+          const reveal = focus; // 0 side → 1 center
+          if (isRTL) {
+            wipe.style.clipPath = `inset(0 ${reveal * 100}% 0 0)`;
+          } else {
+            wipe.style.clipPath = `inset(0 ${(1 - reveal) * 100}% 0 0)`;
+          }
+        }
       });
+    };
 
-      mm.add("(min-width: 768px)", () => {
-        if (reduced) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+      },
+      { rootMargin: "100px" }
+    );
+    io.observe(viewport);
 
-        const getScroll = () => -(track.scrollWidth - window.innerWidth + 64);
+    const paint = () => {
+      const half = track.scrollWidth / 2;
+      x = wrapX(x, half, isRTL);
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+      applyCenterEffects();
+    };
 
-        const tween = gsap.to(track, {
-          x: () => (isRTL ? Math.abs(getScroll()) : getScroll()),
-          ease: "none",
-          scrollTrigger: {
-            trigger: stage,
-            start: "top top",
-            end: () => `+=${Math.max(track.scrollWidth * 0.9, window.innerHeight * 2.4)}`,
-            pin: true,
-            scrub: 0.75,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-              const center = window.innerWidth / 2;
-              cards.forEach((card) => {
-                const wipe = card.querySelector<HTMLElement>("[data-wipe]");
-                const scaleEl = card.querySelector<HTMLElement>("[data-scale]");
-                if (!wipe || !scaleEl) return;
-                const r = card.getBoundingClientRect();
-                const c = r.left + r.width / 2;
-                const dist = Math.abs(c - center);
-                const falloff = window.innerWidth * 0.4;
-                const tNorm = Math.min(1, dist / falloff);
-                const reveal = 1 - tNorm;
-                if (isRTL) {
-                  wipe.style.clipPath = `inset(0 ${reveal * 100}% 0 0)`;
-                } else {
-                  wipe.style.clipPath = `inset(0 ${(1 - reveal) * 100}% 0 0)`;
-                }
-                const s = 0.88 + reveal * 0.14;
-                scaleEl.style.transform = `scale(${s})`;
-                scaleEl.style.opacity = String(0.55 + reveal * 0.45);
-              });
-            },
-          },
-        });
+    const baseSpeed = reduced ? 0.25 : 0.5;
 
-        return () => {
-          tween.scrollTrigger?.kill();
-          tween.kill();
-        };
-      });
-    }, section);
+    const tick = (time: number) => {
+      if (!visible || dragging) {
+        lastTime = time;
+        if (visible) applyCenterEffects();
+        raf = requestAnimationFrame(tick);
+        return;
+      }
+      const dt = Math.min(time - lastTime, 32);
+      lastTime = time;
+      x += (isRTL ? 1 : -1) * baseSpeed * (dt / 16);
+      paint();
+      raf = requestAnimationFrame(tick);
+    };
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      dragging = true;
+      axis = null;
+      activePointer = e.pointerId;
+      lastPointerX = e.clientX;
+      startX = e.clientX;
+      startY = e.clientY;
+      viewport.setPointerCapture(e.pointerId);
+      viewport.style.cursor = "grabbing";
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!dragging || e.pointerId !== activePointer) return;
+      if (!axis) {
+        const adx = Math.abs(e.clientX - startX);
+        const ady = Math.abs(e.clientY - startY);
+        if (adx < 8 && ady < 8) return;
+        axis = adx > ady ? "h" : "v";
+        if (axis === "v") {
+          dragging = false;
+          activePointer = null;
+          viewport.style.cursor = "grab";
+          try {
+            viewport.releasePointerCapture(e.pointerId);
+          } catch {
+            /* */
+          }
+          return;
+        }
+      }
+      if (axis !== "h") return;
+      const dx = e.clientX - lastPointerX;
+      lastPointerX = e.clientX;
+      x += dx;
+      paint();
+    };
+
+    const endDrag = (e: PointerEvent) => {
+      if (activePointer !== null && e.pointerId !== activePointer) return;
+      dragging = false;
+      activePointer = null;
+      axis = null;
+      lastTime = performance.now();
+      viewport.style.cursor = "grab";
+      try {
+        viewport.releasePointerCapture(e.pointerId);
+      } catch {
+        /* */
+      }
+    };
+
+    viewport.addEventListener("pointerdown", onPointerDown);
+    viewport.addEventListener("pointermove", onPointerMove);
+    viewport.addEventListener("pointerup", endDrag);
+    viewport.addEventListener("pointercancel", endDrag);
+
+    // Wait a frame so images/layout settle
+    requestAnimationFrame(() => {
+      paint();
+      raf = requestAnimationFrame(tick);
+    });
 
     return () => {
-      ctx.revert();
-      mm.revert();
-      ScrollTrigger.refresh();
+      cancelAnimationFrame(raf);
+      titleCtx.revert();
+      io.disconnect();
+      viewport.removeEventListener("pointerdown", onPointerDown);
+      viewport.removeEventListener("pointermove", onPointerMove);
+      viewport.removeEventListener("pointerup", endDrag);
+      viewport.removeEventListener("pointercancel", endDrag);
     };
   }, [isRTL, language]);
 
   return (
-    <section id="proof" ref={pinRef} className="relative bg-ink overflow-hidden">
-      <div className="px-5 pt-16 md:px-10 md:pt-24 lg:px-14">
+    <section id="proof" ref={sectionRef} className="relative bg-ink overflow-hidden border-t border-white/[0.08]">
+      <div className="px-5 pt-14 md:px-10 md:pt-24 lg:px-14">
         <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-3">
           {t.eyebrow[lang]}
         </p>
         <h2
-          ref={titleRef}
+          data-proof-title
           className={`mega-type text-white mb-3 ${
             lang === "ar"
               ? "text-[clamp(1.75rem,6vw,4rem)] leading-[1.15] max-w-4xl"
@@ -184,7 +265,7 @@ const ProofSection = () => {
           {t.title[lang]}
         </h2>
         <p
-          className={`font-editorial text-sm md:text-base text-white/50 max-w-md mb-8 md:mb-12 ${
+          className={`font-editorial text-sm md:text-base text-white/50 max-w-md mb-6 md:mb-10 ${
             isRTL ? "mr-0 ml-auto text-right" : ""
           }`}
         >
@@ -192,84 +273,76 @@ const ProofSection = () => {
         </p>
       </div>
 
-      <div ref={stageRef} className="relative md:h-screen flex flex-col justify-center">
-        <p
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 mega-type text-white/[0.03] text-[clamp(5rem,22vw,18rem)] whitespace-nowrap"
-        >
-          RESULTS
-        </p>
-
+      <div
+        ref={viewportRef}
+        className="relative overflow-x-clip overflow-y-visible cursor-grab touch-pan-y py-6 md:py-10"
+        style={{ touchAction: "pan-y" }}
+      >
         <div
           ref={trackRef}
-          className={`relative z-[1] flex gap-4 md:gap-6 px-5 md:px-10 will-change-transform ${
-            isRTL ? "flex-row-reverse" : ""
-          } overflow-x-auto md:overflow-visible scrollbar-none pb-6 md:pb-0`}
+          className="flex w-max items-center gap-3 md:gap-5 px-5 md:px-10 will-change-transform"
+          style={{ transform: "translate3d(0,0,0)" }}
         >
-          {rail.map((item, i) => (
+          {loop.map((item, i) => (
             <article
               key={`${item.beforeImg}-${i}`}
-              data-xform-card
-              className="relative shrink-0 w-[85vw] sm:w-[420px] md:w-[520px] lg:w-[580px]"
+              data-rail-tile
+              className="relative shrink-0 w-[78vw] sm:w-[360px] md:w-[440px] lg:w-[500px] select-none"
             >
               <div
-                data-scale
-                className="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-muted will-change-transform origin-center"
-                style={{ transform: "scale(0.92)", opacity: 0.7 }}
+                data-rail-scale
+                className="relative origin-center will-change-transform"
+                style={{ transform: "scale(0.88)", opacity: 0.6 }}
               >
-                {/* After (base) */}
-                <img
-                  src={item.afterImg}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
-                  draggable={false}
-                />
-                {/* Before (wipes away to reveal after) */}
-                <div
-                  data-wipe
-                  className="absolute inset-0"
-                  style={{ clipPath: isRTL ? "inset(0 0 0 0)" : "inset(0 100% 0 0)" }}
-                >
+                <div className="relative aspect-[3/4] overflow-hidden bg-muted shadow-lg shadow-black/40">
                   <img
-                    src={item.beforeImg}
+                    src={item.afterImg}
                     alt=""
                     loading="lazy"
                     decoding="async"
                     className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
                     draggable={false}
                   />
-                </div>
-
-                {/* Divider line hint */}
-                <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px bg-white/40 mix-blend-overlay" />
-
-                <span className="absolute top-3 left-3 font-editorial text-[9px] uppercase tracking-[0.16em] bg-black/80 text-white px-2 py-1">
-                  {t.before[lang]}
-                </span>
-                <span className="absolute top-3 right-3 font-editorial text-[9px] uppercase tracking-[0.16em] bg-red-br text-white px-2 py-1">
-                  {t.after[lang]}
-                </span>
-
-                {item.name && (
-                  <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                    <p className="font-display text-white text-lg">{item.name[lang]}</p>
-                    {item.timeframe && (
-                      <p className="font-editorial text-xs text-white/60 mt-0.5">
-                        {item.timeframe[lang]}
-                        {item.profession ? ` · ${item.profession[lang]}` : ""}
-                      </p>
-                    )}
+                  <div
+                    data-wipe
+                    className="absolute inset-0"
+                    style={{ clipPath: isRTL ? "inset(0 0 0 0)" : "inset(0 100% 0 0)" }}
+                  >
+                    <img
+                      src={item.beforeImg}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
+                      draggable={false}
+                    />
                   </div>
-                )}
+                  <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px bg-white/50" />
+                  <span className="absolute top-2.5 left-2.5 font-editorial text-[9px] uppercase tracking-[0.16em] bg-black text-white px-2 py-1">
+                    {t.before[lang]}
+                  </span>
+                  <span className="absolute top-2.5 right-2.5 font-editorial text-[9px] uppercase tracking-[0.16em] bg-red-br text-white px-2 py-1">
+                    {t.after[lang]}
+                  </span>
+                  {item.name && (
+                    <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/85 to-transparent">
+                      <p className="font-display text-white text-base">{item.name[lang]}</p>
+                      {item.timeframe && (
+                        <p className="font-editorial text-[11px] text-white/60">
+                          {item.timeframe[lang]}
+                          {item.profession ? ` · ${item.profession[lang]}` : ""}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             </article>
           ))}
         </div>
       </div>
 
-      <div className="container-tight px-5 pb-16 md:px-10 md:pb-24">
+      <div className="container-tight px-5 pb-14 md:px-10 md:pb-24">
         <TestimonialVideoCard
           tag={t.voice.tag[lang]}
           title={t.voice.title[lang]}

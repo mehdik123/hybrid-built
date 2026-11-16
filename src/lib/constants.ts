@@ -43,9 +43,11 @@ export const ASSETS = {
   productsHero: "/testimonial-cover.jpg",
   /** Free tool page */
   freeToolHero: "/hero-fallback.jpg",
-  /** Mehdi's own transformation — transformations default */
+  /** Client pair used in proof rail only — not for Mehdi identity surfaces */
   mehdiTransformBefore: "/transformation-11-before.png",
   mehdiTransformAfter: "/transformation-11-after.png",
+  /** Final CTA — Mehdi personal photo only */
+  finalCtaPortrait: "/about-me.jpg",
   /** Client video testimonial (cover + optional self-hosted clip) */
   testimonialCover: "/testimonial-cover.jpg",
   /** Drop an mp4 here for native in-site playback; otherwise Instagram embed is used */

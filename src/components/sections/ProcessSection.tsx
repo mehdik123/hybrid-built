@@ -45,26 +45,26 @@ const ProcessSection = () => {
 
         gsap.fromTo(
           num,
-          { y: 80, opacity: 0.15 },
+          { y: 40, opacity: 0.2 },
           {
             y: 0,
             opacity: 1,
             ease: "power3.out",
-            duration: 0.9,
-            scrollTrigger: { trigger: step, start: "top 75%" },
+            duration: 0.7,
+            scrollTrigger: { trigger: step, start: "top 85%" },
           }
         );
 
         gsap.fromTo(
           copy,
-          { y: 36, opacity: 0 },
+          { y: 24, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            stagger: 0.08,
-            duration: 0.7,
+            stagger: 0.06,
+            duration: 0.55,
             ease: "power3.out",
-            scrollTrigger: { trigger: step, start: "top 70%" },
+            scrollTrigger: { trigger: step, start: "top 82%" },
           }
         );
 
@@ -75,17 +75,16 @@ const ProcessSection = () => {
             {
               scaleX: 1,
               ease: "power2.out",
-              duration: 0.8,
-              scrollTrigger: { trigger: step, start: "top 68%" },
+              duration: 0.6,
+              scrollTrigger: { trigger: step, start: "top 80%" },
             }
           );
         }
 
-        // Mark active step via class for accent
         ScrollTrigger.create({
           trigger: step,
-          start: "top 55%",
-          end: "bottom 45%",
+          start: "top 60%",
+          end: "bottom 40%",
           onEnter: () => step.classList.add("is-active"),
           onEnterBack: () => step.classList.add("is-active"),
           onLeave: () => {
@@ -101,23 +100,22 @@ const ProcessSection = () => {
 
   return (
     <section id="process" ref={rootRef} className="relative bg-ink border-t border-white/[0.08]">
-      <div className={`px-5 pt-20 md:px-10 md:pt-28 lg:px-14 ${isRTL ? "text-right" : ""}`}>
-        <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-4">
+      <div className={`px-5 pt-12 md:px-10 md:pt-24 lg:px-14 ${isRTL ? "text-right" : ""}`}>
+        <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-3 md:mb-4">
           {t.eyebrow[language]}
         </p>
         <h2
           className={`mega-type text-white max-w-5xl ${
             language === "ar"
-              ? "text-[clamp(1.75rem,5vw,3.6rem)] leading-[1.2]"
-              : "text-[clamp(2.6rem,8vw,6rem)]"
+              ? "text-[clamp(1.5rem,5vw,3.6rem)] leading-[1.2]"
+              : "text-[clamp(2rem,7vw,6rem)]"
           }`}
         >
           {t.title[language]}
         </h2>
       </div>
 
-      <div className="relative mt-10 md:mt-16 max-w-[1280px] mx-auto px-5 md:px-10 lg:px-14 pb-8">
-        {/* Vertical progress rail */}
+      <div className="relative mt-6 md:mt-14 max-w-[1280px] mx-auto px-5 md:px-10 lg:px-14 pb-4 md:pb-8">
         <div
           className={`pointer-events-none absolute top-0 bottom-0 w-px bg-white/10 hidden md:block ${
             isRTL ? "right-10 lg:right-14" : "left-10 lg:left-14"
@@ -130,49 +128,55 @@ const ProcessSection = () => {
           />
         </div>
 
-        <ol className="relative space-y-0">
+        <ol className="relative">
           {t.steps.map((step, i) => (
             <li
               key={step.num}
               data-step
-              className={`relative grid md:grid-cols-12 gap-4 md:gap-8 py-16 md:py-24 border-t border-white/[0.08] transition-colors ${
+              className={`relative grid grid-cols-[auto_1fr] md:grid-cols-12 gap-3 md:gap-8 py-6 md:py-20 border-t border-white/[0.08] ${
                 isRTL ? "text-right" : ""
               }`}
             >
               <div className={`md:col-span-4 ${isRTL ? "md:order-2" : ""}`}>
                 <p
                   data-step-num
-                  className="mega-type text-[clamp(5rem,16vw,11rem)] leading-none text-white/15 [.is-active_&]:text-red-br transition-colors duration-500"
+                  className="mega-type text-[2.75rem] sm:text-[3.5rem] md:text-[clamp(5rem,14vw,11rem)] leading-none text-white/20 [.is-active_&]:text-red-br transition-colors duration-500"
                 >
                   {step.num}
                 </p>
               </div>
 
-              <div className={`md:col-span-8 flex flex-col justify-center ${isRTL ? "md:order-1" : ""}`}>
+              <div
+                className={`md:col-span-8 flex flex-col justify-center min-w-0 ${
+                  isRTL ? "md:order-1" : ""
+                }`}
+              >
                 <div
                   data-step-line
-                  className={`h-px w-24 bg-red-br mb-6 origin-${isRTL ? "right" : "left"} ${
+                  className={`hidden md:block h-px w-24 bg-red-br mb-6 origin-${isRTL ? "right" : "left"} ${
                     isRTL ? "ml-auto" : ""
                   }`}
                   style={{ transform: "scaleX(0)" }}
                 />
                 <h3
                   data-step-copy
-                  className={`font-display text-white mb-4 ${
-                    language === "ar" ? "text-2xl md:text-3xl leading-snug" : "text-3xl md:text-5xl"
+                  className={`font-display text-white mb-2 md:mb-4 ${
+                    language === "ar"
+                      ? "text-lg md:text-3xl leading-snug"
+                      : "text-xl md:text-5xl"
                   }`}
                 >
                   {step.title[language]}
                 </h3>
                 <p
                   data-step-copy
-                  className="font-editorial text-base md:text-lg text-white/55 leading-relaxed max-w-xl"
+                  className="font-editorial text-sm md:text-lg text-white/55 leading-relaxed max-w-xl"
                 >
                   {step.body[language]}
                 </p>
                 <p
                   data-step-copy
-                  className="mt-6 font-editorial text-[11px] uppercase tracking-[0.2em] text-white/30"
+                  className="mt-3 md:mt-6 font-editorial text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-white/30"
                 >
                   {String(i + 1).padStart(2, "0")} / {String(t.steps.length).padStart(2, "0")}
                 </p>
@@ -182,7 +186,7 @@ const ProcessSection = () => {
         </ol>
       </div>
 
-      <div className={`px-5 py-14 md:px-10 lg:px-14 ${isRTL ? "text-right" : ""}`}>
+      <div className={`px-5 py-10 md:px-10 md:py-14 lg:px-14 ${isRTL ? "text-right" : ""}`}>
         <MagneticCTA href={IG_DM_URL}>{landing.offer.cta[language]}</MagneticCTA>
       </div>
     </section>

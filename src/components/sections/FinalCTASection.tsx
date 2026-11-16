@@ -56,11 +56,11 @@ const FinalCTASection = () => {
     >
       <div ref={mediaRef} className="absolute inset-0 will-change-transform">
         <img
-          src={ASSETS.mehdiTransformAfter}
+          src={ASSETS.finalCtaPortrait}
           alt=""
           loading="lazy"
           decoding="async"
-          className="h-full w-full object-cover object-[center_12%]"
+          className="h-full w-full object-cover object-[center_18%]"
         />
       </div>
       <div
