@@ -43,7 +43,7 @@ const Header = ({ variant }: HeaderProps) => {
       href: "#offer",
     },
     {
-      label: language === "en" ? "Process" : language === "fr" ? "Process" : "الخطوات",
+      label: language === "en" ? "Process" : language === "fr" ? "Process" : "كيفاش نخدمو",
       href: "#process",
     },
     {
@@ -63,7 +63,7 @@ const Header = ({ variant }: HeaderProps) => {
   const navLinks = resolvedVariant === "product" ? productLinks : coachingLinks;
 
   const applyLabel =
-    language === "en" ? "Apply" : language === "fr" ? "Postuler" : "بدا الـ coaching";
+    language === "en" ? "Apply" : language === "fr" ? "Postuler" : "بدا معايا";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24);

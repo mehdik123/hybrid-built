@@ -38,7 +38,7 @@ const SocialProofStrip = () => {
 
   const line =
     language === "ar"
-      ? "مئات الآلاف كيتبعو الخدمة ديالنا."
+      ? "مئات الآلاف كيتابعو الشغل ديالنا."
       : language === "fr"
         ? "Des centaines de milliers suivent le travail."
         : "Hundreds of thousands follow the work.";
