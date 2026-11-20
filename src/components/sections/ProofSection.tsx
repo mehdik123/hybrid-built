@@ -9,9 +9,6 @@ type Lang = "en" | "ar" | "fr";
 type RailItem = {
   beforeImg: string;
   afterImg: string;
-  name?: Record<Lang, string>;
-  profession?: Record<Lang, string>;
-  timeframe?: Record<Lang, string>;
 };
 
 const LEAD_PAIR: RailItem = {
@@ -87,9 +84,6 @@ const ProofSection = () => {
     ...t.cases.map((c) => ({
       beforeImg: c.beforeImg,
       afterImg: c.afterImg,
-      name: c.name,
-      profession: c.profession,
-      timeframe: c.timeframe,
     })),
     ...EXTRA_PAIRS,
   ];
@@ -309,22 +303,6 @@ const ProofSection = () => {
                 <div className="grid grid-cols-2 gap-[2px] w-full h-[260px] md:h-[300px] overflow-hidden bg-black">
                   <BAThumb src={item.beforeImg} label={t.before[lang]} variant="before" />
                   <BAThumb src={item.afterImg} label={t.after[lang]} variant="after" />
-                </div>
-                {/* Fixed caption slot so all tiles share the same total height */}
-                <div
-                  className={`mt-2 h-[44px] px-0.5 ${isRTL ? "text-right" : "text-left"}`}
-                >
-                  {item.name ? (
-                    <>
-                      <p className="font-display text-white text-sm leading-tight truncate">
-                        {item.name[lang]}
-                      </p>
-                      <p className="font-editorial text-[11px] text-white/50 mt-0.5 truncate">
-                        {item.timeframe?.[lang]}
-                        {item.profession ? ` · ${item.profession[lang]}` : ""}
-                      </p>
-                    </>
-                  ) : null}
                 </div>
               </div>
             </article>
