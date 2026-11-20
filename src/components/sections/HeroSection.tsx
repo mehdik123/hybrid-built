@@ -19,10 +19,15 @@ const HeroSection = () => {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    const root = rootRef.current;
+    if (!video || !root) return;
     let cancelled = false;
+    let inView = true;
+
+    // Try to start playback. Safe to call any number of times: it does nothing
+    // if the video is already playing or the hero is off screen.
     const kick = async () => {
-      if (cancelled) return;
+      if (cancelled || !inView || !video.paused) return;
       try {
         video.muted = true;
         video.defaultMuted = true;
@@ -30,25 +35,60 @@ const HeroSection = () => {
         video.volume = 0;
         await video.play();
       } catch {
-        /* autoplay blocked until gesture */
+        /* autoplay blocked for now: we retry on the signals below */
       }
     };
+
+    const onKick = () => void kick();
+    const onVisible = () => {
+      if (document.visibilityState === "visible") void kick();
+    };
+
     void kick();
-    const unlock = () => void kick();
-    document.addEventListener("touchstart", unlock, { once: true, passive: true });
-    document.addEventListener("pointerdown", unlock, { once: true });
+
+    // The video may not be ready on first call; retry once data arrives.
+    const mediaEvents = ["loadeddata", "canplay", "canplaythrough"] as const;
+    mediaEvents.forEach((e) => video.addEventListener(e, onKick));
+    document.addEventListener("visibilitychange", onVisible);
+    window.addEventListener("pageshow", onKick);
+    window.addEventListener("focus", onKick);
+
+    // If the browser blocks autoplay until the user interacts (language popup
+    // click, tap, key press), start the video on the first real interaction.
+    const gestureEvents = ["pointerup", "touchend", "click", "keydown"] as const;
+    gestureEvents.forEach((e) => document.addEventListener(e, onKick, { passive: true }));
+
+    // Short retry loop for the first seconds after load.
+    let tries = 0;
+    const retry = window.setInterval(() => {
+      if (!video.paused || ++tries > 20) {
+        window.clearInterval(retry);
+        return;
+      }
+      void kick();
+    }, 500);
+
+    // Pause only when the whole hero is off screen. We observe the section,
+    // not the video, because the intro reveal clips the video and would make
+    // it look "off screen" during the first second.
     const io = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) void kick();
+        inView = e.isIntersecting;
+        if (inView) void kick();
         else video.pause();
       },
-      { threshold: 0.12 }
+      { threshold: 0.05 }
     );
-    io.observe(video);
+    io.observe(root);
+
     return () => {
       cancelled = true;
-      document.removeEventListener("touchstart", unlock);
-      document.removeEventListener("pointerdown", unlock);
+      window.clearInterval(retry);
+      mediaEvents.forEach((e) => video.removeEventListener(e, onKick));
+      document.removeEventListener("visibilitychange", onVisible);
+      window.removeEventListener("pageshow", onKick);
+      window.removeEventListener("focus", onKick);
+      gestureEvents.forEach((e) => document.removeEventListener(e, onKick));
       io.disconnect();
     };
   }, []);
