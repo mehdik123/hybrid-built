@@ -14,12 +14,12 @@ const copy = {
   eyebrow: { en: "My coaching app", ar: "تطبيق التدريب ديالي", fr: "Mon app de coaching" },
   title: {
     en: "I coach you. The app keeps it organized.",
-    ar: "أنا اللي كنوجّهك. التطبيق غير كيساعدنا ننظمو.",
+    ar: "أنا اللي كنوجهك، والتطبيق غير كيعاوننا ننظمو.",
     fr: "Coaching privé dans mon app.",
   },
   lead: {
     en: "Most coaches hand you a PDF and disappear. I write the plan and check in with you every day. The app is where you see training, meals, and progress in one place.",
-    ar: "بزاف ديال الكوتشات كيعطيوك PDF وكيخليوك بوحدك. أنا اللي كنقاد البرنامج وكنتابع معاك نهار بنهار. التطبيق غير بلاصة كتلقا فيها التمارين، الماكلة والتقدم ديالك.",
+    ar: "بزاف ديال الكوتشات كيعطيوك PDF وكيخليوك وحدك. أنا اللي كنصاوب البرنامج وكنتبع معاك كل يوم. التطبيق مجرد بلاصة فيها كتلقى التمارين، الماكلة والتقدم ديالك.",
     fr: "Une expérience fluide: on suit tes PRs, milestones, poids, photos hebdo, volume d’entraînement et progrès musculaire.",
   },
 } as const;
