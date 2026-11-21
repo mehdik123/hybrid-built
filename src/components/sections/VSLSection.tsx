@@ -1,3 +1,4 @@
+import { isolateLatin } from "@/lib/bidi";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -81,7 +82,7 @@ const VSLSection = () => {
                     </p>
                     <a href={instagramDMLink} target="_blank" rel="noopener noreferrer">
                         <Button size="xxl" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-background font-black text-lg uppercase tracking-widest px-12 py-8 transform transition-transform active:scale-95">
-                            {language === "ar" ? "راسلني 'HYBRID'" : language === "fr" ? "DM MOI 'HYBRID'" : "DM ME 'HYBRID'"}
+                            {language === "ar" ? isolateLatin("راسلني 'HYBRID'") : language === "fr" ? "DM MOI 'HYBRID'" : "DM ME 'HYBRID'"}
                         </Button>
                     </a>
                 </motion.div>

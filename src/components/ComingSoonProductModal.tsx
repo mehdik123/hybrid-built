@@ -1,3 +1,4 @@
+import { isolateLatin } from "@/lib/bidi";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Check, MessageCircle, X } from "lucide-react";
 import {
@@ -53,25 +54,25 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
       language === "ar" ? "خلص بالبطاقة" : language === "fr" ? "Payer par carte" : "Pay by card",
     payTransfer:
       language === "ar"
-        ? "خلاص بالـ virement"
+        ? isolateLatin("خلاص بالـ virement")
         : language === "fr"
           ? "Payer par virement"
           : "Pay by transfer",
     transferHint:
       language === "ar"
-        ? "صيفط ليا فـ Instagram. غادي نعطيك تفاصيل الـ virement، ومن بعد الخلاص كنحل ليك الـ access."
+        ? isolateLatin("صيفط ليا فـ Instagram. غادي نعطيك تفاصيل الـ virement، ومن بعد الخلاص كنحل ليك الـ access.")
         : language === "fr"
           ? "Écris-moi sur Instagram. Je t’envoie les infos de virement, puis je débloque l’accès après paiement."
           : "Message me on Instagram. I’ll send the transfer details, then unlock access after you pay.",
     dmTransfer:
       language === "ar"
-        ? "صيفط ليا DM للـ virement"
+        ? isolateLatin("صيفط ليا DM للـ virement")
         : language === "fr"
           ? "DM pour le virement"
           : "Message me for transfer details",
     cardNote:
       language === "ar"
-        ? "خلاص فوري فـ Gumroad. Access من بعد الدفع."
+        ? isolateLatin("خلاص فوري فـ Gumroad. Access من بعد الدفع.")
         : language === "fr"
           ? "Paiement Gumroad. Accès après paiement."
           : "Gumroad checkout. Access after payment.",
@@ -176,7 +177,7 @@ const ComingSoonProductModal = ({ product, open, onOpenChange }: ComingSoonProdu
                 </div>
                 <p className="mb-3 font-editorial text-[11px] text-white/45 leading-relaxed">
                   {language === "ar"
-                    ? "كل عملية شراء فيها رمز دخول شخصي باش تفتح الـ app."
+                    ? isolateLatin("كل عملية شراء فيها رمز دخول شخصي باش تفتح الـ app.")
                     : language === "fr"
                       ? "Chaque achat inclut un code d’accès personnel pour débloquer l’app."
                       : "Each purchase includes a personal access code to unlock the app."}

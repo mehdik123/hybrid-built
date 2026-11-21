@@ -1,9 +1,10 @@
 import type { Language } from "@/lib/translations";
+import { withBidi } from "@/lib/bidi";
 
 export type Localized = Record<Language, string>;
 
 /** Personal brand homepage. El Mehdi Kamal */
-export const brand = {
+const rawBrand = {
   name: "EL MEHDI KAMAL",
   hero: {
     roles: { en: "ATHLETE. CREATOR. COACH.", ar: "ATHLETE. CREATOR. COACH.", fr: "ATHLETE. CRÉATEUR. COACH." } as Localized,
@@ -136,3 +137,6 @@ export const brand = {
     ctaHybrid: { en: "Hybrid Build", ar: "Hybrid Build", fr: "Hybrid Build" } as Localized,
   },
 } as const;
+
+// Isolate English terms inside Arabic copy so they never flip the RTL text.
+export const brand = withBidi(rawBrand);

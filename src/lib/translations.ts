@@ -1,3 +1,5 @@
+import { withBidi } from "@/lib/bidi";
+
 export type Language = 'en' | 'ar' | 'fr';
 
 /**
@@ -5,7 +7,7 @@ export type Language = 'en' | 'ar' | 'fr';
  * dream outcome clear, offer specific, proof over fluff,
  * next step obvious. No em dashes. No vague adjectives.
  */
-export const translations = {
+const rawTranslations = {
   nav: {
     about: { en: "About", ar: "شكون أنا", fr: "À propos" },
     coaching: { en: "Coaching", ar: "Coaching", fr: "Coaching" },
@@ -602,6 +604,9 @@ export const translations = {
     cta: { en: "Back to start", ar: "رجع للبداية", fr: "Retour à l'accueil" },
   },
 };
+
+// Isolate English terms inside Arabic copy so they never flip the RTL text.
+export const translations = withBidi(rawTranslations);
 
 export const getTranslation = (obj: { en: string; ar: string }, lang: Language): string => {
   return obj[lang];

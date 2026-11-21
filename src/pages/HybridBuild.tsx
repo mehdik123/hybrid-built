@@ -1,3 +1,4 @@
+import { isolateLatin } from "@/lib/bidi";
 import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, MessageCircle } from "lucide-react";
@@ -44,37 +45,37 @@ const HybridBuild = () => {
     productName: "HYBRID BUILD",
     subtitle: {
       en: "The 8 Week Hybrid Athlete Program",
-      ar: "برنامج Hybrid Athlete لمدة 8 سيمانات",
+      ar: isolateLatin("برنامج Hybrid Athlete لمدة 8 سيمانات"),
       fr: "Le programme Hybrid Athlete 8 semaines",
     },
     positioning: {
       en: "A structured training system you follow on your own. Calisthenics and bodybuilding.",
-      ar: "نظام تدريب منظم تقدر تتبعو بوحدك. Calisthenics و bodybuilding.",
+      ar: isolateLatin("نظام تدريب منظم تقدر تتبعو بوحدك. Calisthenics و bodybuilding."),
       fr: "Un système d’entraînement structuré à suivre en autonomie. Calisthenics et musculation.",
     },
     payCard:
       language === "ar" ? "خلص بالبطاقة" : language === "fr" ? "Payer par carte" : "Pay by card",
     payTransfer:
       language === "ar"
-        ? "خلاص بالـ virement"
+        ? isolateLatin("خلاص بالـ virement")
         : language === "fr"
           ? "Payer par virement"
           : "Pay by transfer",
     transferHint:
       language === "ar"
-        ? "صيفط ليا فـ Instagram. غادي نعطيك تفاصيل الـ virement، ومن بعد الخلاص كنحل ليك الـ access."
+        ? isolateLatin("صيفط ليا فـ Instagram. غادي نعطيك تفاصيل الـ virement، ومن بعد الخلاص كنحل ليك الـ access.")
         : language === "fr"
           ? "Écris-moi sur Instagram. Je t’envoie les infos de virement, puis je débloque l’accès après paiement."
           : "Message me on Instagram. I’ll send the transfer details, then unlock access after you pay.",
     dmTransfer:
       language === "ar"
-        ? "صيفط ليا DM للـ virement"
+        ? isolateLatin("صيفط ليا DM للـ virement")
         : language === "fr"
           ? "DM pour le virement"
           : "Message me for transfer details",
     cardNote:
       language === "ar"
-        ? "خلاص فوري فـ Gumroad. Access من بعد الدفع."
+        ? isolateLatin("خلاص فوري فـ Gumroad. Access من بعد الدفع.")
         : language === "fr"
           ? "Paiement Gumroad. Accès après paiement."
           : "Gumroad checkout. Access after payment.",
@@ -251,7 +252,7 @@ const HybridBuild = () => {
           </div>
           <p className="font-editorial text-sm text-white/55 mb-6 leading-relaxed">
             {language === "ar"
-              ? "كل عملية شراء فيها رمز دخول شخصي باش تفتح الـ app."
+              ? isolateLatin("كل عملية شراء فيها رمز دخول شخصي باش تفتح الـ app.")
               : language === "fr"
                 ? "Chaque achat inclut un code d’accès personnel pour débloquer l’app."
                 : "Each purchase includes a personal access code to unlock the app."}
@@ -293,7 +294,7 @@ const HybridBuild = () => {
             </Link>
             <Link to="/" className="block text-center font-editorial text-sm text-white/40 hover:text-white/70 transition-colors">
               {language === "ar"
-                ? "باغي online coaching؟"
+                ? isolateLatin("باغي online coaching؟")
                 : language === "fr"
                   ? "Tu préfères le coaching en ligne ?"
                   : "Prefer online coaching?"}
