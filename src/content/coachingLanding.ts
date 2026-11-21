@@ -98,7 +98,7 @@ const rawLanding = {
     } as Localized,
     subhead: {
       en: "Fat loss, muscle, strength — from people who kept showing up.",
-      ar: "نقص الدهون، بني العضلات، حسن القوة ديالك. شوف نتائج الاستمرارية.",
+      ar: "نقص دهون، بني عضلات، زيد القوة. شوف كيفاش كيبان العمل المستمر.",
       fr: "Perte de gras, muscle, force. Voici ce que donne un travail régulier.",
     } as Localized,
     before: { en: "Before", ar: "قبل", fr: "Avant" } as Localized,
