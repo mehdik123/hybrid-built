@@ -54,7 +54,7 @@ const LanguageSelectorModal = () => {
 
                 <div className="grid grid-cols-1 gap-3">
                   <Button className="btn-primary-cta w-full" onClick={() => handleSelect("ar")}>
-                    العربية / Darija
+                    العربية / {"\u2066Darija\u2069"}
                   </Button>
                   <Button
                     variant="outline"

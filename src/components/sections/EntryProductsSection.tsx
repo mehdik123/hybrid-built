@@ -1,3 +1,4 @@
+import { isolateLatin } from "@/lib/bidi";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
@@ -186,7 +187,7 @@ const EntryProductsSection = () => {
               ? "Questions? DM me"
               : language === "fr"
                 ? "Des questions ? DM moi"
-                : "أسئلة؟ صيفط ليا DM"}
+                : isolateLatin("أسئلة؟ صيفط ليا DM")}
           </MagneticCTA>
         </motion.div>
       </div>

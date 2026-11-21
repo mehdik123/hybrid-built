@@ -1,3 +1,4 @@
+import { isolateLatin } from "@/lib/bidi";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
@@ -90,7 +91,7 @@ const Products = () => {
               to="/"
               className="btn-ghost-cta"
             >
-              {language === "en" ? "Back to coaching" : language === "fr" ? "Retour au coaching" : "رجوع للـ coaching"}
+              {language === "en" ? "Back to coaching" : language === "fr" ? "Retour au coaching" : isolateLatin("رجوع للـ coaching")}
             </Link>
           </div>
         </div>

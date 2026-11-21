@@ -1,3 +1,4 @@
+import { isolateLatin } from "@/lib/bidi";
 import { useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -21,7 +22,7 @@ const METHOD_DETAILS = {
   },
   support: {
     en: "The difference between a PDF and a transform is someone in your pocket. You message me. I course-correct the same day. No group chat noise. No waiting three days. That pressure is what turns plans into physiques.",
-    ar: "الفرق بين PDF وتحوّل هو شي واحد فجيبك. كتصيفط ليا. كنعدّل نهار نتاعو. بلا ضوضاء غروب. بلا انتظار 3 أيام. هاد الضغط هو اللي كيحوّل البرامج لأجسام.",
+    ar: isolateLatin("الفرق بين PDF وتحوّل هو شي واحد فجيبك. كتصيفط ليا. كنعدّل نهار نتاعو. بلا ضوضاء غروب. بلا انتظار 3 أيام. هاد الضغط هو اللي كيحوّل البرامج لأجسام."),
     fr: "La différence entre un PDF et une transforme, c'est quelqu'un dans ta poche. Tu m'écris. Je corrige le jour même. Pas de bruit de groupe. Pas d'attente de 3 jours. Cette pression transforme les plans en physiques.",
   },
 };

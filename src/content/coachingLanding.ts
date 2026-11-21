@@ -1,9 +1,10 @@
 import type { Language } from "@/lib/translations";
+import { withBidi } from "@/lib/bidi";
 
 export type Localized = Record<Language, string>;
 
 /** Coaching sales page: ambition and self-investment ICP */
-export const landing = {
+const rawLanding = {
   hero: {
     brand: {
       en: "ONLINE COACHING WITH MEHDI",
@@ -97,7 +98,7 @@ export const landing = {
     } as Localized,
     subhead: {
       en: "Fat loss, muscle, strength — from people who kept showing up.",
-      ar: "نقص دهن، بنا عضلات، زاد قوة. شوف كيفاش كيبان الشغل المستمر.",
+      ar: "نقص الدهون، بني العضلات، حسن القوة ديالك. شوف نتائج الاستمرارية.",
       fr: "Perte de gras, muscle, force. Voici ce que donne un travail régulier.",
     } as Localized,
     before: { en: "Before", ar: "قبل", fr: "Avant" } as Localized,
@@ -186,7 +187,7 @@ export const landing = {
         title: { en: "Your situation, obstacles, and goals", ar: "كنبداو بفهم الوضع ديالك", fr: "Ta situation, tes freins, tes objectifs" },
         body: {
           en: "Where you are, what blocks you, what you want. Hours available, preferences, what you already tried. Full picture before any program.",
-          ar: "الهدف ديالك، شحال من الوقت عندك، شنو كيناسبك، واش عندك شي إصابة، واش كتسافر بزاف ولا الضغط كيضربك، وشنو جربتي قبل. خاصني نفهم الصورة كاملة قبل ما نبني ليك أي برنامج.",
+          ar: "الهدف ديالك، الصعوبات اللي كتلقا، شنو كيناسبك، واش عندك شي إصابة، واش كتسافر بزاف ولا الضغط كيضربك، وشنو جربتي قبل. خاصني نفهم الصورة كاملة قبل ما نبني ليك أي برنامج.",
           fr: "On commence par comprendre où tu en es, ce qui te freine, et ce que tu veux. Agenda, préférences, essais passés. D’abord le tableau clair.",
         },
       },
@@ -195,7 +196,7 @@ export const landing = {
         title: { en: "Your plan, built for your life", ar: "كنبنيو ليك plan على قياسك", fr: "Ton plan, pensé pour ta vie" },
         body: {
           en: "Training and meals written for your schedule. In my app, easy to follow on a normal week.",
-          ar: "Training و nutrition كنرتبوهم على حساب ظروفك، ماشي template كنعطيوه لأي واحد. التمارين، الراحة والماكلة كنخليوهم بطريقة تقدر تطبقها فحياتك اليومية، وكلشي واضح فـ app.",
+          ar: "Training و Nutrition على حساب ظروفك، ماشي شي template كنعطيوه لأي واحد. كننظمو التمارين، الراحة والماكلة بطريقة تقدر تطبقها فحياتك اليومية، وكلشي كيبقى واضح فـ App.",
           fr: "Training et nutrition faits pour toi. Dans mon app, simples à suivre, pensés pour la vraie vie.",
         },
       },
@@ -220,7 +221,7 @@ export const landing = {
     } as Localized,
     valueLead: {
       en: "Private coaching in my app: training, meals, form checks, daily WhatsApp. You work with me — not a PDF and not a bot.",
-      ar: "أنا كنخدم معاك شخصياً: كنصاوب ليك البرنامج، كنراجع معاك فالتطبيق، كنرتب معاك الماكلة، كنصحح الحركة ديالك، وكنبقاو على تواصل كل يوم. إلا احتاج شي تعديل، كنديرو. أنا الكوتش ديالك، والخطة وحدة وواضحة باش توصل لهدفك.",
+      ar: "أنا كنخدم معاك شخصياً: كنصاوب ليك البرنامج، كنراجع معاك فالتطبيق، كنرتب معاك الماكلة، كنصحح الحركة ديالك، وكنبقاو على تواصل كل يوم. كنديرو تعديل للبرنامج كل سيمانة، وكنحددو أهداف جداد اللي غادي نخدمو عليهم.",
       fr: "Coaching privé dans mon app. Training clair, vrais repas, checks de forme, WhatsApp quotidien. Un coach. Un système.",
     } as Localized,
     includedTitle: { en: "Included", ar: "شنو كيشمل الـ coaching؟", fr: "Inclus" } as Localized,
@@ -233,7 +234,7 @@ export const landing = {
         },
         detail: {
           en: "A smooth experience in my app where we track your PRs, milestones, bodyweight, weekly photos, training volume, and muscle progress. Everything in one place.",
-          ar: "أنا اللي كنصاوب ليك البرنامج وكنراجع معاك التقدم ديالك. كنسجلو القوة والوزن والصور ديال كل أسبوع وحجم التدريب، كلشي فبلاصة وحدة. ماشي ملف PDF قديم تبقى تتبعو وحدك.",
+          ar: "كنقاد ليك البرنامج وكنراجعو على حساب التقدم ديالك. كنسجلو القوة والوزن والصور ديال كل أسبوع وحجم التدريب، كلشي فبلاصة وحدة. ماشي PDF قديم.",
           fr: "Une expérience fluide dans mon app: on suit tes PRs, milestones, poids, photos hebdo, volume d’entraînement et progrès musculaire. Tout au même endroit.",
         },
       },
@@ -520,7 +521,7 @@ export const landing = {
     } as Localized,
     body: {
       en: "Send your goal, your available hours, and where you start. I reply myself.",
-      ar: "قول ليا شنو بغيتي توصل ليه، شحال من الوقت تقدر تخصص، وفين واقف دابا. غادي نقرا الطلب ونجاوبك بنفسي.",
+      ar: "شرح ليا شنو باغي تحقق، شحال ديال الوقت تقدر تخصص، وفين وصلتي دابا. غادي نشوف طلبك ونجاوبك بنفسي.",
       fr: "Dis moi ton objectif, ton agenda, et ton point de départ. Je réponds en personne.",
     } as Localized,
     cta: { en: "Apply for coaching", ar: "بدا معايا", fr: "Postuler au coaching" } as Localized,
@@ -532,3 +533,6 @@ export const landing = {
   },
 
 } as const;
+
+// Isolate English terms inside Arabic copy so they never flip the RTL text.
+export const landing = withBidi(rawLanding);

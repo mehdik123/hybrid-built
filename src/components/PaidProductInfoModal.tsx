@@ -1,3 +1,4 @@
+import { isolateLatin } from "@/lib/bidi";
 import { X, Zap, Check, MessageCircle, Landmark } from "lucide-react";
 import { useLanguage } from "@/contexts/AppContext";
 import { translations } from "@/lib/translations";
@@ -55,7 +56,7 @@ const PaidProductInfoModal = ({ children }: PaidProductInfoModalProps) => {
                                   ? "Message me on Instagram for access. Pricing is shared personally."
                                   : language === "fr"
                                     ? "Envoie-moi un DM Instagram pour y accéder. Le tarif est partagé en privé."
-                                    : "صيفط ليا DM فـ Instagram للوصول. الثمن كنبقاو عليه شخصياً."}
+                                    : isolateLatin("صيفط ليا DM فـ Instagram للوصول. الثمن كنبقاو عليه شخصياً.")}
                             </p>
                         </div>
 

@@ -1,3 +1,4 @@
+import { isolateLatin } from "@/lib/bidi";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/AppContext";
@@ -39,7 +40,7 @@ const Header = ({ variant }: HeaderProps) => {
       href: "#app",
     },
     {
-      label: language === "en" ? "Coaching" : language === "fr" ? "Coaching" : "الـ coaching",
+      label: language === "en" ? "Coaching" : language === "fr" ? "Coaching" : isolateLatin("الـ coaching"),
       href: "#offer",
     },
     {
