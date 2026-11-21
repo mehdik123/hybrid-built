@@ -7,8 +7,11 @@ import { getGsap, prefersReducedMotion } from "@/lib/gsap";
 const SCREENS = [
   { src: ASSETS.appHome, label: { en: "Home", ar: "الرئيسية", fr: "Accueil" } },
   { src: ASSETS.appTrain, label: { en: "Train", ar: "تدريب", fr: "Train" } },
+  { src: ASSETS.appCardio, label: { en: "Cardio", ar: "كارديو", fr: "Cardio" } },
   { src: ASSETS.appNutrition, label: { en: "Nutrition", ar: "تغذية", fr: "Nutrition" } },
   { src: ASSETS.appProgress, label: { en: "Progress", ar: "التقدم", fr: "Progrès" } },
+  { src: ASSETS.appWeight, label: { en: "Weight", ar: "الوزن", fr: "Poids" } },
+  { src: ASSETS.appPhotos, label: { en: "Photos", ar: "الصور", fr: "Photos" } },
 ] as const;
 
 const copy = {

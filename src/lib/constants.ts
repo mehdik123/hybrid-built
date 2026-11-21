@@ -15,7 +15,7 @@ export const GUMROAD_HYBRID_CHECKOUT_URL = `${GUMROAD_HYBRID_URL}?wanted=true`;
 export const SPLIT_FINDER_URL = "https://gainz-frequency-finder.lovable.app";
 
 /** Bank transfer: contact first — RIB is sent privately, never shown on site */
-export const IG_HYBRID_TRANSFER_DM = `HYBRID — I want to pay by bank transfer`;
+export const IG_HYBRID_TRANSFER_DM = `HYBRID: I want to pay by bank transfer`;
 export const IG_HYBRID_TRANSFER_DM_URL = `https://ig.me/m/${IG_HANDLE}?text=${encodeURIComponent(IG_HYBRID_TRANSFER_DM)}`;
 
 export const CTA_PRIMARY_EN = "Apply for coaching";
@@ -50,8 +50,11 @@ export const ASSETS = {
   testimonialVideo: "/testimonial-video.mp4",
   appHome: "/app-home.jpg",
   appTrain: "/app-train.jpg",
+  appCardio: "/app-cardio.jpg",
   appNutrition: "/app-nutrition.jpg",
   appProgress: "/app-progress.jpg",
+  appWeight: "/app-weight.jpg",
+  appPhotos: "/app-photos.jpg",
   heroFallback: "/hero-fallback.jpg",
   heroPlaceholderAlt: "/hero-placeholder-v2.jpg",
 } as const;

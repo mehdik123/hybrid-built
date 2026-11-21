@@ -32,7 +32,7 @@ const rawLanding = {
       fr: "Training, nutrition et check-ins. Tout dans mon app.",
     } as Localized,
     warm: {
-      en: "Beginner or years in the gym — same standard.",
+      en: "Beginner or years in the gym. Same standard.",
       ar: "سواء كنتي باقي يالله بادي، ولا كتدرب من مدة طويلة.",
       fr: "Que tu démarres ou que tu montes d’un cran.",
     } as Localized,
@@ -97,7 +97,7 @@ const rawLanding = {
       fr: "Un vrai progrès.",
     } as Localized,
     subhead: {
-      en: "Fat loss, muscle, strength — from people who kept showing up.",
+      en: "Fat loss, muscle, strength. From people who kept showing up.",
       ar: "نقص دهون، بني عضلات، زيد القوة. شوف كيفاش كيبان العمل المستمر.",
       fr: "Perte de gras, muscle, force. Voici ce que donne un travail régulier.",
     } as Localized,
@@ -220,7 +220,7 @@ const rawLanding = {
       fr: "Ce que tu obtiens",
     } as Localized,
     valueLead: {
-      en: "Private coaching in my app: training, meals, form checks, daily WhatsApp. You work with me — not a PDF and not a bot.",
+      en: "Private coaching in my app: training, meals, form checks, daily WhatsApp. You work with me, not a PDF and not a bot.",
       ar: "أنا كنخدم معاك شخصياً: كنصاوب ليك البرنامج، كنراجع معاك فالتطبيق، كنرتب معاك الماكلة، كنصحح الحركة ديالك، وكنبقاو على تواصل كل يوم. كنديرو تعديل للبرنامج كل سيمانة، وكنحددو أهداف جداد اللي غادي نخدمو عليهم.",
       fr: "Coaching privé dans mon app. Training clair, vrais repas, checks de forme, WhatsApp quotidien. Un coach. Un système.",
     } as Localized,
@@ -448,7 +448,7 @@ const rawLanding = {
         level: { en: "All levels", ar: "جميع المستويات", fr: "Tous niveaux" },
         duration: { en: "Free", ar: "مجاني", fr: "Gratuit" },
         body: {
-          en: "Tell it your days and goal. Get the split that fits. Open it now — no signup.",
+          en: "Tell it your days and goal. Get the split that fits. Open it now. No signup.",
           ar: "أداة مجانية كتعاونك تعرف فين واقف قبل ما تلتزم بأي برنامج كبير. دخل عليها دابا، بلا تسجيل.",
           fr: "Dis tes jours et ton objectif. Reçois le split. Ouvre-le maintenant, sans inscription.",
         },

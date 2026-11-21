@@ -103,7 +103,7 @@ const OfferSection = () => {
                         {item.title[language]}
                       </span>
                       <span className="text-red-br text-xl leading-none" aria-hidden>
-                        {open ? "—" : "+"}
+                        {open ? "-" : "+"}
                       </span>
                     </div>
                     <div
