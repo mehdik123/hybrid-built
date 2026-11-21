@@ -23,7 +23,9 @@ const copy = {
   },
   lead: {
     en: "Most coaches hand you a PDF and disappear. I write the plan and check in with you every day. The app is where you see training, meals, and progress in one place.",
-    ar: isolateLatin("الأغلبية ديال les coachs كيعطيوك PDF وكيخليوك بوحدك. أنا اللي كنقاد البرنامج وكنتابع معاك نهار بنهار. التطبيق غير بلاصة كتلقا فيها التمارين، الماكلة والتقدم ديالك."),
+    ar: isolateLatin(
+      "الأغلبية ديال les coachs كيعطيوك PDF وكيخليوك بوحدك. أنا اللي كنقاد البرنامج وكنتابع معاك نهار بنهار. التطبيق غير بلاصة كتلقا فيها التمارين، الماكلة والتقدم ديالك."
+    ),
     fr: "Une expérience fluide: on suit tes PRs, milestones, poids, photos hebdo, volume d’entraînement et progrès musculaire.",
   },
 } as const;
@@ -32,38 +34,41 @@ const AppPhonesSection = () => {
   const { language, isRTL } = useLanguage();
   const lang = language as "en" | "ar" | "fr";
   const rootRef = useRef<HTMLElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
   useEffect(() => {
     const root = rootRef.current;
+    const pin = pinRef.current;
     const track = trackRef.current;
-    if (!root || !track) return;
+    if (!root || !pin || !track) return;
 
     const { gsap, ScrollTrigger } = getGsap();
     const softMotion = prefersReducedMotion();
 
     const ctx = gsap.context(() => {
       const getTravel = () => {
-        // Always move enough to bring the last phone into view
         const overflow = track.scrollWidth - window.innerWidth;
-        return Math.max(overflow + 24, track.scrollWidth * 0.55);
+        return Math.max(overflow + 48, 1);
       };
 
       gsap.set(track, { x: 0, force3D: true });
 
+      // Pin only the phones stage so the full phone frame fits in view.
+      // Keep carousel order LTR in every language so labels always match images
+      // (page dir=rtl was reversing tabs/track independently before).
       const st = ScrollTrigger.create({
-        trigger: root,
+        trigger: pin,
         start: "top top",
-        end: () => `+=${Math.max(getTravel() * 1.25, window.innerHeight * 1.8)}`,
+        end: () => `+=${Math.max(getTravel() * 1.15, window.innerHeight * 1.35)}`,
         pin: true,
-        scrub: softMotion ? 0.2 : 0.7,
+        scrub: softMotion ? 0.2 : 0.65,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           const travel = getTravel();
-          const x = (isRTL ? 1 : -1) * travel * self.progress;
-          gsap.set(track, { x, force3D: true });
+          gsap.set(track, { x: -travel * self.progress, force3D: true });
 
           const idx = Math.min(
             SCREENS.length - 1,
@@ -84,14 +89,16 @@ const AppPhonesSection = () => {
         },
       });
 
-      // Ensure measurements after images paint
       const refresh = () => ScrollTrigger.refresh();
       window.addEventListener("load", refresh);
+      const imgs = Array.from(track.querySelectorAll("img"));
+      imgs.forEach((img) => img.addEventListener("load", refresh));
       const t1 = window.setTimeout(refresh, 100);
-      const t2 = window.setTimeout(refresh, 500);
+      const t2 = window.setTimeout(refresh, 600);
 
       return () => {
         window.removeEventListener("load", refresh);
+        imgs.forEach((img) => img.removeEventListener("load", refresh));
         window.clearTimeout(t1);
         window.clearTimeout(t2);
         st.kill();
@@ -99,26 +106,22 @@ const AppPhonesSection = () => {
     }, root);
 
     return () => ctx.revert();
-  }, [language, isRTL]);
+  }, [language]);
 
   const jumpTo = (index: number) => {
     setActive(index);
-    const root = rootRef.current;
-    if (!root) return;
+    const pin = pinRef.current;
+    if (!pin) return;
     const { ScrollTrigger } = getGsap();
-    const st = ScrollTrigger.getAll().find((s) => s.trigger === root);
+    const st = ScrollTrigger.getAll().find((s) => s.trigger === pin);
     if (!st) return;
     const progress = SCREENS.length <= 1 ? 0 : index / (SCREENS.length - 1);
     window.scrollTo({ top: st.start + (st.end - st.start) * progress, behavior: "smooth" });
   };
 
   return (
-    <section
-      id="app"
-      ref={rootRef}
-      className="relative bg-ink border-t border-white/[0.08]"
-    >
-      <div className="px-5 pt-8 pb-3 md:px-10 md:pt-12 lg:px-14">
+    <section id="app" ref={rootRef} className="relative bg-ink border-t border-white/[0.08]">
+      <div className="px-5 pt-8 pb-4 md:px-10 md:pt-12 lg:px-14">
         <div className={`max-w-3xl ${isRTL ? "mr-0 ml-auto text-right" : ""}`}>
           <p className="font-editorial text-[11px] uppercase tracking-[0.2em] text-red-br mb-2">
             {copy.eyebrow[lang]}
@@ -136,58 +139,71 @@ const AppPhonesSection = () => {
             {copy.lead[lang]}
           </p>
         </div>
-
-        <div
-          className={`mt-4 flex flex-wrap gap-2 ${isRTL ? "justify-end" : "justify-start"}`}
-        >
-          {SCREENS.map((screen, i) => (
-            <button
-              key={screen.src}
-              type="button"
-              onClick={() => jumpTo(i)}
-              className={`font-editorial text-[10px] uppercase tracking-[0.16em] px-3 py-2 transition-colors ${
-                active === i
-                  ? "text-white border border-red-br bg-red-br/10"
-                  : "text-white/40 border border-white/10 hover:text-white/70"
-              }`}
-            >
-              {screen.label[lang]}
-            </button>
-          ))}
-        </div>
       </div>
 
-      <div className="relative w-full overflow-hidden pt-4 pb-12 md:pb-16">
-        <div
-          ref={trackRef}
-          className={`flex items-stretch gap-4 md:gap-5 px-5 md:px-10 ${
-            isRTL ? "flex-row-reverse" : ""
-          }`}
-          style={{ width: "max-content", willChange: "transform" }}
-        >
-          {SCREENS.map((screen) => (
-            <figure
-              key={screen.src}
-              data-phone
-              className="relative shrink-0 w-[70vw] sm:w-[210px] md:w-[240px] lg:w-[260px] aspect-[9/19] border border-white/20 bg-black overflow-hidden shadow-2xl shadow-black/50 origin-center"
-              style={{ opacity: 0.85, transform: "scale(1)" }}
-            >
-              <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-2 w-10 rounded-full bg-black/90 z-10" />
-              <img
-                src={screen.src}
-                alt={screen.label[lang]}
-                className="absolute inset-0 h-full w-full object-cover object-top"
-                loading="eager"
-                decoding="async"
-                draggable={false}
-              />
-              <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/90 to-transparent pointer-events-none" />
-              <figcaption className="absolute bottom-2.5 left-1/2 -translate-x-1/2 font-editorial text-[9px] uppercase tracking-[0.16em] text-white/90">
+      <div ref={pinRef} className="relative bg-ink">
+        <div className="px-5 md:px-10 lg:px-14 pb-2">
+          <div
+            className={`flex flex-wrap gap-2 ${isRTL ? "justify-end" : "justify-start"}`}
+            // Keep button order identical to phone order (Home → Photos).
+            style={{ direction: "ltr" }}
+          >
+            {SCREENS.map((screen, i) => (
+              <button
+                key={screen.src}
+                type="button"
+                onClick={() => jumpTo(i)}
+                className={`font-editorial text-[10px] uppercase tracking-[0.16em] px-3 py-2 transition-colors ${
+                  active === i
+                    ? "text-white border border-red-br bg-red-br/10"
+                    : "text-white/40 border border-white/10 hover:text-white/70"
+                }`}
+              >
                 {screen.label[lang]}
-              </figcaption>
-            </figure>
-          ))}
-          <div className="shrink-0 w-[35vw] md:w-[40vw]" aria-hidden />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative w-full overflow-hidden pt-3 pb-8 md:pb-12">
+          <div
+            ref={trackRef}
+            className="flex items-end gap-4 md:gap-5 px-5 md:px-10"
+            style={{ width: "max-content", willChange: "transform", direction: "ltr" }}
+          >
+            {SCREENS.map((screen) => (
+              <figure
+                key={screen.src}
+                data-phone
+                className="relative shrink-0 h-[min(68vh,560px)] aspect-[9/19] border border-white/20 bg-black overflow-hidden shadow-2xl shadow-black/50 origin-center select-none"
+                style={{ opacity: 0.85, transform: "scale(1)" }}
+                onContextMenu={(e) => e.preventDefault()}
+              >
+                <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-2 w-10 rounded-full bg-black/90 z-20" />
+                <img
+                  src={screen.src}
+                  alt={screen.label[lang]}
+                  className="absolute inset-0 h-full w-full object-cover object-top pointer-events-none"
+                  loading="eager"
+                  decoding="async"
+                  draggable={false}
+                />
+                {/* Soft brand veil — harder to lift a clean screenshot */}
+                <div
+                  className="absolute inset-0 z-10 pointer-events-none mix-blend-soft-light opacity-40"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at 30% 20%, rgba(220,38,38,0.18), transparent 45%), linear-gradient(160deg, rgba(0,0,0,0.05), rgba(0,0,0,0.25))",
+                  }}
+                />
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none z-10" />
+                <figcaption className="absolute bottom-2.5 left-1/2 -translate-x-1/2 z-20 font-editorial text-[9px] uppercase tracking-[0.16em] text-white/90">
+                  {screen.label[lang]}
+                </figcaption>
+              </figure>
+            ))}
+            <div className="shrink-0 w-[28vw] md:w-[32vw]" aria-hidden />
+          </div>
         </div>
       </div>
     </section>
