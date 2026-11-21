@@ -43,6 +43,8 @@ export const ASSETS = {
   gymPortrait: "/hero-placeholder.jpg",
   doorwayPortrait: "/hero-placeholder-v2.jpg",
   hybridCover: "/hybrid-training-cover.jpg",
+  hybridCoverEn: "/hybrid-cover-en.jpg",
+  hybridCoverDarija: "/hybrid-cover-darija.jpg",
   mehdiTransformBefore: "/transformation-11-before.png",
   mehdiTransformAfter: "/transformation-11-after.png",
   finalCtaPortrait: "/about-me.jpg",

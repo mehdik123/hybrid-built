@@ -147,14 +147,32 @@ const HybridBuild = () => {
             <div className={`lg:col-span-6 ${isRTL ? "lg:order-1" : ""}`}>
               <div
                 data-hb
-                className="relative z-0 mx-auto w-full max-w-[380px] overflow-hidden border border-white/10 bg-[#0a0a0a]"
+                className={`grid grid-cols-2 gap-3 md:gap-4 max-w-[560px] ${
+                  isRTL ? "mr-0 ml-auto" : "mx-auto lg:ml-auto lg:mr-0"
+                }`}
               >
-                <img
-                  src={ASSETS.hybridCover}
-                  alt="Hybrid Build program cover"
-                  className="block w-full h-auto max-h-[70vh] object-contain object-top"
-                  fetchPriority="high"
-                />
+                <figure className="overflow-hidden border border-white/10 bg-[#0a0a0a]">
+                  <img
+                    src={ASSETS.hybridCoverDarija}
+                    alt="Hybrid Build cover · Arabic"
+                    className="block w-full h-auto object-contain object-top"
+                    fetchPriority="high"
+                  />
+                  <figcaption className="px-2.5 py-2 font-editorial text-[10px] uppercase tracking-[0.16em] text-white/55 text-center border-t border-white/10">
+                    {language === "fr" ? "Arabe" : language === "ar" ? "العربية" : "Arabic"}
+                  </figcaption>
+                </figure>
+                <figure className="overflow-hidden border border-white/10 bg-[#0a0a0a]">
+                  <img
+                    src={ASSETS.hybridCoverEn}
+                    alt="Hybrid Build cover · English"
+                    className="block w-full h-auto object-contain object-top"
+                    fetchPriority="high"
+                  />
+                  <figcaption className="px-2.5 py-2 font-editorial text-[10px] uppercase tracking-[0.16em] text-white/55 text-center border-t border-white/10">
+                    {language === "fr" ? "Anglais" : language === "ar" ? "الإنجليزية" : "English"}
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
